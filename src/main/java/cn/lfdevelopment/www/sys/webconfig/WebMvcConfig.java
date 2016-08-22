@@ -30,7 +30,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
         resourceHandlerRegistry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        resourceHandlerRegistry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/static/images/favicon.ico");
+//      resourceHandlerRegistry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/static/favicon.ico");
+        super.addResourceHandlers(resourceHandlerRegistry);
     }
 
     /**
