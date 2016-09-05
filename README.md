@@ -1,7 +1,6 @@
 # greatapp
 Share greatapp to github
-## version 1.0
-## edit by JoyLau on 2016-8-22 22:59:06
-## 2016-8-22 23:23:31
-## master
-## location : master
+#### version 1.0
+memo : 
+> *add dependencies of `ehCache`,`alibabafastjson`,`redis`*  <2016-9-5 15:32:40>
+> *add `jedis`and `spring-boot-starter-redis` to config redis*  <2016-9-5 17:45:03>
