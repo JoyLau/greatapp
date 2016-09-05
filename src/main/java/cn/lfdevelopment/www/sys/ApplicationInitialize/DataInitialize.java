@@ -5,11 +5,13 @@
 package cn.lfdevelopment.www.sys.ApplicationInitialize;
 
 import cn.lfdevelopment.www.sys.redis.RedisClientTemplate;
+import cn.lfdevelopment.www.sys.redis.RedisUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
@@ -25,6 +27,10 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
     private final RedisClientTemplate redisClientTemplate;
 
 
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private RedisUtils redisUtils;
     @Autowired
     public DataInitialize(RedisClientTemplate redisClientTemplate) {
         this.redisClientTemplate = redisClientTemplate;
@@ -43,6 +49,8 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
 
     @Cacheable(value = "usercache", keyGenerator = "keyGenerator")
     public String readAutoRedisData() {
+        redisUtils.set("applicationMessage", System.getProperty("user.name"));
+        System.out.println("redis.template"+redisUtils.get("applicationMessage"));
         return "asda";
     }
 
