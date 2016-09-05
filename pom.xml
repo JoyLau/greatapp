@@ -10,6 +10,7 @@
     <groupId>cn.lfdevelopment.www</groupId>
     <artifactId>greatapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <url>www.lfdevelopment.cn</url>
     <!--此处注意：如果项目需要放到web容器运行的话，那么此处需要打成相应的war包-->
     <packaging>war</packaging>
 
@@ -36,6 +37,7 @@
         <mapper.version>3.3.8</mapper.version>
         <pagehelper.version>4.1.6</pagehelper.version>
         <druid.version>1.0.24</druid.version>
+        <shiro.version>1.3.0</shiro.version>
     </properties>
 
     <dependencies>
@@ -69,30 +71,16 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        
-
         <!--json依赖-->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-joda</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-parameter-names</artifactId>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.16</version>
         </dependency>
 
         <!--集成mybatis-->
@@ -113,9 +101,6 @@
             <artifactId>spring-data-commons</artifactId>
             <version>1.12.2.RELEASE</version>
         </dependency>-->
-
-
-
 
         <!--mysql,mybatis,druid及插件mapper依赖-->
         <dependency>
@@ -158,6 +143,54 @@
             <version>${mapper.version}</version>
         </dependency>
 
+        <!--redis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <!--shiro权限控制-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-quartz</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.9</version>
+        </dependency>
         <!--开启此项配置则将是使用log4j作为日志-->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -186,7 +219,7 @@
                 </configuration>
                 <dependencies>
                     <!--此处需要注意，此处的热部署满足的条件是编译过后的，在MyEclipse或者是Eclipse里面是可以自动编译的，
-                    在intellij IDEA里面虽然也可以自动编译，但是在debugging和running下是无效的-->
+                    在intellij IDEA里面虽然也可以设置为自动编译<缺省不自动编译>，但是在debugging和running下是无效的-->
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>springloaded</artifactId>
@@ -196,6 +229,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
