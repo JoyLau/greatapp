@@ -18,10 +18,13 @@ import java.util.concurrent.TimeUnit;
  * cn.lfdevelopment.www.sys.redis
  * DevelopmentApp
  */
+@SuppressWarnings("unchecked")
 @Component
-public class RedisUtils {
+public class RedisUtils{
     @Autowired
+    @SuppressWarnings("rawtypes")
     private RedisTemplate redisTemplate;
+
     /**
      * 批量删除对应的value
      *

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -28,14 +29,18 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
 
 
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-    @Autowired
-    private RedisUtils redisUtils;
-    @Autowired
     public DataInitialize(RedisClientTemplate redisClientTemplate) {
         this.redisClientTemplate = redisClientTemplate;
     }
 
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private RedisUtils redisUtils;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         //root application context
@@ -47,10 +52,8 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
         }
     }
 
-    @Cacheable(value = "usercache", keyGenerator = "keyGenerator")
+    @Cacheable(value = "usercache")
     public String readAutoRedisData() {
-        redisUtils.set("applicationMessage", System.getProperty("user.name"));
-        System.out.println("redis.template"+redisUtils.get("applicationMessage"));
         return "asda";
     }
 

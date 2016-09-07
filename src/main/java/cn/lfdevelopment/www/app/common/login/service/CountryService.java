@@ -8,6 +8,7 @@ import cn.lfdevelopment.www.app.common.login.mapper.CountryMapper;
 import cn.lfdevelopment.www.app.common.login.pojo.Country;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class CountryService {
         this.countryMapper = countryMapper;
     }
 
+    @Cacheable(value = "test",key = "#country.page.toString()")
     public List<Country> getAll(Country country) {
         if (country.getPage() != null && country.getRows() != null) {
             PageHelper.startPage(country.getPage(), country.getRows(), "id");
