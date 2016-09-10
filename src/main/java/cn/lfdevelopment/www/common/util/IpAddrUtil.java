@@ -12,7 +12,6 @@ public class IpAddrUtil {
     /**
      * @author LiuFa
      * Created by liufa's IntelliJ IDEA on 2016/8/5.
-     * @param [request]
      * @return java.lang.String
      * @description  获取IP地址
      */
@@ -33,8 +32,8 @@ public class IpAddrUtil {
                         inet = InetAddress.getLocalHost();  
                     } catch (UnknownHostException e) {  
                         e.printStackTrace();  
-                    }  
-                    ipAddress= inet.getHostAddress();  
+                    }
+                    ipAddress= inet != null ? inet.getHostAddress() : null;
                 }  
             }  
             //对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割  

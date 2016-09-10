@@ -4,13 +4,14 @@
 
 package cn.lfdevelopment.www.sys.redis;
 
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.JedisShardInfo;
-import redis.clients.jedis.ShardedJedisPool;
-
-import java.util.ArrayList;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * Created by LiuFa on 2016/9/5.
@@ -18,27 +19,36 @@ import java.util.ArrayList;
  * DevelopmentApp
  */
 @Configuration
-public class RedisConfig {
-    @Bean
-    public JedisPoolConfig jedisPoolConfig(){
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(100);
-        jedisPoolConfig.setMinIdle(10);
-        jedisPoolConfig.setTestOnBorrow(Boolean.TRUE);
-        return jedisPoolConfig;
-    }
+@EnableCaching
+public class RedisConfig extends CachingConfigurerSupport {
+        @Bean
+        public KeyGenerator keyGenerator() {
+            return (target, method, params) -> {
+                StringBuilder sb = new StringBuilder();
+                sb.append(target.getClass().getName());
+                sb.append(method.getName());
+                for (Object obj : params) {
+                    sb.append(obj.toString());
+                }
+                return sb.toString();
+            };
+        }
 
-    @Bean
-    public JedisShardInfo jedisShardInfo() {
-        JedisShardInfo jedisShardInfo = new JedisShardInfo("www.lfdevelopment.cn",6379,5000);
-        jedisShardInfo.setPassword("123");
-        return jedisShardInfo;
-    }
+        @Bean
+        public CacheManager cacheManager(RedisTemplate redisTemplate) {
+            return new RedisCacheManager(redisTemplate);
+        }
 
-    @Bean
-    public ShardedJedisPool shardedJedisPool(){
-        ArrayList<JedisShardInfo> list = new ArrayList<>();
-        list.add(jedisShardInfo());
-        return new ShardedJedisPool(jedisPoolConfig(),list);
+        /*@Bean
+        public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
+            StringRedisTemplate template = new StringRedisTemplate(factory);
+            Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+            ObjectMapper om = new ObjectMapper();
+            om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+            om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+            jackson2JsonRedisSerializer.setObjectMapper(om);
+            template.setValueSerializer(jackson2JsonRedisSerializer);
+            template.afterPropertiesSet();
+            return template;
+        }*/
     }
-}

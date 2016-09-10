@@ -38,6 +38,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     @ConfigurationProperties(prefix="spring.datasource")
     public DataSource dataSource() throws Exception {
         //会自动加载properties里的配置
+
         return new DruidDataSource() {
             @Override
             public void setUsername(String username) {
