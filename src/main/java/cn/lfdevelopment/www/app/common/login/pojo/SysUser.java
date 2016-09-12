@@ -4,321 +4,121 @@
 
 package cn.lfdevelopment.www.app.common.login.pojo;
 
+import java.util.Date;
 
+/**
+ * Created by LiuFa on 2016/9/12.
+ * cn.lfdevelopment.www.app.common.login.pojo
+ * DevelopmentApp
+ */
 public class SysUser {
-    private int userid;
-    private String username;
-    private String workno;
-    private String pwd;
-    private String realname;
-    private int isadmin;
-    private int state;
-    private String email;
-    private String qq;
-    private String phone;
-    private int type;
-    private int isdel0;
-    private String deptid;
-    private String sfszz0;
-    private String salary;
-    private String fangan;
-    private String idcard;
-    private String cardno;
-    private String createtime;
-    private String updatetime;
-    private String pwdupdate;
-    private String lasttime;
-    private int gender;
-    private String hukou0;
-    private String rzdjb0;
-    private String rzrq00;
-    private int rzly00;
-    private int rzlyzl;
-    private int xl0000;
-    private int fjjbxx;
-    private String theme;
-    private String lzrq00;
-    private String zzrq00;
-    private String bzinfo;
-    private int rylx00;
+    //主键
+    private Integer id;
 
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getWorkno() {
-        return workno;
-    }
-
-    public void setWorkno(String workno) {
-        this.workno = workno;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getRealname() {
-        return realname;
-    }
-
-    public void setRealname(String realname) {
-        this.realname = realname;
-    }
-
-    public int getIsadmin() {
-        return isadmin;
-    }
-
-    public void setIsadmin(int isadmin) {
-        this.isadmin = isadmin;
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public int getIsdel0() {
-        return isdel0;
-    }
-
-    public void setIsdel0(int isdel0) {
-        this.isdel0 = isdel0;
-    }
+    //用户登录名
+    private String userLoginName;
 
-    public String getDeptid() {
-        return deptid;
-    }
-
-    public void setDeptid(String deptid) {
-        this.deptid = deptid;
-    }
-
-    public String getSfszz0() {
-        return sfszz0;
-    }
-
-    public void setSfszz0(String sfszz0) {
-        this.sfszz0 = sfszz0;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
-
-    public String getFangan() {
-        return fangan;
-    }
-
-    public void setFangan(String fangan) {
-        this.fangan = fangan;
-    }
-
-    public String getIdcard() {
-        return idcard;
-    }
-
-    public void setIdcard(String idcard) {
-        this.idcard = idcard;
-    }
-
-    public String getCardno() {
-        return cardno;
-    }
-
-    public void setCardno(String cardno) {
-        this.cardno = cardno;
-    }
-
-    public String getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(String createtime) {
-        this.createtime = createtime;
-    }
-
-    public String getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(String updatetime) {
-        this.updatetime = updatetime;
-    }
-
-    public String getPwdupdate() {
-        return pwdupdate;
-    }
-
-    public void setPwdupdate(String pwdupdate) {
-        this.pwdupdate = pwdupdate;
-    }
-
-    public String getLasttime() {
-        return lasttime;
-    }
-
-    public void setLasttime(String lasttime) {
-        this.lasttime = lasttime;
-    }
+    //用户登录密码
+    private String userPassword;
 
-    public int getGender() {
-        return gender;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
+    //用户名
+    private String userName;
 
-    public String getHukou0() {
-        return hukou0;
-    }
+    //用户类型
+    private int userType;
 
-    public void setHukou0(String hukou0) {
-        this.hukou0 = hukou0;
-    }
+    //用户性别
+    private String sex;
 
-    public String getRzdjb0() {
-        return rzdjb0;
-    }
+    //创建时间
+    private Date createTime;
 
-    public void setRzdjb0(String rzdjb0) {
-        this.rzdjb0 = rzdjb0;
-    }
+    //是否有效
+    private Integer inUse;
 
-    public String getRzrq00() {
-        return rzrq00;
-    }
+    //昵称
+    private String nickName;
 
-    public void setRzrq00(String rzrq00) {
-        this.rzrq00 = rzrq00;
-    }
 
-    public int getRzly00() {
-        return rzly00;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRzly00(int rzly00) {
-        this.rzly00 = rzly00;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public int getRzlyzl() {
-        return rzlyzl;
+    public String getUserLoginName() {
+        return userLoginName;
     }
 
-    public void setRzlyzl(int rzlyzl) {
-        this.rzlyzl = rzlyzl;
+    public void setUserLoginName(String userLoginName) {
+        this.userLoginName = userLoginName;
     }
 
-    public int getXl0000() {
-        return xl0000;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setXl0000(int xl0000) {
-        this.xl0000 = xl0000;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public int getFjjbxx() {
-        return fjjbxx;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFjjbxx(int fjjbxx) {
-        this.fjjbxx = fjjbxx;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getTheme() {
-        return theme;
+    public String getSex() {
+        return sex;
     }
 
-    public void setTheme(String theme) {
-        this.theme = theme;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public String getLzrq00() {
-        return lzrq00;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setLzrq00(String lzrq00) {
-        this.lzrq00 = lzrq00;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getZzrq00() {
-        return zzrq00;
+    public Integer getInUse() {
+        return inUse;
     }
 
-    public void setZzrq00(String zzrq00) {
-        this.zzrq00 = zzrq00;
+    public void setInUse(Integer inUse) {
+        this.inUse = inUse;
     }
 
-    public String getBzinfo() {
-        return bzinfo;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setBzinfo(String bzinfo) {
-        this.bzinfo = bzinfo;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public int getRylx00() {
-        return rylx00;
+    /**
+     * Getter method for property userType.
+     *
+     * @return property value of userType
+     */
+    public int getUserType() {
+        return userType;
     }
 
-    public void setRylx00(int rylx00) {
-        this.rylx00 = rylx00;
+    /**
+     * Setter method for property <tt>userType</tt>.
+     *
+     * @param userType value to be assigned to property userType
+     */
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 }
