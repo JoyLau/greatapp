@@ -16,7 +16,7 @@
 </html>
 <script type="text/javascript">
     Ext.onReady(function () {
-        Ext.MessageBox.alert("提示:", "服务器出错啦...",function () {
+        Ext.MessageBox.alert("提示:", "文件错误...",function () {
             window.close();
         });
     });
