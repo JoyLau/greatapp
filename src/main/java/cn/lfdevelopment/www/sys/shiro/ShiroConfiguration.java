@@ -81,7 +81,7 @@ public class ShiroConfiguration {
         chains.put("/base/**", "anon");
         chains.put("/css/**", "anon");
         chains.put("/layer/**", "anon");
-        chains.put("/**", "authc");
+        chains.put("/**", "anon");
         bean.setFilterChainDefinitionMap(chains);
         return bean;
     }
