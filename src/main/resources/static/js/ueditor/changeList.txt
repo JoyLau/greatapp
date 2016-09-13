@@ -1,0 +1,34 @@
+1、ueditor.all.js，28640行：
+原
+countDom.innerHTML = errMsg;
+editor.fireEvent("wordcountoverflow");
+现
+//countDom.innerHTML = errMsg;
+//editor.fireEvent("wordcountoverflow");
+//超过字符限制自动删除
+var content = editor.getContentTxt();
+editor.setContent(content.substring(0,max));
+editor.focus(true);
+这样修改存在如下bug：
+在有表格图片等内容时复制粘贴纯文本内容至最大值后字数统计会删除表格图片内容重新计算内容长度
+
+link.html,69行：超链接默认在新窗口打开
+原
+  //$G("target").checked = url && link.target == "_blank" ? true :  false;
+现
+    $G("target").checked =true;
+    
+image.js 
+1、多图片上传的在线管理图片不显示问题
+增加906、907
+var re = /([a-zA-Z]{1}\:.*webapp)/;
+var newUrl = list[i].url.replace(re.exec(list[i].url)[1],"");
+并修改911、912：list[i].url改成newUrl
+ img.setAttribute('src', urlPrefix + newUrl + (newUrl.indexOf('?') == -1 ? '?noCache=':'&noCache=') + (+new Date()).toString(36) );
+ img.setAttribute('_src', urlPrefix + newUrl);
+ 
+ 
+ ueditor.all.js
+ 29137
+ 原：scale.style.display = "none";
+ 现：scale.style.display = "";

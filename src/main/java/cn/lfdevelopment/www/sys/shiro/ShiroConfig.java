@@ -18,8 +18,11 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.util.WebUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.ehcache.EhCacheCacheManager;
+import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 
 import javax.servlet.Filter;
 import javax.servlet.ServletRequest;
@@ -33,10 +36,12 @@ import java.util.Map;
  * cn.lfdevelopment.www.sys.shiro
  * DevelopmentApp
  */
-@Configuration
+//@Configuration
 //@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class ShiroConfig {
 
+    @Autowired
+    private KickOut kickOut;
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(){
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
@@ -65,6 +70,20 @@ public class ShiroConfig {
         shiroFormAuthenticationFilter.setLoginUrl("/login");
 
         return shiroFormAuthenticationFilter;
+    }
+    @Bean(name = "ehcacheManager")
+    public EhCacheManagerFactoryBean ehCacheManagerFactoryBean(){
+        EhCacheManagerFactoryBean ehCacheManagerFactoryBean = new EhCacheManagerFactoryBean();
+        ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("config/ehcache.xml"));
+        return ehCacheManagerFactoryBean;
+    }
+
+    @Bean(name = "cacheManager")
+    public EhCacheCacheManager ehCacheCacheManager(){
+        EhCacheCacheManager ehCacheCacheManager = new EhCacheCacheManager();
+        ehCacheCacheManager.setCacheManager(ehCacheManagerFactoryBean().getObject());
+        return ehCacheCacheManager;
+
     }
 
     @Bean(name = "rolesOrFilter")
@@ -142,9 +161,10 @@ public class ShiroConfig {
         DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
         defaultWebSecurityManager.setRealm(new AuthorizingRealm());
         defaultWebSecurityManager.setSessionManager(defaultWebSessionManager());
-        defaultWebSecurityManager.setCacheManager(new SpringCacheManagerWrapper());
+//        defaultWebSecurityManager.setCacheManager(new SpringCacheManagerWrapper(ehCacheCacheManager()));
         return defaultWebSecurityManager;
     }
+
 
 
     @Bean(name = "shiroFilter")
@@ -158,6 +178,7 @@ public class ShiroConfig {
         Map<String,Filter> map = new LinkedHashMap<>();
         map.put("authc",shiroFormAuthenticationFilter());
         map.put("rolesOr",rolesAuthorizationFilter());
+        map.put("kickout",kickOut);
         shiro.setFilters(map);
 
 

@@ -7,13 +7,14 @@ package cn.lfdevelopment.www.sys.shiro;
 import cn.lfdevelopment.www.common.util.IpAddrUtil;
 import cn.lfdevelopment.www.common.util.WebUtil;
 import org.apache.shiro.cache.Cache;
-import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.DefaultSessionKey;
-import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.AccessControlFilter;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.util.WebUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.ServletRequest;
@@ -32,9 +33,23 @@ import java.util.LinkedList;
  */
 public class KickOut extends AccessControlFilter {
 
-    private String kickoutUrl; //踢出后转向的地址
+    private final String kickoutUrl = "/repeatLogin?kickout=true"; //踢出后转向的地址
 
-    private SessionManager sessionManager;
+    @Autowired
+    private DefaultWebSessionManager sessionManager;
+
+    @Autowired
+    private DefaultWebSecurityManager defaultWebSecurityManager;
+
+    /**
+     * Setter method for property <tt>cache</tt>.
+     *
+     * @param cache value to be assigned to property cache
+     */
+    public void setCache(Cache<String, Deque<Serializable>> cache) {
+        this.cache = defaultWebSecurityManager.getCacheManager().getCache("shiro-kickout-session");
+    }
+
     private Cache<String, Deque<Serializable>> cache;
 
     @Value("${spring.shiro.session}")
@@ -57,18 +72,7 @@ public class KickOut extends AccessControlFilter {
     @Value("${spring.shiro.ip.maxSession}")
     private int shiroIpMaxSession;
 
-    public void setKickoutUrl(String kickoutUrl) {
-        this.kickoutUrl = kickoutUrl;
-    }
 
-
-    public void setSessionManager(SessionManager sessionManager) {
-        this.sessionManager = sessionManager;
-    }
-
-    public void setCacheManager(CacheManager cacheManager) {
-        this.cache = cacheManager.getCache("shiro-kickout-session");
-    }
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {

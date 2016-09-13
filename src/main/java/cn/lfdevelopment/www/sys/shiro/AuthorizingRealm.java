@@ -14,12 +14,14 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by LiuFa on 2016/9/12.
  * cn.lfdevelopment.www.sys.shiro
  * DevelopmentApp
  */
+@Component("userRealm")
 public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm {
     @Autowired
     private UserService userService;

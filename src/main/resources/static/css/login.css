@@ -1,0 +1,58 @@
+@charset "utf-8";blockquote,body,button,dd,dl,dt,fieldset,h1,h2,h3,h4,h5,h6,hr,input,lengend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+body,button,input,select,textarea{font:14px/1 Microsoft YaHei,Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif}
+h1{font-size:18px}
+h2{font-size:16px}
+h3{font-size:14px}
+h4,h5,h6{font-size:100%}
+button,input,select,textarea{font-size:100%;outline:0}
+address,cite,dfn,em,var{font-style:normal}
+code,kbd,pre,samp,tt{font-family:"Courier New",Courier,monospace}
+small{font-size:12px}
+ol,ul{list-style:none}
+a{color:#333}
+a,a:hover{text-decoration:none}
+a:focus{outline:0}
+abbr[title],acronym[title]{border-bottom:1px dotted;cursor:help}
+q:after,q:before{content:''}
+legend{color:#000}
+fieldset,img{border:none}
+table{border-collapse:collapse;border-spacing:0;text-align:left}
+hr{border:none;height:1px}
+.breadcrumbs,.quick-links a b,.top-menu li a b{background:url(../images/sprite.png) no-repeat}
+body,html{height:100%}
+body{background:#fff}
+.main{background:#fff;overflow-x:hidden;overflow-y:auto;padding:20px 10px}
+.loginWrap{width:100%;min-width:1000px;height:499px;background:url(../images/loginBg.jpg) no-repeat center center;}
+.center{width:1000px;margin:0 auto}
+.loginWrap .center{position:relative;height:100%}
+.loginBlock{position:absolute;right:34px;top: 29px}
+.loginBlock .logo{margin-bottom:20px}
+.login{width:327px;padding-left:57px;height:437px;background:url(../images/login-radius.png) no-repeat;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/login-radius.png',  sizingMethod='scale')}
+.login .code,.login .name,.login .password{position:relative}
+.login p{text-align:center;margin-left:-57px;font-size:24px;height:26px;padding-top:79px;margin-bottom:41px;font-weight:700;color:#8d8d8d}
+.login .code label.focus,.login .name label.focus,.login .password label.focus{color:#bdbdbd}
+.login .input{display:inline-block;padding:13px 10px 13px 52px;width:208px;height:16px;border:1px solid #d4d4d4;border-radius:5px;color:#666}
+/* div.password{margin-bottom:20px} */
+.input-focus{display:inline-block;padding:13px 10px 13px 52px;width:208px;height:16px;border-radius:5px;font-size:14px;background:#fff url(../images/loginIco.png) no-repeat;color:#333;border:1px solid #01d4c5}
+.name input{background:url(../images/name-ico.png) no-repeat 10px 10px}
+.password input{background:url(../images/password-ico.png) no-repeat 10px 10px}
+.login .name{margin-bottom:6px}
+.login .code label{left:16px}
+.login .code .input{float:left;width:90px;background:#fff;padding-left:16px}
+.login .btn{width:272px;height:50px;line-height:1;line-height:50px\9;border:none;color:#fff;font-size:20px;border-radius:5px;cursor:pointer;margin-top:33px;background:#01d4c5}
+.login .btn:hover{background:#01b3a0}
+.tag{color:#00beb0}
+.center{width:1000px;margin:0 auto}
+.login-prompt{font-size:16px;text-align:center;padding-top:100px}
+.login-prompt a{color:#ff9c00}
+.header{height:86px;border-bottom:1px solid #f3eae2;background:#fff}
+body,html{height:100%}
+.wrapper{min-height:100%}
+.footer-fixer{position:relative;height:130px}
+.footer{position:absolute;left:0;width:100%;min-width:1000px;height:130px;text-align:center;margin-top:-130px}
+.footer p{font-size:14px;color:#c4c4c4;line-height:24px;}
+.footer .center{border-top:1px solid #efefef;padding-top:30px;width: 100%;min-width: 1000px;}
+.header .logo{float:left;margin-top:25px}
+.header ul{float:right;padding-top:44px;padding-right: 34px;}
+.header ul li{float:left;padding-left:55px}
+.header ul li a{font-size:16px;color:#444}

@@ -1,0 +1,10 @@
+/* CSS Document */
+@charset "UTF-8";body{ text-align:center;margin-top:100px; background-color:#006bb9;}
+a{text-decoration:none;}
+.att{ background-image:url(../images/regcode_bg.png); width:541px; height:276px;margin:0 auto;}
+.icon01{ width:102px; height:102px; margin:0 auto; padding-top:36px;}
+.t01{ font-family:"微软雅黑", "宋体"; font-size:36px; color:#e45600; line-height:50px; margin:0 auto; text-align:center;}
+.t02{ font-family:"微软雅黑", "宋体"; font-size:14px; color:#000; line-height:18px; margin:0 auto;text-align:center; padding-bottom:30px;}
+.t03{ font-family:"微软雅黑", "宋体"; font-size:18px; color:#000; line-height:26px; margin:0 auto; background-image:url(../images/icon02.png); background-repeat:no-repeat; text-align:right; width:132px;}
+a.l01{color:#000;}
+a.l01:hover{color:#939393;}
