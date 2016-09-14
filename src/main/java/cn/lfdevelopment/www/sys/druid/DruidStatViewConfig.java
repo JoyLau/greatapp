@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
  * 这样的方式不需要添加注解：@ServletComponentScan
  */
 @Configuration
-public class DruidConfiguration {
+public class DruidStatViewConfig {
 
     @Value("${spring.druid.loginUsername}")
     private String loginUsername;

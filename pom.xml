@@ -9,7 +9,7 @@
 
     <groupId>cn.lfdevelopment.www</groupId>
     <artifactId>greatapp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>v1.0</version>
     <url>www.lfdevelopment.cn</url>
     <!--此处注意：如果项目需要放到web容器运行的话，那么此处需要打成相应的war包-->
     <packaging>war</packaging>
@@ -86,24 +86,6 @@
             <version>1.2.16</version>
         </dependency>
 
-        <!--集成mybatis-->
-        <!--<dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>4.1.1.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>1.12.2.RELEASE</version>
-        </dependency>-->
 
         <!--mysql,mybatis,druid及插件mapper依赖-->
         <dependency>

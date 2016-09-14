@@ -4,14 +4,12 @@
 
 package cn.lfdevelopment.www.sys.mybatis;
 
-import com.alibaba.druid.filter.config.ConfigTools;
-import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -34,39 +32,14 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class MyBatisConfig implements TransactionManagementConfigurer {
 
-    @Bean
-    @ConfigurationProperties(prefix="spring.datasource")
-    public DataSource dataSource() throws Exception {
-        //会自动加载properties里的配置
-
-        return new DruidDataSource() {
-            @Override
-            public void setUsername(String username) {
-                try {
-                    username = ConfigTools.decrypt(username);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                super.setUsername(username);
-            }
-
-            @Override
-            public void setUrl(String jdbcUrl) {
-                try {
-                    jdbcUrl = ConfigTools.decrypt(jdbcUrl);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                super.setUrl(jdbcUrl);
-            }
-        };
-    }
+    @Autowired
+    private DataSource dataSource;
 
 
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(dataSource());
+        bean.setDataSource(dataSource);
         bean.setTypeAliasesPackage("cn.lfdevelopment.www.app.**.pojo");
 
         //分页插件
@@ -101,7 +74,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         try {
-            return new DataSourceTransactionManager(dataSource());
+            return new DataSourceTransactionManager(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
