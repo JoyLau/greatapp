@@ -67,8 +67,7 @@ public class LoginController {
 
 
     @RequestMapping("/test")
-    @ResponseBody
     String test1 (){
-        return "中文";
+        return "login";
     }
 }

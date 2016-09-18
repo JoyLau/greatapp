@@ -47,7 +47,7 @@ public class ReadOrWriteWord {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/readWordText",produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/readWordText")
     public String readWordText(@RequestParam("filePath") String filePath,Model model) throws Exception {
         model.addAttribute("message","已为您自动抽取其中8道题目");
         return testReadByExtractor(filePath);
@@ -64,7 +64,7 @@ public class ReadOrWriteWord {
      * @param file
      * @return
      */
-    @RequestMapping(value = "/upload",produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, Model model){
         if(!file.isEmpty()){
             try {
