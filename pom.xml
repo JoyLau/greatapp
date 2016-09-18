@@ -9,7 +9,7 @@
 
     <groupId>cn.lfdevelopment.www</groupId>
     <artifactId>greatapp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>v1.0</version>
     <url>www.lfdevelopment.cn</url>
     <!--此处注意：如果项目需要放到web容器运行的话，那么此处需要打成相应的war包-->
     <packaging>war</packaging>
@@ -75,6 +75,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--集成redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -86,24 +87,6 @@
             <version>1.2.16</version>
         </dependency>
 
-        <!--集成mybatis-->
-        <!--<dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>4.1.1.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>1.12.2.RELEASE</version>
-        </dependency>-->
 
         <!--mysql,mybatis,druid及插件mapper依赖-->
         <dependency>
@@ -146,12 +129,6 @@
             <version>${mapper.version}</version>
         </dependency>
 
-        <!--redis-->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
-        </dependency>
 
         <!--shiro权限控制-->
         <dependency>
@@ -159,11 +136,11 @@
             <artifactId>shiro-core</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
             <version>${shiro.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
@@ -178,11 +155,6 @@
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
             <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.theborakompanioni</groupId>
-            <artifactId>thymeleaf-extras-shiro</artifactId>
-            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>commons-collections</groupId>
@@ -220,6 +192,22 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j</artifactId>
         </dependency>-->
+
+        <!--支持jsp视图(spring-boot默认已经不再支持jsp视图展示，application.properties的后缀配置需要改为在WEB-INF下面，若他要是用要打包成war包，然后在tomcat下跑)-->
+        <!--<dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
     </dependencies>
 
     <build>
@@ -228,7 +216,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <jvmArguments>-Dfile.encoding=UTF8 -Dspring.profiles.active="dev"</jvmArguments>
+                    <jvmArguments>-Dfile.encoding=UTF8</jvmArguments>
                 </configuration>
                 <dependencies>
                     <!--此处需要注意，此处的热部署满足的条件是编译过后的，在MyEclipse或者是Eclipse里面是可以自动编译的，

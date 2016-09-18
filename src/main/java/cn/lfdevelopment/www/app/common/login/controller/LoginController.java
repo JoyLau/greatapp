@@ -64,4 +64,10 @@ public class LoginController {
     void test (){
         loginService.test("管理员");
     }
+
+
+    @RequestMapping("/test")
+    String test1 (){
+        return "login";
+    }
 }

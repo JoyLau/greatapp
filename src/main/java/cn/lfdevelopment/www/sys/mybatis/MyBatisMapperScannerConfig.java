@@ -24,7 +24,7 @@ public class MyBatisMapperScannerConfig {
     public static MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-        mapperScannerConfigurer.setBasePackage("cn.lfdevelopment.www.app.common.login.mapper");
+        mapperScannerConfigurer.setBasePackage("cn.lfdevelopment.www.app.**.mapper");
         Properties properties = new Properties();
         properties.setProperty("mappers", "cn.lfdevelopment.www.sys.base.BaseMapper");
         properties.setProperty("notEmpty", "false");

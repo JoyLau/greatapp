@@ -4,15 +4,16 @@
 
 package cn.lfdevelopment.www.sys.ApplicationInitialize;
 
+import cn.lfdevelopment.www.app.sys.pojo.Sys_dic;
+import cn.lfdevelopment.www.app.sys.service.DicService;
 import cn.lfdevelopment.www.sys.redis.RedisUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Created by LiuFa on 2016/9/5.
@@ -25,25 +26,20 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
     private static Logger _logger = Logger.getLogger(DataInitialize.class);
 
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-    @Autowired
     private RedisUtils redisUtils;
 
+
     @Autowired
-    private RedisTemplate redisTemplate;
+    private DicService dicService;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         //root application context
         if (contextRefreshedEvent.getApplicationContext().getParent() == null) {
-            //set stu_experiment
-//            readRedisData();
-
-            readAutoRedisData();
+            List<Sys_dic> dicList = dicService.getdicList();
+            redisUtils.set("dicList",dicList);
+            List list = (List)redisUtils.get("dicList");
+            _logger.info(list.size());
         }
-    }
-
-    @Cacheable(value = "usercache")
-    public String readAutoRedisData() {
-        return "asda";
     }
 }
