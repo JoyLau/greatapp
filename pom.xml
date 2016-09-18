@@ -210,7 +210,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <jvmArguments>-Dfile.encoding=UTF8 -Dspring.profiles.active="dev"</jvmArguments>
+                    <jvmArguments>-Dfile.encoding=UTF8</jvmArguments>
                 </configuration>
                 <dependencies>
                     <!--此处需要注意，此处的热部署满足的条件是编译过后的，在MyEclipse或者是Eclipse里面是可以自动编译的，

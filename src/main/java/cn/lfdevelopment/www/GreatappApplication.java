@@ -10,14 +10,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Created by LiuFa on 2016/8/17.
  * cn.lfdevelopment.www
  * GreatappApplication
  */
-@EnableWebMvc
 @SpringBootApplication// same as @Configuration @EnableAutoConfiguration @ComponentScan
 public class GreatappApplication extends SpringBootServletInitializer {
 

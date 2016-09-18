@@ -11,8 +11,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,12 +26,8 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
     private static Logger _logger = Logger.getLogger(DataInitialize.class);
 
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-    @Autowired
     private RedisUtils redisUtils;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     @Autowired
     private DicService dicService;
@@ -44,6 +38,8 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
         if (contextRefreshedEvent.getApplicationContext().getParent() == null) {
             List<Sys_dic> dicList = dicService.getdicList();
             redisUtils.set("dicList",dicList);
+            List list = (List)redisUtils.get("dicList");
+            _logger.info(list.size());
         }
     }
 }

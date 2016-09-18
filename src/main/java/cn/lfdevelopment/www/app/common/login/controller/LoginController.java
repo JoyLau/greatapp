@@ -64,4 +64,11 @@ public class LoginController {
     void test (){
         loginService.test("管理员");
     }
+
+
+    @RequestMapping("/test")
+    @ResponseBody
+    String test1 (){
+        return "中文";
+    }
 }
