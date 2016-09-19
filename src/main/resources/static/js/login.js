@@ -231,7 +231,6 @@ Ext.onReady(function () {
         labelAlign: 'right',
         labelWidth: 120,
         frame: true,
-        height: 150,
         cls: 'loginform',
         buttonAlign: 'center',
         defaultType: 'textfield',
@@ -271,15 +270,17 @@ Ext.onReady(function () {
     //窗体
     var win = new Ext.Window({
         title: '管理员登录',
-        plain: true,
+        plain: false,
+        border : false,
         width: 320,
         height: 180,
         resizable: false,
         shadow: true,
         modal: false,
-        closable: true,
+        closable: false,
         animCollapse: true,
         draggable: false,
+        layout: "fit",
         items: form
     });
     win.show();
