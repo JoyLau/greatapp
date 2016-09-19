@@ -18,7 +18,7 @@
               overflow: hidden;
           }
           .footer{position:absolute;left:0;width:100%;height:5%;text-align:center;margin-top:-80px}
-          .footer p{font-size:14px;color:#c4c4c4;}
+          .footer p{font-size:14px;color:#3892d3;}
           .footer .center{padding-top:30px;width: 100%}
       </style>
   </head>

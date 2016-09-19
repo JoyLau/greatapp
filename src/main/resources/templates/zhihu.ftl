@@ -8,7 +8,7 @@
     <meta name="renderer" content="webkit" />
     <meta name="description" content="一个真实的网络问答社区，帮助你寻找答案，分享知识。"/>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <title>知乎 - 与世界分享你的知识、经验和见解</title>
+    <title>知乎 - 与世界分享你的题目、经验和见解</title>
 
 
     <link rel="stylesheet" href="${path}/static/js/zhihu/main.css">
@@ -24,7 +24,7 @@
 
             <h1 class="logo hide-text">知乎</h1>
 
-            <h2 class="subtitle">与世界分享你的知识、经验和见解</h2>
+            <h2 class="subtitle">与世界分享你的题目、经验和见解</h2>
         </div>
 
         <div class="desk-front sign-flow clearfix sign-flow-simple">
@@ -91,7 +91,7 @@
                 <div class="QRCode">
                     <button class="QRCode-toggleButton">
                         <span class="sprite-global-icon-qrcode"></span>
-                        <span class="QRCode-toggleButtonText ">下载知乎 App</span>
+                        <span class="QRCode-toggleButtonText ">下载 App</span>
                     </button>
                     <div class="QRCode-card">
                         <div class="QRCode-image"></div>
@@ -132,7 +132,7 @@
                     </div>
 
                     <div class="button-wrapper command">
-                        <button class="sign-button submit" type="submit">注册知乎</button>
+                        <button class="sign-button submit" type="submit">注册</button>
                     </div>
                 </form>
 
@@ -140,7 +140,7 @@
                 <div class="QRCode">
                     <button class="QRCode-toggleButton">
                         <span class="sprite-global-icon-qrcode"></span>
-                        <span class="QRCode-toggleButtonText ">下载知乎 App</span>
+                        <span class="QRCode-toggleButtonText ">下载 App</span>
                     </button>
                     <div class="QRCode-card">
                         <div class="QRCode-image"></div>
@@ -156,9 +156,9 @@
 
 </div>
 <div class="footer">
-    <span>&copy; 2016 知乎</span>
+    <span>&copy; 2016 by LiuFa</span>
     <span class="dot">·</span>
-    <a target="_blank" href="/roundtable">知乎圆桌</a>
+    <a target="_blank" href="/roundtable">圆桌</a>
     <span class="dot">·</span>
     <a target="_blank" href="/explore" data-za-c="explore" data-za-a="visit_explore" data-za-l="home_bottom_explore">发现</a>
     <span class="dot">·</span>
@@ -172,11 +172,8 @@
 
     <a href="/contact" class="footer-mobile-show">联系我们</a>
     <span class="dot">·</span>
-    <a target="_blank" href="/careers">来知乎工作</a>
+    <a target="_blank" href="/careers">寻求合作</a>
     <span class="dot">·</span>
-    <a href="http://www.miibeian.gov.cn/" target="_blank">京 ICP 备 13052560 号</a>
-    <span class="dot">·</span>
-    <span>京公网安备 11010802010035 号</span>
 </div>
 
 

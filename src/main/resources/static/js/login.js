@@ -277,7 +277,7 @@ Ext.onReady(function () {
         resizable: false,
         shadow: true,
         modal: false,
-        closable: false,
+        closable: true,
         animCollapse: true,
         draggable: false,
         items: form
