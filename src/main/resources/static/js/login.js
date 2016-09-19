@@ -5,32 +5,20 @@
 /**
  * Created by LiuFa on 2016/9/18.
  */
-//定义画布宽高和生成点的个数
-var WIDTH = window.innerWidth, HEIGHT = window.innerHeight, POINT = 45;
-
-var canvas = document.getElementById('Mycanvas');
-canvas.width = WIDTH;
-canvas.height = HEIGHT;
-var context = canvas.getContext('2d');
-context.strokeStyle = 'rgba(0,0,0,0.03)',
-    context.strokeWidth = 3,
-    context.fillStyle = 'rgba(0,0,0,0.05)';
-var circleArr = [];
-
 //线条：开始xy坐标，结束xy坐标，线条透明度
 function Line(x, y, _x, _y, o) {
-    this.beginX = x,
-        this.beginY = y,
-        this.closeX = _x,
-        this.closeY = _y,
+    this.beginX = x;
+        this.beginY = y;
+        this.closeX = _x;
+        this.closeY = _y;
         this.o = o;
 }
 //点：圆心xy坐标，半径，每帧移动xy的距离
 function Circle(x, y, r, moveX, moveY) {
-    this.x = x,
-        this.y = y,
-        this.r = r,
-        this.moveX = moveX,
+    this.x = x;
+        this.y = y;
+        this.r = r;
+        this.moveX = moveX;
         this.moveY = moveY;
 }
 //生成max和min之间的随机数
@@ -40,21 +28,21 @@ function num(max, _min) {
 }
 // 绘制原点
 function drawCricle(cxt, x, y, r, moveX, moveY) {
-    var circle = new Circle(x, y, r, moveX, moveY)
-    cxt.beginPath()
-    cxt.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI)
-    cxt.closePath()
+    var circle = new Circle(x, y, r, moveX, moveY);
+    cxt.beginPath();
+    cxt.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI);
+    cxt.closePath();
     cxt.fill();
     return circle;
 }
 //绘制线条
 function drawLine(cxt, x, y, _x, _y, o) {
-    var line = new Line(x, y, _x, _y, o)
-    cxt.beginPath()
-    cxt.strokeStyle = 'rgba(0,0,0,' + o + ')'
-    cxt.moveTo(line.beginX, line.beginY)
-    cxt.lineTo(line.closeX, line.closeY)
-    cxt.closePath()
+    var line = new Line(x, y, _x, _y, o);
+    cxt.beginPath();
+    cxt.strokeStyle = 'rgba(0,0,0,' + o + ')';
+    cxt.moveTo(line.beginX, line.beginY);
+    cxt.lineTo(line.closeX, line.closeY);
+    cxt.closePath();
     cxt.stroke();
 
 }
@@ -70,7 +58,7 @@ function init() {
 //每帧绘制
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < POINT; i++) {
+    for ( i = 0; i < POINT; i++) {
         drawCricle(context, circleArr[i].x, circleArr[i].y, circleArr[i].r);
     }
     for (var i = 0; i < POINT; i++) {
@@ -100,8 +88,199 @@ function load() {
             else if (cir.x < 0) cir.x = WIDTH;
             if (cir.y > HEIGHT) cir.y = 0;
             else if (cir.y < 0) cir.y = HEIGHT;
-
         }
         draw();
     }, 16);
 }
+//刷新验证码
+function refreshCode() {
+    document.getElementById("validateCodeImg").src = "authCode?"+Math.random();
+}
+
+function save() {
+    /*var userName = uname.getValue();
+    var userPass = pwd.getValue();
+    //验证合法后使用加载进度条
+    if (simple.form.isValid()) {
+        //提交到服务器操作
+        simple.form.submit({
+            waitMsg : '正在进行登陆验证,请稍后...',
+            url : 'login!checkUser.action',
+            method : 'post',
+            params : {
+                userName : userName,
+                userPass : userPass
+            },
+            //提交成功的回调函数
+            success : function(form, action) {
+                if (action.result.msg == 'OK') {
+                    window.location.href="login!index.action?userName="+userName;
+                }else if(action.result.msg == 'ERROR') {
+                    window.location.href="index.jsp";
+                }
+            },
+            //提交失败的回调函数
+            failure : function(form, action) {
+                switch (action.failureType) {
+                    case Ext.form.Action.CLIENT_INVALID:
+                        Ext.Msg.alert('错误提示', '表单数据非法请核实后重新输入！');
+                        break;
+                    case Ext.form.Action.CONNECT_FAILURE:
+                        Ext.Msg.alert('错误提示', '网络连接异常！');
+                        break;
+                    case Ext.form.Action.SERVER_INVALID:
+                        Ext.Msg.alert('错误提示', "您的输入用户信息有误，请核实后重新输入！");
+                        simple.form.reset();
+                }
+            }
+        });
+    }*/
+}
+/*Ext.onReady(function () {
+    var win = new Ext.Window({
+        title: '用户登陆',
+        iconCls: 'loginicon',
+        plain: true,
+        width: 276,
+        height: 174,
+        resizable: false,
+        shadow: true,
+        modal: true,
+        closable: false,
+        animCollapse: true,
+        items: loginform
+    });
+    win.show();
+    var loginform = Ext.create("Ext.form.Panel", {
+        title: '管理员登陆',
+        frame: true,
+        width: 320,
+        bodyPadding: 10,
+        defaultType: 'textfield',
+        defaults: {
+            anchor: '100%',
+            labelWidth: 120
+        },
+        items: [
+            {
+                allowBlank: false,
+                fieldLabel: '用户名',
+                name: 'username'
+            },
+            {
+                allowBlank: false,
+                fieldLabel: '密码',
+                name: 'password',
+                inputType: 'password'
+            },{
+                allowBlank: false,
+                fieldLabel: '验证码',
+                name: 'code',
+                maxLength: 4,
+                maxLengthText: '验证码不能超过4个字符!'
+            }
+        ],
+        buttons: [
+            {
+                text: '重置',
+                handler: function () {
+                    loginform.form.reset();
+                }
+            },
+            {
+                text: '登陆',
+                handler: save()
+            }
+        ],
+        /!*keys : [ {
+            key : Ext.EventObject.ENTER,
+            fn : save(),
+            scope : this
+        } ],*!/
+        renderTo: "container"
+    });
+});*/
+Ext.onReady(function () {
+    //初始化标签中的Ext:Qtip属性。
+    Ext.QuickTips.init();
+    Ext.form.Field.prototype.msgTarget = 'side';
+    //提交按钮处理方法
+    var submitClick = function () {
+        if (form.getForm().isValid()) {
+            //通常发送到服务器端获取返回值再进行处理，我们在以后的教程中再讲解表单与服务器的交互问题。
+            Ext.Msg.alert("提示", "登陆成功!");
+        }
+    };
+    //重置按钮"点击时"处理方法
+    var resetClick = function () {
+        form.getForm().reset();
+    };
+    //提交按钮
+    var submit = new Ext.Button({
+        text: '提 交',
+        handler: submitClick
+    });
+    //重置按钮
+    var reset = new Ext.Button({
+        text: '重 置',
+        handler: resetClick
+    });
+    //表单
+    var form = new Ext.form.Panel({
+        url: '******',
+        labelAlign: 'right',
+        labelWidth: 120,
+        frame: true,
+        height: 150,
+        cls: 'loginform',
+        buttonAlign: 'center',
+        defaultType: 'textfield',
+        items: [{
+            allowBlank: false,
+            maxLength: 20,
+            name: 'username',
+            fieldLabel: '用户名',
+            blankText: '请输入用户名',
+            maxLengthText: '用户名不能超过20个字符'
+        }, {
+            allowBlank: false,
+            maxLength: 20,
+            inputType: 'password',
+            name: 'password',
+            fieldLabel: '密　码',
+            blankText: '请输入密码',
+            maxLengthText: '密码不能超过20个字符'
+        }, {
+            fieldLabel: '验证码',
+            id: 'checkcode',
+            allowBlank: false,
+            anchor:'70%',
+            blankText: '请输入验证码！',
+            maxLength: 4,
+            maxLengthText: '验证码不能超过4个字符!',
+        },{
+            xtype:'panel',
+            width : 50,
+            height:25,
+            html:"<a href='#' onclick='refreshCode();'><img id='validateCodeImg' title='点击更换' src='static/images/login/checkcode.gif' /></a>",
+            margin : "-30px 0px 0px 225px"
+        }],
+        buttons: [reset, submit]
+    });
+    //窗体
+    var win = new Ext.Window({
+        title: '用户登陆',
+        iconCls: 'loginicon',
+        plain: true,
+        width: 320,
+        height: 180,
+        resizable: false,
+        shadow: true,
+        modal: false,
+        closable: false,
+        animCollapse: true,
+        draggable: false,
+        items: form
+    });
+    win.show();
+});
