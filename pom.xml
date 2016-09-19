@@ -61,6 +61,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <!--spring boot 推荐使用thymeleaf，但是迫于性能以及易用性，使我放弃了他-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
@@ -70,6 +71,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--spring boot属性注入-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -193,7 +195,8 @@
             <artifactId>spring-boot-starter-log4j</artifactId>
         </dependency>-->
 
-        <!--支持jsp视图(spring-boot默认已经不再支持jsp视图展示，application.properties的后缀配置需要改为在WEB-INF下面，若他要是用要打包成war包，然后在tomcat下跑)-->
+        <!--支持jsp视图(spring-boot默认已经不再支持jsp视图展示，若要是使用application.properties的后缀配置需要改为在WEB-INF下面，
+        要打包成war包，然后在tomcat下跑)-->
         <!--<dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>

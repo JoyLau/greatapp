@@ -70,4 +70,9 @@ public class LoginController {
     String test1 (){
         return "login";
     }
+
+    @RequestMapping("/zhihu")
+    String zhihu (){
+        return "zhihu";
+    }
 }
