@@ -16,7 +16,6 @@
           body {
               text-align: center;
               overflow: hidden;
-              background: rgba(255, 255, 255, 0.15);
           }
           .footer{position:absolute;left:0;width:100%;height:5%;text-align:center;margin-top:-80px}
           .footer p{font-size:14px;color:#c4c4c4;}
@@ -47,6 +46,7 @@
     var circleArr = [];
     //调用执行
     window.onload = function () {
+        document.body.style.backgroundColor="#f7fafc";
         load();
     }
 </script>

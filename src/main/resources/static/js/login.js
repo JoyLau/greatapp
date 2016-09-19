@@ -235,6 +235,7 @@ Ext.onReady(function () {
         cls: 'loginform',
         buttonAlign: 'center',
         defaultType: 'textfield',
+        bodyPadding: 10,
         items: [{
             allowBlank: false,
             maxLength: 20,
@@ -269,8 +270,7 @@ Ext.onReady(function () {
     });
     //窗体
     var win = new Ext.Window({
-        title: '用户登陆',
-        iconCls: 'loginicon',
+        title: '管理员登录',
         plain: true,
         width: 320,
         height: 180,
