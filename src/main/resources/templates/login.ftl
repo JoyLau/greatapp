@@ -9,8 +9,9 @@
     <meta name="renderer" content="webkit">
       <link href="${path}/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet" />
 
-      <script src="${path}/static/ext-5.0.0/build/ext-all.js" type="text/javascript"></script>
+      <script src="${path}/static/ext-5.0.0/build/bootstrap.js" type="text/javascript"></script>
       <script src="${path}/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js" type="text/javascript"></script>
+      <script src="${path}/static/js/login.js" type="text/javascript"></script>
     <title>Login</title>
       <style type="text/css">
           body {
@@ -22,7 +23,7 @@
           .footer .center{padding-top:30px;width: 100%}
       </style>
   </head>
-  <body>
+  <body oncontextmenu="return false;">
   <canvas id="canvas"></canvas>
   <div class="footer">
       <div class="center">
@@ -50,5 +51,3 @@
         load();
     }
 </script>
-
-<script src="${path}/static/js/login.js" type="text/javascript"></script>
