@@ -9,7 +9,6 @@
     <select id="selectUserByName" resultType="cn.lfdevelopment.www.app.common.login.pojo.SysUser">
         SELECT *
         FROM sys_user
-        where sys_name = #{name}
-
+        where loginName = #{name}
     </select>
 </mapper>

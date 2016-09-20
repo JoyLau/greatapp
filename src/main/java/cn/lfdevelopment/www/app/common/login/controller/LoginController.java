@@ -5,8 +5,10 @@
 package cn.lfdevelopment.www.app.common.login.controller;
 
 import cn.lfdevelopment.www.app.common.login.service.LoginService;
+import cn.lfdevelopment.www.common.util.WebUtil;
 import cn.lfdevelopment.www.common.util.vcode.Captcha;
 import cn.lfdevelopment.www.common.util.vcode.GifCaptcha;
+import com.alibaba.fastjson.JSON;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -15,7 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,11 +44,11 @@ public class LoginController {
     }
 
 
-    @RequestMapping("/logi66n")
-    public String login(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+    @RequestMapping("/login")
+    public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
         if (SecurityUtils.getSubject().isAuthenticated()) {
             //用户已经登录过了
-            return "/sys/user/sys_login";
+            return "app/common/main/main";
         }
         String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
         String error = null;
@@ -62,16 +64,23 @@ public class LoginController {
             error = "您的账号存在异常,请联系管理员";
         }
         model.addAttribute("errorMessage", error);
-        return "sys_login";
+        if(WebUtil.isAjax(request)){
+            return this.returnMessage(JSON.toJSONString(model));
+        }
+        return "login";
     }
 
+    @ResponseBody
+    private String returnMessage(String message){
+        return message;
+    }
 
     /**
      * 获取验证码（Gif版本）
      * @param response
      */
     @RequestMapping(value="/getGifCode",method= RequestMethod.GET)
-    public void getGifCode(HttpServletResponse response,HttpServletRequest request){
+    public void getGifCode(HttpServletResponse response){
         try {
             response.setHeader("Pragma", "No-cache");
             response.setHeader("Cache-Control", "no-cache");
@@ -87,7 +96,7 @@ public class LoginController {
             captcha.out(out);
             out.flush();
             //存入Shiro会话session
-            System.out.println( captcha.text().toLowerCase());
+            _logger.info(captcha.text().toLowerCase());
         } catch (Exception e) {
             _logger.error("获取验证码异常：%s",e.getMessage());
         }
@@ -100,10 +109,6 @@ public class LoginController {
     }
 
 
-    @RequestMapping("/login")
-    String test1 (){
-        return "login";
-    }
 
     @RequestMapping("/zhihu")
     String zhihu (){

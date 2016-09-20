@@ -30,6 +30,7 @@
           <p>Copyright (c) 2016 by LiuFa. All rights reserved</p>
       </div>
   </div>
+  <input id="errorMessage" type="hidden" value="${errorMessage!}"/>
   </body>
 </html>
 

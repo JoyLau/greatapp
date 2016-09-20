@@ -64,8 +64,8 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm {
         Session session = subject.getSession();
         session.setAttribute("user", user);
         return new SimpleAuthenticationInfo(
-                user.getUserLoginName(),
-                user.getUserPassword(),
+                user.getLoginName(),
+                user.getPassword(),
                 getName()
         );
     }

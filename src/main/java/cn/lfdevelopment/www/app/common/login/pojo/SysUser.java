@@ -16,16 +16,16 @@ public class SysUser {
     private Integer id;
 
     //用户登录名
-    private String userLoginName;
+    private String loginName;
 
     //用户登录密码
-    private String userPassword;
+    private String password;
 
     //用户名
-    private String userName;
+    private String realName;
 
     //用户类型
-    private int userType;
+    private int type;
 
     //用户性别
     private String sex;
@@ -40,85 +40,165 @@ public class SysUser {
     private String nickName;
 
 
+    /**
+     * Getter method for property id.
+     *
+     * @return property value of id
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Setter method for property <tt>id</tt>.
+     *
+     * @param id value to be assigned to property id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getUserLoginName() {
-        return userLoginName;
+    /**
+     * Getter method for property loginName.
+     *
+     * @return property value of loginName
+     */
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setUserLoginName(String userLoginName) {
-        this.userLoginName = userLoginName;
+    /**
+     * Setter method for property <tt>loginName</tt>.
+     *
+     * @param loginName value to be assigned to property loginName
+     */
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    /**
+     * Getter method for property password.
+     *
+     * @return property value of password
+     */
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    /**
+     * Setter method for property <tt>password</tt>.
+     *
+     * @param password value to be assigned to property password
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    /**
+     * Getter method for property realName.
+     *
+     * @return property value of realName
+     */
+    public String getRealName() {
+        return realName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    /**
+     * Setter method for property <tt>realName</tt>.
+     *
+     * @param realName value to be assigned to property realName
+     */
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
+    /**
+     * Getter method for property type.
+     *
+     * @return property value of type
+     */
+    public int getType() {
+        return type;
+    }
+
+    /**
+     * Setter method for property <tt>type</tt>.
+     *
+     * @param type value to be assigned to property type
+     */
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    /**
+     * Getter method for property sex.
+     *
+     * @return property value of sex
+     */
     public String getSex() {
         return sex;
     }
 
+    /**
+     * Setter method for property <tt>sex</tt>.
+     *
+     * @param sex value to be assigned to property sex
+     */
     public void setSex(String sex) {
         this.sex = sex;
     }
 
+    /**
+     * Getter method for property createTime.
+     *
+     * @return property value of createTime
+     */
     public Date getCreateTime() {
         return createTime;
     }
 
+    /**
+     * Setter method for property <tt>createTime</tt>.
+     *
+     * @param createTime value to be assigned to property createTime
+     */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
+    /**
+     * Getter method for property inUse.
+     *
+     * @return property value of inUse
+     */
     public Integer getInUse() {
         return inUse;
     }
 
+    /**
+     * Setter method for property <tt>inUse</tt>.
+     *
+     * @param inUse value to be assigned to property inUse
+     */
     public void setInUse(Integer inUse) {
         this.inUse = inUse;
     }
 
+    /**
+     * Getter method for property nickName.
+     *
+     * @return property value of nickName
+     */
     public String getNickName() {
         return nickName;
     }
 
+    /**
+     * Setter method for property <tt>nickName</tt>.
+     *
+     * @param nickName value to be assigned to property nickName
+     */
     public void setNickName(String nickName) {
         this.nickName = nickName;
-    }
-
-    /**
-     * Getter method for property userType.
-     *
-     * @return property value of userType
-     */
-    public int getUserType() {
-        return userType;
-    }
-
-    /**
-     * Setter method for property <tt>userType</tt>.
-     *
-     * @param userType value to be assigned to property userType
-     */
-    public void setUserType(int userType) {
-        this.userType = userType;
     }
 }

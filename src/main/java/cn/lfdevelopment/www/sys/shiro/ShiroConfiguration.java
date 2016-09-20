@@ -74,14 +74,12 @@ public class ShiroConfiguration {
 
         Map<String, String> chains = new LinkedHashMap<>();
         chains.put("/static/**", "anon");
+        chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
         chains.put("/login", "anon");
-        chains.put("/unauthor", "anon");
         chains.put("/logout", "logout");
-        chains.put("/base/**", "anon");
-        chains.put("/css/**", "anon");
-        chains.put("/layer/**", "anon");
-        chains.put("/**", "anon");
+        chains.put("/main","authc");
+        chains.put("/**", "user");
         bean.setFilterChainDefinitionMap(chains);
         return bean;
     }

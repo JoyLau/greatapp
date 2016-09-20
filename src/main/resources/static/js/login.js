@@ -94,7 +94,7 @@ function load() {
 }
 //刷新验证码
 function refreshCode() {
-    document.getElementById("validateCodeImg").src = "authCode?"+Math.random();
+    document.getElementById("validateCodeImg").src = "getGifCode?"+Math.random();
 }
 
 function save() {
@@ -207,12 +207,33 @@ Ext.onReady(function () {
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
-            //通常发送到服务器端获取返回值再进行处理，我们在以后的教程中再讲解表单与服务器的交互问题。
-            Ext.Msg.alert("提示", "登陆成功!");
+            form.getForm().submit({
+                method : 'post',
+                waitTitle : '登录',
+                waitMsg : '正在验证用户信息...',
+                success : function(form, action) {
+                    alert(action.result);
+                    console.log(action.result)
+                    // window.location = 'main';
+                },
+                // 如果登录失败，弹出对话框。
+                failure : function(form1, action) {
+                    console.log(action.result.errorMessage);
+                    Ext.MessageBox.show({
+                        title : '操作提示',
+                        msg : '登录信息验证失败:' + action.result.errorMessage,
+                        buttons : Ext.MessageBox.OK,
+                        icon : Ext.MessageBox.ERROR
+                    });
+                    form.getForm().reset();
+                }
+            });
         }
     };
     //重置按钮"点击时"处理方法
     var resetClick = function () {
+        win.setHeight(180);
+        captcha.setHidden(true)
         form.getForm().reset();
     };
     //提交按钮
@@ -225,9 +246,19 @@ Ext.onReady(function () {
         text: '重 置',
         handler: resetClick
     });
+    var captcha = new Ext.Panel({
+        width : 155,
+        height: 50,
+        plain: false,
+        border : false,
+        html:"<a onclick='refreshCode();'><img id='validateCodeImg' style='border-radius: 10px;' title='看不清楚' src='' /></a>",
+        margin : "15px 0px 0px 80px",
+        hidden : true
+    });
     //表单
     var form = new Ext.form.Panel({
-        url: '******',
+        id : 'form',
+        url: 'login',
         labelAlign: 'right',
         labelWidth: 120,
         frame: true,
@@ -256,15 +287,20 @@ Ext.onReady(function () {
             allowBlank: false,
             anchor:'70%',
             blankText: '请输入验证码！',
-            maxLength: 4,
-            maxLengthText: '验证码不能超过4个字符!',
-        },{
-            xtype:'panel',
-            width : 50,
-            height:25,
-            html:"<a href='#' onclick='refreshCode();'><img id='validateCodeImg' title='点击更换' src='static/images/login/checkcode.gif' /></a>",
-            margin : "-30px 0px 0px 225px"
-        }],
+            maxLength: 6,
+            maxLengthText: '验证码不能超过6个字符!',
+            listeners: {
+                render: function(p) {
+                    p.getEl().on('click', function(){
+                        win.setHeight(250);
+                        //如果验证码已经存在，则不刷新
+                        if(document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode')==-1){
+                            refreshCode();
+                        }
+                        captcha.setHidden(false)
+                    });
+                }}
+        },captcha],
         buttons: [reset, submit]
     });
     //窗体
