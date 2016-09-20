@@ -65,6 +65,7 @@ public class LoginController {
         }
         model.addAttribute("errorMessage", error);
         if(WebUtil.isAjax(request)){
+            //http://zhidao.baidu.com/link?url=XQwBWiU6Ap1w0hyccNL3KD34XtWxec-zEmGT7mBlt1FaVuWuFQk03Hvs3rmgrSr_WS-JvzwRVaGFO_KkIVU6YZ52wUJSU8VfIulOQJaVuAO
             return this.returnMessage(JSON.toJSONString(model));
         }
         return "login";
