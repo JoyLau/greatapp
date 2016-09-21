@@ -43,6 +43,9 @@ public class ShiroConfiguration {
      */
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private CaptchaFilter captchaFilter;
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
@@ -70,13 +73,15 @@ public class ShiroConfiguration {
         Map<String, Filter> filters = new LinkedHashMap<>();
         filters.put("authc",shiroFormAuthenticationFilter());
         filters.put("rolesOr",rolesAuthorizationFilter());
+        filters.put("captcha",captchaFilter);
         bean.setFilters(filters);
 
         Map<String, String> chains = new LinkedHashMap<>();
         chains.put("/static/**", "anon");
+        chains.put("/favicon.ico","anon");
         chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
-        chains.put("/login", "anon");
+        chains.put("/login", "authc");
         chains.put("/logout", "logout");
         chains.put("/main","authc");
         chains.put("/**", "user");

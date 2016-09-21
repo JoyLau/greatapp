@@ -46,7 +46,6 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-
         String username = (String)token.getPrincipal();
         SysUser user = userService.getUserByName(username);
 

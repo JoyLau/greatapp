@@ -212,16 +212,13 @@ Ext.onReady(function () {
                 waitTitle : '登录',
                 waitMsg : '正在验证用户信息...',
                 success : function(form, action) {
-                    alert(action.result);
-                    console.log(action.result)
-                    // window.location = 'main';
+                    window.location = 'main';
                 },
                 // 如果登录失败，弹出对话框。
                 failure : function(form1, action) {
-                    console.log(action.result.errorMessage);
                     Ext.MessageBox.show({
-                        title : '操作提示',
-                        msg : '登录信息验证失败:' + action.result.errorMessage,
+                        title : '登录失败',
+                        msg : action.result.model.errorMessage,
                         buttons : Ext.MessageBox.OK,
                         icon : Ext.MessageBox.ERROR
                     });

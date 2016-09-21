@@ -5,10 +5,11 @@
 package cn.lfdevelopment.www.app.common.login.controller;
 
 import cn.lfdevelopment.www.app.common.login.service.LoginService;
+import cn.lfdevelopment.www.common.util.JsonView;
 import cn.lfdevelopment.www.common.util.WebUtil;
 import cn.lfdevelopment.www.common.util.vcode.Captcha;
 import cn.lfdevelopment.www.common.util.vcode.GifCaptcha;
-import com.alibaba.fastjson.JSON;
+import cn.lfdevelopment.www.sys.shiro.CaptchaException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -17,10 +18,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -45,10 +46,12 @@ public class LoginController {
 
 
     @RequestMapping("/login")
-    public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public ModelAndView login(HttpServletRequest request, HttpServletResponse response,ModelAndView modelAndView) {
+        modelAndView.setViewName("login");
         if (SecurityUtils.getSubject().isAuthenticated()) {
             //用户已经登录过了
-            return "app/common/main/main";
+            modelAndView.setViewName("app/common/main/main");
+            return modelAndView;
         }
         String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
         String error = null;
@@ -60,20 +63,16 @@ public class LoginController {
             error = "用户名或密码错误";
         } else if (LockedAccountException.class.getName().equals(exceptionClassName)) {
             error = "您的账号已被锁定，请联系管理员";
+        } else if (CaptchaException.class.getName().equals(exceptionClassName)) {
+            error = "验证码错误";
         } else if (exceptionClassName != null) {
             error = "您的账号存在异常,请联系管理员";
         }
-        model.addAttribute("errorMessage", error);
+        modelAndView.addObject("errorMessage", error);
         if(WebUtil.isAjax(request)){
-            //http://zhidao.baidu.com/link?url=XQwBWiU6Ap1w0hyccNL3KD34XtWxec-zEmGT7mBlt1FaVuWuFQk03Hvs3rmgrSr_WS-JvzwRVaGFO_KkIVU6YZ52wUJSU8VfIulOQJaVuAO
-            return this.returnMessage(JSON.toJSONString(model));
+            return JsonView.render(modelAndView, response);
         }
-        return "login";
-    }
-
-    @ResponseBody
-    private String returnMessage(String message){
-        return message;
+        return modelAndView;
     }
 
     /**
@@ -81,7 +80,7 @@ public class LoginController {
      * @param response
      */
     @RequestMapping(value="/getGifCode",method= RequestMethod.GET)
-    public void getGifCode(HttpServletResponse response){
+    public void getGifCode(HttpServletRequest httpServletRequest,HttpServletResponse response){
         try {
             response.setHeader("Pragma", "No-cache");
             response.setHeader("Cache-Control", "no-cache");
@@ -96,7 +95,8 @@ public class LoginController {
             ServletOutputStream out = response.getOutputStream();
             captcha.out(out);
             out.flush();
-            //存入Shiro会话session
+            //会话session
+            SecurityUtils.getSubject().getSession().setAttribute("captcha",captcha.text().toLowerCase());
             _logger.info(captcha.text().toLowerCase());
         } catch (Exception e) {
             _logger.error("获取验证码异常：%s",e.getMessage());
