@@ -222,6 +222,7 @@ Ext.onReady(function () {
                         buttons : Ext.MessageBox.OK,
                         icon : Ext.MessageBox.ERROR
                     });
+                    refreshCode();
                     form.getForm().reset();
                 }
             });
@@ -298,7 +299,12 @@ Ext.onReady(function () {
                     });
                 }}
         },captcha],
-        buttons: [reset, submit]
+        buttons: [reset, submit],
+        keys : [ {
+            key : Ext.EventObject.ENTER,
+            fn : submitClick,
+            scope : this
+        } ]
     });
     //窗体
     var win = new Ext.Window({
