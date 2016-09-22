@@ -40,8 +40,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry viewControllerRegistry){
-        viewControllerRegistry.addViewController("/").setViewName("redirect:/index");
-        viewControllerRegistry.addViewController("/index").setViewName("index");
+        viewControllerRegistry.addViewController("/").setViewName("redirect:/main");
+        viewControllerRegistry.addViewController("/index").setViewName("redirect:/main");
         viewControllerRegistry.addViewController("/404").setViewName("404");
         viewControllerRegistry.addViewController("/500").setViewName("500");
 

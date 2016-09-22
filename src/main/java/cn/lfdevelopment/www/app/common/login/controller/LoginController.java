@@ -79,6 +79,7 @@ public class LoginController {
     public ModelAndView mian(HttpServletRequest request, HttpServletResponse response,ModelAndView modelAndView){
         modelAndView.setViewName("app/common/main/main");
         if(WebUtil.isAjax(request)){
+            modelAndView.addObject("success",true);
             modelAndView.addObject("message", "loginSuccess");
             return JsonView.render(modelAndView, response);
         }

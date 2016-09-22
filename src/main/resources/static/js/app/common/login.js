@@ -101,11 +101,14 @@ Ext.onReady(function () {
     Ext.QuickTips.init();
     Ext.form.Field.prototype.msgTarget = 'side';
     //异步返回先在此拦截
-    Ext.Ajax.on('requestcomplete',main, this);
+    /*Ext.Ajax.on('requestcomplete',main, this);
     function main(conn, response, options) {
-        var str = response.responseText;
-        alert(str)
-    }
+        var json = Ext.util.JSON
+            .decode(response.responseText);
+        if(json.model.success){
+            window.location.href = 'main';
+        }
+    }*/
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
@@ -119,6 +122,9 @@ Ext.onReady(function () {
                 },
                 // 如果登录失败，弹出对话框。
                 failure: function (form1, action) {
+                    if (action.result.model.success) {
+                        window.location = 'main';
+                    } else {
                         Ext.MessageBox.show({
                             title: '登录失败',
                             msg: action.result.model.message,
@@ -127,6 +133,7 @@ Ext.onReady(function () {
                         });
                         refreshCode();
                         form.getForm().reset();
+                    }
                 }
             });
 
