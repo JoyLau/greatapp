@@ -20,44 +20,29 @@ import javax.servlet.ServletResponse;
  */
 @Component
 public class CaptchaFilter extends FormAuthenticationFilter {
-    public static final String DEFAULT_CAPTCHA_PARAM = "checkcode-inputEl";
+    //前台验证码参数
+    private static final String DEFAULT_CAPTCHA_PARAM = "checkcode-inputEl";
 
-    private String captchaParam = DEFAULT_CAPTCHA_PARAM;
-
-    public String getCaptchaParam() {
-
-        return captchaParam;
-
+    private String getCaptchaParam() {
+        return DEFAULT_CAPTCHA_PARAM;
     }
 
-    protected String getCaptcha(ServletRequest request) {
-
+    private String getCaptcha(ServletRequest request) {
         return WebUtils.getCleanParam(request, getCaptchaParam());
-
-    }
-
-    protected UsernamePasswordCaptchaToken createToken(
-
-            ServletRequest request, ServletResponse response) {
-
-        String username = getUsername(request);
-
-        String password = getPassword(request);
-
-        String captcha = getCaptcha(request);
-
-        boolean rememberMe = isRememberMe(request);
-
-        String host = getHost(request);
-
-        return new UsernamePasswordCaptchaToken(username,
-                password.toCharArray(), rememberMe, host, captcha);
-
     }
 
     @Override
-    protected boolean executeLogin(ServletRequest request,
-                                   ServletResponse response) throws Exception {
+    protected UsernamePasswordCaptchaToken createToken(ServletRequest request, ServletResponse response) {
+        String username = getUsername(request);
+        String password = getPassword(request);
+        String captcha = getCaptcha(request);
+        boolean rememberMe = isRememberMe(request);
+        String host = getHost(request);
+        return new UsernamePasswordCaptchaToken(username,password.toCharArray(), rememberMe, host, captcha);
+    }
+
+    @Override
+    protected boolean executeLogin(ServletRequest request,ServletResponse response) throws Exception {
         UsernamePasswordCaptchaToken token = createToken(request, response);
         Subject subject = getSubject(request, response);
         try {

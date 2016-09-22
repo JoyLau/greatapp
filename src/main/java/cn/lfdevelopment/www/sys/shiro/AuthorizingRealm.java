@@ -84,11 +84,11 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm {
         super.clearCache(principals);
     }
 
-    public void clearAllCachedAuthorizationInfo() {
+    private void clearAllCachedAuthorizationInfo() {
         getAuthorizationCache().clear();
     }
 
-    public void clearAllCachedAuthenticationInfo() {
+    private void clearAllCachedAuthenticationInfo() {
         getAuthenticationCache().clear();
     }
 
