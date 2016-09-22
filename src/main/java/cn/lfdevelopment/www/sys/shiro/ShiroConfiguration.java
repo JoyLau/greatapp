@@ -78,8 +78,10 @@ public class ShiroConfiguration {
         chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
         chains.put("/druid/**","anon");
-        chains.put("/login", "authc");
+
         chains.put("/logout", "logout");
+
+        chains.put("/login", "authc");
         chains.put("/main","authc");
         chains.put("/**", "user");
         bean.setFilterChainDefinitionMap(chains);

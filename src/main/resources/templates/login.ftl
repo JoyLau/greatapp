@@ -11,7 +11,7 @@
 
       <script src="${path}/static/ext-5.0.0/build/bootstrap.js" type="text/javascript"></script>
       <script src="${path}/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js" type="text/javascript"></script>
-      <script src="${path}/static/js/login.js" type="text/javascript"></script>
+      <script src="${path}/static/js/app/common/login.js" type="text/javascript"></script>
     <title>Login</title>
       <style type="text/css">
           body {

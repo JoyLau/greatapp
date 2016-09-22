@@ -100,6 +100,12 @@ Ext.onReady(function () {
     //初始化标签中的Ext:Qtip属性。
     Ext.QuickTips.init();
     Ext.form.Field.prototype.msgTarget = 'side';
+    //异步返回先在此拦截
+    Ext.Ajax.on('requestcomplete',main, this);
+    function main(conn, response, options) {
+        var str = response.responseText;
+        alert(str)
+    }
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
@@ -107,21 +113,55 @@ Ext.onReady(function () {
                 method: 'post',
                 waitTitle: '登录',
                 waitMsg: '正在验证用户信息...',
+                async : false,
                 success: function (form, action) {
                     window.location = 'main';
                 },
                 // 如果登录失败，弹出对话框。
                 failure: function (form1, action) {
+                        Ext.MessageBox.show({
+                            title: '登录失败',
+                            msg: action.result.model.message,
+                            buttons: Ext.MessageBox.OK,
+                            icon: Ext.MessageBox.ERROR
+                        });
+                        refreshCode();
+                        form.getForm().reset();
+                }
+            });
+
+            /*Ext.Ajax.request({
+                method: 'post',
+                waitTitle: '登录',
+                waitMsg: '正在验证用户信息...',
+                async : false,
+                url : 'login',
+                params: {
+                    username : form.getForm().findField('username').getValue(),
+                    password : form.getForm().findField('password').getValue(),
+                    captcha : form.getForm().findField('checkcode').getValue()
+                },
+                success : function(response) {
+                    var json = Ext.util.JSON
+                        .decode(response.responseText);
                     Ext.MessageBox.show({
                         title: '登录失败',
-                        msg: action.result.model.errorMessage,
+                        msg: json.model.message,
                         buttons: Ext.MessageBox.OK,
                         icon: Ext.MessageBox.ERROR
                     });
-                    refreshCode();
-                    form.getForm().reset();
+                },
+                failure : function(response) {
+                    if (validJson(action.response.responseText)) {
+                        Ext.MessageBox.show({
+                            title : '提示',
+                            msg : action.result.msg,
+                            buttons : Ext.MessageBox.OK,
+                            icon : Ext.MessageBox.ERROR
+                        });
+                    }
                 }
-            });
+            });*/
         }else{
             win.setHeight(250);
             //如果验证码已经存在，则不刷新
@@ -152,7 +192,7 @@ Ext.onReady(function () {
         height: 50,
         plain: false,
         border: false,
-        html: "<a onclick='refreshCode();'><img id='validateCodeImg' style='border-radius: 10px;' title='看不清楚' src='' /></a>",
+        html: "<a onclick='refreshCode();'><img id='validateCodeImg' style='border-radius: 10px;cursor: hand' title='看不清楚' src='' /></a>",
         margin: "15px 0px 0px 80px",
         hidden: true
     });

@@ -9,7 +9,7 @@
     <meta name="renderer" content="webkit">
     <title>404 - Page Not Found</title>
     <link rel="stylesheet" type="text/css" href="${path}/static/css/404.css">
-    <script type="text/javascript" src="${path}/static/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="${path}/static/js/app/common/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 <div id="main">

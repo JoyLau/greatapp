@@ -1,3 +1,4 @@
+<#assign path=request.contextPath />
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,9 +6,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="${request.contextPath}/static/ext-5.0.0/build/ext-all.js"></script>
-    <script src="${request.contextPath}/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js"></script>
-    <link href="${request.contextPath}/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet" />
+    <script src="${path}/static/ext-5.0.0/build/ext-all.js"></script>
+    <script src="${path}/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js"></script>
+    <link href="${path}/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body>

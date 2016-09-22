@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 >
-<script type="text/javascript" src="${request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${request.contextPath}/static/js/app/common/jquery-1.11.1.min.js"></script>
 <head>
     <title>Hello World!</title>
 </head>

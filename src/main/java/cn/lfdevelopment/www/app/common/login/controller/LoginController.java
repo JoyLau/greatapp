@@ -68,7 +68,7 @@ public class LoginController {
         } else if (exceptionClassName != null) {
             error = "您的账号存在异常,请联系管理员";
         }
-        modelAndView.addObject("errorMessage", error);
+        modelAndView.addObject("message", error);
         if(WebUtil.isAjax(request)){
             return JsonView.render(modelAndView, response);
         }
@@ -76,8 +76,13 @@ public class LoginController {
     }
 
     @RequestMapping("/main")
-    public String mian(){
-        return "app/common/main/main";
+    public ModelAndView mian(HttpServletRequest request, HttpServletResponse response,ModelAndView modelAndView){
+        modelAndView.setViewName("app/common/main/main");
+        if(WebUtil.isAjax(request)){
+            modelAndView.addObject("message", "loginSuccess");
+            return JsonView.render(modelAndView, response);
+        }
+        return modelAndView;
     }
     /**
      * 获取验证码（Gif版本）

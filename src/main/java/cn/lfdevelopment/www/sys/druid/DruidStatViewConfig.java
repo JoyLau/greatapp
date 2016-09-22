@@ -84,7 +84,7 @@ public class DruidStatViewConfig {
         //缺省sessionStatMaxCount是1000个,这里设置了3000个
         filterRegistrationBean.addInitParameter("sessionStatMaxCount", "3000");
         //可以配置principalCookieName，使得druid知道指定的sessionName是谁
-        filterRegistrationBean.addInitParameter("principalSessionName", "sessionId");
+//        filterRegistrationBean.addInitParameter("principalSessionName", "sessionId");
         //druid 0.2.7版本开始支持profile，配置profileEnable能够监控单个url调用的sql列表。
         filterRegistrationBean.addInitParameter("profileEnable", "true");
         return filterRegistrationBean;
