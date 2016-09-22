@@ -4,7 +4,6 @@
 
 package cn.lfdevelopment.www.sys.shiro;
 
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -13,7 +12,6 @@ import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
-import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -44,8 +42,6 @@ public class ShiroConfiguration {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @Autowired
-    private CaptchaFilter captchaFilter;
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
@@ -53,6 +49,7 @@ public class ShiroConfiguration {
         filterRegistration.addInitParameter("targetFilterLifecycle","true");
         filterRegistration.addUrlPatterns("/*");
         filterRegistration.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        filterRegistration.setAsyncSupported(true);
         filterRegistration.setDispatcherTypes(DispatcherType.REQUEST);
         return filterRegistration;
     }
@@ -73,7 +70,6 @@ public class ShiroConfiguration {
         Map<String, Filter> filters = new LinkedHashMap<>();
         filters.put("authc",shiroFormAuthenticationFilter());
         filters.put("rolesOr",rolesAuthorizationFilter());
-        filters.put("captcha",captchaFilter);
         bean.setFilters(filters);
 
         Map<String, String> chains = new LinkedHashMap<>();
@@ -81,6 +77,7 @@ public class ShiroConfiguration {
         chains.put("/favicon.ico","anon");
         chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
+        chains.put("/druid/**","anon");
         chains.put("/login", "authc");
         chains.put("/logout", "logout");
         chains.put("/main","authc");
@@ -153,20 +150,7 @@ public class ShiroConfiguration {
 
     @Bean(name = "authcFilter")
     public FormAuthenticationFilter shiroFormAuthenticationFilter(){
-        FormAuthenticationFilter shiroFormAuthenticationFilter = new FormAuthenticationFilter(){
-            @Override
-            protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
-                WebUtils.getAndClearSavedRequest(request);
-                WebUtils.redirectToSavedRequest(request,response,"/main");
-                return false;
-            }
-        };
-        shiroFormAuthenticationFilter.setUsernameParam("username");
-        shiroFormAuthenticationFilter.setPasswordParam("password");
-        shiroFormAuthenticationFilter.setRememberMeParam("rememberMe");
-        shiroFormAuthenticationFilter.setLoginUrl("/login");
-
-        return shiroFormAuthenticationFilter;
+        return new AuthcFilter();
     }
 
 

@@ -8,18 +8,18 @@
 //线条：开始xy坐标，结束xy坐标，线条透明度
 function Line(x, y, _x, _y, o) {
     this.beginX = x;
-        this.beginY = y;
-        this.closeX = _x;
-        this.closeY = _y;
-        this.o = o;
+    this.beginY = y;
+    this.closeX = _x;
+    this.closeY = _y;
+    this.o = o;
 }
 //点：圆心xy坐标，半径，每帧移动xy的距离
 function Circle(x, y, r, moveX, moveY) {
     this.x = x;
-        this.y = y;
-        this.r = r;
-        this.moveX = moveX;
-        this.moveY = moveY;
+    this.y = y;
+    this.r = r;
+    this.moveX = moveX;
+    this.moveY = moveY;
 }
 //生成max和min之间的随机数
 function num(max, _min) {
@@ -58,7 +58,7 @@ function init() {
 //每帧绘制
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    for ( i = 0; i < POINT; i++) {
+    for (i = 0; i < POINT; i++) {
         drawCricle(context, circleArr[i].x, circleArr[i].y, circleArr[i].r);
     }
     for (var i = 0; i < POINT; i++) {
@@ -94,112 +94,8 @@ function load() {
 }
 //刷新验证码
 function refreshCode() {
-    document.getElementById("validateCodeImg").src = "getGifCode?"+Math.random();
+    document.getElementById("validateCodeImg").src = "getGifCode?" + Math.random();
 }
-
-function save() {
-    /*var userName = uname.getValue();
-    var userPass = pwd.getValue();
-    //验证合法后使用加载进度条
-    if (simple.form.isValid()) {
-        //提交到服务器操作
-        simple.form.submit({
-            waitMsg : '正在进行登陆验证,请稍后...',
-            url : 'login!checkUser.action',
-            method : 'post',
-            params : {
-                userName : userName,
-                userPass : userPass
-            },
-            //提交成功的回调函数
-            success : function(form, action) {
-                if (action.result.msg == 'OK') {
-                    window.location.href="login!index.action?userName="+userName;
-                }else if(action.result.msg == 'ERROR') {
-                    window.location.href="index.jsp";
-                }
-            },
-            //提交失败的回调函数
-            failure : function(form, action) {
-                switch (action.failureType) {
-                    case Ext.form.Action.CLIENT_INVALID:
-                        Ext.Msg.alert('错误提示', '表单数据非法请核实后重新输入！');
-                        break;
-                    case Ext.form.Action.CONNECT_FAILURE:
-                        Ext.Msg.alert('错误提示', '网络连接异常！');
-                        break;
-                    case Ext.form.Action.SERVER_INVALID:
-                        Ext.Msg.alert('错误提示', "您的输入用户信息有误，请核实后重新输入！");
-                        simple.form.reset();
-                }
-            }
-        });
-    }*/
-}
-/*Ext.onReady(function () {
-    var win = new Ext.Window({
-        title: '用户登陆',
-        iconCls: 'loginicon',
-        plain: true,
-        width: 276,
-        height: 174,
-        resizable: false,
-        shadow: true,
-        modal: true,
-        closable: false,
-        animCollapse: true,
-        items: loginform
-    });
-    win.show();
-    var loginform = Ext.create("Ext.form.Panel", {
-        title: '管理员登陆',
-        frame: true,
-        width: 320,
-        bodyPadding: 10,
-        defaultType: 'textfield',
-        defaults: {
-            anchor: '100%',
-            labelWidth: 120
-        },
-        items: [
-            {
-                allowBlank: false,
-                fieldLabel: '用户名',
-                name: 'username'
-            },
-            {
-                allowBlank: false,
-                fieldLabel: '密码',
-                name: 'password',
-                inputType: 'password'
-            },{
-                allowBlank: false,
-                fieldLabel: '验证码',
-                name: 'code',
-                maxLength: 4,
-                maxLengthText: '验证码不能超过4个字符!'
-            }
-        ],
-        buttons: [
-            {
-                text: '重置',
-                handler: function () {
-                    loginform.form.reset();
-                }
-            },
-            {
-                text: '登陆',
-                handler: save()
-            }
-        ],
-        /!*keys : [ {
-            key : Ext.EventObject.ENTER,
-            fn : save(),
-            scope : this
-        } ],*!/
-        renderTo: "container"
-    });
-});*/
 Ext.onReady(function () {
     //初始化标签中的Ext:Qtip属性。
     Ext.QuickTips.init();
@@ -208,24 +104,31 @@ Ext.onReady(function () {
     var submitClick = function () {
         if (form.getForm().isValid()) {
             form.getForm().submit({
-                method : 'post',
-                waitTitle : '登录',
-                waitMsg : '正在验证用户信息...',
-                success : function(form, action) {
+                method: 'post',
+                waitTitle: '登录',
+                waitMsg: '正在验证用户信息...',
+                success: function (form, action) {
                     window.location = 'main';
                 },
                 // 如果登录失败，弹出对话框。
-                failure : function(form1, action) {
+                failure: function (form1, action) {
                     Ext.MessageBox.show({
-                        title : '登录失败',
-                        msg : action.result.model.errorMessage,
-                        buttons : Ext.MessageBox.OK,
-                        icon : Ext.MessageBox.ERROR
+                        title: '登录失败',
+                        msg: action.result.model.errorMessage,
+                        buttons: Ext.MessageBox.OK,
+                        icon: Ext.MessageBox.ERROR
                     });
                     refreshCode();
                     form.getForm().reset();
                 }
             });
+        }else{
+            win.setHeight(250);
+            //如果验证码已经存在，则不刷新
+            if (document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode') == -1) {
+                refreshCode();
+            }
+            captcha.setHidden(false)
         }
     };
     //重置按钮"点击时"处理方法
@@ -245,17 +148,17 @@ Ext.onReady(function () {
         handler: resetClick
     });
     var captcha = new Ext.Panel({
-        width : 155,
+        width: 155,
         height: 50,
         plain: false,
-        border : false,
-        html:"<a onclick='refreshCode();'><img id='validateCodeImg' style='border-radius: 10px;' title='看不清楚' src='' /></a>",
-        margin : "15px 0px 0px 80px",
-        hidden : true
+        border: false,
+        html: "<a onclick='refreshCode();'><img id='validateCodeImg' style='border-radius: 10px;' title='看不清楚' src='' /></a>",
+        margin: "15px 0px 0px 80px",
+        hidden: true
     });
     //表单
     var form = new Ext.form.Panel({
-        id : 'form',
+        id: 'form',
         url: 'login',
         labelAlign: 'right',
         labelWidth: 120,
@@ -283,34 +186,30 @@ Ext.onReady(function () {
             fieldLabel: '验证码',
             id: 'checkcode',
             allowBlank: false,
-            anchor:'70%',
+            anchor: '70%',
             blankText: '请输入验证码！',
             maxLength: 6,
             maxLengthText: '验证码不能超过6个字符!',
             listeners: {
-                render: function(p) {
-                    p.getEl().on('click', function(){
+                render: function (p) {
+                    p.getEl().on('click', function () {
                         win.setHeight(250);
                         //如果验证码已经存在，则不刷新
-                        if(document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode')==-1){
+                        if (document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode') == -1) {
                             refreshCode();
                         }
                         captcha.setHidden(false)
                     });
-                }}
-        },captcha],
-        buttons: [reset, submit],
-        keys : [ {
-            key : Ext.EventObject.ENTER,
-            fn : submitClick,
-            scope : this
-        } ]
+                }
+            }
+        }, captcha],
+        buttons: [reset, submit]
     });
     //窗体
     var win = new Ext.Window({
         title: '管理员登录',
         plain: false,
-        border : false,
+        border: false,
         width: 320,
         height: 180,
         resizable: false,
@@ -320,7 +219,17 @@ Ext.onReady(function () {
         animCollapse: true,
         draggable: false,
         layout: "fit",
-        items: form
+        items: form,
+        listeners: {
+            afterRender: function(thisForm, options){
+                this.keyNav = Ext.create('Ext.util.KeyNav', this.el, {
+                    enter: function(){
+                        submitClick();
+                    },
+                    scope: this
+                });
+            }
+        }
     });
     win.show();
 });

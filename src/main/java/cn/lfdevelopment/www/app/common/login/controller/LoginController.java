@@ -75,6 +75,10 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping("/main")
+    public String mian(){
+        return "app/common/main/main";
+    }
     /**
      * 获取验证码（Gif版本）
      * @param response
