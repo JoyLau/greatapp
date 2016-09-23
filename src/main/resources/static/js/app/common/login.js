@@ -96,6 +96,37 @@ function load() {
 function refreshCode() {
     document.getElementById("validateCodeImg").src = "getGifCode?" + Math.random();
 }
+var synchronize = function(url,method,param) {
+    function createXhrObject() {
+        var http;
+        var activeX = ['MSXML2.XMLHTTP.3.0', 'MSXML2.XMLHTTP', 'Microsoft.XMLHTTP'];
+        try {
+            http = new XMLHttpRequest();
+        } catch (e) {
+            for (var i = 0; i < activeX.length; ++i) {
+                try {
+                    http = new ActiveXObject(activeX[i]);
+                    break;
+                } catch (e) {}
+            }
+        }
+        return http;
+    }
+    var conn = createXhrObject();
+    conn.open(method, url, false);
+    //把字符串类型的参数序列化成Form Data
+    conn.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    /**
+     @param {String|ArrayBuffer|Blob|Document|FormData} [data]
+     */
+    conn.send(param);
+    if (conn.responseText != '') {
+        return conn.responseText;
+    } else {
+        return null;
+    }
+};
+
 Ext.onReady(function () {
     //初始化标签中的Ext:Qtip属性。
     Ext.QuickTips.init();
@@ -105,14 +136,22 @@ Ext.onReady(function () {
     function main(conn, response, options) {
         var json = Ext.util.JSON
             .decode(response.responseText);
+        alert(json)
         if(json.model.success){
             window.location.href = 'main';
         }
     }*/
+   /* window.onload = function () {
+
+        if(document.getElementById('errorMessage').value){
+
+        }
+    };*/
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
-            form.getForm().submit({
+
+            /*form.getForm().submit({
                 method: 'post',
                 waitTitle: '登录',
                 waitMsg: '正在验证用户信息...',
@@ -135,7 +174,7 @@ Ext.onReady(function () {
                         form.getForm().reset();
                     }
                 }
-            });
+            });*/
 
             /*Ext.Ajax.request({
                 method: 'post',
@@ -169,7 +208,45 @@ Ext.onReady(function () {
                     }
                 }
             });*/
+            var username = form.getForm().findField('username').getValue();
+            var password = form.getForm().findField('password').getValue();
+            var checkcode = form.getForm().findField('checkcode').getValue();
+            /*var resMessage = synchronize(
+                'login',
+                'POST',
+                'username='+username+'&password='+password+'&checkcode='+checkcode
+            );*/
+            var f = document.createElement("form");
+            document.body.appendChild(f);
+            f.action = "login";
+            f.method = 'post';
+            var i1 = document.createElement("input");
+            i1.name = "username";
+            i1.value = username;
+            var i2 = document.createElement("input");
+            i2.name = "password";
+            i2.value = password;
+            var i3 = document.createElement("input");
+            i3.name = "checkcode";
+            i3.value = checkcode;
+            f.appendChild(i1);
+            f.appendChild(i2);
+            f.appendChild(i3);
+            f.submit();
         }else{
+            Ext.create('widget.uxNotification', {
+                title: '提示',
+                position: 'tr',
+                manager: 'instructions',
+                cls: 'ux-notification-light',
+                iconCls: 'ux-notification-icon-information',
+                html: '您还没有输入完成',
+                width : 200,
+                autoCloseDelay: 4000,
+                slideBackDuration: 500,
+                slideInAnimation: 'bounceOut',
+                slideBackAnimation: 'easeIn'
+            }).show();
             win.setHeight(250);
             //如果验证码已经存在，则不刷新
             if (document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode') == -1) {
@@ -186,7 +263,7 @@ Ext.onReady(function () {
     };
     //提交按钮
     var submit = new Ext.Button({
-        text: '提 交',
+        text: '登 陆',
         handler: submitClick
     });
     //重置按钮

@@ -33,6 +33,15 @@ public class WebUtil {
     }
 
     /**
+     * is Post request
+     * @param request
+     * @return
+     */
+    public static boolean isPost(ServletRequest request) {
+        return ((HttpServletRequest) request).getMethod().equalsIgnoreCase("POST");
+    }
+
+    /**
      * return asynchronous messages;
      * Usually, we can also use HashMap
      * @param response

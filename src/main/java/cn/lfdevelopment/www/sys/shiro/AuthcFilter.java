@@ -20,7 +20,7 @@ import javax.servlet.ServletResponse;
  */
 public class AuthcFilter extends FormAuthenticationFilter {
     //前台验证码参数
-    private static final String DEFAULT_CAPTCHA_PARAM = "checkcode-inputEl";
+    private static final String DEFAULT_CAPTCHA_PARAM = "checkcode";
 
     private String getCaptchaParam() {
         return DEFAULT_CAPTCHA_PARAM;
@@ -40,7 +40,7 @@ public class AuthcFilter extends FormAuthenticationFilter {
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
         WebUtils.getAndClearSavedRequest(request);
-        WebUtils.redirectToSavedRequest(request,response,"/main");
+        WebUtils.issueRedirect(request, response, getSuccessUrl());
         return false;
     }
 

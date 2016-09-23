@@ -49,7 +49,7 @@ public class ShiroConfiguration {
         filterRegistration.addInitParameter("targetFilterLifecycle","true");
         filterRegistration.addUrlPatterns("/*");
         filterRegistration.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-        filterRegistration.setAsyncSupported(true);
+//        filterRegistration.setAsyncSupported(true);
         filterRegistration.setDispatcherTypes(DispatcherType.REQUEST);
         return filterRegistration;
     }
