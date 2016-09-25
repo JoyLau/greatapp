@@ -96,57 +96,12 @@ function load() {
 function refreshCode() {
     document.getElementById("validateCodeImg").src = "getGifCode?" + Math.random();
 }
-var synchronize = function(url,method,param) {
-    function createXhrObject() {
-        var http;
-        var activeX = ['MSXML2.XMLHTTP.3.0', 'MSXML2.XMLHTTP', 'Microsoft.XMLHTTP'];
-        try {
-            http = new XMLHttpRequest();
-        } catch (e) {
-            for (var i = 0; i < activeX.length; ++i) {
-                try {
-                    http = new ActiveXObject(activeX[i]);
-                    break;
-                } catch (e) {}
-            }
-        }
-        return http;
-    }
-    var conn = createXhrObject();
-    conn.open(method, url, false);
-    //把字符串类型的参数序列化成Form Data
-    conn.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    /**
-     @param {String|ArrayBuffer|Blob|Document|FormData} [data]
-     */
-    conn.send(param);
-    if (conn.responseText != '') {
-        return conn.responseText;
-    } else {
-        return null;
-    }
-};
+
 
 Ext.onReady(function () {
     //初始化标签中的Ext:Qtip属性。
     Ext.QuickTips.init();
     Ext.form.Field.prototype.msgTarget = 'side';
-    //异步返回先在此拦截
-    /*Ext.Ajax.on('requestcomplete',main, this);
-    function main(conn, response, options) {
-        var json = Ext.util.JSON
-            .decode(response.responseText);
-        alert(json)
-        if(json.model.success){
-            window.location.href = 'main';
-        }
-    }*/
-   /* window.onload = function () {
-
-        if(document.getElementById('errorMessage').value){
-
-        }
-    };*/
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
@@ -218,15 +173,19 @@ Ext.onReady(function () {
             );*/
             var f = document.createElement("form");
             document.body.appendChild(f);
+            f.type = "hidden";
             f.action = "login";
             f.method = 'post';
             var i1 = document.createElement("input");
+            i1.type = "hidden";
             i1.name = "username";
             i1.value = username;
             var i2 = document.createElement("input");
+            i2.type = "hidden";
             i2.name = "password";
             i2.value = password;
             var i3 = document.createElement("input");
+            i3.type = "hidden";
             i3.name = "checkcode";
             i3.value = checkcode;
             f.appendChild(i1);
@@ -234,6 +193,7 @@ Ext.onReady(function () {
             f.appendChild(i3);
             f.submit();
         }else{
+            Ext.get('tipsMusic').dom.play();
             Ext.create('widget.uxNotification', {
                 title: '提示',
                 position: 'tr',
@@ -287,7 +247,6 @@ Ext.onReady(function () {
         labelAlign: 'right',
         labelWidth: 120,
         frame: true,
-        cls: 'loginform',
         buttonAlign: 'center',
         defaultType: 'textfield',
         bodyPadding: 10,
@@ -315,15 +274,13 @@ Ext.onReady(function () {
             maxLength: 6,
             maxLengthText: '验证码不能超过6个字符!',
             listeners: {
-                render: function (p) {
-                    p.getEl().on('click', function () {
-                        win.setHeight(250);
-                        //如果验证码已经存在，则不刷新
-                        if (document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode') == -1) {
-                            refreshCode();
-                        }
-                        captcha.setHidden(false)
-                    });
+                focus : function () {
+                    win.setHeight(250);
+                    //如果验证码已经存在，则不刷新
+                    if (document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode') == -1) {
+                        refreshCode();
+                    }
+                    captcha.setHidden(false)
                 }
             }
         }, captcha],

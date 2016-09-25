@@ -23,6 +23,7 @@
                       iconCls: 'ux-notification-icon-information',
                       html: '${message!}'
                   }).show();
+                  Ext.get('tipsMusic').dom.play();
               })
           }
       </script>
@@ -87,6 +88,7 @@
       </div>
   </div>
   <input id="errorMessage" type="hidden" value="${message!}"/>
+  <audio id="tipsMusic" src="/static/music/tip.wav"></audio>
   </body>
 </html>
 
