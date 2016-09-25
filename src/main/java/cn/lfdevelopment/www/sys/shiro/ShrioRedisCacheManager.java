@@ -7,6 +7,7 @@ package cn.lfdevelopment.www.sys.shiro;
 import org.apache.shiro.cache.AbstractCacheManager;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
 /**
@@ -15,7 +16,8 @@ import org.springframework.data.redis.core.RedisTemplate;
  * DevelopmentApp
  */
 public class ShrioRedisCacheManager extends AbstractCacheManager {
-    private RedisTemplate<byte[], Object> redisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     public ShrioRedisCacheManager(RedisTemplate<byte[], Object> redisTemplate) {
         this.redisTemplate = redisTemplate;

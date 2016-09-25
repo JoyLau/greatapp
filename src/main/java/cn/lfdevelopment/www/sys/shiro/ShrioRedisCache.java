@@ -9,6 +9,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
@@ -21,6 +22,7 @@ import java.util.*;
  */
 public class ShrioRedisCache<K, V> implements Cache<K, V> {
     private org.slf4j.Logger log = LoggerFactory.getLogger(getClass());
+    @Autowired
     private RedisTemplate<byte[], V> redisTemplate;
     private String prefix = "shiro_redis:";
 

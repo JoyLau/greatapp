@@ -69,7 +69,7 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm {
         );
     }
 
-    @Override
+/*    @Override
     public void clearCachedAuthorizationInfo(PrincipalCollection principals) {
         super.clearCachedAuthorizationInfo(principals);
     }
@@ -82,7 +82,7 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm {
     @Override
     public void clearCache(PrincipalCollection principals) {
         super.clearCache(principals);
-    }
+    }*/
 
     private void clearAllCachedAuthorizationInfo() {
         getAuthorizationCache().clear();

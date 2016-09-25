@@ -136,7 +136,7 @@ Ext.onReady(function () {
                 manager: 'instructions',
                 cls: 'ux-notification-light',
                 iconCls: 'ux-notification-icon-information',
-                html: '您还没有输入完成',
+                html: '您输入的信息有误',
                 width : 200,
                 autoCloseDelay: 4000,
                 slideBackDuration: 500,

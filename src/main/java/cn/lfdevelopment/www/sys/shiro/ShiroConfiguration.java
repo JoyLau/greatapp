@@ -54,6 +54,13 @@ public class ShiroConfiguration {
         return filterRegistration;
     }
 
+    /*@Bean
+    public LogoutFilter logout(){
+        LogoutFilter logoutFilter = new LogoutFilter();
+        logoutFilter.setRedirectUrl("/ss");
+        return logoutFilter;
+    }*/
+
     /**
      * @see org.apache.shiro.spring.web.ShiroFilterFactoryBean
      * @return
@@ -78,7 +85,6 @@ public class ShiroConfiguration {
         chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
         chains.put("/druid/**","anon");
-
         chains.put("/logout", "logout");
 
         chains.put("/login", "authc");

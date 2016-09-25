@@ -6,12 +6,7 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <link href="/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css"
-          rel="stylesheet"/>
-    <link href="/static/css/notification.css" rel="stylesheet"/>
-
-    <script src="/static/ext-5.0.0/build/bootstrap.js" type="text/javascript"></script>
-    <script src="/static/ext-5.0.0/build/notification.js" type="text/javascript"></script>
+    <#include "app/common/common.ftl"/>
     <script type="text/javascript">
         Ext.onReady(function () {
             if (Ext.ieVersion < 9 && Ext.ieVersion > 0) {
@@ -42,8 +37,6 @@
             }
         })
     </script>
-    <script src="/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js"
-            type="text/javascript"></script>
     <script src="/static/js/app/common/login.js" type="text/javascript"></script>
     <title>Login</title>
     <style type="text/css">
@@ -79,7 +72,6 @@
         <p>Copyright (c) 2016 by LiuFa. All rights reserved</p>
     </div>
 </div>
-<input id="errorMessage" type="hidden" value="${message!}"/>
 <audio id="tipsMusic" src="/static/music/tip.ogg"></audio>
 </body>
 </html>
