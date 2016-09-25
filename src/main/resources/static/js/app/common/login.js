@@ -105,72 +105,9 @@ Ext.onReady(function () {
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
-
-            /*form.getForm().submit({
-                method: 'post',
-                waitTitle: '登录',
-                waitMsg: '正在验证用户信息...',
-                async : false,
-                success: function (form, action) {
-                    window.location = 'main';
-                },
-                // 如果登录失败，弹出对话框。
-                failure: function (form1, action) {
-                    if (action.result.model.success) {
-                        window.location = 'main';
-                    } else {
-                        Ext.MessageBox.show({
-                            title: '登录失败',
-                            msg: action.result.model.message,
-                            buttons: Ext.MessageBox.OK,
-                            icon: Ext.MessageBox.ERROR
-                        });
-                        refreshCode();
-                        form.getForm().reset();
-                    }
-                }
-            });*/
-
-            /*Ext.Ajax.request({
-                method: 'post',
-                waitTitle: '登录',
-                waitMsg: '正在验证用户信息...',
-                async : false,
-                url : 'login',
-                params: {
-                    username : form.getForm().findField('username').getValue(),
-                    password : form.getForm().findField('password').getValue(),
-                    captcha : form.getForm().findField('checkcode').getValue()
-                },
-                success : function(response) {
-                    var json = Ext.util.JSON
-                        .decode(response.responseText);
-                    Ext.MessageBox.show({
-                        title: '登录失败',
-                        msg: json.model.message,
-                        buttons: Ext.MessageBox.OK,
-                        icon: Ext.MessageBox.ERROR
-                    });
-                },
-                failure : function(response) {
-                    if (validJson(action.response.responseText)) {
-                        Ext.MessageBox.show({
-                            title : '提示',
-                            msg : action.result.msg,
-                            buttons : Ext.MessageBox.OK,
-                            icon : Ext.MessageBox.ERROR
-                        });
-                    }
-                }
-            });*/
             var username = form.getForm().findField('username').getValue();
             var password = form.getForm().findField('password').getValue();
             var checkcode = form.getForm().findField('checkcode').getValue();
-            /*var resMessage = synchronize(
-                'login',
-                'POST',
-                'username='+username+'&password='+password+'&checkcode='+checkcode
-            );*/
             var f = document.createElement("form");
             document.body.appendChild(f);
             f.type = "hidden";
