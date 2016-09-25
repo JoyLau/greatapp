@@ -130,7 +130,6 @@ Ext.onReady(function () {
             f.appendChild(i3);
             f.submit();
         }else{
-            Ext.get('tipsMusic').dom.play();
             Ext.create('widget.uxNotification', {
                 title: '提示',
                 position: 'tr',

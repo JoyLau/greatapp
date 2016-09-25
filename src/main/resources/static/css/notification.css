@@ -11,7 +11,7 @@
 }
 
 .ux-notification-icon-error {
-    background-image: url('/static/images/notification/icon16_error.png');
+    background-image: url('/static/images/notification/warning.png');
 }
 
 /* Using standard theme */

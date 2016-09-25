@@ -18,6 +18,16 @@
                 alert("您的IE浏览器版本过低,为保证体验，请使用IE9+,chrome,火狐等现代浏览器,或将浏览器切换到极速模式");
                 self.opener = null;
                 self.close();
+            } else if(Ext.ieVersion != 0) {
+                Ext.create('widget.uxNotification', {
+                    title: '系统通知',
+                    position: 'br',
+                    iconCls: 'ux-notification-icon-error',
+                    cls: 'ux-notification-light',
+                    autoCloseDelay: 10000,
+                    spacing: 20,
+                    html: '系统检测到您的浏览器是IE'+Ext.ieVersion+',考虑到系统性能以及使用体验，建议您使用Chrome浏览器'
+                }).show();
             }
             if ('${message!}') {
                 Ext.create('widget.uxNotification', {
@@ -29,7 +39,6 @@
                     iconCls: 'ux-notification-icon-information',
                     html: '${message!}'
                 }).show();
-                Ext.get('tipsMusic').dom.play();
             }
         })
     </script>
