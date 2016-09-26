@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <#include "../common.ftl" />
+    <#--<script src="/static/js/app/common/main/main/Detail.js" type="text/javascript"></script>
+    <script src="/static/js/app/common/main/main/Grid.js" type="text/javascript"></script>
+    <script src="/static/js/app/common/main/main/GridToolbar.js" type="text/javascript"></script>
+    <script src="/static/js/app/common/main/main/Module.js" type="text/javascript"></script>
+    <script src="/static/js/app/common/main/main/ModuleController.js" type="text/javascript"></script>
+    <script src="/static/js/app/common/main/main/ModuleModel.js" type="text/javascript"></script>
+    <script src="/static/js/app/common/main/main/Navigate.js" type="text/javascript"></script>-->
     <script src="/static/js/app/common/main/main.js" type="text/javascript"></script>
     <title>Main</title>
 </head>
