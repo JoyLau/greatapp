@@ -21,7 +21,7 @@
                     cls: 'ux-notification-light',
                     autoCloseDelay: 10000,
                     spacing: 20,
-                    html: '系统检测到您的浏览器是IE'+Ext.ieVersion+',考虑到系统性能以及使用体验，建议您使用Chrome浏览器'
+                    html: '系统检测到您的浏览器是IE'+Ext.ieVersion+',考虑到性能以及体验，建议您使用Chrome浏览器'
                 }).show();
             }
             if ('${message!}') {

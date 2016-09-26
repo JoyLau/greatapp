@@ -19,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -69,9 +68,8 @@ public class LoginController {
     }
 
     @RequestMapping("/main")
-    public ModelAndView mian(HttpServletRequest request, HttpServletResponse response,ModelAndView modelAndView){
-        modelAndView.setViewName("app/common/main/main");
-        return modelAndView;
+    public String mian(){
+        return "app/common/main/main";
     }
     /**
      * 获取验证码（Gif版本）
@@ -96,17 +94,6 @@ public class LoginController {
             _logger.error("获取验证码异常：%s",e.getMessage());
         }
     }
-
-/*    @RequestMapping("/logout")
-    public String lpogout(){
-        Subject subject = SecurityUtils.getSubject();
-        if (subject.isAuthenticated()) {
-            subject.logout();
-        }
-        return "redirect:/login";
-    }*/
-
-
 
     @RequestMapping("/zhihu")
     String zhihu (){

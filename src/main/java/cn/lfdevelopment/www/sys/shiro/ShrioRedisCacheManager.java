@@ -17,7 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  */
 public class ShrioRedisCacheManager extends AbstractCacheManager {
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<byte[], Object> redisTemplate;
 
     public ShrioRedisCacheManager(RedisTemplate<byte[], Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
