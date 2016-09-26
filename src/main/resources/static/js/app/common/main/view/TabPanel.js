@@ -17,7 +17,7 @@ Ext.define('et.view.TabPanel', {
             items: [{
                 id: 'HomePage',
                 title: '首页',
-                iconCls: 'home',
+                glyph: 0xf015,
                 layout: {
                     type: 'hbox',
                     pack: 'start',
@@ -42,7 +42,8 @@ Ext.define('et.view.TabPanel', {
                                 layout: {
                                     type: 'absolute'
                                 },
-                                title: '个人信息'
+                                title: '个人信息',
+                                collapsible : true
                             },
                             {
                                 xtype: 'panel',
