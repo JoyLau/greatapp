@@ -72,7 +72,8 @@ Ext.define('et.view.Menu', {
             }, {
                 title: '系统设置',
                 html: 'Panel content!'
-            },{righturl: null,
+            },{
+                righturl: null,
                 title: "客户管理",
                 leaf: false,
                 children :{
@@ -80,7 +81,34 @@ Ext.define('et.view.Menu', {
                     title: "客户星",
                     leaf: true
                 }
-            }]
+            },Ext.create("Ext.tree.Panel",{
+                title: '系统菜单',
+                glyph: 0xf007,
+                margins : '0 0 -1 1',
+                region:'west',
+                border : false,
+                enableDD : false,
+                split: true,
+                width : 212,
+                minWidth : 200,
+                maxWidth : 300,
+                rootVisible: false,
+                containerScroll : true,
+                collapsible : true,
+                autoScroll: false,
+                animCollapse : true,
+                store:Ext.create('Ext.data.TreeStore',{
+                    autoLoad: true,
+                    proxy: {
+                        type: 'ajax',
+                        url: '/static/js/app/common/main/data/manager.json',
+                        reader: {
+                            type: 'json',
+                            successProperty: 'success'
+                        }
+                    }
+                })
+            })]
 
         });
         this.callParent(arguments);

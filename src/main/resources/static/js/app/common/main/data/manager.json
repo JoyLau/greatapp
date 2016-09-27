@@ -102,28 +102,9 @@
  			  ]
  },{"text":"实训管理",
   "mid":"18",
-  "cls":"folder",
-  "leaf":false,
-  "expanded": false,
-  "children":[{"text":"分组列表",
- 			  "mid":"19",
- 			  "cls":"file",
- 			  "url":"dbmanage",
- 			  "leaf":true,
- 			  "children":[]},
-  			  {"text":"成绩录入",
- 			  "mid":"20",
- 			  "cls":"file",
- 			  "url":"dbmanage",
- 			  "leaf":true,
- 			  "children":[]},
- 			  {"text":"成果管理",
- 			  "mid":"21",
- 			  "cls":"file",
- 			  "url":"dbmanage",
- 			  "leaf":true,
- 			  "children":[]}
- 			  ]
+  "cls":"file",
+  "leaf":true,
+  "expanded": false
  }
 
  ]
