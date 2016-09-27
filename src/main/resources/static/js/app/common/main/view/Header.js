@@ -9,10 +9,14 @@ Ext.define('et.view.Header', {
     id: 'headerBar',
     autoHeight: true,
     region: 'north',
-    style: 'background:#f5f5f5;',
+    // style: 'background:#f5f5f5;',
+    uses : [
+        'static.js.app.utils.ButtonTransparent'
+    ],
     items: ['&nbsp;&nbsp;&nbsp;', {
         id: 'top-user',
         glyph: 0xf007,
+        xtype : 'buttontransparent',
         text: '管理员',
         handler: function () {
 
@@ -32,6 +36,16 @@ Ext.define('et.view.Header', {
         }
     },
         '-', {
+            xtype: 'textfield',
+            name: 'searchField',
+            emptyText: '输入您的搜索关键词'
+        }, {
+            text: '搜索',
+            glyph: 0xf00e,
+            id: 'header-search',
+            handler: function () {
+            }
+        }, '-', {
             text: '关于',
             glyph: 0xf06a,
             id: 'header-about',
@@ -41,12 +55,6 @@ Ext.define('et.view.Header', {
             text: '帮助',
             glyph: 0xf059,
             id: 'header-help',
-            handler: function () {
-            }
-        }, '-', {
-            text: '搜索',
-            glyph: 0xf00e,
-            id: 'header-search',
             handler: function () {
             }
         }, '-', {

@@ -1,5 +1,9 @@
 <link href="/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css"
       rel="stylesheet"/>
+<#--<link href="/static/ext-5.0.0/build/packages/ext-theme-neptune/build/resources/ext-theme-neptune-all.css"
+      rel="stylesheet"/>-->
+<#--<link href="/static/ext-5.0.0/build/packages/ext-theme-gray/build/resources/ext-theme-gray-all.css"
+      rel="stylesheet"/>-->
 <link href="/static/css/notification.css" rel="stylesheet"/>
 <link href="/static/css/fontawesome/font-awesome.css" rel="stylesheet"/>
 

@@ -4,108 +4,124 @@
 
 Ext.define('et.view.TabPanel', {
     extend: 'Ext.tab.Panel',
+    xtype: 'plain-tabs',
     initComponent: function () {
         Ext.apply(this, {
             id: 'content-panel',
             region: 'center',
+            plain: true,
             defaults: {
-                autoScroll: true,
-                bodyPadding: 10
+                bodyPadding: 10,
+                autoScroll: false
             },
-            activeTab: 0,
-            border: false,
+            minTabWidth: 135,
             items: [{
-                id: 'HomePage',
+                id: 'Home',
                 title: '首页',
-                glyph: 0xf015,
-                layout: {
-                    type: 'hbox',
-                    pack: 'start',
-                    align: 'stretch'
-                },
-                items: [
-                    {
-                        xtype: 'panel',
-                        flex: 5,
-                        border: 0,
-                        width: 604,
-                        layout: {
-                            align: 'stretch',
-                            type: 'vbox'
-                        },
-                        header: false,
-                        title: 'p1',
-                        items: [
-                            {
-                                xtype: 'panel',
-                                flex: 1,
-                                layout: {
-                                    type: 'absolute'
-                                },
-                                title: '个人信息',
-                                collapsible : true
-                            },
-                            {
-                                xtype: 'panel',
-                                flex: 1,
-                                margin: '10 0 0 0 ',
-                                layout: {
-                                    align: 'stretch',
-                                    type: 'hbox'
-                                },
-                                header: false,
-                                border: 0,
-                                title: '分组题目信息',
-                                items: [
-                                    {
-                                        xtype: 'panel',
-                                        flex: 1,
-                                        margin: '0 0 0 0 ',
-                                        title: '题目信息'
-                                    },
-                                    {
-                                        xtype: 'panel',
-                                        flex: 1,
-                                        margin: '0 0 0 10 ',
-                                        title: '系统更新'
-                                    }
-                                ]
-                            },
-                            {
-                                xtype: 'panel',
-                                flex: 1,
-                                margin: '10 0 0 0 ',
-                                title: '系统任务'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'panel',
-                        flex: 2,
-                        margin: '0 0 0 10',
-                        header: false,
-                        border: 0,
-                        layout: {
-                            align: 'stretch',
-                            type: 'vbox'
-                        },
-                        title: '公告列表',
-                        items: [
-                            {
-                                xtype: 'panel',
-                                flex: 1,
-                                margin: '0 0 0 0',
-                                title: '最新公告'
-                            },
-                            {
-                                xtype: 'panel',
-                                flex: 1,
-                                margin: '10 0 0 0',
-                                title: '资料下载'
-                            }
-                        ]
-                    }
-                ]
+                iconCls: 'hp-cls',
+                loadMask: false,
+                group: null,
+                closable: false,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this}
+//            html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="pages/welcome.jsp"></iframe>'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
+            },{
+                title: '首页2',
+                loadMask: false,
+                group: null,
+                closable: true,
+                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
+                html: 'asdasd'
             }]
         });
         this.callParent(arguments);

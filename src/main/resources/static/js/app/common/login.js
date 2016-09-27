@@ -160,11 +160,13 @@ Ext.onReady(function () {
     //提交按钮
     var submit = new Ext.Button({
         text: '登 陆',
+        glyph: 'xf090@FontAwesome',
         handler: submitClick
     });
     //重置按钮
     var reset = new Ext.Button({
         text: '重 置',
+        glyph: 'xf021@FontAwesome',
         handler: resetClick
     });
     var captcha = new Ext.Panel({
@@ -237,6 +239,7 @@ Ext.onReady(function () {
         draggable: false,
         layout: "fit",
         items: form,
+        glyph: 'xf007@FontAwesome',
         listeners: {
             afterRender: function(thisForm, options){
                 this.keyNav = Ext.create('Ext.util.KeyNav', this.el, {
