@@ -18,7 +18,7 @@ Ext.define('et.view.Viewport',{
                     Ext.create('et.view.Header'), 		//创建上侧头
                     Ext.create('et.view.Menu'), 		//创建左侧菜单
                     Ext.create('et.view.TabPanel'), 	//创建中间panel选项卡
-                    Ext.create('et.view.South') 		//创建下侧栏
+                    // Ext.create('et.view.South') 		//创建下侧栏
                 ] 
             }] 
         }); 

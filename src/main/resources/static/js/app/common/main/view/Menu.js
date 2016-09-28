@@ -97,6 +97,7 @@ Ext.define('et.view.Menu', {
                 collapsible : true,
                 autoScroll: false,
                 animCollapse : true,
+                useArrows: true,
                 store:Ext.create('Ext.data.TreeStore',{
                     autoLoad: true,
                     proxy: {
@@ -114,86 +115,3 @@ Ext.define('et.view.Menu', {
         this.callParent(arguments);
     }
 });
-
-// ##菜单加载相关 begin
-var buildTree = function (json) {
-    var root = new Ext.tree.AsyncTreeNode({
-        id: Ext.id(),
-        text: "",
-        children: json.children
-    });
-
-    var tree = new Ext.tree.TreePanel({
-        root: root,
-        autoScroll: true,
-        rootVisible: false,
-        border: false,
-        animate: true,
-        lines: false
-    });
-
-    return tree;
-};
-var loadMenu = function (menuCon, mainCon) {
-    var menuAjax = new Ext.data.Connection({
-    });
-    menuAjax.request({
-        url: 'login_init.action',
-        method: 'post',
-        success: function (response) {
-            var json = Ext.util.JSON.decode(response.responseText);
-            if (json.success) {
-                var myview = new Ext.Viewport({
-                    layout: 'border',
-                    items: [topBar, menu, main]
-                });
-
-                myview.doLayout();
-                var oncl = function (title, url) {
-                    var n = {
-                        id: '50',
-                        text: title,
-                        attributes: {
-                            righturl: url
-                        }
-                    };
-                    main.loadCon(n, this);
-                };
-
-                Ext.each(json.menu, function (el) {
-                    if (el == undefined) {
-                        return true;
-                    }
-                    var panel = new Ext.Panel({
-                        id: el.id,
-                        title: el.text,
-                        layout: 'fit'
-                    });
-                    var mytree = buildTree(el);
-                    mytree.on('click', function (node, e) {
-                        if (node.isLeaf()) {
-                            e.stopEvent();
-                            mainCon.loadCon(node, this);
-                        } else {
-                            return false;
-                        }
-                    });
-                    panel.add(mytree);
-                    menuCon.add(panel);
-                });
-                menuCon.doLayout();
-            } else {
-                window.location = "login.jsp";
-                Ext.example.msg('提示', json.msg);
-            }
-        },
-        failure: function (request) {
-            Ext.MessageBox.show({
-                title: '操作提示',
-                msg: '服务器连接失败',
-                buttons: Ext.MessageBox.OK,
-                icon: Ext.MessageBox.ERROR
-            });
-        }
-    });
-};

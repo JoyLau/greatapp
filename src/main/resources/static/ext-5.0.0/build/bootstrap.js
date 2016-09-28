@@ -57,5 +57,7 @@
     }
 
     document.write('<script type="text/javascript" charset="UTF-8" src="' + 
-        path + 'ext-all' + (isDevelopment ? '-debug' : '') + '.js"></script>');
+        // path + 'ext-all' + (isDevelopment ? '-debug' : '') + '.js"></script>');
+    //由于ext-all.js对通知的支持有问题，采用自己打包ext-all-debug.js生成的ext-all-mine.js,相对ext-all.js来说体积更小了点
+        path + 'ext-all' + (isDevelopment ? '-debug' : '-mine') + '.js"></script>');
 })();

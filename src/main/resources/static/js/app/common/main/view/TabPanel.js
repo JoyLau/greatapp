@@ -14,107 +14,16 @@ Ext.define('et.view.TabPanel', {
                 bodyPadding: 10,
                 autoScroll: false
             },
-            minTabWidth: 135,
+            minTabWidth: 80,
             items: [{
                 id: 'Home',
                 title: '首页',
-                iconCls: 'hp-cls',
+                glyph: 0xf015,
                 loadMask: false,
                 group: null,
                 closable: false,
                 autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this}
 //            html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="pages/welcome.jsp"></iframe>'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
-            },{
-                title: '首页2',
-                loadMask: false,
-                group: null,
-                closable: true,
-                autoLoad: {url: 'pages/welcome.jsp', callback: this.initSearch, scope: this},
-                html: 'asdasd'
             },{
                 title: '首页2',
                 loadMask: false,
