@@ -5,7 +5,6 @@
 Ext.define('et.view.Header', {
     extend: 'Ext.toolbar.Toolbar',
     border: true,
-    shadow: 'sides',
     id: 'headerBar',
     autoHeight: true,
     region: 'north',

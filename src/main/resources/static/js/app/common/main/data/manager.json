@@ -144,6 +144,7 @@
     "text": "实训管理",
     "mid": "18",
     "iconCls": "ux-notification-icon-information",
+//    "glyph": "0xf007",
     "leaf": true,
     "expanded": false
   }

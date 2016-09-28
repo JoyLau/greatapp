@@ -4,6 +4,8 @@
       rel="stylesheet"/>-->
 <#--<link href="/static/ext-5.0.0/build/packages/ext-theme-gray/build/resources/ext-theme-gray-all.css"
       rel="stylesheet"/>-->
+<#--<link href="/static/ext-5.0.0/build/packages/ext-theme-classic/build/resources/ext-theme-classic-all.css"
+      rel="stylesheet"/>-->
 <link href="/static/css/notification.css" rel="stylesheet"/>
 <link href="/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
 

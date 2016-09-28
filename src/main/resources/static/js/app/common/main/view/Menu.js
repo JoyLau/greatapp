@@ -50,7 +50,7 @@ Ext.define('et.view.Menu', {
             ],
             glyph: 0xf0c9,
             //内边距
-            bodyStyle: 'padding:0',
+            bodyStyle: 'padding:0'/*,
             items: [{
                 title: 'Panel 1',
                 items:[{
@@ -109,9 +109,78 @@ Ext.define('et.view.Menu', {
                         }
                     }
                 })
-            })]
+            })]*/
 
         });
         this.callParent(arguments);
+
+
+
+
+        //构建树
+        var buildTree = function (json) {
+            //创建一颗树了
+            return Ext.create('Ext.tree.Panel',
+                {
+                    useArrows: true,
+                    rootVisible: false,
+                    border: false,
+                    root: {
+                        id: Ext.id(),
+                        text: "",
+                        expanded: true,
+                        children: json.children
+                    },
+                    listeners: {
+                        //节点单击事件
+                        'itemclick': function (view, record, item, index, e) {
+                         var id = record.get('id');
+                         var text = record.get('text');
+                         var url = record.get('url');
+                         var leaf = record.get('leaf');
+                         if (leaf) {
+                         Ext.getCmp('content-panel').loadPage(url, 'menu' + id, text);
+                         }
+                         },
+                         //单击节点展开之前的事件
+                         'beforeitemclick': function (view, record, item, index, e) {
+                         return;
+                         },
+                        scope: this
+                    }
+                });
+        };
+        /**
+         * 创建AJAX请求，从服务器请求菜单数据生成 accordion和Tree 菜单
+         */
+        Ext.Ajax.request({
+            method : 'post',
+            url : "getMenu",
+            success : function(response) {
+                var json = Ext.JSON.decode(response.responseText);
+                if (json.success) {
+                    Ext.each(json.menu, function (el) {
+                        if (el == undefined) {
+                            return true;
+                        }
+                        var panel = Ext.create('Ext.panel.Panel', {
+                            // id: el.id,
+                            title : el.text,
+                            layout : 'fit'
+                        });
+                        panel.add(buildTree(el));
+                        Ext.getCmp("menu-panel").add(panel);
+                    });
+                }
+            },
+            failure : function(request) {
+                Ext.MessageBox.show( {
+                    title : '操作提示',
+                    msg : "连接服务器失败",
+                    buttons : Ext.MessageBox.OK,
+                    icon : Ext.MessageBox.ERROR
+                });
+            }
+        });
     }
 });
