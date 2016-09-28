@@ -1,0 +1,9 @@
+//关闭网页
+function exit(){
+ if(confirm("确定要退出吗？"))
+  {
+     window.opener = null;
+     window.open('./general/logout.aspx', '_self');
+     window.close();
+  }
+}

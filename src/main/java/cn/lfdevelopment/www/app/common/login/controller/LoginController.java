@@ -103,7 +103,7 @@ public class LoginController {
 
     @RequestMapping("/desktop")
     public String desktop(){
-        return "app/common/main/desktop";
+        return "desktop/desktop";
     }
 
     @RequestMapping("/getMenu")
