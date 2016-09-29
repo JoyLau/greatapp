@@ -32,9 +32,9 @@
 
 <body>
 <div id="flashClock">
-    <embed src="/static/images/desktop/clock121.swf" quality="high" wmode="transparent" width="150" height="150" align="middle"  type="application/x-shockwave-flash" />
+    <embed src="/static/flash/20078858402648.swf" quality="high" wmode="transparent" width="160" height="150" align="middle"  type="application/x-shockwave-flash" />
 </div>
-<a href="" target="_blank" alt="Powered by LinbSoft"
+<a target="_blank" alt="Powered by LiuFa"
    id="poweredby"><div></div></a>
 
 </body>

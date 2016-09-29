@@ -27,8 +27,8 @@ Ext.define('MyDesktop.App', {
         'MyDesktop.BogusModule',
         'MyDesktop.AboutLinb',
         'MyDesktop.WebExcel',
-        'MyDesktop.WebTV', 
-        'MyDesktop.YYTai',      
+        'MyDesktop.WebTV',
+        'MyDesktop.YYTai',
         'MyDesktop.Settings'
     ],
 
@@ -87,7 +87,7 @@ Ext.define('MyDesktop.App', {
                 ]
             }),
 
-            wallpaper: 'wallpapers/blue-Sencha.jpg',
+            wallpaper: 'static/wallpapers/Wood-Sencha.jpg',
             wallpaperStretch: true
         });
     },
@@ -97,21 +97,24 @@ Ext.define('MyDesktop.App', {
         var me = this, ret = me.callParent();
 
         return Ext.apply(ret, {
-            title: 'LinBSoft',
+            title: '开始',
             iconCls: 'user',
             height: 300,
+            textAlign : 'center',
             toolConfig: {
                 width: 100,
-                items: [
+                textAlign : 'center',
+                items: ['->',
                     {
-                        text:'设置背景',
+                        text:'锁定',
+                        textAlign : 'center',
                         iconCls:'settings',
                         handler: me.onSettings,
                         scope: me
                     },
                     '-',
                     {
-                        text:'退出系统',
+                        text:'关机',
                         iconCls:'logout',
                         handler: me.onLogout,
                         scope: me

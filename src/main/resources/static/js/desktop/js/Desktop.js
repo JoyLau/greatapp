@@ -131,7 +131,7 @@ Ext.define('Ext.ux.desktop.Desktop', {
                 hideMode: 'offsets',
                 constrain: false,
                 layout: 'fit',
-		html:'<img src="images/linbsoftlogo.png">'
+		// html:'<img src="static/images/desktop/linbsoftlogo.png">'
 
             });
 

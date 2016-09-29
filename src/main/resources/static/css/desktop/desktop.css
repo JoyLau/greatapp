@@ -7,7 +7,7 @@
 
 #poweredby {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     right: 20px;
     z-index: 15000;
 
@@ -34,7 +34,7 @@
 .x-ie7 #poweredby div,
 .x-ie8 #poweredby div {
     background-image: none;
-    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/powered-by-ext-js.png', sizingMethod='scale');
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../images/desktop/powered-by-ext-js.png', sizingMethod='scale');
 }
 
 /*----------------------------------------------------

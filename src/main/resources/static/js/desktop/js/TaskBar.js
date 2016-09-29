@@ -62,7 +62,7 @@ Ext.define('Ext.ux.desktop.TaskBar', {
             '-',{
                 id: 'goworkflow',
                 tooltip: { text: '即时通讯', align: 'bl-tl' },
-                icon: "images/im16.png",
+                icon: "static/images/desktop/im16.png",
                 handler: function () {
 
         var module = myDesktopApp.getModule('acc-win'),
@@ -240,7 +240,7 @@ Ext.define('Ext.ux.desktop.TrayClock', {
 
     html: '&#160;',
 
-    timeFormat: 'g:i A',
+    timeFormat: 'H:i:s A',
 
     tpl: '{time}',
 
@@ -278,6 +278,6 @@ Ext.define('Ext.ux.desktop.TrayClock', {
             me.setText(text);
             me.lastText = text;
         }
-        me.timer = Ext.Function.defer(me.updateTime, 10000, me);
+        me.timer = Ext.Function.defer(me.updateTime, 1000, me);
     }
 });
