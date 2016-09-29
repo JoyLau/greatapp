@@ -29,7 +29,8 @@ Ext.define('MyDesktop.App', {
         'MyDesktop.WebExcel',
         'MyDesktop.WebTV',
         'MyDesktop.YYTai',
-        'MyDesktop.Settings'
+        'MyDesktop.Settings',
+        'MyDesktop.DevTask'
     ],
 
     init: function() {
@@ -56,7 +57,8 @@ Ext.define('MyDesktop.App', {
             new MyDesktop.Notepad(),
             new MyDesktop.WebExcel(),
             new MyDesktop.WebTV(),
-            new MyDesktop.YYTai()
+            new MyDesktop.YYTai(),
+            new MyDesktop.DevTask()
         ];
     },
 
@@ -83,7 +85,8 @@ Ext.define('MyDesktop.App', {
                     { name: '电子表格', iconCls: 'excel-shortcut', module: 'webexcel' },
                     { name: '豆瓣电台', iconCls: 'dbfm-shortcut', module: 'douban' },  
                     { name: '系统状态', iconCls: 'cpu-shortcut', module: 'systemstatus'},
-                    { name: '关于桌面', iconCls: 'role-shortcut', module: 'aboutlinb' }
+                    { name: '关于桌面', iconCls: 'role-shortcut', module: 'aboutlinb' },
+                    { name: '开发任务', iconCls: 'grid-shortcut', module: 'dev-task' }
                 ]
             }),
 
@@ -100,21 +103,21 @@ Ext.define('MyDesktop.App', {
             title: '开始',
             iconCls: 'user',
             height: 300,
-            textAlign : 'center',
             toolConfig: {
-                width: 100,
+                width : 100,
                 textAlign : 'center',
                 items: ['->',
                     {
                         text:'锁定',
-                        textAlign : 'center',
                         iconCls:'settings',
+                        tooltip:'锁定系统',
                         handler: me.onSettings,
                         scope: me
                     },
                     '-',
                     {
                         text:'关机',
+                        tooltip:'退出系统',
                         iconCls:'logout',
                         handler: me.onLogout,
                         scope: me

@@ -38,8 +38,8 @@ Ext.define('MyDesktop.Settings', {
         me.tree = me.createTree();
 
         me.buttons = [
-            { text: 'OK', handler: me.onOK, scope: me },
-            { text: 'Cancel', handler: me.close, scope: me }
+            { text: '确定', handler: me.onOK, scope: me },
+            { text: '取消', handler: me.close, scope: me }
         ];
 
         me.items = [
@@ -51,7 +51,7 @@ Ext.define('MyDesktop.Settings', {
                     me.tree,
                     {
                         xtype: 'panel',
-                        title: 'Preview',
+                        title: '预览',
                         region: 'center',
                         layout: 'fit',
                         items: [ me.preview ]
@@ -60,7 +60,7 @@ Ext.define('MyDesktop.Settings', {
             },
             {
                 xtype: 'checkbox',
-                boxLabel: 'Stretch to fit',
+                boxLabel: '拉伸契合',
                 checked: me.stretch,
                 listeners: {
                     change: function (comp) {
@@ -81,7 +81,7 @@ Ext.define('MyDesktop.Settings', {
         }
 
         var tree = new Ext.tree.Panel({
-            title: 'Desktop Background',
+            title: '背景项',
             rootVisible: false,
             lines: false,
             autoScroll: true,

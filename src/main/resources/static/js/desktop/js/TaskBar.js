@@ -184,7 +184,7 @@ Ext.define('Ext.ux.desktop.TaskBar', {
             iconCls: win.iconCls,
             enableToggle: true,
             toggleGroup: 'all',
-            width: 140,
+            // width: 140,
             margins: '0 2 0 3',
             text: Ext.util.Format.ellipsis(win.title, 20),
             listeners: {
