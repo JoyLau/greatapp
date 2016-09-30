@@ -99,7 +99,8 @@ Ext.define('Ext.ux.desktop.Desktop', {
         me.callParent();
 
         me.shortcutsView = me.items.getAt(1);
-        me.shortcutsView.on('itemclick', me.onShortcutItemClick, me);
+        //双击打开
+        me.shortcutsView.on('itemdblclick', me.onShortcutItemClick, me);
         me.shortcutsView.on('render', me.onRenderShortcut, me);
 
         var wallpaper = me.wallpaper;
@@ -541,5 +542,5 @@ Ext.define('Ext.ux.desktop.Desktop', {
         }
 
         me.taskbar.setActiveButton(activeWindow && activeWindow.taskButton);
-    }
+    },
 });

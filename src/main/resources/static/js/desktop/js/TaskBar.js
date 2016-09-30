@@ -34,7 +34,6 @@ Ext.define('Ext.ux.desktop.TaskBar', {
 
     initComponent: function () {
         var me = this;
-        
         me.startMenu = new Ext.ux.desktop.StartMenu(me.startConfig);
 
         me.quickStart = new Ext.toolbar.Toolbar(me.getQuickStart());
@@ -150,7 +149,7 @@ Ext.define('Ext.ux.desktop.TaskBar', {
             window.show();
         }
     },
-    
+
     onButtonContextMenu: function (e) {
         var me = this, t = e.getTarget(), btn = me.getWindowBtnFromEl(t);
         if (btn) {
@@ -223,7 +222,7 @@ Ext.define('Ext.ux.desktop.TaskBar', {
                 }
             });
         }
-    }
+    },
 });
 
 /**

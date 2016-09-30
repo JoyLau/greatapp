@@ -94,7 +94,7 @@
             );
         }
 
-        var toolbar;
+        /*var toolbar;
             
         setTimeout(function() {
             toolbar = Ext.widget({
@@ -165,10 +165,11 @@
                     }
                 }]
             });
-            toolbar.show();
+            //暂不显示
+            // toolbar.show();
             align();
             Ext.EventManager.onWindowResize(align);
-        }, 100);
+        }, 100);*/
 
     });
 })();

@@ -106,12 +106,55 @@ Ext.define('MyDesktop.App', {
             toolConfig: {
                 width : 100,
                 textAlign : 'center',
-                items: ['->',
+                items: [{
+                    text:'进入全屏',
+                    iconCls:'settings',
+                    tooltip:'点击进入全屏',
+                    handler: function (btn) {
+                        var b = document.documentElement;
+                        if(btn.getText() == '进入全屏'){
+                            if (b.requestFullscreen) {
+                                b.requestFullscreen()
+                            } else {
+                                if (b.msRequestFullscreen) {
+                                    b.msRequestFullscreen()
+                                } else {
+                                    if (b.mozRequestFullScreen) {
+                                        b.mozRequestFullScreen()
+                                    } else {
+                                        if (b.webkitRequestFullScreen) {
+                                            b.webkitRequestFullScreen()
+                                        }
+                                    }
+                                }
+                            }
+                            btn.setText('退出全屏');
+                            btn.setTooltip('点击退出全屏');
+                        }else {
+                            if (document.exitFullscreen) {
+                                document.exitFullscreen();
+                            }
+                            else if (document.mozCancelFullScreen) {
+                                document.mozCancelFullScreen();
+                            }
+                            else if (document.webkitCancelFullScreen) {
+                                document.webkitCancelFullScreen();
+                            }
+                            else if (document.msExitFullscreen) {
+                                document.msExitFullscreen();
+                            }
+                            btn.setText('进入全屏');
+                            btn.setTooltip('点击进入全屏');
+                        }
+                    },
+                    scope: me
+                },'->',
                     {
                         text:'锁定',
                         iconCls:'settings',
                         tooltip:'锁定系统',
-                        handler: me.onSettings,
+                        handler: function () {
+                        },
                         scope: me
                     },
                     '-',
