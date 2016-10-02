@@ -106,7 +106,7 @@ Ext.define('Desktop.App', {
 
         return Ext.apply(ret, {
             trayItems: [
-                { xtype: 'trayclock', flex: 1 }
+                { xtype: 'trayclock'}
             ]
         });
     },

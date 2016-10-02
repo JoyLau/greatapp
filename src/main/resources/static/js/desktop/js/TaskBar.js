@@ -195,53 +195,46 @@ Ext.define('Ext.ux.desktop.TaskBar', {
  * This class displays a clock on the toolbar.
  */
 Ext.define('Ext.ux.desktop.TrayClock', {
-    extend: 'Ext.toolbar.TextItem',
+    extend: 'Ext.button.Button',
 
     alias: 'widget.trayclock',
 
-    cls: 'ux-desktop-trayclock',
+    id : 'trayclock',
 
-    html: '&#160;',
-
-    timeFormat: 'H:i:s A',
-
-    tpl: '{time}',
+    disableMouseOver : false,
 
     initComponent: function () {
         var me = this;
+        // 设置事件监听
+        if (!this.listeners)
+            this.listeners = {};
 
+        Ext.apply(this.listeners, {
+            // 鼠标移开，背景设置透明
+            mouseout : function() {
+                this.setTransparent(document.getElementById(this.id));
+            },
+            mouseover : function(button) {
+                button.setTooltip(Ext.Date.format(new Date(), 'l, j F Y h:i A'))
+            },
+            // 背景设置透明
+            afterrender : function(cmp) {
+                this.setTransparent(document.getElementById(this.id));
+                Ext.TaskManager.start({
+                    run: function () {
+                        cmp.setText(Ext.Date.format(new Date(), 'H:i:s A'));
+                    },
+                    interval: 1000
+                });
+            }
+        });
         me.callParent();
-
-        if (typeof(me.tpl) == 'string') {
-            me.tpl = new Ext.XTemplate(me.tpl);
-        }
     },
 
-    afterRender: function () {
-        var me = this;
-        Ext.Function.defer(me.updateTime, 100, me);
-        me.callParent();
-    },
-
-    onDestroy: function () {
-        var me = this;
-
-        if (me.timer) {
-            window.clearTimeout(me.timer);
-            me.timer = null;
-        }
-
-        me.callParent();
-    },
-
-    updateTime: function () {
-        var me = this, time = Ext.Date.format(new Date(), me.timeFormat),
-            text = me.tpl.apply({ time: time });
-        if (me.lastText != text) {
-            me.setText(text);
-            me.lastText = text;
-        }
-        me.timer = Ext.Function.defer(me.updateTime, 1000, me);
+    setTransparent : function(b) {
+        b.style.backgroundImage = 'inherit';
+        b.style.backgroundColor = 'inherit';
+        b.style.borderColor = 'transparent';
     }
 });
 

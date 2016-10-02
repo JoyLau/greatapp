@@ -158,7 +158,7 @@ Ext.define('Ext.ux.desktop.Desktop', {
         for (var i = 0, len = items.length; i < len; i++) {
                numberOfItems += 1;
                 bottom = row.y + btnHeight;
-                if (((bodyHeight < bottom) ? true : false) && bottom > (btnHeight + btnPadding)) {
+                if (((bodyHeight < bottom)) && bottom > (btnHeight + btnPadding)) {
                     numberOfItems = 0;
                     col = { index: col.index++, x: col.x + btnWidth + btnPadding };
                     row = { index: 1, y: btnPadding };
@@ -168,14 +168,9 @@ Ext.define('Ext.ux.desktop.Desktop', {
                 row.y = row.y + btnHeight + btnPadding;
 
 
-        };
+        }
     },
-    //end shortcuts 自动换行   
-    
-    
-    
-        //  onRenderShortcut 桌面拖动 
-
+        //  onRenderShortcut 桌面拖动
     onRenderShortcut: function (v) {
         var me = this;
         me.shortcutsView.dragZone = new Ext.dd.DragZone(v.getEl(), {
