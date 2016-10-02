@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>LinbDesk - ExtJs Desktop</title>
+    <title>Desktop</title>
     <link rel="stylesheet" type="text/css" href="/static/js/desktop/resources/css/ext-all-neptune.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/desktop/desktop.css" />
 

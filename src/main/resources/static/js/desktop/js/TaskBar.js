@@ -36,8 +36,6 @@ Ext.define('Ext.ux.desktop.TaskBar', {
         var me = this;
         me.startMenu = new Ext.ux.desktop.StartMenu(me.startConfig);
 
-        me.quickStart = new Ext.toolbar.Toolbar(me.getQuickStart());
-
         me.windowBar = new Ext.toolbar.Toolbar(me.getWindowBarConfig());
 
         me.tray = new Ext.toolbar.Toolbar(me.getTrayConfig());
@@ -51,25 +49,28 @@ Ext.define('Ext.ux.desktop.TaskBar', {
                 menuAlign: 'bl-tl',
                 text: me.startBtnText
             },
-            me.quickStart,
+            '-',
             {
-                xtype: 'splitter', html: '&#160;',
-                height: 14, width: 2, // TODO - there should be a CSS way here
-                cls: 'x-toolbar-separator x-toolbar-separator-horizontal'
+                xtype : 'button',
+                tooltip: {text: '点击进入全屏', align: 'bl-tl'},
+                text : '',
+                icon: "static/images/desktop/fullscreen.png",
+                handler: fullscreen
             },
+            '-',
             me.windowBar,
-            '-',{
+            '-', {
                 id: 'goworkflow',
-                tooltip: { text: '即时通讯', align: 'bl-tl' },
+                tooltip: {text: '即时通讯', align: 'bl-tl'},
                 icon: "static/images/desktop/im16.png",
                 handler: function () {
 
-        var module = myDesktopApp.getModule('acc-win'),
-            window;
-        if (module) {
-            window = module.createWindow();
-            window.showAt([Ext.getBody().getWidth()-265,Ext.getBody().getHeight()-455]);
-        }
+                    var module = myDesktopApp.getModule('acc-win'),
+                        window;
+                    if (module) {
+                        window = module.createWindow();
+                        window.showAt([Ext.getBody().getWidth() - 265, Ext.getBody().getHeight() - 455]);
+                    }
 
 
                 }
@@ -84,34 +85,6 @@ Ext.define('Ext.ux.desktop.TaskBar', {
         var me = this;
         me.callParent();
         me.windowBar.el.on('contextmenu', me.onButtonContextMenu, me);
-    },
-
-    /**
-     * This method returns the configuration object for the Quick Start toolbar. A derived
-     * class can override this method, call the base version to build the config and
-     * then modify the returned object before returning it.
-     */
-    getQuickStart: function () {
-        var me = this, ret = {
-            minWidth: 20,
-            width: Ext.themeName === 'neptune' ? 70 : 60,
-            items: [],
-            enableOverflow: true
-        };
-
-        Ext.each(this.quickStart, function (item) {
-            ret.items.push({
-                tooltip: { text: item.name, align: 'bl-tl' },
-                //tooltip: item.name,
-                overflowText: item.name,
-                iconCls: item.iconCls,
-                module: item.module,
-                handler: me.onQuickStartClick,
-                scope: me
-            });
-        });
-
-        return ret;
     },
 
     /**
@@ -139,15 +112,6 @@ Ext.define('Ext.ux.desktop.TaskBar', {
     getWindowBtnFromEl: function (el) {
         var c = this.windowBar.getChildByElement(el);
         return c || null;
-    },
-
-    onQuickStartClick: function (btn) {
-        var module = this.app.getModule(btn.module),
-            window;
-        if (module) {
-            window = module.createWindow();
-            window.show();
-        }
     },
 
     onButtonContextMenu: function (e) {
@@ -280,3 +244,42 @@ Ext.define('Ext.ux.desktop.TrayClock', {
         me.timer = Ext.Function.defer(me.updateTime, 1000, me);
     }
 });
+
+
+var fullscreen = function (btn) {
+    var b = document.documentElement;
+    if(btn.getText() == ''){
+        if (b.requestFullscreen) {
+            b.requestFullscreen()
+        } else {
+            if (b.msRequestFullscreen) {
+                b.msRequestFullscreen()
+            } else {
+                if (b.mozRequestFullScreen) {
+                    b.mozRequestFullScreen()
+                } else {
+                    if (b.webkitRequestFullScreen) {
+                        b.webkitRequestFullScreen()
+                    }
+                }
+            }
+        }
+        btn.setText('退出全屏');
+        btn.setTooltip('点击退出全屏');
+    }else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        }
+        else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        }
+        else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+        btn.setText('');
+        btn.setTooltip('点击进入全屏');
+    }
+};

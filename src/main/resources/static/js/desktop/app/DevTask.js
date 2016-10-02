@@ -16,14 +16,6 @@ Ext.define('MyDesktop.DevTask', {
     ],
 
     id:'dev-task',
-
-    init : function(){
-        this.launcher = {
-            text: '网格窗口',
-            iconCls:'icon-grid'
-        };
-    },
-
     createWindow : function(){
         var desktop = this.app.getDesktop();
         var win = desktop.getWindow('dev-task');

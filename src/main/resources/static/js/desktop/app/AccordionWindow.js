@@ -16,14 +16,6 @@ Ext.define('MyDesktop.AccordionWindow', {
     ],
 
     id:'acc-win',
-
-    init : function(){
-        this.launcher = {
-            text: '即时通讯',
-            iconCls:'user'
-        };
-    },
-
     createTree : function(){
         var tree = Ext.create('Ext.tree.Panel', {
             id:'im-tree',

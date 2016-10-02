@@ -15,13 +15,6 @@ Ext.define('MyDesktop.Notepad', {
 
     id:'notepad',
 
-    init : function(){
-        this.launcher = {
-            text: 'Notepad',
-            iconCls:'notepad'
-        }
-    },
-
     createWindow : function(){
         var desktop = this.app.getDesktop();
         var win = desktop.getWindow('notepad');

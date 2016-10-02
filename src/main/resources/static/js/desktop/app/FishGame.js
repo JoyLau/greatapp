@@ -1,11 +1,4 @@
-﻿/*!
- * Ext JS Library 4.0
- * Copyright(c) 2006-2011 Sencha Inc.
- * licensing@sencha.com
- * http://www.sencha.com/license
- */
-
-Ext.define('MyDesktop.FishGame', {
+﻿Ext.define('MyDesktop.FishGame', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [ ],
@@ -25,14 +18,14 @@ Ext.define('MyDesktop.FishGame', {
             win = desktop.createWindow({
                 id: 'fishgame',
                 title:'捕鱼达人',
-                width:800,
+                width:1024,
                 height:560,
-                iconCls: 'user-girl',
+                iconCls: 'fish-task',
                 animCollapse:false,
                 border: false,
                 hideMode: 'offsets',
                 layout: 'fit',
-                html:'<iframe width=100% height=100% src="http://demo.linbsoft.com/linbdesk/app/fish/demo.html"></iframe>'
+                html:'<iframe width=100% height=100% src="/static/games/fish/index.html"></iframe>'
             });
         }
         return win;

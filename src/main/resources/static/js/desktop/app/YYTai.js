@@ -11,13 +11,6 @@ Ext.define('MyDesktop.YYTai', {
     requires: [ ],
 
     id:'yytai',
-    init : function(){
-        this.launcher = {
-            text: '音乐MTV',
-            iconCls:'icon-grid'
-        }
-    },
-
     createWindow : function(){
         var desktop = this.app.getDesktop();
         var win = desktop.getWindow('yytai');

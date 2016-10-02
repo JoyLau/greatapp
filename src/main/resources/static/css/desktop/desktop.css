@@ -305,6 +305,14 @@ div.ux-taskbar div.x-toolbar {
     background-image:url(../../images/desktop/user_female.gif) !important;
 }
 
+.fish-task {
+    background-image:url(../../images/desktop/task/fish.png) !important;
+}
+
+.tank-task {
+    background-image:url(../../images/desktop/task/tank-task.png) !important;
+}
+
 .user-kid {
     background-image:url(../../images/desktop/user_green.gif) !important;
 }
@@ -347,6 +355,16 @@ div.ux-taskbar div.x-toolbar {
 
 .search-shortcut {
     background-image: url(../../images/desktop/search.png);
+    width: 48px;
+    height: 48px;
+}
+.fish-shortcut {
+    background-image: url(../../images/desktop/fish.png);
+    width: 48px;
+    height: 48px;
+}
+.tank-shortcut {
+    background-image: url(../../images/desktop/90tank.png);
     width: 48px;
     height: 48px;
 }
