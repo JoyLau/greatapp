@@ -1,11 +1,4 @@
-﻿/*!
- * Ext JS Library 4.0
- * Copyright(c) 2006-2011 Sencha Inc.
- * licensing@sencha.com
- * http://www.sencha.com/license
- */
-
-Ext.define('MyDesktop.WallpaperModel', {
+﻿Ext.define('Desktop.WallpaperModel', {
     extend: 'Ext.data.Model',
     fields: [
         { name: 'text' },

@@ -5,7 +5,7 @@
  * http://www.sencha.com/license
  */
 
-Ext.define('MyDesktop.AboutLinb', {
+Ext.define('Desktop.AboutLinb', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [ ],

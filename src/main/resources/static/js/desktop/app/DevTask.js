@@ -5,7 +5,7 @@
  * http://www.sencha.com/license
  */
 
-Ext.define('MyDesktop.DevTask', {
+Ext.define('Desktop.DevTask', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [
@@ -40,7 +40,7 @@ Ext.define('MyDesktop.DevTask', {
                                { name: 'time' },
                                { name: 'state'}
                             ],
-                            data: MyDesktop.DevTask.getDummyData()
+                            data: Desktop.DevTask.getDummyData()
                         }),
                         columns: [
                             new Ext.grid.RowNumberer(),

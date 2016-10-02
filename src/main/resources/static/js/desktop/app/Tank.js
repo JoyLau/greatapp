@@ -1,7 +1,7 @@
 /**
  * Created by LiuFa on 2016/10/2.
  */
-Ext.define('MyDesktop.Tank', {
+Ext.define('Desktop.Tank', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [ ],

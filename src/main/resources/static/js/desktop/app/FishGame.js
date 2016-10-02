@@ -1,4 +1,4 @@
-﻿Ext.define('MyDesktop.FishGame', {
+﻿Ext.define('Desktop.FishGame', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [ ],

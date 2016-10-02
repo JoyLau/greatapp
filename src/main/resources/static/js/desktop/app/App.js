@@ -5,21 +5,21 @@
  * http://www.sencha.com/license
  */
 
-Ext.define('MyDesktop.App', {
+Ext.define('Desktop.App', {
     extend: 'Ext.ux.desktop.App',
 
     requires: [
         'Ext.window.MessageBox',
         'Ext.ux.desktop.ShortcutModel',
-        'MyDesktop.SystemStatus',
-        'MyDesktop.AccordionWindow',
-        'MyDesktop.Notepad',
-        'MyDesktop.FishGame',
-        'MyDesktop.AboutLinb',
-        'MyDesktop.YYTai',
-        'MyDesktop.Settings',
-        'MyDesktop.DevTask',
-        'MyDesktop.Tank'
+        'Desktop.SystemStatus',
+        'Desktop.AccordionWindow',
+        'Desktop.Notepad',
+        'Desktop.FishGame',
+        'Desktop.AboutLinb',
+        'Desktop.YYTai',
+        'Desktop.Settings',
+        'Desktop.DevTask',
+        'Desktop.Tank'
     ],
 
     init: function() {
@@ -32,14 +32,14 @@ Ext.define('MyDesktop.App', {
 
     getModules : function(){
         return [
-            new MyDesktop.AboutLinb(), 
-            new MyDesktop.SystemStatus(),
-            new MyDesktop.FishGame(),
-            new MyDesktop.AccordionWindow(),
-            new MyDesktop.Notepad(),
-            new MyDesktop.YYTai(),
-            new MyDesktop.DevTask(),
-            new MyDesktop.Tank()
+            new Desktop.AboutLinb(),
+            new Desktop.SystemStatus(),
+            new Desktop.FishGame(),
+            new Desktop.AccordionWindow(),
+            new Desktop.Notepad(),
+            new Desktop.YYTai(),
+            new Desktop.DevTask(),
+            new Desktop.Tank()
         ];
     },
 
@@ -120,7 +120,7 @@ Ext.define('MyDesktop.App', {
     },
 
     onSettings: function () {
-        var dlg = new MyDesktop.Settings({
+        var dlg = new Desktop.Settings({
             desktop: this.desktop
         });
         dlg.show();

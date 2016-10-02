@@ -18,14 +18,14 @@
     <script type="text/javascript">
         Ext.Loader.setPath({
             'Ext.ux.desktop': 'static/js/desktop/js',
-            MyDesktop: 'static/js/desktop/app'
+            Desktop: 'static/js/desktop/app'
         });
 
-        Ext.require('MyDesktop.App');
+        Ext.require('Desktop.App');
 
-        var myDesktopApp;
+        var DesktopApp;
         Ext.onReady(function () {
-            myDesktopApp = new MyDesktop.App();
+            DesktopApp = new Desktop.App();
         });
     </script>
     <!-- </x-compile> -->

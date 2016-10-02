@@ -5,7 +5,7 @@
  * http://www.sencha.com/license
  */
 
-Ext.define('MyDesktop.AccordionWindow', {
+Ext.define('Desktop.AccordionWindow', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [

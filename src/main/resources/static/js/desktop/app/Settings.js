@@ -1,11 +1,4 @@
-﻿/*!
- * Ext JS Library 4.0
- * Copyright(c) 2006-2011 Sencha Inc.
- * licensing@sencha.com
- * http://www.sencha.com/license
- */
-
-Ext.define('MyDesktop.Settings', {
+﻿Ext.define('Desktop.Settings', {
     extend: 'Ext.window.Window',
 
     uses: [
@@ -17,7 +10,7 @@ Ext.define('MyDesktop.Settings', {
 
         'Ext.ux.desktop.Wallpaper',
 
-        'MyDesktop.WallpaperModel'
+        'Desktop.WallpaperModel'
     ],
 
     layout: 'anchor',
@@ -95,7 +88,7 @@ Ext.define('MyDesktop.Settings', {
                 scope: this
             },
             store: new Ext.data.TreeStore({
-                model: 'MyDesktop.WallpaperModel',
+                model: 'Desktop.WallpaperModel',
                 root: {
                     text:'Wallpaper',
                     expanded: true,
