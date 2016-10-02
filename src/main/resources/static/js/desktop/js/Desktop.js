@@ -250,10 +250,36 @@ Ext.define('Ext.ux.desktop.Desktop', {
         }
 
         ret.items.push(
-       		{ text: '刷新 F5', icon:'images/image_add.png',handler: function(){top.location.reload()}, scope: me, minWindows: 0 },
-                { text: '重排图标', handler: me.initShortcut, scope: me, minWindows: 0 },
-                { text: '平铺窗口', handler: me.tileWindows, scope: me, minWindows: 1 },
-                { text: '层叠窗口',icon:'images/accordian.gif', handler: me.cascadeWindows, scope: me, minWindows: 1 })
+            {
+                text: '刷新 F5',
+                glyph: 0xf021,
+                handler: function () {
+                    top.location.reload()
+                },
+                scope: me,
+                minWindows: 0
+            },
+            {
+                text: '重排图标',
+                glyph: 0xf079,
+                handler: me.initShortcut,
+                scope: me,
+                minWindows: 0
+            },
+            {
+                text: '平铺窗口',
+                glyph: 0xf016,
+                handler: me.tileWindows,
+                scope: me,
+                minWindows: 1
+            },
+            {
+                text: '层叠窗口',
+                glyph: 0xf0c5,
+                handler: me.cascadeWindows,
+                scope: me,
+                minWindows: 1
+            });
 
         return ret;
     },
@@ -264,10 +290,10 @@ Ext.define('Ext.ux.desktop.Desktop', {
             defaultAlign: 'br-tr',
             items: [
                 { text: '恢复', handler: me.onWindowMenuRestore, scope: me },
-                { text: '最小化', handler: me.onWindowMenuMinimize, scope: me },
-                { text: '最大化', handler: me.onWindowMenuMaximize, scope: me },
+                { text: '最小化', glyph: 0xf066,handler: me.onWindowMenuMinimize, scope: me },
+                { text: '最大化', glyph: 0xf065,handler: me.onWindowMenuMaximize, scope: me },
                 '-',
-                { text: '关闭', handler: me.onWindowMenuClose, scope: me }
+                { text: '关闭', glyph: 0xf00d,handler: me.onWindowMenuClose, scope: me }
             ],
             listeners: {
                 beforeshow: me.onWindowMenuBeforeShow,

@@ -5,6 +5,7 @@
     <title>Desktop</title>
     <link rel="stylesheet" type="text/css" href="/static/js/desktop/resources/css/ext-all-neptune.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/desktop/desktop.css" />
+    <link href="/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- GC -->
     <!-- <x-compile> -->

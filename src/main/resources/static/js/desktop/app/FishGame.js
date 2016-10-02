@@ -4,12 +4,6 @@
     requires: [ ],
 
     id:'fishgame',
-    init : function(){
-        this.launcher = {
-            text: '捕鱼达人',
-            iconCls:'user-girl'
-        }
-    },
 
     createWindow : function(){
         var desktop = this.app.getDesktop();

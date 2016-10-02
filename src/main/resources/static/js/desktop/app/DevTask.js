@@ -73,7 +73,7 @@ Ext.define('MyDesktop.DevTask', {
                                     } else if (v == 1) {
                                         return '正在处理';
                                     }else {
-                                        return '已处理';
+                                        return '<span style="color:green;">已完成</span>';
                                     }
                                 }
                             }
@@ -101,7 +101,7 @@ Ext.define('MyDesktop.DevTask', {
     statics: {
         getDummyData: function () {
             return [
-                ['锁定、关机菜单的按钮字体居中','刘法','2016-9-30 00:30:51',1],
+                ['锁定、关机菜单的按钮字体居中','刘法','2016-9-30 00:30:51',2],
                 ['点击时间区域显示日期控件','刘法','2016-9-30 00:41:23',1]
             ];
         }

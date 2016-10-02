@@ -84,9 +84,7 @@ Ext.define('MyDesktop.App', {
                 items: ['->',
                     {
                         text:'锁定',
-                        textAlign : 'left',
-                        iconCls:'settings',
-                        tooltip:'锁定系统',
+                        tooltip:'锁定系统,再次使用时需要输入密码解锁系统',
                         handler: function () {
                         },
                         scope: me
@@ -94,8 +92,7 @@ Ext.define('MyDesktop.App', {
                     '-',
                     {
                         text:'关机',
-                        tooltip:'退出系统',
-                        iconCls:'logout',
+                        tooltip:'安全退出系统',
                         handler: me.onLogout,
                         scope: me
                     }
