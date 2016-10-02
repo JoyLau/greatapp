@@ -19,6 +19,8 @@
                 border: false,
                 hideMode: 'offsets',
                 layout: 'fit',
+                //拖动时不会透明化窗口
+                // ghost:false,
                 html:'<iframe width=100% height=100% src="/static/games/fish/index.html"></iframe>'
             });
         }

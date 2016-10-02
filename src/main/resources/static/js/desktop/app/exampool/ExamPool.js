@@ -1,4 +1,7 @@
-﻿Ext.define('Desktop.DevTask', {
+/**
+ * Created by LiuFa on 2016/10/3.
+ */
+Ext.define('Desktop.ExamPool.ExamPool', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [
@@ -8,18 +11,18 @@
         'Ext.grid.RowNumberer'
     ],
 
-    id:'dev-task',
+    id:'exam-pool',
     createWindow : function(){
         var desktop = this.app.getDesktop();
-        var win = desktop.getWindow('dev-task');
+        var win = desktop.getWindow('exam-pool');
         if(!win){
             win = desktop.createWindow({
-                id: 'dev-task',
-                title:'开发任务',
+                id: 'exam-pool',
+                title:'题库',
                 width:740,
                 height:480,
-                iconCls: 'icon-grid',
-                animCollapse:false,
+                iconCls: 'exam-pool-task',
+                animCollapse:true,
                 constrainHeader:true,
                 layout: 'fit',
                 items: [
@@ -28,10 +31,10 @@
                         xtype: 'grid',
                         store: new Ext.data.ArrayStore({
                             fields: [
-                               { name: 'task' },
-                               { name: 'username' },
-                               { name: 'time' },
-                               { name: 'state'}
+                                { name: 'task' },
+                                { name: 'username' },
+                                { name: 'time' },
+                                { name: 'state'}
                             ],
                             data: Desktop.DevTask.getDummyData()
                         }),

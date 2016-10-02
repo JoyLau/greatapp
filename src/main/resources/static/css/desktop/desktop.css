@@ -313,6 +313,10 @@ div.ux-taskbar div.x-toolbar {
     background-image:url(../../images/desktop/task/tank-task.png) !important;
 }
 
+.exam-pool-task {
+    background-image:url(../../images/desktop/task/database-task.png) !important;
+}
+
 .user-kid {
     background-image:url(../../images/desktop/user_green.gif) !important;
 }
@@ -365,6 +369,11 @@ div.ux-taskbar div.x-toolbar {
 }
 .tank-shortcut {
     background-image: url(../../images/desktop/90tank.png);
+    width: 48px;
+    height: 48px;
+}
+.exam-pool-shortcut {
+    background-image: url(../../images/desktop/shortcut/database.png);
     width: 48px;
     height: 48px;
 }

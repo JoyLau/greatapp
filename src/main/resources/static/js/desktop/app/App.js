@@ -19,7 +19,8 @@ Ext.define('Desktop.App', {
         'Desktop.YYTai',
         'Desktop.Settings',
         'Desktop.DevTask',
-        'Desktop.Tank'
+        'Desktop.Tank',
+        'Desktop.ExamPool.ExamPool'
     ],
 
     init: function() {
@@ -39,7 +40,8 @@ Ext.define('Desktop.App', {
             new Desktop.Notepad(),
             new Desktop.YYTai(),
             new Desktop.DevTask(),
-            new Desktop.Tank()
+            new Desktop.Tank(),
+            new Desktop.ExamPool.ExamPool()
         ];
     },
 
@@ -62,7 +64,8 @@ Ext.define('Desktop.App', {
                     { name: '90坦克', iconCls: 'tank-shortcut', module: '90tank' },
                     { name: '音悦台', iconCls: 'yytai-shortcut', module: 'yytai' },
                     { name: '系统状态', iconCls: 'cpu-shortcut', module: 'systemstatus'},
-                    { name: '开发任务', iconCls: 'grid-shortcut', module: 'dev-task' }
+                    { name: '开发任务', iconCls: 'grid-shortcut', module: 'dev-task' },
+                    { name: '题库', iconCls: 'exam-pool-shortcut', module: 'exam-pool' }
                 ]
             }),
 
