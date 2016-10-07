@@ -62,9 +62,9 @@
                                 dataIndex: 'state',
                                 renderer : function(v, c, r) {
                                     if (v == 0) {
-                                        return '<span style="color:red;">未处理</span>';
+                                        return '<span style="color:red;">未开发</span>';
                                     } else if (v == 1) {
-                                        return '正在处理';
+                                        return '开发中..';
                                     }else {
                                         return '<span style="color:green;">已完成</span>';
                                     }
@@ -95,7 +95,8 @@
         getDummyData: function () {
             return [
                 ['锁定、关机菜单的按钮字体居中','刘法','2016-9-30 00:30:51',2],
-                ['点击时间区域显示日期控件','刘法','2016-9-30 00:41:23',1]
+                ['点击时间区域显示日期控件','刘法','2016-9-30 00:41:23',1],
+                ['题库模块开发','刘法','2016-10-7 10:43:56',1]
             ];
         }
     }

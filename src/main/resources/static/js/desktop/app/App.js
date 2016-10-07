@@ -20,7 +20,7 @@ Ext.define('Desktop.App', {
         'Desktop.Settings',
         'Desktop.DevTask',
         'Desktop.Tank',
-        'Desktop.ExamPool.ExamPool'
+        'Desktop.exampool.ExamPool'
     ],
 
     init: function() {
@@ -41,7 +41,7 @@ Ext.define('Desktop.App', {
             new Desktop.YYTai(),
             new Desktop.DevTask(),
             new Desktop.Tank(),
-            new Desktop.ExamPool.ExamPool()
+            new Desktop.exampool.ExamPool()
         ];
     },
 
@@ -109,7 +109,7 @@ Ext.define('Desktop.App', {
 
         return Ext.apply(ret, {
             trayItems: [
-                { xtype: 'trayclock'}
+                { xtype: 'trayclock', flex: 1 }
             ]
         });
     },

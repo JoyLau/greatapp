@@ -13,7 +13,7 @@
                 id: 'fishgame',
                 title:'捕鱼达人',
                 width:1024,
-                height:560,
+                height:770,
                 iconCls: 'fish-task',
                 animCollapse:false,
                 border: false,

@@ -69,8 +69,9 @@ public class LoginController {
     }
 
     @RequestMapping("/main")
-    public String mian(){
-        return "app/common/main/main";
+    public String main(){
+//        return "app/common/main/main";
+        return "desktop/desktop";
     }
     /**
      * 获取验证码（Gif版本）
