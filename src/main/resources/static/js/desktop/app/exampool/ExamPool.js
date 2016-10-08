@@ -99,7 +99,7 @@ Ext.define('Desktop.exampool.ExamPool', {
                                     {
                                         text: '选项A',
                                         width: '10%',
-                                        dataIndex: 'a',
+                                        dataIndex: 'a'
                                     },
                                     {
                                         text: '选项B',
