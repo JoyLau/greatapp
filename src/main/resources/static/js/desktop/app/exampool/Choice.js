@@ -1,88 +1,95 @@
-Ext.define('Desktop.exampool.Choice', {
+/*******************************************************************************
+ * Copyright (c) 2016 by LiuFa. All rights reserved
+ ******************************************************************************/
 
-    extend : 'Ext.form.Panel',
-    title : '题目查询',
-    frame : true,
-    region : 'north',
-    labelAlign : 'right',
-    collapsible : true,
-    height : '15%',
-    border : false,
-    bodyPadding : 20,
-    items : [{
-        layout : 'column',
-        items : [{
-            columnWidth : .3,
-            layout : 'form',
-            items : [{
-                xtype : 'textfield',
-                name : 'name',
-                fieldLabel : '题目名称',
-                labelAlign : "right",
-                anchor : '70%'
+/**
+ * queryForm
+ */
+Ext.define('Desktop.exampool.Choice', {
+    extend: 'Ext.form.Panel',
+    title: '题目查询',
+    id : 'exampool-choice-form',
+    frame: true,
+    region: 'north',
+    labelAlign: 'right',
+    collapsible: true,
+    height: '15%',
+    border: false,
+    bodyPadding: 20,
+    items: [{
+        layout: 'column',
+        items: [{
+            columnWidth: .3,
+            layout: 'form',
+            items: [{
+                xtype: 'textfield',
+                name: 'name',
+                fieldLabel: '题目名称',
+                labelAlign: "right",
+                anchor: '70%'
             }, {
-                name : 'updateTimeStart',
-                xtype : 'datefield',
-                labelAlign : "right",
-                fieldLabel : '添加时间',
-                format : 'Y-m-d',
-                anchor : '70%',
-                showToday : true,
-                editable : false
+                name: 'updateTimeStart',
+                xtype: 'datefield',
+                labelAlign: "right",
+                fieldLabel: '添加时间',
+                format: 'Y-m-d',
+                anchor: '70%',
+                showToday: true,
+                editable: false
             }]
 
         }, {
-            columnWidth : .3,
-            layout : 'form',
-            items : [{
-                xtype : 'combo',
-                editable : false,
-                mode : 'local',
-                fieldLabel : '题目类型',
-                labelAlign : "right",
-                emptyText : '--请选择--',
-                anchor : '60%',
-                triggerAction : 'all',
-                selectOnFocus : true,
-                hiddenName : 'state',
-                displayField : 'text',
-                valueField : 'id',
-                store : new Ext.data.SimpleStore({
-                    fields : ['id', 'text'],
-                    data : [['0', '公务员试题'],
+            columnWidth: .3,
+            layout: 'form',
+            items: [{
+                xtype: 'combo',
+                editable: false,
+                mode: 'local',
+                fieldLabel: '题目类型',
+                labelAlign: "right",
+                emptyText: '--请选择--',
+                anchor: '60%',
+                triggerAction: 'all',
+                selectOnFocus: true,
+                hiddenName: 'state',
+                displayField: 'text',
+                valueField: 'id',
+                store: new Ext.data.SimpleStore({
+                    fields: ['id', 'text'],
+                    data: [['0', '公务员试题'],
                         ['1', '驾考试题'],
                         ['2', '自考试题'],
                         ['3', '其他分类']]
                 })
             }, {
-                name : 'updateTimeEnd',
-                xtype : 'datefield',
-                fieldLabel : '至',
-                labelAlign : "right",
-                format : 'Y-m-d',
-                anchor : '70%',
-                showToday : true,
-                editable : false
+                name: 'updateTimeEnd',
+                xtype: 'datefield',
+                fieldLabel: '至',
+                labelAlign: "right",
+                format: 'Y-m-d',
+                anchor: '70%',
+                showToday: true,
+                editable: false
             }]
         }, {
-            columnWidth : .3,
-            layout : 'form',
-            items : [{
-                xtype : 'combo',
-                editable : false,
-                mode : 'local',
-                fieldLabel : '正确答案',
-                emptyText : '--请选择--',
-                labelAlign : "right",
-                anchor : '60%',
-                triggerAction : 'all',
-                selectOnFocus : true,
-                hiddenName : 'state',
-                displayField : 'text',
-                valueField : 'id',
-                store : new Ext.data.SimpleStore({
-                    fields : ['id', 'text'],
-                    data : [['0', 'A'],
+            columnWidth: .3,
+            layout: 'form',
+            items: [{
+                xtype: 'combo',
+                editable: false,
+                mode: 'local',
+                fieldLabel: '正确答案',
+                emptyText: '--请选择--',
+                labelAlign: "right",
+                anchor: '60%',
+                triggerAction: 'all',
+                selectOnFocus: true,
+                hiddenName: 'state',
+                displayField: 'text',
+                valueField: 'id',
+                store: new Ext.data.SimpleStore({
+                    fields: ['id', 'text'],
+                    data: [['0', 'A'],
                         ['1', 'B'],
                         ['2', 'C'],
                         ['3', 'D'],
@@ -94,114 +101,166 @@ Ext.define('Desktop.exampool.Choice', {
             }]
         }]
     }],
-    keys : [{
-        key : Ext.EventObject.ENTER,
-        fn : function() {
-            mygrid.getStore().reload()
+    keys: [{
+        key: Ext.EventObject.ENTER,
+        fn: function () {
+            userStore.reload()
         },
-        scope : this
+        scope: this
     }],
-    buttons : [{
-        text : '查询',
-        handler : function() {
-            mygrid.getStore().reload();
+    buttons: [{
+        text: '查询',
+        handler: function () {
+            userStore.reload();
         }
     }, {
-        text : '清空条件',
-        handler : function() {
-            queryForm.getForm().reset();
-        }
+        text: '清空条件',
+        handler: function () {
+            Ext.getCmp('exampool-choice-form').getForm().reset();
+        },
+        scope: this
     }]
 });
 
 
+/**
+ * grid
+ */
+
+Ext.define('ChoiceModel', {
+    extend: 'Ext.data.Model',
+    fields: ['title', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'answer']
+});
+
+var userStore = Ext.create('Ext.data.Store', {
+    model: 'ChoiceModel',
+    autoLoad: true,
+    pageSize: 10, //设置每页显示的数据数量
+    proxy: {
+        type: 'ajax',
+        url: 'static/js/app/common/main/data/data.json',
+        reader: {
+            type: 'json',
+            root: 'choice', //指定从json的哪个属性获取数据，如果不指定，则从json的跟属性获取
+            totalProperty: 'total' //总数据数量
+        }
+    }
+});
 
 Ext.define('Desktop.exampool.ChoiceGrid', {
-
-    extend : 'Ext.grid.GridPanel',
-    border : false,
-    stripeRows : true,
-    frame : true,
-    region : 'center',
-    loadMask : {
-        msg : "数据加载中,请稍等...."
-    },
-        columns : [new Ext.grid.RowNumberer(), {
-            header : '客户名称',
-            dataIndex : 'name',
-            sortable : true
-        }, {
-            header : '客户工作',
-            dataIndex : 'job',
-            sortable : true
-        }, {
-            header : '联系电话',
-            dataIndex : 'phoneNumber',
-            sortable : true,
-            renderer : function(v, cellmeta, record) {
-                return v
-            }
-        }],
-    bbar: [{
-        xtype: 'pagingtoolbar',
-        displayMsg: '显示 {0} - {1} 条，共计 {2} 条',
-        emptyMsg: "没有数据",
-        beforePageText: "当前页",
-        afterPageText: "共{0}页",
-        displayInfo: true
+    extend: 'Ext.grid.Panel',
+    requires: [
+        'static.js.app.plugins.ProgressBarPager'
+    ],
+    border: false,
+    stripeRows: true,
+    frame: true,
+    region: 'center',
+    store: userStore, //绑定上面创建的Store
+    selModel: Ext.create('Ext.selection.CheckboxModel'),
+    dockedItems: [{
+        xtype: 'pagingtoolbar', //在Grid Panel中添加paging toolbar
+        store: userStore, //把paging toolbar的Store设置成和Grid Panel的Store一样
+        displayInfo: true,
+        plugins: Ext.create('static.js.app.plugins.ProgressBarPager')
     }],
-    tbar : [{
-        text : '添加',
-        id : 'addCustomer',
-        listeners : {
-        }
+    tbar: [{
+        text: '添加',
+        id: 'addCustomer',
+        glyph: 0xf055,
+        listeners: {}
 
     }, '-', {
-        text : '修改',
-        id : 'updateCustomer',
-        listeners : {
-        }
+        text: '修改',
+        id: 'updateCustomer',
+        glyph: 0xf14b,
+        listeners: {}
     }, '-', {
-        text : '停用',
-        handler : function() {
+        text: '删除',
+        glyph: 0xf1f8,
+        handler: function () {
         },
-        listeners : {
-        }
+        listeners: {}
     }, '-', {
-        text : '启用',
-        handler : function() {
+        text: '导入文件',
+        glyph: 0xf0ed,
+        handler: function () {
         },
-        listeners : {
-        }
+        listeners: {}
     }, '-', {
-        text : '客户项目管理',
-        id : 'customerProject',
-        listeners : {
-        }
+        text: '导出题目',
+        glyph: 0xf0ee,
+        handler: function () {
+        },
+        listeners: {}
+    }, '-', {
+        text: '来20题',
+        glyph: 0xf02c,
+        handler: function () {
+        },
+        listeners: {}
     }],
-    listeners : {
-        // rowdblclick : this.modify,
-        // rowcontextmenu : function(g, i, e) {
-        //     if (i < 0)
-        //         return;
-        //     g.getSelectionModel().selectRow(i);
-        //     rightClick.showAt(e.getXY());
-        // },
-        // cellclick : function(grid, rowIndex, columnIndex, e) {
-        //     var record = grid.getStore().getAt(rowIndex);
-        //     var fieldName = grid.getColumnModel().getDataIndex(columnIndex);
-        //     if (fieldName == 'projectName') {
-        //         var data = record.get(fieldName);
-        //         if (!data || data == '') {
-        //             return;
-        //         }
-        //         data = data.replace(/,/g, ",</br>");
-        //         new Ext.ToolTip({
-        //             html : data,
-        //             title : '详情',
-        //             dismissDelay : 0
-        //         }).showAt(e.getXY());
-        //     }
-        // }
-    }
+    columns: [
+        {
+            xtype: 'rownumberer'
+        },
+        {
+            text: '题目',
+            width: '50%',
+            sortable: false,
+            hideable: false,
+            dataIndex: 'title' //Grid Panel中显示的字段，必须要和User Model中的字段一致
+        },
+        {
+            text: '选项A',
+            width: '10%',
+            dataIndex: 'a'
+        },
+        {
+            text: '选项B',
+            width: '10%',
+            dataIndex: 'b'
+        }
+        ,
+        {
+            text: '选项C',
+            width: '10%',
+            dataIndex: 'c'
+        }
+        ,
+        {
+            text: '选项D',
+            width: '10%',
+            dataIndex: 'd'
+        }
+        ,
+        {
+            text: '选项E',
+            hidden: true,
+            dataIndex: 'e'
+        },
+        {
+            text: '选项F',
+            hidden: true,
+            dataIndex: 'f'
+        }
+        ,
+        {
+            text: '选项G',
+            hidden: true,
+            dataIndex: 'g'
+        }
+        ,
+        {
+            text: '选项H',
+            hidden: true,
+            dataIndex: 'h'
+        }
+        ,
+        {
+            text: '正确答案',
+            width: '10%',
+            dataIndex: 'answer'
+        }
+    ]
 });

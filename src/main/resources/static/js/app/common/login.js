@@ -210,6 +210,7 @@ Ext.onReady(function () {
             anchor: '70%',
             blankText: '请输入验证码！',
             maxLength: 6,
+            minLength: 6,
             maxLengthText: '验证码不能超过6个字符!',
             listeners: {
                 focus : function () {
