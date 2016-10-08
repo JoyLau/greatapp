@@ -2,7 +2,7 @@
  * Created by LiuFa on 2016/10/3.
  */
 Ext.define('Desktop.exampool.ExamPool', {
-    requires : ['Desktop.exampool.Choice'],
+    // requires : ['Desktop.exampool.Choice'],
     id:'exam-pool',
     createWindow : function(){
         var desktop = this.app.getDesktop();
@@ -34,7 +34,8 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        items: [Ext.create('Desktop.exampool.Choice'),Ext.create('Desktop.exampool.ChoiceGrid')]
+                        // items: [Ext.create('Desktop.exampool.Choice'),Ext.create('Desktop.exampool.ChoiceGrid')]
+                        autoLoad: {url: 'exampool/choice'}
                     }, {
                         title: '简答题',
                         loadMask: true,

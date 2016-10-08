@@ -9,6 +9,7 @@
 Ext.define('static.js.app.plugins.ProgressBarPager', {
 
     requires: ['Ext.ProgressBar'],
+    xtype: 'progressbarpager',
     /**
      * @cfg {Number} width
      * <p>The default progress bar width.  Default is 225.</p>

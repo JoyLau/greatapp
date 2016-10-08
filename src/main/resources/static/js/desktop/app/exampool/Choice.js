@@ -162,7 +162,7 @@ Ext.define('Desktop.exampool.ChoiceGrid', {
         xtype: 'pagingtoolbar', //在Grid Panel中添加paging toolbar
         store: userStore, //把paging toolbar的Store设置成和Grid Panel的Store一样
         displayInfo: true,
-        plugins: Ext.create('static.js.app.plugins.ProgressBarPager')
+        plugins: 'progressbarpager'
     }],
     tbar: [{
         text: '添加',
