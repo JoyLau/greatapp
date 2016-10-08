@@ -33,15 +33,15 @@ Ext.define('Desktop.App', {
 
     getModules : function(){
         return [
-            new Desktop.AboutLinb(),
-            new Desktop.SystemStatus(),
-            new Desktop.FishGame(),
-            new Desktop.AccordionWindow(),
-            new Desktop.Notepad(),
-            new Desktop.YYTai(),
-            new Desktop.DevTask(),
-            new Desktop.Tank(),
-            new Desktop.exampool.ExamPool()
+            Ext.create('Desktop.AboutLinb'),
+            Ext.create('Desktop.SystemStatus'),
+            Ext.create('Desktop.FishGame'),
+            Ext.create('Desktop.AccordionWindow'),
+            Ext.create('Desktop.Notepad'),
+            Ext.create('Desktop.YYTai'),
+            Ext.create('Desktop.DevTask') ,
+            Ext.create('Desktop.Tank'),
+            Ext.create('Desktop.exampool.ExamPool')
         ];
     },
 
