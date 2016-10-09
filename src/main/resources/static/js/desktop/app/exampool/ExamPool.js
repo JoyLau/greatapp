@@ -60,7 +60,9 @@ Ext.define('Desktop.exampool.ExamPool', {
                     }]
                 })]
             });
+
+
         }
         return win;
-    }
+    },
 });

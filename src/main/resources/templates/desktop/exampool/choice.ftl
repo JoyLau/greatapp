@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <script type="text/javascript" src="${path}/static/js/desktop/app/exampool/choice/Choice.js"></script>
+<#--<#include "../common/common.ftl" />-->
     <script type="text/javascript">
         var basePath = '${path}';
     </script>
@@ -40,7 +40,8 @@
 </head>
 
 <body oncontextmenu="return false;">
-<div style="background-color: #00ba00">ss</div>
+<div style="background-color: #00ba00;height: '100%';width: '100%'" id="the1">s</div>
 <audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>
 </body>
 </html>
+<script type="text/javascript" src="${path}/static/js/desktop/app/exampool/choice/Choice.js"></script>

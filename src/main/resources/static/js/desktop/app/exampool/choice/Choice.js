@@ -273,16 +273,49 @@ Ext.application({
         'examPoolChoice.ChoiceController'
     ],
     launch: function() {
+        /*Ext.create('examPoolChoice.ChoiceQueryForm',{
+            height: 300,
+            id : 'asd',
+            renderTo : 'the1'
+        })
+        Ext.create('examPoolChoice.ChoiceQueryForm',{
+            height: 300,
+            id : 'assd',
+            renderTo : 'the1'
+        })
+        Ext.create('examPoolChoice.ChoiceQueryForm',{
+            height: 300,
+            id : 'asssd',
+            renderTo : 'the1'
+        })*/
+
+        /*Ext.create('Ext.panel.Panel', {
+            width: '100%',
+            title: '题目查询',
+            id: 'exampool-choice-form',
+            frame: true,
+            region: 'north',
+            labelAlign: 'right',
+            collapsible: true,
+            height: '25%',
+            border: false,
+            bodyPadding: 20,
+            html: '<p>World!</p>',
+            renderTo: 'the1'
+        });*/
         Ext.create('Ext.container.Viewport', {
             layout: 'border',
             hideBorders: true,
+            contentEl : 'the1',
             requires : [
                 'examPoolChoice.ChoiceGrid',
                 'examPoolChoice.ChoiceQueryForm'
             ],
                         // layout: 'border',
                         items: [
-                            Ext.create('examPoolChoice.ChoiceQueryForm')
+                            Ext.create('examPoolChoice.ChoiceQueryForm',{
+                                height: 300,
+                            })
                         ]
         });
         /*Ext.create('Ext.container.Viewport', {
