@@ -2,6 +2,8 @@ package cn.lfdevelopment.www.app.exampool.pojo;
 
 /**
  * Created by LiuFa on 2016/10/8.
+ * cn.lfdevelopment.www.app.exampool.pojo
+ * DevelopmentApp
  */
 public class CivilServantChoice {
     private Integer id;

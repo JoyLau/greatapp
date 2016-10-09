@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <title>Desktop</title>
-    <link rel="stylesheet" type="text/css" href="/static/js/desktop/resources/css/ext-all-neptune.css" />
+    <link rel="stylesheet" type="text/css" href="/static/js/desktop/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/desktop/desktop.css" />
     <link href="/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
 

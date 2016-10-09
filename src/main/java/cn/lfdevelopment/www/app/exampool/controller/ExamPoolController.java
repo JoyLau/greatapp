@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by LiuFa on 2016/10/8.
+ * cn.lfdevelopment.www.app.exampool.controller
+ * DevelopmentApp
  */
 @Controller
 public class ExamPoolController {
@@ -20,6 +22,6 @@ public class ExamPoolController {
 
     @RequestMapping("/exampool/choice")
     public String choice(){
-        return "desktop/exampool/exampool";
+        return "desktop/exampool/choice";
     }
 }

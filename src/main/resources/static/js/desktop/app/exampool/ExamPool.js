@@ -26,7 +26,7 @@ Ext.define('Desktop.exampool.ExamPool', {
                     defaults: {
                         autoScroll: false
                     },
-                    minTabWidth: 80,
+                    minTabWidth: 200,
                     items: [{
                         id: 'exam-pool-choice',
                         title: '选择题',
@@ -34,8 +34,15 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        // items: [Ext.create('Desktop.exampool.Choice'),Ext.create('Desktop.exampool.ChoiceGrid')]
-                        autoLoad: {url: 'exampool/choice'}
+                        autoLoad:{
+                            url: 'exampool/choice',
+                            scope: this, // optional scope for the callback
+                            discardUrl: true,
+                            nocache: true,
+                            text: "页面加载中,请稍候……",
+                            loadMask: 'loading...',
+                            scripts: true},
+                        // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
                     }, {
                         title: '简答题',
                         loadMask: true,
