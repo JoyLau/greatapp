@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="${path}/static/js/desktop/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
     <link href="${path}/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
 
-    <script type="text/javascript" src="${path}/static/js/desktop/js/ext-all.js"></script>
+    <script type="text/javascript" src="${path}/static/js/desktop/js/ext-all-dev.js"></script>
     <script type="text/javascript" src="${path}/static/js/desktop/js/ext-lang-zh_CN.js"></script>
     <script type="text/javascript" src="${path}/static/js/desktop/js/ext-theme-neptune.js"></script>
 

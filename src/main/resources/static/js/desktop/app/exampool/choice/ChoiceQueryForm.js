@@ -56,13 +56,12 @@ Ext.define('examPoolChoice.ChoiceQueryForm', {
                 style: 'margin-left: 5px;padding-left: 5px;',
                 items:[{
                     xtype: 'combo',
-                    editable: false,
+                    editable: true,
                     mode: 'local',
                     fieldLabel: '题目类型',
                     emptyText: '--请选择--',
                     anchor: '60%',
                     triggerAction: 'all',
-                    selectOnFocus: true,
                     hiddenName: 'state',
                     displayField: 'text',
                     valueField: 'id',
@@ -75,13 +74,12 @@ Ext.define('examPoolChoice.ChoiceQueryForm', {
                     })
                 },{
                     xtype: 'combo',
-                    editable: false,
+                    editable: true,
                     mode: 'local',
                     fieldLabel: '包含图片',
                     emptyText: '--请选择--',
                     anchor: '60%',
                     triggerAction: 'all',
-                    selectOnFocus: true,
                     hiddenName: 'state',
                     displayField: 'text',
                     valueField: 'id',
@@ -106,12 +104,11 @@ Ext.define('examPoolChoice.ChoiceQueryForm', {
                     fieldLabel: '题目名称'
                 },{
                     xtype: 'combo',
-                    editable: false,
+                    editable: true,
                     mode: 'local',
                     fieldLabel: '正确答案',
                     emptyText: '--请选择--',
                     triggerAction: 'all',
-                    selectOnFocus: true,
                     hiddenName: 'state',
                     displayField: 'text',
                     valueField: 'id',
