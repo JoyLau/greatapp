@@ -69,6 +69,13 @@ Ext.define('Desktop.exampool.ExamPool', {
                         glyph: 0xf188,
                         closable: false,
                         html: '开发中....'
+                    }, {
+                        title: '题库设置',
+                        loadMask: true,
+                        group: null,
+                        glyph: 0xf085,
+                        closable: true,
+                        html: '开发中....'
                     }]
                 })]
             });

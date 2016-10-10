@@ -272,26 +272,28 @@ Ext.application({
     controllers:[
         'examPoolChoice.ChoiceController'
     ],
-    launch: function() {
-        Ext.get('loading').hide();
-        Ext.get('loading-mask').fadeOut({
-            hidden : true
-        });
-
-
+    launch: function () {
         Ext.create('Ext.container.Viewport', {
             layout: 'border',
-            requires: [
-                'examPoolChoice.ChoiceGrid',
-                'examPoolChoice.ChoiceQueryForm'
-            ],
-            items: [
-                {
-                    xtype : 'ChoiceQueryForm'
-                },{
-                    xtype : 'ChoiceGrid'
+            items: [{
+                xtype: 'ChoiceQueryForm'
+            }, {
+                xtype: 'ChoiceDetail'
+            }, {
+                region: 'center',
+                xtype: 'tabpanel', // TabPanel本身没有title属性
+                activeTab: 0,      // 配置默认显示的激活面板
+                items: {
+                    title: 'Default Tab',
+                    html: 'The first tab\'s content. Others may be added dynamically'
                 }
+            }
             ]
+        });
+
+        Ext.get('loading').hide();
+        Ext.get('loading-mask').fadeOut({
+            hidden: true
         });
     }
 });

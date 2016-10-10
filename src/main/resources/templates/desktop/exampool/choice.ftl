@@ -19,6 +19,7 @@
             padding: 2px;
             z-index: 20001;
             height: auto;
+            width: 200px;
         }
         #loading img {
             margin-bottom: 5px;
@@ -37,9 +38,6 @@
             font-size: 11px;
         }
     </style>
-    <script type="text/javascript">
-        var basePath = '${path}';
-    </script>
     <title>ExamPool-Choice</title>
 </head>
 
@@ -50,7 +48,7 @@
         <img src="${path}/static/images/extanim32.gif" width="32" height="32"
              style="margin-right: 8px; float: left; vertical-align: top;">
         <br>
-        <span id="loading-msg">loading...</span>
+        <span id="loading-msg">玩命加载中......</span>
     </div>
 </div>
 <audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>
