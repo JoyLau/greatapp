@@ -6,4 +6,5 @@ Ext.define('examPoolChoice.ChoiceController', {
     extend: 'Ext.app.Controller',
     stores: ['examPoolChoice.ChoiceStore'],
     models: ['examPoolChoice.ChoiceModel'],
+    views : ['examPoolChoice.ChoiceQueryForm','examPoolChoice.ChoiceGrid']
 })

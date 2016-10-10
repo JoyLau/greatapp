@@ -2,7 +2,6 @@
  * Created by LiuFa on 2016/10/3.
  */
 Ext.define('Desktop.exampool.ExamPool', {
-    // requires : ['Desktop.exampool.Choice'],
     id:'exam-pool',
     createWindow : function(){
         var desktop = this.app.getDesktop();
@@ -15,6 +14,8 @@ Ext.define('Desktop.exampool.ExamPool', {
                 height:'70%',
                 iconCls: 'exam-pool-task',
                 animCollapse:true,
+                //窗口拖动不会透明化
+                // ghost:false,
                 constrainHeader:true,
                 layout: 'fit',
                 items: [Ext.create('Ext.tab.Panel', {
@@ -34,22 +35,26 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        autoLoad:{
-                            url: 'exampool/choice',
-                            scope: this, // optional scope for the callback
-                            discardUrl: true,
-                            nocache: true,
-                            text: "页面加载中,请稍候……",
-                            loadMask: 'loading...',
-                            scripts: true},
-                        // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                        // autoLoad:{
+                        //     url: 'exampool/choice',
+                        //     scope: this, // optional scope for the callback
+                        //     discardUrl: true,
+                        //     nocache: true,
+                        //     text: "页面加载中,请稍候……",
+                        //     loadMask: 'loading...',
+                        //     scripts: true},
+                        html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
                     }, {
                         title: '简答题',
                         loadMask: true,
                         group: null,
                         glyph: 0xf09d,
                         closable: false,
-                        html: '开发中....'
+                        listeners:{
+                            activate:function(){
+                                this.update({html : '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'})
+                            }
+                        }
                     }, {
                         title: '综合题',
                         loadMask: true,
@@ -57,12 +62,17 @@ Ext.define('Desktop.exampool.ExamPool', {
                         glyph: 0xf275,
                         closable: false,
                         html: '开发中....'
+                    }, {
+                        title: '爬虫抓取',
+                        loadMask: true,
+                        group: null,
+                        glyph: 0xf188,
+                        closable: false,
+                        html: '开发中....'
                     }]
                 })]
             });
-
-
         }
         return win;
-    },
+    }
 });

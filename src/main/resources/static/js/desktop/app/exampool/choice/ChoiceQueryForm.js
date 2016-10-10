@@ -10,14 +10,14 @@
  */
 Ext.define('examPoolChoice.ChoiceQueryForm', {
     extend: 'Ext.form.Panel',
-    xtype : 'ChoiceQueryForm',
+    alias : 'widget.ChoiceQueryForm',
     title: '题目查询',
     id: 'exampool-choice-form',
     frame: true,
     region: 'north',
     labelAlign: 'right',
     collapsible: true,
-    height: '25%',
+    height: 70,
     border: false,
     bodyPadding: 20,
     items: [{

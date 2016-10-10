@@ -7,18 +7,20 @@
  */
 Ext.define('examPoolChoice.ChoiceGrid', {
     extend: 'Ext.grid.Panel',
+    alias : 'widget.ChoiceGrid',
     requires: [
         basePath + '/static.js.app.plugins.ProgressBarPager',
+        'examPoolChoice.ChoiceStore'
     ],
     border: false,
     stripeRows: true,
     frame: true,
     region: 'center',
-    store: 'examPoolChoice.ChoiceStore', //绑定上面创建的Store
+    store: 'ChoiceStore', //绑定上面创建的Store
     selModel: Ext.create('Ext.selection.CheckboxModel'),
     dockedItems: [{
         xtype: 'pagingtoolbar', //在Grid Panel中添加paging toolbar
-        store: Ext.create('examPoolChoice.ChoiceStore'), //把paging toolbar的Store设置成和Grid Panel的Store一样
+        store: 'ChoiceStore', //把paging toolbar的Store设置成和Grid Panel的Store一样
         displayInfo: true,
         plugins: 'progressbarpager'
     }],
