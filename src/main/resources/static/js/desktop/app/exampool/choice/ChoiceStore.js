@@ -9,7 +9,7 @@ Ext.define('examPoolChoice.ChoiceStore', {
     extend : 'Ext.data.Store',
     storeId : 'ChoiceStore',
     model: 'examPoolChoice.ChoiceModel',
-    autoLoad: true,
+    autoLoad: false,
     pageSize: 10, //设置每页显示的数据数量
     proxy: {
         type: 'ajax',

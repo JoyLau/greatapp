@@ -9,7 +9,7 @@ Ext.define('examPoolChoice.ChoiceGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.ChoiceGrid',
     requires: [
-        // basePath + 'static.js.app.plugins.ProgressBarPager'
+        // basePath + '.static.js.app.plugins.ProgressBarPager'
     ],
     border: false,
     stripeRows: true,
@@ -22,7 +22,7 @@ Ext.define('examPoolChoice.ChoiceGrid', {
         store: Ext.data.StoreManager.lookup('ChoiceStore'), //把paging toolbar的Store设置成和Grid Panel的Store一样
         displayInfo: true,
         dock: 'bottom',
-        // plugins: 'plu1.ProgressBarPager'
+         // plugins: 'progressbarpager'
     }],
     tbar: [{
         text: '添加',
