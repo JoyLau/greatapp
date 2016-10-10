@@ -131,14 +131,14 @@ Ext.define('examPoolChoice.ChoiceQueryForm', {
     keys: [{
         key: Ext.EventObject.ENTER,
         fn: function () {
-            userStore.reload()
+            Ext.getCmp('exampool-choice-grid').getStore().reload()
         },
         scope: this
     }],
     buttons: [{
         text: '查询',
         handler: function () {
-            userStore.reload();
+            Ext.getCmp('exampool-choice-grid').getStore().reload()
         }
     }, {
         text: '清空条件',
