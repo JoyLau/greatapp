@@ -13,4 +13,5 @@
 
     <script type="text/javascript">
         var basePath = '${path}';
+        Ext.setGlyphFontFamily('FontAwesome');
     </script>
