@@ -12,6 +12,7 @@ Ext.define('examPoolChoice.ChoiceQueryForm', {
     extend: 'Ext.form.Panel',
     alias : 'widget.ChoiceQueryForm',
     title: '题目查询',
+    glyph: 0xf00e,
     id: 'exampool-choice-form',
     frame: true,
     region: 'north',
@@ -137,11 +138,13 @@ Ext.define('examPoolChoice.ChoiceQueryForm', {
     }],
     buttons: [{
         text: '查询',
+        glyph: 0xf002,
         handler: function () {
             Ext.getCmp('exampool-choice-grid').getStore().reload()
         }
     }, {
         text: '清空条件',
+        glyph: 0xf056,
         handler: function () {
             Ext.getCmp('exampool-choice-form').getForm().reset();
         },

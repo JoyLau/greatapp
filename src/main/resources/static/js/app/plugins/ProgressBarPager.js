@@ -6,10 +6,10 @@
  * Plugin for displaying a progressbar inside of a paging toolbar
  * instead of plain text.
  */
-Ext.define('static.js.app.plugins.ProgressBarPager', {
+Ext.define('Ext.ux.plugins.ProgressBarPager', {
 
     requires: ['Ext.ProgressBar'],
-    xtype: 'progressbarpager',
+    alias: 'widget.ProgressBarPager',
     /**
      * @cfg {Number} width
      * <p>The default progress bar width.  Default is 225.</p>
@@ -25,7 +25,7 @@ Ext.define('static.js.app.plugins.ProgressBarPager', {
      * <p>A {@link Ext.fx.Anim Ext.fx.Anim} configuration object.</p>
      */
     defaultAnimCfg : {
-        duration: 1000,
+        duration: 1500,
         easing: 'bounceOut'
     },
 
@@ -78,8 +78,8 @@ Ext.define('static.js.app.plugins.ProgressBarPager', {
             box = this.progressBar.getBox(),
             xy = e.getXY(),
             position = xy[0]- box.x,
-            pages = Math.ceil(parent.store.getTotalCount() / parent.pageSize),
-            newPage = Math.max(Math.ceil(position / (displayItem.width / pages)), 1);
+            pages = Math.ceil(parent.store.getTotalCount() / parent.store.pageSize),
+            newPage = Math.max(Math.ceil(position / (displayItem.getWidth() / pages)), 1);
 
         parent.store.loadPage(newPage);
     },

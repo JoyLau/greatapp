@@ -18,18 +18,20 @@ Ext.define('examPoolChoice.ChoiceGrid', {
     region: 'center',
     selModel: Ext.create('Ext.selection.CheckboxModel'),
 
-    // store: Ext.data.StoreManager.lookup('ChoiceStore'), //绑定上面创建的Store
+    // store: Ext.data.StoreManager.lookup('ChoiceStore'), //绑定Store
     initComponent : function() {
-        var mystore = Ext.create('examPoolChoice.ChoiceStore');
-        Ext.data.StoreManager.lookup('ChoiceStore')
-        this.store = mystore;
-        mystore.load({params : {start : 0,limit : 10}});
+        var store = Ext.create('examPoolChoice.ChoiceStore');
+        Ext.data.StoreManager.lookup('ChoiceStore');
+        this.store = store;
+        store.load({params : {start : 0,limit : 10}});
         this.dockedItems = [{
-            xtype: 'pagingtoolbar', //在Grid Panel中添加paging toolbar
-            store: mystore, //把paging toolbar的Store设置成和Grid Panel的Store一样
+            xtype: 'pagingtoolbar',
+            store: store,
             displayInfo: true,
             dock: 'bottom',
-            // plugins: 'progressbarpager'
+            plugins: Ext.create('widget.ProgressBarPager',{
+                width : '70%'
+            })
         }];
         this.callParent(arguments);
     },
@@ -73,38 +75,38 @@ Ext.define('examPoolChoice.ChoiceGrid', {
     }, {
         text: '选项A',
         width: '10%',
-        dataIndex: 'a'
+        dataIndex: 'answer_a'
     }, {
         text: '选项B',
         width: '10%',
-        dataIndex: 'b'
+        dataIndex: 'answer_b'
     }, {
         text: '选项C',
         width: '10%',
-        dataIndex: 'c'
+        dataIndex: 'answer_c'
     }, {
         text: '选项D',
         width: '10%',
-        dataIndex: 'd'
+        dataIndex: 'answer_d'
     }, {
         text: '选项E',
         hidden: true,
-        dataIndex: 'e'
+        dataIndex: 'answer_e'
     }, {
         text: '选项F',
         hidden: true,
-        dataIndex: 'f'
+        dataIndex: 'answer_f'
     }, {
         text: '选项G',
         hidden: true,
-        dataIndex: 'g'
+        dataIndex: 'answer_g'
     }, {
         text: '选项H',
         hidden: true,
-        dataIndex: 'h'
+        dataIndex: 'answer_h'
     }, {
         text: '正确答案',
         width: '10%',
-        dataIndex: 'answer'
+        dataIndex: 'answer_right'
     }]
 });

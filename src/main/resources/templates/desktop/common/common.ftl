@@ -10,6 +10,7 @@
     <script type="text/javascript" src="${path}/static/js/desktop/js/ext-all-dev.js"></script>
     <script type="text/javascript" src="${path}/static/js/desktop/js/ext-lang-zh_CN.js"></script>
     <script type="text/javascript" src="${path}/static/js/desktop/js/ext-theme-neptune.js"></script>
+    <script type="text/javascript" src="${path}/static/js/app/plugins/ProgressBarPager.js"></script>
 
     <script type="text/javascript">
         var basePath = '${path}';

@@ -44,7 +44,8 @@ Ext.define('Ext.ux.desktop.TaskBar', {
             {
                 xtype: 'button',
                 cls: 'ux-start-button',
-                iconCls: 'ux-start-button-icon',
+                // iconCls: 'ux-start-button-icon',
+                glyph: 0xf17a,
                 menu: me.startMenu,
                 menuAlign: 'bl-tl',
                 text: me.startBtnText
@@ -54,7 +55,8 @@ Ext.define('Ext.ux.desktop.TaskBar', {
                 xtype : 'button',
                 tooltip: {text: '点击进入全屏', align: 'bl-tl'},
                 text : '',
-                icon: "static/images/desktop/fullscreen.png",
+                // icon: "static/images/desktop/fullscreen.png",
+                glyph: 0xf0b2,
                 handler: fullscreen
             },
             '-',
@@ -308,6 +310,7 @@ var fullscreen = function (btn) {
             }
         }
         btn.setText('退出全屏');
+        btn.setGlyph(0xf066);
         btn.setTooltip('点击退出全屏');
     }else {
         if (document.exitFullscreen) {
@@ -323,6 +326,7 @@ var fullscreen = function (btn) {
             document.msExitFullscreen();
         }
         btn.setText('');
+        btn.setGlyph(0xf065);
         btn.setTooltip('点击进入全屏');
     }
 };

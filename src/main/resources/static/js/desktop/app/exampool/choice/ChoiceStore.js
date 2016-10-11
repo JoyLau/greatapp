@@ -13,7 +13,7 @@ Ext.define('examPoolChoice.ChoiceStore', {
     pageSize: 10, //设置每页显示的数据数量
     proxy: {
         type: 'ajax',
-        url: basePath + '/static/js/app/common/main/data/data.json',
+        url: basePath + '/exampool/getdata',
         reader: {
             type: 'json',
             root: 'choice', //指定从json的哪个属性获取数据，如果不指定，则从json的跟属性获取

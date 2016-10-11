@@ -9,6 +9,7 @@ Ext.define('examPoolChoice.ChoiceDetail',{
     extend : 'Ext.panel.Panel',
     alias : 'widget.ChoiceDetail',
     title: '题目详细信息',
+    glyph: 0xf05a,
     id: 'exampool-choice-detail',
     frame: true,
     region: 'east',
