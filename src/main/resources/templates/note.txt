@@ -7,3 +7,18 @@ function exit(){
      window.close();
   }
 }
+
+
+
+动态添加删除Textfield
+handler: function(button) {
+    var addChoiceForm = Ext.getCmp('addChoiceForm');
+    var fd = new Ext.form.field.Text({fieldLabel:'first'});
+    addChoiceForm.items.add(addChoiceForm.items.getCount(), fd);
+    addChoiceForm.doLayout();
+}
+
+handler: function(button) {
+    var addChoiceForm = Ext.getCmp('addChoiceForm');
+    addChoiceForm.remove(addChoiceForm.items.getLast().getId());
+}

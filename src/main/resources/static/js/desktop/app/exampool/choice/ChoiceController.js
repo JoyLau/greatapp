@@ -43,31 +43,208 @@ Ext.define('examPoolChoice.ChoiceController', {
             glyph: 0xf055,
             border : false,
             width : 600,
-            height : 300,
+            height : 400,
             layout : 'anchor',
             draggable : true,
             modal : true,
             animateTarget : Ext.get('addExamPool'),
             items : [Ext.create('Ext.form.FormPanel',{
                 anchor : '100% 100%',
-                url : basePath + 'manage/customer_save.action',
-                monitorValid : true,
+                id : 'addChoiceForm',
+                autoScroll : true,
+                url : basePath + '/exampool/saveChoice',
                 frame : false,
-                labelAlign : 'right',
                 buttonAlign : 'center',
-                labelWidth : 100,
+                bodyPadding: 20,
                 items :[{
-
+                    xtype : 'textarea',
+                    name : 'title',
+                    anchor : '90%',
+                    height : 80,
+                    allowBlank: false,
+                    fieldLabel : '题目'
+                },{
+                    xtype: 'textfield',
+                    name: 'answer_a',
+                    allowBlank: false,
+                    fieldLabel: '选项A'
+                },{
+                    xtype: 'textfield',
+                    name: 'answer_b',
+                    allowBlank: false,
+                    fieldLabel: '选项B'
+                },{
+                    xtype: 'textfield',
+                    name: 'answer_c',
+                    allowBlank: false,
+                    fieldLabel: '选项C'
+                },{
+                    xtype:'fieldset',
+                    border: false,
+                    padding:'0 0 0 0',
+                    margin: '0 0 5',
+                    layout: 'column',
+                    items:[{
+                        xtype: 'textfield',
+                        width : 255,
+                        name: 'answer_d',
+                        allowBlank: false,
+                        fieldLabel: '选项D'
+                    },{
+                            xtype: 'button',
+                            glyph: 0xf067,
+                            id: 'addbutton',
+                            margin: '0 20',
+                            handler: function() {
+                                Ext.getCmp("answer_e").setVisible(true);
+                                Ext.getCmp("answer_f").setVisible(true);
+                                Ext.getCmp("answer_g").setVisible(true);
+                                Ext.getCmp("answer_h").setVisible(true);
+                            }
+                        }]
+                },{
+                    xtype:'fieldset',
+                    border: false,
+                    id : 'answer_e',
+                    padding:'0 0 0 0',
+                    layout: 'column',
+                    margin: '0 0 5',
+                    hidden : true,
+                    items:[{
+                        xtype: 'textfield',
+                        width : 255,
+                        name: 'answer_e',
+                        fieldLabel: '选项E'
+                    },{
+                        xtype: 'button',
+                        glyph: 0xf068,
+                        margin: '0 20',
+                        handler: function() {
+                            Ext.getCmp('addChoiceForm').getForm().findField('answer_e').setValue('');
+                            //移除组件
+                            // addChoiceForm.remove('answer_e');
+                            Ext.getCmp("answer_e").setVisible(false);
+                        }
+                    }]
+                },{
+                    xtype:'fieldset',
+                    border: false,
+                    id : 'answer_f',
+                    padding:'0 0 0 0',
+                    margin: '0 0 5',
+                    layout: 'column',
+                    hidden : true,
+                    items:[{
+                        xtype: 'textfield',
+                        width : 255,
+                        name: 'answer_f',
+                        fieldLabel: '选项F'
+                    },{
+                        xtype: 'button',
+                        glyph: 0xf068,
+                        margin: '0 20',
+                        handler: function() {
+                            Ext.getCmp('addChoiceForm').getForm().findField('answer_f').setValue('');
+                            Ext.getCmp("answer_f").setVisible(false);
+                        }
+                    }]
+                },{
+                    xtype:'fieldset',
+                    id : 'answer_g',
+                    border: false,
+                    padding:'0 0 0 0',
+                    margin: '0 0 5',
+                    layout: 'column',
+                    hidden : true,
+                    items:[{
+                        xtype: 'textfield',
+                        width : 255,
+                        name: 'answer_g',
+                        fieldLabel: '选项G'
+                    },{
+                        xtype: 'button',
+                        glyph: 0xf068,
+                        margin: '0 20',
+                        handler: function() {
+                            Ext.getCmp('addChoiceForm').getForm().findField('answer_g').setValue('');
+                            Ext.getCmp("answer_g").setVisible(false);
+                        }
+                    }]
+                },{
+                    xtype:'fieldset',
+                    border: false,
+                    padding:'0 0 0 0',
+                    margin: '0 0 5',
+                    id : 'answer_h',
+                    layout: 'column',
+                    hidden : true,
+                    items:[{
+                        xtype: 'textfield',
+                        width : 255,
+                        name: 'answer_h',
+                        fieldLabel: '选项H'
+                    },{
+                        xtype: 'button',
+                        glyph: 0xf068,
+                        margin: '0 20',
+                        handler: function() {
+                            Ext.getCmp('addChoiceForm').getForm().findField('answer_h').setValue('');
+                            Ext.getCmp("answer_h").setVisible(false);
+                        }
+                    }]
+                },{
+                    xtype: 'combo',
+                    editable: false,
+                    mode: 'local',
+                    allowBlank: false,
+                    fieldLabel: '题目类型',
+                    emptyText: '--请选择--',
+                    anchor: '60%',
+                    triggerAction: 'all',
+                    name: 'type',
+                    displayField: 'text',
+                    valueField: 'id',
+                    store: new Ext.data.SimpleStore({
+                        fields: ['id', 'text'],
+                        data: [['0', '公务员试题'],
+                            ['1', '驾考试题'],
+                            ['2', '自考试题'],
+                            ['3', '其他分类']]
+                    })
+                },{
+                    xtype: 'combo',
+                    editable: false,
+                    allowBlank: false,
+                    mode: 'local',
+                    fieldLabel: '正确答案',
+                    emptyText: '--请选择--',
+                    anchor: '60%',
+                    triggerAction: 'all',
+                    name: 'answer_right',
+                    displayField: 'text',
+                    valueField: 'id',
+                    store: new Ext.data.SimpleStore({
+                        fields: ['id', 'text'],
+                        data: [['0', 'A'],
+                            ['1', 'B'],
+                            ['2', 'C'],
+                            ['3', 'D'],
+                            ['4', 'E'],
+                            ['5', 'F'],
+                            ['6', 'G'],
+                            ['7', 'H']]
+                    })
                 }],
                 buttons : [{
                     formBind : true,
                     text : '保存',
                     handler : function() {
-                        if (!fp.getForm().isValid()) {
+                        var form = Ext.getCmp('addChoiceForm');
+                        if (!form.getForm().isValid()) {
                             return;
                         }
-                        var data = fp.form.getValues();
-                        fp.getForm().submit({
+                        var data = form.form.getValues();
+                        form.getForm().submit({
                             method : 'post',
                             waitTitle : '保存',
                             waitMsg : '正在保存...',
@@ -75,29 +252,26 @@ Ext.define('examPoolChoice.ChoiceController', {
                                 data : Ext.encode(data)
                             },
                             success : function(form, action) {
-                                Ext.example
-                                    .msg('提示', action.result.msg);
-                                Ext.getCmp('addWin').close();
-                                if (cfg.callback) {
-                                    cfg.callback();
-                                }
+                                Ext.Msg.alert('提示',action.result.msg,function () {
+                                    Ext.getCmp('addChoiceWin').close();
+                                });
                             },
                             failure : function(form, action) {
-                                if (validJson(action.response.responseText)) {
+                                /*if (validJson(action.response.responseText)) {
                                     Ext.MessageBox.show({
                                         title : '提示',
                                         msg : action.result.msg,
                                         buttons : Ext.MessageBox.OK,
                                         icon : Ext.MessageBox.ERROR
                                     });
-                                }
+                                }*/
                             }
                         });
                     }
                 }, {
                     text : '重置',
                     handler : function() {
-                        fp.getForm().reset();
+                        Ext.getCmp('addChoiceForm').getForm().reset();
                     }
                 }]
             })]

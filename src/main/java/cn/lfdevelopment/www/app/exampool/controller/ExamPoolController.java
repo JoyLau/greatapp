@@ -43,4 +43,13 @@ public class ExamPoolController {
         model.addAttribute("choice",pageInfo.getList());
         return JSON.toJSONString(model);
     }
+
+
+    @RequestMapping("/exampool/saveChoice")
+    @ResponseBody
+    public String saveChoice(Model model){
+        model.addAttribute("success",true);
+        model.addAttribute("msg","保存成功!");
+        return JSON.toJSONString(model);
+    }
 }
