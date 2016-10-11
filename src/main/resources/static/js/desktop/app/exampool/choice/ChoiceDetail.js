@@ -16,5 +16,10 @@ Ext.define('examPoolChoice.ChoiceDetail',{
     collapsible: true,
     split: true,
     minWidth: 150,
-    maxWidth: 450
+    maxWidth: 450,
+    bodyStyle: {
+        background: '#ffc',
+        padding: '10px'
+    },
+    html : '<p style="text-align: center;"><span style="color: rgb(75, 172, 198);">鼠标移至题目上查看详情</span></p>'
 });

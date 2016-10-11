@@ -32,7 +32,7 @@ Ext.define('Desktop.AboutLinb', {
                 border: false,
                 hideMode: 'offsets',
                 layout: 'fit',
-                html:'<iframe width=100% height=100% src="app/linb/index.html"></iframe>'
+                html:'<!--<iframe width=100% height=100% src="app/linb/index.html"></iframe>-->'
             });
         }
         return win;

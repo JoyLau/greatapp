@@ -51,9 +51,9 @@ Ext.define('Desktop.exampool.ExamPool', {
                         glyph: 0xf09d,
                         closable: false,
                         listeners:{
-                            activate:function(){
+                           /* activate:function(){
                                 this.update({html : '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'})
-                            }
+                            }*/
                         }
                     }, {
                         title: '综合题',

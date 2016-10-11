@@ -9,9 +9,6 @@ Ext.define('examPoolChoice.ChoiceGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.ChoiceGrid',
     id: 'exampool-choice-grid',
-    requires: [
-        // basePath + '.static.js.app.plugins.ProgressBarPager'
-    ],
     border: false,
     stripeRows: true,
     frame: true,
@@ -71,7 +68,7 @@ Ext.define('examPoolChoice.ChoiceGrid', {
         width: '50%',
         sortable: false,
         hideable: false,
-        dataIndex: 'title' //Grid Panel中显示的字段，必须要和User Model中的字段一致
+        dataIndex: 'title'
     }, {
         text: '选项A',
         width: '10%',
@@ -106,7 +103,38 @@ Ext.define('examPoolChoice.ChoiceGrid', {
         dataIndex: 'answer_h'
     }, {
         text: '正确答案',
-        width: '10%',
-        dataIndex: 'answer_right'
-    }]
+        dataIndex: 'answer_right',
+        renderer : function (val) {
+            return getright(val);
+        }
+    }],
+    listeners : {
+        itemmouseenter: function (view, record) {
+            var html = '<p>' + record.data.title + '</p>' +
+                '<p>' + record.data.answer_a + '</p>' +
+                '<p>' + record.data.answer_b + '</p>' +
+                '<p>' + record.data.answer_c + '</p>' +
+                '<p>' + record.data.answer_d + '</p>' +
+                '<p>' + record.data.answer_e + '</p>' +
+                '<p>' + record.data.answer_f + '</p>' +
+                '<p>' + record.data.answer_g + '</p>' +
+                '<p>' + record.data.answer_h + '</p>' +
+                '<p><span style="color: rgb(155, 187, 89);">正确答案 : </span>' + getright(record.data.answer_right) + '</p>';
+            Ext.getCmp('exampool-choice-detail').update({html: html})
+        }
+    }
 });
+
+function getright(val) {
+    switch (val) {
+        case 1 : return "A"; break;
+        case 2 : return "B"; break;
+        case 3 : return "C"; break;
+        case 4 : return "D"; break;
+        case 5 : return "E"; break;
+        case 6 : return "F"; break;
+        case 7 : return "G"; break;
+        case 8 : return "H"; break;
+        default : return '<span style="color: red; ">没有填写答案</span>';
+    }
+}
