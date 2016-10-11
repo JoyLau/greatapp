@@ -41,23 +41,27 @@ Ext.define('examPoolChoice.ChoiceGrid', {
          // plugins: 'progressbarpager'
     }],*/
     tbar: [{
+        id: 'addExamPool',
         text: '添加',
-        id: 'addCustomer',
         glyph: 0xf055
     }, '-', {
+        id: 'updateExamPool',
         text: '修改',
-        id: 'updateCustomer',
         glyph: 0xf14b
     }, '-', {
+        id: 'deleteExamPool',
         text: '删除',
         glyph: 0xf1f8
     }, '-', {
+        id: 'importExamPool',
         text: '导入文件',
         glyph: 0xf0ed
     }, '-', {
+        id: 'exportExamPool',
         text: '导出题目',
         glyph: 0xf0ee
     }, '-', {
+        id: 'randomExamPool',
         text: '来20题',
         glyph: 0xf02c
     }],
