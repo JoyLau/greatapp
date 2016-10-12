@@ -269,7 +269,7 @@ Ext.define('examPoolChoice.ChoiceController', {
                                         animateTarget : Ext.get('uploadButton'),
                                         width: 700,
                                         height: 360,
-                                        closable : false,
+                                        closable : true,
                                         items : [
                                             Ext.create('Ext.ux.plugins.UploadPanel',{
                                                 prentWinId : 'prentWin'

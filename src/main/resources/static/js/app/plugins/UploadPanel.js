@@ -33,7 +33,7 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
         }, {
             text: '操作',
             xtype:'actioncolumn',
-            width: 50,
+            align : 'center',
             items: [{
                 icon: basePath + '/static/images/desktop/delete.gif',
                 tooltip: '移除',
@@ -288,6 +288,12 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
             status: file.filestatus,
             percent: 0
         });
+
+        this.customSettings.queue = this.customSettings.queue || [];
+        while (this.customSettings.queue.length > 0) {
+            this.cancelUpload(this.customSettings.queue.pop(), false);
+        }
+        this.customSettings.queue.push(file.id);
     },
     onUpload: function () {
         if (this.swfupload && this.store.getCount() > 0) {
@@ -311,18 +317,20 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
     },
     onRemoveAll: function () {
         var ds = this.store;
-        for (var i = 0; i < ds.getCount(); i++) {
-            var record = ds.getAt(i);
-            if (record != null) {
-                var id = record.get('id');
-                if (record.get('status') == -2) {
-                    this.swfupload.cancelUpload(id, false);
+        if(ds.getCount() > 0){
+            for (var i = 0; i < ds.getCount(); i++) {
+                var record = ds.getAt(i);
+                if (record != null) {
+                    var id = record.get('id');
+                    if (record.get('status') == -2) {
+                        this.swfupload.cancelUpload(id, false);
+                    }
                 }
             }
+            ds.removeAll();
+            // ds.destroy();
+            this.swfupload.uploadStopped = false;
         }
-        ds.removeAll();
-        ds.destroy();
-        this.swfupload.uploadStopped = false;
     },
     beforeDestroy: function () {
         var me = this;
