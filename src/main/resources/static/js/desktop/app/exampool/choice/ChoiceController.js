@@ -51,6 +51,10 @@ Ext.define('examPoolChoice.ChoiceController', {
                 anchor : '100% 100%',
                 id : 'addChoiceForm',
                 autoScroll : true,
+                bodyStyle: {
+                    background: '#eaf3fa',
+                    padding: '10px'
+                },
                 url : basePath + '/exampool/saveChoice',
                 frame : false,
                 buttonAlign : 'center',
@@ -232,11 +236,22 @@ Ext.define('examPoolChoice.ChoiceController', {
                             fields: ['id', 'text'],
                             data: [['0', '无'],
                                 ['1', '有']]
-                        })
+                        }),
+                        listeners:{
+                            select:function(combo,record,index){
+                                var value = combo.getValue();
+                                if(value==1){
+                                    Ext.getCmp("uploadButton").enable();
+                                }else{
+                                    Ext.getCmp("uploadButton").disable();
+                                }
+                            }
+                        }
                     },{
                         xtype: 'button',
                         text: '上传图片',
                         margin: '0 20',
+                        disabled : true,
                         id : 'uploadButton',
                         handler: function (btn) {
                             Ext.Loader.setPath({
