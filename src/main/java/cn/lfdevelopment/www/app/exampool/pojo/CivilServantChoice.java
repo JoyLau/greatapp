@@ -8,6 +8,9 @@ package cn.lfdevelopment.www.app.exampool.pojo;
 public class CivilServantChoice {
     private Integer id;
     private String title;
+    private Integer type;
+    private Integer is_image;
+    private String image_url;
     private String answer_a;
     private String answer_b;
     private String answer_c;
@@ -17,6 +20,30 @@ public class CivilServantChoice {
     private String answer_g;
     private String answer_h;
     private Long answer_right;
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getIs_image() {
+        return is_image;
+    }
+
+    public void setIs_image(Integer is_image) {
+        this.is_image = is_image;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
 
     public Integer getId() {
         return id;

@@ -1,7 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2016 by LiuFa. All rights reserved
  ******************************************************************************/
-
 Ext.define('examPoolChoice.ChoiceController', {
     extend: 'Ext.app.Controller',
     stores: ['examPoolChoice.ChoiceStore'],
@@ -211,6 +210,61 @@ Ext.define('examPoolChoice.ChoiceController', {
                             ['2', '自考试题'],
                             ['3', '其他分类']]
                     })
+                },{
+                    xtype:'fieldset',
+                    border: false,
+                    padding:'0 0 0 0',
+                    margin: '0 0 5',
+                    layout: 'column',
+                    items:[{
+                        xtype: 'combo',
+                        editable: false,
+                        mode: 'local',
+                        width : 255,
+                        allowBlank: false,
+                        fieldLabel: '有无图片',
+                        emptyText: '--请选择--',
+                        triggerAction: 'all',
+                        name: 'is_image',
+                        displayField: 'text',
+                        valueField: 'id',
+                        store: new Ext.data.SimpleStore({
+                            fields: ['id', 'text'],
+                            data: [['0', '无'],
+                                ['1', '有']]
+                        })
+                    },{
+                        xtype: 'button',
+                        text: '上传图片',
+                        margin: '0 20',
+                        id : 'uploadButton',
+                        handler: function (btn) {
+                            Ext.Loader.setPath({
+                                'Ext.ux.plugins': basePath + '/static/js/app/plugins'
+                            });
+                            Ext.require(['Ext.ux.plugins.UploadPanel']);
+                            Ext.onReady(function () {
+                                    Ext.create('Ext.window.Window', {
+                                        title: '上传图片',
+                                        id : 'prentWin',
+                                        autoScroll: true,
+                                        border: false,
+                                        layout: 'fit',
+                                        modal : true,
+                                        animateTarget : Ext.get('uploadButton'),
+                                        width: 700,
+                                        height: 360,
+                                        closable : false,
+                                        items : [
+                                            Ext.create('Ext.ux.plugins.UploadPanel',{
+                                                prentWinId : 'prentWin'
+                                            })
+                                        ]
+                                    }).show();
+                                }
+                            )
+                        }
+                    }]
                 },{
                     xtype: 'combo',
                     editable: false,

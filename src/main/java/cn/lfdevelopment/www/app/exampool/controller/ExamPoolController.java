@@ -32,6 +32,11 @@ public class ExamPoolController {
         return "desktop/exampool/choice";
     }
 
+    @RequestMapping("/exampool/fileuUpload")
+    public String fileUpload(){
+        return "desktop/common/fileupload";
+    }
+
 
     @RequestMapping("/exampool/getdata")
     @ResponseBody
@@ -47,7 +52,7 @@ public class ExamPoolController {
 
     @RequestMapping("/exampool/saveChoice")
     @ResponseBody
-    public String saveChoice(Model model){
+    public String saveChoice(Model model,CivilServantChoice civilServantChoice){
         model.addAttribute("success",true);
         model.addAttribute("msg","保存成功!");
         return JSON.toJSONString(model);

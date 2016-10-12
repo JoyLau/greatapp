@@ -35,14 +35,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        // autoLoad:{
-                        //     url: 'exampool/choice',
-                        //     scope: this, // optional scope for the callback
-                        //     discardUrl: true,
-                        //     nocache: true,
-                        //     text: "页面加载中,请稍候……",
-                        //     loadMask: 'loading...',
-                        //     scripts: true},
+                        /*autoLoad:{
+                            url: 'exampool/fileuUpload',
+                            scope: this, // optional scope for the callback
+                            discardUrl: true,
+                            nocache: true,
+                            text: "页面加载中,请稍候……",
+                            loadMask: 'loading...',
+                            scripts: true},*/
                         html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
                     }, {
                         title: '简答题',
@@ -70,10 +70,9 @@ Ext.define('Desktop.exampool.ExamPool', {
                         closable: false,
                         html: '开发中....'
                     }, {
-                        title: '题库设置',
+                        title: '<i class="fa fa-cog fa-spin fa-lg fa-fw"></i>题库设置',
                         loadMask: true,
                         group: null,
-                        glyph: 0xf085,
                         closable: true,
                         html: '开发中....'
                     }]

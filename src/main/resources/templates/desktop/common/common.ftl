@@ -16,3 +16,5 @@
         var basePath = '${path}';
         Ext.setGlyphFontFamily('FontAwesome');
     </script>
+
+    <script type="text/javascript" src="${path}/static/js/app/plugins/swfupload/swfupload.js"></script>
