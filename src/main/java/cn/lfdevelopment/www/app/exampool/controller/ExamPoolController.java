@@ -53,8 +53,9 @@ public class ExamPoolController {
     @RequestMapping("/exampool/saveChoice")
     @ResponseBody
     public String saveChoice(Model model,CivilServantChoice civilServantChoice){
+        int count= examPoolService.save(civilServantChoice);
         model.addAttribute("success",true);
-        model.addAttribute("msg","保存成功!");
+        model.addAttribute("msg","成功保存" + count + "条数据");
         return JSON.toJSONString(model);
     }
 }

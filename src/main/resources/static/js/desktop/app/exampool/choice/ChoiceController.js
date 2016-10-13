@@ -323,6 +323,7 @@ Ext.define('examPoolChoice.ChoiceController', {
                             success : function(form, action) {
                                 Ext.Msg.alert('提示',action.result.msg,function () {
                                     Ext.getCmp('addChoiceWin').close();
+                                    Ext.getCmp('exampool-choice-grid').getStore().reload();
                                 });
                             },
                             failure : function(form, action) {

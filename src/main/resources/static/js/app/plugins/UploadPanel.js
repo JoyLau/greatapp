@@ -289,11 +289,11 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
             percent: 0
         });
 
-        this.customSettings.queue = this.customSettings.queue || [];
+        /*this.customSettings.queue = this.customSettings.queue || [];
         while (this.customSettings.queue.length > 0) {
             this.cancelUpload(this.customSettings.queue.pop(), false);
         }
-        this.customSettings.queue.push(file.id);
+        this.customSettings.queue.push(file.id);*/
     },
     onUpload: function () {
         if (this.swfupload && this.store.getCount() > 0) {

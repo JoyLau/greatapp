@@ -26,4 +26,8 @@ public class ExamPoolService {
         PageHelper.startPage(page, limit);
         return examPoolMapper.getQueryData();
     }
+
+    public int save(CivilServantChoice civilServantChoice) {
+        return examPoolMapper.insert(civilServantChoice);
+    }
 }

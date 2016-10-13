@@ -18,7 +18,7 @@ Ext.define('Ext.ux.desktop.TaskBar', {
         'Ext.button.Button',
         'Ext.resizer.Splitter',
         'Ext.menu.Menu',
-
+        // 'Ext.ux.desktop.PreviewBox',
         'Ext.ux.desktop.StartMenu'
     ],
 
@@ -34,6 +34,8 @@ Ext.define('Ext.ux.desktop.TaskBar', {
 
     initComponent: function () {
         var me = this;
+
+        // me.previewBox = new Ext.ux.desktop.PreviewBox();
         me.startMenu = new Ext.ux.desktop.StartMenu(me.startConfig);
 
         me.windowBar = new Ext.toolbar.Toolbar(me.getWindowBarConfig());
