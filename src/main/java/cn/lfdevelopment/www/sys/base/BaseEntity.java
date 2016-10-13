@@ -8,11 +8,11 @@ import javax.persistence.*;
 
 /**
  * 基础实体类
- * @since 2016-01-31 21:42
+ * @since 2016-10-14 00:49:47
  */
 public class BaseEntity {
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
