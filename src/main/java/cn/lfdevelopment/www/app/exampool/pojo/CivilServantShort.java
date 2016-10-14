@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) 2016 by LiuFa. All rights reserved
+ ******************************************************************************/
+
 package cn.lfdevelopment.www.app.exampool.pojo;
 
 import javax.persistence.GeneratedValue;
