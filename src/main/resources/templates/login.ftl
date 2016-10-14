@@ -1,3 +1,4 @@
+<#assign path=request.contextPath />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
 <head>
@@ -7,6 +8,15 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
+    <script type="text/javascript">
+        //防止其他页面在iframe或frameset中打开
+        if (self != top) {
+            top.location = self.location;
+        }
+        if(top.location.pathname.indexOf('/login')){
+            top.location = "${path}/login";
+        }
+    </script>
     <#include "app/common/common.ftl"/>
     <script type="text/javascript">
         Ext.onReady(function () {

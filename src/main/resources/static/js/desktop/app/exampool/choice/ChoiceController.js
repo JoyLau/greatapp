@@ -323,18 +323,10 @@ Ext.define('examPoolChoice.ChoiceController', {
                             success : function(form, action) {
                                 Ext.Msg.alert('提示',action.result.msg,function () {
                                     Ext.getCmp('addChoiceWin').close();
-                                    Ext.getCmp('exampool-choice-grid').getStore().reload();
                                 });
+                                Ext.getCmp('exampool-choice-grid').getStore().reload();
                             },
                             failure : function(form, action) {
-                                /*if (validJson(action.response.responseText)) {
-                                    Ext.MessageBox.show({
-                                        title : '提示',
-                                        msg : action.result.msg,
-                                        buttons : Ext.MessageBox.OK,
-                                        icon : Ext.MessageBox.ERROR
-                                    });
-                                }*/
                             }
                         });
                     }
@@ -352,6 +344,36 @@ Ext.define('examPoolChoice.ChoiceController', {
     },
 
     deleteExamPool: function () {
+        var record = Ext.getCmp('exampool-choice-grid').getSelectionModel().getSelection();
+        var ids = '';
+        if (record.length >= 1) {
+            for (var i = 0; i < record.length; i++) {
+                ids = ids + record[i].get('id') + ',';
+            }
+        } else {
+            Ext.Msg.alert('提示', '请至少选择一条记录');
+            return;
+        }
+        Ext.Msg.confirm('提示', '确定要删除这' + record.length + '条记录?',
+            function(btn) {
+                if (btn == 'yes') {
+                    Ext.getBody().mask('请稍等.....');
+                    Ext.Ajax.request({
+                        url : basePath
+                        + '/exampool/deleteChoice',
+                        method : 'post',
+                        params : {
+                            ids : ids.substring(0, ids.length - 1)
+                        },
+                        success : function(response) {
+                            Ext.getBody().unmask();
+                            var json = Ext.JSON.decode(response.responseText);
+                            Ext.Msg.alert('提示', json.msg);
+                            Ext.getCmp('exampool-choice-grid').getStore().reload();
+                        }
+                    })
+                }
+            });
     },
 
     randomExamPool: function () {

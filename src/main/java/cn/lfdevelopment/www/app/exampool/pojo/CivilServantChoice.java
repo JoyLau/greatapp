@@ -12,7 +12,6 @@ import cn.lfdevelopment.www.sys.base.BaseEntity;
  * DevelopmentApp
  */
 public class CivilServantChoice extends BaseEntity{
-    private Integer id;
     private String title;
     private Integer type;
     private Integer is_image;
@@ -49,14 +48,6 @@ public class CivilServantChoice extends BaseEntity{
 
     public void setImage_url(String image_url) {
         this.image_url = image_url;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitle() {

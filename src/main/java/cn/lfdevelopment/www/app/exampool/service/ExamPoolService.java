@@ -30,4 +30,8 @@ public class ExamPoolService {
     public int save(CivilServantChoice civilServantChoice) {
         return examPoolMapper.insert(civilServantChoice);
     }
+
+    public int deleteChoice(String ids) {
+        return examPoolMapper.deleteByIds(ids);
+    }
 }

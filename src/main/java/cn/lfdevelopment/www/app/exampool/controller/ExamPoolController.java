@@ -58,4 +58,14 @@ public class ExamPoolController {
         model.addAttribute("msg","成功保存" + count + "条数据");
         return JSON.toJSONString(model);
     }
+
+
+    @RequestMapping("/exampool/deleteChoice")
+    @ResponseBody
+    public String deleteChoice(Model model,String ids){
+        examPoolService.deleteChoice(ids);
+        model.addAttribute("success",true);
+        model.addAttribute("msg","删除成功!");
+        return JSON.toJSONString(model);
+    }
 }
