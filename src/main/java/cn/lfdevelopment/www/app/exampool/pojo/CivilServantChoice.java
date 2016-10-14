@@ -1,11 +1,13 @@
 package cn.lfdevelopment.www.app.exampool.pojo;
 
+import cn.lfdevelopment.www.sys.base.BaseEntity;
+
 /**
  * Created by LiuFa on 2016/10/8.
  * cn.lfdevelopment.www.app.exampool.pojo
  * DevelopmentApp
  */
-public class CivilServantChoice {
+public class CivilServantChoice extends BaseEntity{
     private Integer id;
     private String title;
     private Integer type;
@@ -19,7 +21,7 @@ public class CivilServantChoice {
     private String answer_f;
     private String answer_g;
     private String answer_h;
-    private Long answer_right;
+    private Integer answer_right;
 
     public Integer getType() {
         return type;
@@ -125,11 +127,11 @@ public class CivilServantChoice {
         this.answer_h = answer_h;
     }
 
-    public Long getAnswer_right() {
+    public Integer getAnswer_right() {
         return answer_right;
     }
 
-    public void setAnswer_right(Long answer_right) {
+    public void setAnswer_right(Integer answer_right) {
         this.answer_right = answer_right;
     }
 }

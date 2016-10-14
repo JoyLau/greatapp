@@ -4,6 +4,8 @@
 
 package cn.lfdevelopment.www.app.common.login.pojo;
 
+import cn.lfdevelopment.www.sys.base.BaseEntity;
+
 import java.util.Date;
 
 /**
@@ -11,7 +13,7 @@ import java.util.Date;
  * cn.lfdevelopment.www.app.common.login.pojo
  * DevelopmentApp
  */
-public class SysUser {
+public class SysUser extends BaseEntity{
     //主键
     private Integer id;
 

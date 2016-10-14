@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright (c) 2016 by LiuFa. All rights reserved
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <!--通用Mapper-->
+            <property name="mappers" value="cn.lfdevelopment.www.sys.base.BaseMapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="false"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://www.lfdevelopment.cn:3333/greateapp"
+                        userId="root"
+                        password="1001520@WSX3edc">
+        </jdbcConnection>
+
+        <!--生成实体类的配置，是一个必须配置的内容-->
+        <javaModelGenerator targetPackage="cn.lfdevelopment.www.app.exampool.pojo" targetProject="D:\DevelopmentApp\greatapp\src\main\java"/>
+
+        <!--可选的配置，配置后可以生成XML文件-->
+        <sqlMapGenerator targetPackage="mapperxml.app.exampool" targetProject="D:\DevelopmentApp\greatapp\src\main\resources"/>
+
+        <!--生成对应的接口文件，该接口会自动继承前面配置的通用Mapper接口-->
+        <javaClientGenerator targetPackage="cn.lfdevelopment.www.app.exampool.mapper" targetProject="D:\DevelopmentApp\greatapp\src\main\java" type="XMLMAPPER"/>
+
+        <!--%通配符代表数据库里所有的表-->
+        <table tableName="civil_servant_short">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
