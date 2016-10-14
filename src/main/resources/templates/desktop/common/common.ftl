@@ -18,4 +18,4 @@
     </script>
 
     <script type="text/javascript" src="${path}/static/js/app/plugins/swfupload/swfupload.js"></script>
-    <#--<script type="text/javascript" src="${path}/static/js/app/common/extcommon.js"></script>-->
+    <script type="text/javascript" src="${path}/static/js/app/common/extcommon.js"></script>

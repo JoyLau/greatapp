@@ -2,6 +2,24 @@
  * Copyright (c) 2016 by LiuFa. All rights reserved
  ******************************************************************************/
 
+
+Ext.Ajax.on('requestcomplete',main);
+function main(conn, response, options) {
+    var str = response.responseText;
+    alert(str)
+    if(str == '定义画布宽高和生成点的个数'){
+        Ext.MessageBox.show({
+            title : '<span style="color: red; ">操作提示</span>',
+            msg : '您没有正常登录，或者登录超时，请重新登录',
+            buttons : Ext.MessageBox.OK,
+            fn : function() {
+                window.top.location = basePath + '/login';
+            }
+        });
+    }
+}
+
+
 ExtCommonRequest = function(cfg) {
     var mk =  new Ext.LoadMask(cfg.owner || Ext.getBody(), {
         msg : cfg.text || '正在执行操作...'
