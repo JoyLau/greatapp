@@ -76,7 +76,7 @@ public class ShiroConfiguration {
 
         Map<String, Filter> filters = new LinkedHashMap<>();
         filters.put("authc",shiroFormAuthenticationFilter());
-        filters.put("session",sessionAccessControlFilter());
+        filters.put("session",sessionFilter());
         filters.put("rolesOr",rolesAuthorizationFilter());
         bean.setFilters(filters);
 
@@ -90,7 +90,7 @@ public class ShiroConfiguration {
 
         chains.put("/login", "authc");
         chains.put("/main","authc");
-        chains.put("/**", "session");
+        chains.put("/**", "session,user");
         bean.setFilterChainDefinitionMap(chains);
         return bean;
     }
@@ -163,8 +163,8 @@ public class ShiroConfiguration {
     }
 
     @Bean
-    public SessionAccessControlFilter sessionAccessControlFilter(){
-        return new SessionAccessControlFilter();
+    public SessionFilter sessionFilter(){
+        return new SessionFilter();
     }
 
 
