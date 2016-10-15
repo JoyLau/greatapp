@@ -34,4 +34,8 @@ public class ExamPoolService {
     public int deleteChoice(String ids) {
         return examPoolMapper.deleteByIds(ids);
     }
+
+    public int updateChoice(CivilServantChoice civilServantChoice) {
+        return examPoolMapper.updateByPrimaryKey(civilServantChoice);
+    }
 }

@@ -170,8 +170,8 @@ div.ux-taskbar div.x-toolbar {
 }
 
 .ux-desktop-shortcut-icon {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     background-color: transparent;
     background-repeat: no-repeat;
 }
@@ -196,6 +196,8 @@ div.ux-taskbar div.x-toolbar {
 
 .accordion-shortcut {
     background-image: url(../../images/desktop/im48x48.png);
+    width: 46px;
+    height: 46px;
 }
 
 .cpu-shortcut {
@@ -218,10 +220,10 @@ div.ux-taskbar div.x-toolbar {
 
 
 
-.x-ie6 .accordion-shortcut {
+/*.x-ie6 .accordion-shortcut {
     background-image: none;
     filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/im48x48.png', sizingMethod='scale');
-}
+}*/
 
 .x-ie6 .cpu-shortcut {
     background-image: none;
@@ -349,8 +351,8 @@ div.ux-taskbar div.x-toolbar {
 
 .pwebdisk-shortcut {
     background-image: url(../../images/desktop/pwebdisk.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 
 .webdisk-icon {
@@ -359,41 +361,41 @@ div.ux-taskbar div.x-toolbar {
 
 .search-shortcut {
     background-image: url(../../images/desktop/search.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 .fish-shortcut {
     background-image: url(../../images/desktop/fish.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 .tank-shortcut {
     background-image: url(../../images/desktop/90tank.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 .exam-pool-shortcut {
     background-image: url(../../images/desktop/shortcut/database.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 .role-shortcut {
     background-image: url(../../images/desktop/role.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 .tv48-shortcut {
     background-image: url(../../images/desktop/tv48.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 .yytai-shortcut {
     background-image: url(../../images/desktop/yytai.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }
 .excel-shortcut {
     background-image: url(../../images/desktop/excel.png);
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
 }

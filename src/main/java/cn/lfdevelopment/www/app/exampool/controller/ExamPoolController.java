@@ -68,4 +68,13 @@ public class ExamPoolController {
         model.addAttribute("msg","删除成功!");
         return JSON.toJSONString(model);
     }
+
+    @RequestMapping("/exampool/updateChoice")
+    @ResponseBody
+    public String updateChoice(Model model,CivilServantChoice civilServantChoice){
+        examPoolService.updateChoice(civilServantChoice);
+        model.addAttribute("success",true);
+        model.addAttribute("msg","更新成功!");
+        return JSON.toJSONString(model);
+    }
 }

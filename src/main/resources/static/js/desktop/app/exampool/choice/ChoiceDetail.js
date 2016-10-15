@@ -15,7 +15,9 @@ Ext.define('examPoolChoice.ChoiceDetail',{
     region: 'east',
     collapsible: true,
     split: true,
+    autoScroll : true,
     minWidth: 150,
+    width : 300,
     maxWidth: 450,
     bodyStyle: {
         background: '#ffc',

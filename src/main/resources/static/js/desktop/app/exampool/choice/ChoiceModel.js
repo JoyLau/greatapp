@@ -7,5 +7,5 @@
  */
 Ext.define('examPoolChoice.ChoiceModel', {
     extend: 'Ext.data.Model',
-    fields: ['title', 'answer_a', 'answer_b', 'answer_c', 'answer_d', 'answer_e', 'answer_f', 'answer_g', 'answer_h', 'answer_right']
+    fields: ['id', 'title', 'answer_a', 'answer_b', 'answer_c', 'answer_d', 'answer_e', 'answer_f', 'answer_g', 'answer_h', 'type', 'is_image', 'answer_right']
 });
