@@ -42,7 +42,7 @@ public class ExamPoolController {
     @ResponseBody
     public String getData(Model model,int page,int start,int limit){
         List<CivilServantChoice> list = examPoolService.getQueryData(page,limit);
-        PageInfo pageInfo = new PageInfo(list);
+        PageInfo pageInfo = new PageInfo<>(list);
         model.addAttribute("success",true);
         model.addAttribute("total",pageInfo.getTotal());
         model.addAttribute("choice",pageInfo.getList());
