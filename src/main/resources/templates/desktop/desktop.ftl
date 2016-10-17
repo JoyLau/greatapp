@@ -32,6 +32,12 @@
 //            disableCaching: true
 //        });
             DesktopApp = Ext.create('Desktop.App');
+            var proto = Ext.picker.Date.prototype,
+                    date = Ext.Date;
+
+            proto.monthNames = date.monthNames;
+            proto.dayNames = date.dayNames;
+            proto.format = date.defaultFormat;
         });
     </script>
     <!-- </x-compile> -->
