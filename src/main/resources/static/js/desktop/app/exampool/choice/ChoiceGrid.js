@@ -159,14 +159,14 @@ Ext.define('examPoolChoice.ChoiceGrid', {
 
 function getright(val) {
     switch (val) {
-        case 1 : return "A"; break;
-        case 2 : return "B"; break;
-        case 3 : return "C"; break;
-        case 4 : return "D"; break;
-        case 5 : return "E"; break;
-        case 6 : return "F"; break;
-        case 7 : return "G"; break;
-        case 8 : return "H"; break;
+        case 0 : return "A"; break;
+        case 1 : return "B"; break;
+        case 2 : return "C"; break;
+        case 3 : return "D"; break;
+        case 4 : return "E"; break;
+        case 5 : return "F"; break;
+        case 6 : return "G"; break;
+        case 7 : return "H"; break;
         default : return '<span style="color: red; ">没有填写答案</span>';
     }
 }
