@@ -70,8 +70,13 @@ public class LoginController {
 
     @RequestMapping("/main")
     public String main(){
-//        return "app/common/main/main";
         return "desktop/desktop";
+    }
+
+
+    @RequestMapping("/main2")
+    public String main2(){
+        return "app/common/main/main";
     }
     /**
      * 获取验证码（Gif版本）
@@ -102,12 +107,8 @@ public class LoginController {
         return "zhihu";
     }
 
-    @RequestMapping("/desktop")
-    public String desktop(){
-        return "desktop/desktop";
-    }
 
-    @RequestMapping("/getMenu")
+    @RequestMapping("/exampool/getMenu")
     @ResponseBody
     String getMenu (){
         return "{\n" +

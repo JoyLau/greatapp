@@ -18,7 +18,7 @@ Ext.define('Desktop.exampool.ExamPool', {
                 // ghost:false,
                 constrainHeader:true,
                 layout: 'fit',
-                items: [Ext.create('Ext.tab.Panel', {
+                /*items: [Ext.create('Ext.tab.Panel', {
                     resizeTabs: true,
                     enableTabScroll: true,
                     activeTab: 0,
@@ -35,14 +35,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        /*autoLoad:{
+                        /!*autoLoad:{
                             url: 'exampool/fileuUpload',
                             scope: this, // optional scope for the callback
                             discardUrl: true,
                             nocache: true,
                             text: "页面加载中,请稍候……",
                             loadMask: 'loading...',
-                            scripts: true},*/
+                            scripts: true},*!/
                         items :[
                             Ext.create('Ext.tab.Panel', {
                             id : 'pcse_panel',
@@ -60,30 +60,30 @@ Ext.define('Desktop.exampool.ExamPool', {
                                 glyph: 0xf00c,
                                 loadMask: true,
                                 closable: false,
-                                /*loader: {
+                                /!*loader: {
                                     url: 'exampool/choice',
                                     autoLoad: true,
                                     scripts: true
-                                }*/
+                                }*!/
                                 // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
                             },{
                                 title: '多选题',
                                 glyph: 0xf046,
                                 closable: false,
-                                /*loader: {
+                                /!*loader: {
                                     url: 'exampool/pcse/multipleChoice',
                                     autoLoad: true,
                                     scripts: true
-                                },*/
+                                },*!/
                                 loader: {
                                     url: 'static/games/test.html',
                                     autoLoad: true,
                                     scripts: true
                                 },
                                 listeners:{
-                                     // activate:function(tab){
-                                     //     tab.loader.load();
-                                     // }
+                                     activate:function(tab){
+                                         tab.loader.load();
+                                     }
                                 }
                             },{
                                 title: '简答题',
@@ -118,14 +118,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        /*autoLoad:{
+                        /!*autoLoad:{
                          url: 'exampool/fileuUpload',
                          scope: this, // optional scope for the callback
                          discardUrl: true,
                          nocache: true,
                          text: "页面加载中,请稍候……",
                          loadMask: 'loading...',
-                         scripts: true},*/
+                         scripts: true},*!/
                         items :[
                             Ext.create('Ext.tab.Panel', {
                                 resizeTabs: true,
@@ -183,14 +183,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        /*autoLoad:{
+                        /!*autoLoad:{
                          url: 'exampool/fileuUpload',
                          scope: this, // optional scope for the callback
                          discardUrl: true,
                          nocache: true,
                          text: "页面加载中,请稍候……",
                          loadMask: 'loading...',
-                         scripts: true},*/
+                         scripts: true},*!/
                         items :[
                             Ext.create('Ext.tab.Panel', {
                                 resizeTabs: true,
@@ -248,14 +248,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        /*autoLoad:{
+                        /!*autoLoad:{
                          url: 'exampool/fileuUpload',
                          scope: this, // optional scope for the callback
                          discardUrl: true,
                          nocache: true,
                          text: "页面加载中,请稍候……",
                          loadMask: 'loading...',
-                         scripts: true},*/
+                         scripts: true},*!/
                         items :[
                             Ext.create('Ext.tab.Panel', {
                                 resizeTabs: true,
@@ -313,14 +313,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        /*autoLoad:{
+                        /!*autoLoad:{
                          url: 'exampool/fileuUpload',
                          scope: this, // optional scope for the callback
                          discardUrl: true,
                          nocache: true,
                          text: "页面加载中,请稍候……",
                          loadMask: 'loading...',
-                         scripts: true},*/
+                         scripts: true},*!/
                         items :[
                             Ext.create('Ext.tab.Panel', {
                                 resizeTabs: true,
@@ -378,14 +378,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        /*autoLoad:{
+                        /!*autoLoad:{
                          url: 'exampool/fileuUpload',
                          scope: this, // optional scope for the callback
                          discardUrl: true,
                          nocache: true,
                          text: "页面加载中,请稍候……",
                          loadMask: 'loading...',
-                         scripts: true},*/
+                         scripts: true},*!/
                         items :[
                             Ext.create('Ext.tab.Panel', {
                                 resizeTabs: true,
@@ -443,14 +443,14 @@ Ext.define('Desktop.exampool.ExamPool', {
                         loadMask: true,
                         group: null,
                         closable: false,
-                        /*autoLoad:{
+                        /!*autoLoad:{
                          url: 'exampool/fileuUpload',
                          scope: this, // optional scope for the callback
                          discardUrl: true,
                          nocache: true,
                          text: "页面加载中,请稍候……",
                          loadMask: 'loading...',
-                         scripts: true},*/
+                         scripts: true},*!/
                         items :[
                             Ext.create('Ext.tab.Panel', {
                                 resizeTabs: true,
@@ -503,14 +503,32 @@ Ext.define('Desktop.exampool.ExamPool', {
                                 }]
                             })
                         ]
-                    }/*,{
+                    }/!*,{
                         title: '<i class="fa fa-cog fa-spin fa-lg fa-fw"></i>题库设置',
                         loadMask: true,
                         group: null,
                         closable: true,
                         html: '开发中....'
-                    }*/]
-                })]
+                    }*!/]
+                })]*/
+
+
+
+
+
+                loader: {
+                    url: basePath + '/exampool/exampool',
+                    autoLoad: true,
+                    scripts: true
+                },
+                listeners:{
+                    resize:function(me,width,height){
+                        if (!Ext.isEmpty(Ext.getCmp('examPoolMainPanel'))) {
+                            Ext.getCmp('examPoolMainPanel').setHeight(height - 30);
+                            Ext.getCmp('examPoolMainPanel').setWidth(width - 3);
+                        }
+                    }
+                }
             });
         }
         return win;

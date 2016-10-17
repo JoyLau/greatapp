@@ -1,3 +1,4 @@
+<#assign path=request.contextPath />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
@@ -10,15 +11,18 @@
     <link rel="stylesheet" type="text/css" href="/static/css/desktop/desktop.css" />
     <link href="/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
 
-    <!-- GC -->
-    <!-- <x-compile> -->
-    <!-- <x-bootstrap> -->
     <script type="text/javascript" src="/static/js/desktop/js/ext-all.js"></script>
     <script type="text/javascript" src="/static/js/desktop/js/ext-lang-zh_CN.js"></script>
     <script type="text/javascript" src="/static/js/desktop/js/ext-theme-neptune.js"></script>
-    <script type="text/javascript" src="/static/js/desktop/js/options-toolbar.js"></script>
-    <!-- </x-bootstrap> -->
+
+    <#--全局公共js-->
+    <script type="text/javascript" src="${path}/static/js/app/common/extcommon.js"></script>
+    <#--<script type="text/javascript" src="/static/js/desktop/js/options-toolbar.js"></script>-->
+
     <script type="text/javascript">
+        var basePath = '${path}';
+        Ext.setGlyphFontFamily('FontAwesome');
+
         Ext.Loader.setPath({
             'Ext.ux.desktop': 'static/js/desktop/js',
             Desktop: 'static/js/desktop/app'
@@ -28,10 +32,11 @@
 
         var DesktopApp;
         Ext.onReady(function () {
-//            Ext.Loader.setConfig({
-//            disableCaching: true
-//        });
             DesktopApp = Ext.create('Desktop.App');
+
+
+
+            /**/
             var proto = Ext.picker.Date.prototype,
                     date = Ext.Date;
 

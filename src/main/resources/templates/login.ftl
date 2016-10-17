@@ -17,7 +17,17 @@
             top.location = "${path}/login";
         }
     </script>
-    <#include "app/common/common.ftl"/>
+
+    <link href="/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet"/>
+    <link href="/static/css/notification.css" rel="stylesheet"/>
+    <link href="/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
+
+    <script src="/static/ext-5.0.0/build/bootstrap.js" type="text/javascript"></script>
+    <script src="/static/ext-5.0.0/build/notification.js" type="text/javascript"></script>
+    <script src="/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js" type="text/javascript"></script>
+
+
+
     <script type="text/javascript">
         Ext.onReady(function () {
             if (Ext.ieVersion < 9 && Ext.ieVersion > 0) {

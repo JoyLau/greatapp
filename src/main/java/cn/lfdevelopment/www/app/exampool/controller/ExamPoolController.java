@@ -32,6 +32,10 @@ public class ExamPoolController {
         return "desktop/exampool/choice";
     }
 
+    @RequestMapping("/exampool/exampool")
+    public String exampool(){
+        return "desktop/exampool/exampool";
+    }
 
     @RequestMapping("/exampool/pcse/multipleChoice")
     public String multipleChoice(){

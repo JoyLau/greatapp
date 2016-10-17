@@ -22,7 +22,6 @@ Ext.define('Ext.ux.desktop.App', {
 
     constructor: function (config) {
         var me = this;
-        Ext.setGlyphFontFamily('FontAwesome');
         me.addEvents(
             'ready',
             'beforeunload'
