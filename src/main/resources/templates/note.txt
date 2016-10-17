@@ -22,3 +22,27 @@ handler: function(button) {
     var addChoiceForm = Ext.getCmp('addChoiceForm');
     addChoiceForm.remove(addChoiceForm.items.getLast().getId());
 }
+
+
+
+http://blog.csdn.net/oscar999/article/details/18594981
+
+Ext.Loader.loadScript
+但是事实不总是那么理想
+1. 项目不是使用sencha cmd 产生的， 也没有导入 extjs/src ，而是直接导入的ext-all.js 这份文件。
+2. 自己定义的js 包以及第三方包并不是使用Ext.define 的方式来定义的。
+这个时候， 可以考虑使用Ext.Loader.loadScript
+使用方式很简单：
+[javascript] view plain copy 在CODE上查看代码片派生到我的代码片
+Ext.Loader.loadScript({ url: scriptpath,scope:this});
+
+需要注意的是：
+1. 这种方式是没有缓存机制的， 只要执行这个，都会从服务器端重新下载代码。
+2. 这种方式是异步的， 如果导入两份有前后依赖关系的js 的话， 有可能会出现问题。
+
+没有缓存机制， 就要自行处理了， 或定义js 的全局变量， 或在Ext 对象中设置相应的属性。
+依赖关系的文件， 可以在第一份加载成功后再加载第二份：
+[javascript] view plain copy 在CODE上查看代码片派生到我的代码片
+Ext.Loader.loadScript({ url: script1path,scope:this,onLoad:function(){
+    Ext.Loader.loadScript({ url:script2path,scope:this});
+}});

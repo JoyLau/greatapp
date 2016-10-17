@@ -29,9 +29,9 @@ Ext.define('Desktop.exampool.ExamPool', {
                     },
                     minTabWidth: 200,
                     items: [{
-                        id: 'exam-pool-choice',
-                        title: '选择题',
-                        glyph: 0xf046,
+                        id: 'pcse',
+                        title: '省级公务员试题',
+                        glyph: 0xf2a3,
                         loadMask: true,
                         group: null,
                         closable: false,
@@ -43,39 +43,473 @@ Ext.define('Desktop.exampool.ExamPool', {
                             text: "页面加载中,请稍候……",
                             loadMask: 'loading...',
                             scripts: true},*/
-                        html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                        items :[
+                            Ext.create('Ext.tab.Panel', {
+                            id : 'pcse_panel',
+                            resizeTabs: true,
+                            enableTabScroll: true,
+                            activeTab: 0,
+                            autoDestroy: true,
+                            collapsible: false,
+                            defaults: {
+                                autoScroll: false
+                            },
+                            minTabWidth: 50,
+                            items :[{
+                                title: '单选题',
+                                glyph: 0xf00c,
+                                loadMask: true,
+                                closable: false,
+                                /*loader: {
+                                    url: 'exampool/choice',
+                                    autoLoad: true,
+                                    scripts: true
+                                }*/
+                                // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                            },{
+                                title: '多选题',
+                                glyph: 0xf046,
+                                closable: false,
+                                /*loader: {
+                                    url: 'exampool/pcse/multipleChoice',
+                                    autoLoad: true,
+                                    scripts: true
+                                },*/
+                                loader: {
+                                    url: 'static/games/test.html',
+                                    autoLoad: true,
+                                    scripts: true
+                                },
+                                listeners:{
+                                     // activate:function(tab){
+                                     //     tab.loader.load();
+                                     // }
+                                }
+                            },{
+                                title: '简答题',
+                                glyph: 0xf1ea,
+                                loadMask: true,
+                                group: null,
+                                closable: false,
+                            },{
+                                title: '判断题',
+                                glyph: 0xf058,
+                                loadMask: true,
+                                group: null,
+                                closable: false,
+                            },{
+                                title: '论述题',
+                                glyph: 0xf0cb,
+                                loadMask: true,
+                                group: null,
+                                closable: false,
+                            },{
+                                title: '案列分析题',
+                                glyph: 0xf022,
+                                loadMask: true,
+                                group: null,
+                                closable: false,
+                            }]
+                        }).show()
+                        ]
                     }, {
-                        title: '简答题',
+                        title: '国家级公务员试题',
+                        glyph: 0xf19c,
                         loadMask: true,
                         group: null,
+                        closable: false,
+                        /*autoLoad:{
+                         url: 'exampool/fileuUpload',
+                         scope: this, // optional scope for the callback
+                         discardUrl: true,
+                         nocache: true,
+                         text: "页面加载中,请稍候……",
+                         loadMask: 'loading...',
+                         scripts: true},*/
+                        items :[
+                            Ext.create('Ext.tab.Panel', {
+                                resizeTabs: true,
+                                enableTabScroll: true,
+                                activeTab: 0,
+                                autoDestroy: true,
+                                collapsible: false,
+                                defaults: {
+                                    autoScroll: false
+                                },
+                                minTabWidth: 50,
+                                items :[{
+                                    title: '单选题',
+                                    glyph: 0xf00c,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                    // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                                },{
+                                    title: '多选题',
+                                    glyph: 0xf046,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '简答题',
+                                    glyph: 0xf1ea,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '判断题',
+                                    glyph: 0xf058,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '论述题',
+                                    glyph: 0xf0cb,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '案列分析题',
+                                    glyph: 0xf022,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                }]
+                            })
+                        ]
+                    }, {
+                        title: '事业单位考试题',
                         glyph: 0xf09d,
-                        closable: false,
-                        listeners:{
-                           /* activate:function(){
-                                this.update({html : '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'})
-                            }*/
-                        }
-                    }, {
-                        title: '综合题',
                         loadMask: true,
                         group: null,
-                        glyph: 0xf275,
                         closable: false,
-                        html: '开发中....'
+                        /*autoLoad:{
+                         url: 'exampool/fileuUpload',
+                         scope: this, // optional scope for the callback
+                         discardUrl: true,
+                         nocache: true,
+                         text: "页面加载中,请稍候……",
+                         loadMask: 'loading...',
+                         scripts: true},*/
+                        items :[
+                            Ext.create('Ext.tab.Panel', {
+                                resizeTabs: true,
+                                enableTabScroll: true,
+                                activeTab: 0,
+                                autoDestroy: true,
+                                collapsible: false,
+                                defaults: {
+                                    autoScroll: false
+                                },
+                                minTabWidth: 50,
+                                items :[{
+                                    title: '单选题',
+                                    glyph: 0xf00c,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                    // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                                },{
+                                    title: '多选题',
+                                    glyph: 0xf046,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '简答题',
+                                    glyph: 0xf1ea,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '判断题',
+                                    glyph: 0xf058,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '论述题',
+                                    glyph: 0xf0cb,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '案列分析题',
+                                    glyph: 0xf022,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                }]
+                            })
+                        ]
                     }, {
-                        title: '爬虫抓取',
+                        title: '政法干警考试题',
+                        glyph: 0xf283,
                         loadMask: true,
                         group: null,
-                        glyph: 0xf188,
                         closable: false,
-                        html: '开发中....'
+                        /*autoLoad:{
+                         url: 'exampool/fileuUpload',
+                         scope: this, // optional scope for the callback
+                         discardUrl: true,
+                         nocache: true,
+                         text: "页面加载中,请稍候……",
+                         loadMask: 'loading...',
+                         scripts: true},*/
+                        items :[
+                            Ext.create('Ext.tab.Panel', {
+                                resizeTabs: true,
+                                enableTabScroll: true,
+                                activeTab: 0,
+                                autoDestroy: true,
+                                collapsible: false,
+                                defaults: {
+                                    autoScroll: false
+                                },
+                                minTabWidth: 50,
+                                items :[{
+                                    title: '单选题',
+                                    glyph: 0xf00c,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                    // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                                },{
+                                    title: '多选题',
+                                    glyph: 0xf046,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '简答题',
+                                    glyph: 0xf1ea,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '判断题',
+                                    glyph: 0xf058,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '论述题',
+                                    glyph: 0xf0cb,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '案列分析题',
+                                    glyph: 0xf022,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                }]
+                            })
+                        ]
                     }, {
+                        title: '自学考试题',
+                        glyph: 0xf29d,
+                        loadMask: true,
+                        group: null,
+                        closable: false,
+                        /*autoLoad:{
+                         url: 'exampool/fileuUpload',
+                         scope: this, // optional scope for the callback
+                         discardUrl: true,
+                         nocache: true,
+                         text: "页面加载中,请稍候……",
+                         loadMask: 'loading...',
+                         scripts: true},*/
+                        items :[
+                            Ext.create('Ext.tab.Panel', {
+                                resizeTabs: true,
+                                enableTabScroll: true,
+                                activeTab: 0,
+                                autoDestroy: true,
+                                collapsible: false,
+                                defaults: {
+                                    autoScroll: false
+                                },
+                                minTabWidth: 50,
+                                items :[{
+                                    title: '单选题',
+                                    glyph: 0xf00c,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                    // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                                },{
+                                    title: '多选题',
+                                    glyph: 0xf046,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '简答题',
+                                    glyph: 0xf1ea,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '判断题',
+                                    glyph: 0xf058,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '论述题',
+                                    glyph: 0xf0cb,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '案列分析题',
+                                    glyph: 0xf022,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                }]
+                            })
+                        ]
+                    },{
+                        title: '大学生村官考试题',
+                        glyph: 0xf298,
+                        loadMask: true,
+                        group: null,
+                        closable: false,
+                        /*autoLoad:{
+                         url: 'exampool/fileuUpload',
+                         scope: this, // optional scope for the callback
+                         discardUrl: true,
+                         nocache: true,
+                         text: "页面加载中,请稍候……",
+                         loadMask: 'loading...',
+                         scripts: true},*/
+                        items :[
+                            Ext.create('Ext.tab.Panel', {
+                                resizeTabs: true,
+                                enableTabScroll: true,
+                                activeTab: 0,
+                                autoDestroy: true,
+                                collapsible: false,
+                                defaults: {
+                                    autoScroll: false
+                                },
+                                minTabWidth: 50,
+                                items :[{
+                                    title: '单选题',
+                                    glyph: 0xf00c,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                    // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                                },{
+                                    title: '多选题',
+                                    glyph: 0xf046,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '简答题',
+                                    glyph: 0xf1ea,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '判断题',
+                                    glyph: 0xf058,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '论述题',
+                                    glyph: 0xf0cb,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '案列分析题',
+                                    glyph: 0xf022,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                }]
+                            })
+                        ]
+                    },{
+                        title: '职业技能考试题',
+                        glyph: 0xf2a1,
+                        loadMask: true,
+                        group: null,
+                        closable: false,
+                        /*autoLoad:{
+                         url: 'exampool/fileuUpload',
+                         scope: this, // optional scope for the callback
+                         discardUrl: true,
+                         nocache: true,
+                         text: "页面加载中,请稍候……",
+                         loadMask: 'loading...',
+                         scripts: true},*/
+                        items :[
+                            Ext.create('Ext.tab.Panel', {
+                                resizeTabs: true,
+                                enableTabScroll: true,
+                                activeTab: 0,
+                                autoDestroy: true,
+                                collapsible: false,
+                                plain: true,
+                                defaults: {
+                                    autoScroll: false
+                                },
+                                minTabWidth: 100,
+                                items :[{
+                                    title: '单选题',
+                                    glyph: 0xf00c,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                    // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+                                },{
+                                    title: '多选题',
+                                    glyph: 0xf046,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '简答题',
+                                    glyph: 0xf1ea,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '判断题',
+                                    glyph: 0xf058,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '论述题',
+                                    glyph: 0xf0cb,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                },{
+                                    title: '案列分析题',
+                                    glyph: 0xf022,
+                                    loadMask: true,
+                                    group: null,
+                                    closable: false,
+                                }]
+                            })
+                        ]
+                    }/*,{
                         title: '<i class="fa fa-cog fa-spin fa-lg fa-fw"></i>题库设置',
                         loadMask: true,
                         group: null,
                         closable: true,
                         html: '开发中....'
-                    }]
+                    }*/]
                 })]
             });
         }
