@@ -5,7 +5,7 @@
  */
 Ext.define('examPoolMain.mainWestView', {
     extend: 'Ext.panel.Panel',
-    alias : 'widget.mainWestView',
+    alias : 'widget.examPoolWestView',
     initComponent: function () {
         Ext.apply(this, {
             id: 'menu-panel',
@@ -18,28 +18,25 @@ Ext.define('examPoolMain.mainWestView', {
             //折叠时，点击边框也可以展开
             floatable: true,
             title: '导航',
+            glyph: 0xf0c9,
             layout: {
                 type: 'accordion',
                 animate: true,
                 activeOnTop: true
             },
-            tools: [
-                {
+            tools: [{
                     type: 'expand',
                     tooltip: '展开',
                     handler: function (event, toolEl, panel) {
                         // 实现逻辑
                     }
-                },
-                {
+                },{
                     type: 'collapse',
                     tooltip: '折叠',
                     handler: function (event, toolEl, panel) {
                         // 实现逻辑
                     }
-                }
-            ],
-            glyph: 0xf0c9
+                }]
         });
         this.callParent(arguments);
 
@@ -48,7 +45,6 @@ Ext.define('examPoolMain.mainWestView', {
 
         //构建树
         var buildTree = function (json) {
-            //创建一颗树了
             return Ext.create('Ext.tree.Panel',
                 {
                     useArrows: true,
