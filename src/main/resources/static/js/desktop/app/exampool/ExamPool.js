@@ -524,8 +524,8 @@ Ext.define('Desktop.exampool.ExamPool', {
                 listeners:{
                     resize:function(me,width,height){
                         if (!Ext.isEmpty(Ext.getCmp('examPoolMainPanel'))) {
-                            Ext.getCmp('examPoolMainPanel').setHeight(height);
-                            Ext.getCmp('examPoolMainPanel').setWidth(width);
+                            Ext.getCmp('examPoolMainPanel').setHeight(height - 40);
+                            Ext.getCmp('examPoolMainPanel').setWidth(width - 3);
                         }
                     }
                 }

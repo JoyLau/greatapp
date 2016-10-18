@@ -2,6 +2,8 @@ package cn.lfdevelopment.www.app.exampool.controller;
 
 import cn.lfdevelopment.www.app.exampool.pojo.CivilServantChoice;
 import cn.lfdevelopment.www.app.exampool.service.ExamPoolService;
+import cn.lfdevelopment.www.app.sys.pojo.SysRight;
+import cn.lfdevelopment.www.app.sys.service.SysRightService;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -26,6 +28,8 @@ public class ExamPoolController {
     @Autowired
     private ExamPoolService examPoolService;
 
+    @Autowired
+    private SysRightService sysRightService;
 
     @RequestMapping("/exampool/choice")
     public String choice(){
@@ -87,4 +91,20 @@ public class ExamPoolController {
         model.addAttribute("msg","更新成功!");
         return JSON.toJSONString(model);
     }
+
+    @RequestMapping("/exampool/getMenu")
+    @ResponseBody
+    public String getMenu(Model model){
+        List<SysRight> rootList = sysRightService.getSysRightRoot();
+        for (SysRight sysRight : rootList) {
+            int rootRightId = sysRight.getId();
+            List<SysRight> childrenList = sysRightService.getSysRightChildren(rootRightId);
+            sysRight.setChildren(childrenList);
+        }
+        model.addAttribute("menu",rootList);
+        model.addAttribute("success",true);
+        System.out.println(JSON.toJSONString(model));
+        return JSON.toJSONString(model);
+    }
+
 }

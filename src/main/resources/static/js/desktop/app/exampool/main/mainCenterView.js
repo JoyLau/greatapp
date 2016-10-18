@@ -19,10 +19,17 @@ Ext.define('examPoolMain.mainCenterView',{
     collapsible: false,
     plain: true,
     defaults: {
-        autoScroll: false
+        autoScroll: true
     },
     minTabWidth: 150,
     items :[{
+        title: '首页',
+        glyph: 0xf015,
+        loadMask: true,
+        group: null,
+        closable: false,
+        // html: '<iframe id="iframePage" scrolling="auto" frameborder="0" width="100%" height="100%" src="exampool/choice"></iframe>'
+    },{
         title: '首页',
         glyph: 0xf015,
         loadMask: true,
