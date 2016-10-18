@@ -4,8 +4,10 @@
 
 package cn.lfdevelopment.www.sys.ApplicationInitialize;
 
+import cn.lfdevelopment.www.app.sys.pojo.SysRight;
 import cn.lfdevelopment.www.app.sys.pojo.Sys_dic;
 import cn.lfdevelopment.www.app.sys.service.DicService;
+import cn.lfdevelopment.www.app.sys.service.SysRightService;
 import cn.lfdevelopment.www.sys.redis.RedisUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +33,30 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
 
     @Autowired
     private DicService dicService;
+    @Autowired
+    private SysRightService sysRightService;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         //root application context
         if (contextRefreshedEvent.getApplicationContext().getParent() == null) {
-            List<Sys_dic> dicList = dicService.getdicList();
-            redisUtils.set("dicList",dicList);
-            List list = (List)redisUtils.get("dicList");
-            _logger.info(list.size());
+            setMenuData();
         }
+    }
+
+
+    private void setDicData(){
+        List<Sys_dic> dicList = dicService.getdicList();
+        redisUtils.set("dicList",dicList);
+    }
+
+    private void setMenuData(){
+        List<SysRight> rootList = sysRightService.getSysRightRoot();
+        for (SysRight sysRight : rootList) {
+            int rootRightId = sysRight.getId();
+            List<SysRight> childrenList = sysRightService.getSysRightChildren(rootRightId);
+            sysRight.setChildren(childrenList);
+        }
+        redisUtils.set("menuList",rootList);
     }
 }

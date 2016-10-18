@@ -4,6 +4,7 @@ import cn.lfdevelopment.www.app.exampool.pojo.CivilServantChoice;
 import cn.lfdevelopment.www.app.exampool.service.ExamPoolService;
 import cn.lfdevelopment.www.app.sys.pojo.SysRight;
 import cn.lfdevelopment.www.app.sys.service.SysRightService;
+import cn.lfdevelopment.www.sys.redis.RedisUtils;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -30,6 +31,9 @@ public class ExamPoolController {
 
     @Autowired
     private SysRightService sysRightService;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     @RequestMapping("/exampool/choice")
     public String choice(){
@@ -95,15 +99,18 @@ public class ExamPoolController {
     @RequestMapping("/exampool/getMenu")
     @ResponseBody
     public String getMenu(Model model){
-        List<SysRight> rootList = sysRightService.getSysRightRoot();
-        for (SysRight sysRight : rootList) {
-            int rootRightId = sysRight.getId();
-            List<SysRight> childrenList = sysRightService.getSysRightChildren(rootRightId);
-            sysRight.setChildren(childrenList);
+        //优先从缓存中获取数据
+        List<SysRight> rootList = (List<SysRight>) redisUtils.get("menuList");
+        if (rootList.size() <= 0){
+            rootList = sysRightService.getSysRightRoot();
+            for (SysRight sysRight : rootList) {
+                int rootRightId = sysRight.getId();
+                List<SysRight> childrenList = sysRightService.getSysRightChildren(rootRightId);
+                sysRight.setChildren(childrenList);
+            }
         }
         model.addAttribute("menu",rootList);
         model.addAttribute("success",true);
-        System.out.println(JSON.toJSONString(model));
         return JSON.toJSONString(model);
     }
 

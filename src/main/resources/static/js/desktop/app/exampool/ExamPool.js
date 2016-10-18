@@ -519,7 +519,8 @@ Ext.define('Desktop.exampool.ExamPool', {
                 loader: {
                     url: basePath + '/exampool/exampool',
                     autoLoad: true,
-                    scripts: true
+                    scripts: true,
+                    loadMask: true
                 },
                 listeners:{
                     resize:function(me,width,height){

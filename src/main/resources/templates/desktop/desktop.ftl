@@ -25,6 +25,7 @@
 
         Ext.Loader.setPath({
             'Ext.ux.desktop': 'static/js/desktop/js',
+            'Ext.ux.plugins': 'static/js/app/plugins',
             Desktop: 'static/js/desktop/app'
         });
 

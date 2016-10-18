@@ -32,73 +32,20 @@ Ext.define('examPoolMain.mainWestView', {
                     handler: function (event, toolEl, panel) {
                         // 实现逻辑
                     }
-                }]
+                }],
+            listeners: {
+                afterrender :function (comp, opts) {
+                    var me = this;
+                    Ext.Function.defer(me.getMenu, 300, me);
+                }
+            }
         });
         this.callParent(arguments);
+    },
 
-
-
-
-        //构建树
-        var buildTree = function (json) {
-            return Ext.create('Ext.tree.Panel',{
-                    //箭头树
-                    // useArrows: true,
-                    rootVisible: false,
-                    border: false,
-                    animate : true,
-                    root: {
-                        id: Ext.id(),
-                        text: "",
-                        expanded: true
-                    },
-                    listeners: {
-                        beforerender : function (cmp,opts) {
-                            var root = cmp.getRootNode();
-                            Ext.each(json.children, function (el) {
-                                root.appendChild({
-                                    id : el.id,
-                                    text: el.name,
-                                    leaf: el.leaf != 0,
-                                    iconCls  : el.icon,
-                                    qtitle : el.url,
-                                    qtip : el.notes
-                                });
-                            })
-                        },
-                        //节点单击事件
-                        itemclick: function (view, record, item, index, e) {
-                            var id = 'examPoolCenterTabs' + record.get('id');
-                            var text = record.get('text');
-                            var notes = record.get('qtip');
-                            var url = record.get('qtitle');
-                            var glyph = record.get('iconCls');
-                            var leaf = record.get('leaf');
-                            var tabs = Ext.getCmp('examPoolCenterTabPanel');//获取center布局的组件
-                            var addPanel = tabs.getComponent(id); //新增一个component
-                            if (leaf) {
-                                //先判断你需要打开的tab页是否已经打开，如果没打开，则新增一个，否则激活它
-                                if(!addPanel ) {
-                                    addPanel = tabs.add({
-                                        id : id,
-                                        title : notes,
-                                        closable : true,
-                                        glyph: Number(glyph),
-                                        loadMask: true,
-                                        group: null
-                                        // html:'<iframe id=mainPage width="100%" height="100%" frameborder=0 src='+url+'></iframe>'
-                                    }).show();
-                                }
-                                tabs.setActiveTab(addPanel);
-                            }
-                        },
-                        scope: this
-                    }
-                });
-        };
-        /**
-         * 创建AJAX请求，从服务器请求菜单数据生成 accordion和Tree 菜单
-         */
+    //从服务器请求菜单数据生成 accordion和Tree 菜单
+    getMenu : function () {
+        var me = this;
         Ext.Ajax.request({
             method : 'post',
             url : basePath + '/exampool/getMenu',
@@ -115,7 +62,7 @@ Ext.define('examPoolMain.mainWestView', {
                             glyph : Number(el.icon),
                             layout : 'fit'
                         });
-                        panel.add(buildTree(el));
+                        panel.add(me.buildTree(el));
                         Ext.getCmp("menu-panel").add(panel);
                     });
                 }
@@ -127,6 +74,68 @@ Ext.define('examPoolMain.mainWestView', {
                     buttons : Ext.MessageBox.OK,
                     icon : Ext.MessageBox.ERROR
                 });
+            }
+        });
+    },
+
+    buildTree : function (json) {
+        return Ext.create('Ext.tree.Panel',{
+            //箭头树
+            // useArrows: true,
+            rootVisible: false,
+            border: false,
+            animate : true,
+            root: {
+                id: Ext.id(),
+                text: "",
+                expanded: true
+            },
+            listeners: {
+                beforerender : function (cmp,opts) {
+                    var root = cmp.getRootNode();
+                    Ext.each(json.children, function (el) {
+                        root.appendChild({
+                            id : el.id,
+                            text: el.name,
+                            leaf: el.leaf != 0,
+                            iconCls  : el.icon,
+                            icon : basePath + '/static/images/desktop/add.gif',
+                            qtitle : el.url,
+                            qtip : el.notes
+                        });
+                    })
+                },
+                //节点单击事件
+                itemclick: function (view, record, item, index, e) {
+                    var id = 'examPoolCenterTabs' + record.get('id');
+                    var text = record.get('text');
+                    var notes = record.get('qtip');
+                    var url = record.get('qtitle');
+                    var glyph = record.get('iconCls');
+                    var leaf = record.get('leaf');
+                    var tabs = Ext.getCmp('examPoolCenterTabPanel');//获取center布局的组件
+                    var addPanel = tabs.getComponent(id); //新增一个component
+                    if (leaf) {
+                        //判断tab页是否已经打开，如果没打开，则新增一个，否则激活它
+                        if(!addPanel ) {
+                            addPanel = tabs.add({
+                                id : id,
+                                title : notes,
+                                closable : true,
+                                glyph: Number(glyph),
+                                loader: {
+                                    url: basePath + url,
+                                    autoLoad: true,
+                                    scripts: true,
+                                    loadMask: true
+                                }
+                                // html:'<iframe id=mainPage width="100%" height="100%" frameborder=0 src='+url+'></iframe>'
+                            }).show();
+                        }
+                        tabs.setActiveTab(addPanel);
+                    }
+                },
+                scope: this
             }
         });
     }
