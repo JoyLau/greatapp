@@ -4,15 +4,15 @@
  * greatapp
  */
 Ext.define('Ext.ux.plugins.TabCloseMenu', {
-    alias: 'plugintabclosemenu',
+    alias: 'plugin.TabCloseMenu',
     mixins: {
         observable: 'Ext.util.Observable'
     },
-    closeTabText: '关闭标签',
+    closeTabText: '关闭',
     showCloseOthers: true,
-    closeOthersTabsText: '关闭其他标签',
+    closeOthersTabsText: '关闭其他',
     showCloseAll: true,
-    closeAllTabsText: '关闭全部标签',
+    closeAllTabsText: '关闭全部',
     extraItemsHead: null,
     extraItemsTail: null,
     constructor: function (config) {
@@ -80,6 +80,7 @@ Ext.define('Ext.ux.plugins.TabCloseMenu', {
         if (!me.menu) {
             var items = [{
                 text: me.closeTabText,
+                glyph: 0xf00d,
                 scope: me,
                 handler: me.onClose
             }];
@@ -89,6 +90,7 @@ Ext.define('Ext.ux.plugins.TabCloseMenu', {
             if (me.showCloseOthers) {
                 items.push({
                     text: me.closeOthersTabsText,
+                    glyph: 0xf05c,
                     scope: me,
                     handler: me.onCloseOthers
                 });
@@ -96,6 +98,7 @@ Ext.define('Ext.ux.plugins.TabCloseMenu', {
             if (me.showCloseAll) {
                 items.push({
                     text: me.closeAllTabsText,
+                    glyph: 0xf141,
                     scope: me,
                     handler: me.onCloseAll
                 });

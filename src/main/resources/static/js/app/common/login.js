@@ -105,6 +105,18 @@ Ext.onReady(function () {
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
+            win.animate({
+                duration: 1000,
+                easing: 'bounceIn',
+                from: {
+                    height: win.getHeight(),
+                    width : win.getWidth()
+                },
+                to: {
+                    height: 0,
+                    width : 0
+                }
+            });
             var username = form.getForm().findField('username').getValue();
             var password = form.getForm().findField('password').getValue();
             var checkcode = form.getForm().findField('checkcode').getValue();
@@ -153,7 +165,17 @@ Ext.onReady(function () {
     };
     //重置按钮"点击时"处理方法
     var resetClick = function () {
-        win.setHeight(180);
+        Ext.create('Ext.fx.Anim', {
+            target: win,
+            duration: 1000,
+            easing : 'bounceIn',
+            from: {
+                height: win.getHeight()
+            },
+            to: {
+                height: 180
+            }
+        });
         captcha.setHidden(true)
         form.getForm().reset();
     };
@@ -214,18 +236,27 @@ Ext.onReady(function () {
             maxLengthText: '验证码不能超过6个字符!',
             listeners: {
                 focus : function () {
-                    win.setHeight(250);
                     //如果验证码已经存在，则不刷新
                     if (document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode') == -1) {
                         refreshCode();
                     }
                     captcha.setHidden(false)
+                    Ext.create('Ext.fx.Anim', {
+                        target: win,
+                        duration: 1000,
+                        easing : 'bounceIn',
+                        from: {
+                            height: win.getHeight()
+                        },
+                        to: {
+                            height: 250
+                        }
+                    });
                 }
             }
         }, captcha],
         buttons: [reset, submit]
     });
-    //窗体
     var win = new Ext.Window({
         title: '管理员登录',
         plain: false,
@@ -252,5 +283,15 @@ Ext.onReady(function () {
             }
         }
     });
-    win.show();
+    win.show(Ext.getBody());
+    win.animate({
+        duration: 3000,
+        easing: 'easeOut',
+        from: {
+            opacity: 0
+        },
+        to: {
+            opacity: 1
+        }
+    });
 });
