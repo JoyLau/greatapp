@@ -7,8 +7,6 @@ package cn.lfdevelopment.www.sys.druid;
 import com.alibaba.druid.filter.config.ConfigTools;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
-import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
-import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -93,10 +91,10 @@ public class DruidStatViewConfig {
     /**
      * 注册一个:druidStatInterceptor
      */
-    @Bean
+    /*@Bean
     public DruidStatInterceptor druidStatInterceptor(){
         return new DruidStatInterceptor();
-    }
+    }*/
 
     /**
      * 注册一个：beanNameAutoProxyCreator
@@ -105,12 +103,12 @@ public class DruidStatViewConfig {
      * 按类型拦截配置
      * 方法名正则匹配拦截配置
      */
-    @Bean
+    /*@Bean
     public BeanNameAutoProxyCreator beanNameAutoProxyCreator(){
         BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
         beanNameAutoProxyCreator.setProxyTargetClass(true);
         beanNameAutoProxyCreator.setBeanNames("*Controller");
         beanNameAutoProxyCreator.setInterceptorNames("druidStatInterceptor");
         return beanNameAutoProxyCreator;
-    }
+    }*/
 }
