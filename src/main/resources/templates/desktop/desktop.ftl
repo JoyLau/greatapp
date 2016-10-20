@@ -57,6 +57,7 @@
 
 <#--插件-->
 <script type="text/javascript" src="${path}/static/js/app/plugins/TabCloseMenu.js"></script>
+<script type="text/javascript" src="${path}/static/js/app/plugins/ProgressBarPager.js"></script>
 <#--<script type="text/javascript" src="/static/js/desktop/js/options-toolbar.js"></script>-->
 
 <script type="text/javascript">

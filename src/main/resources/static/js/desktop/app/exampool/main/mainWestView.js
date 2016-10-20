@@ -101,7 +101,7 @@ Ext.define('examPoolMain.mainWestView', {
                             iconCls  : el.icon,
                             icon : basePath + '/static/images/desktop/add.gif',
                             qtitle : el.url,
-                            qtip : el.notes
+                            // qtip : el.notes
                         });
                     })
                 },
@@ -120,16 +120,23 @@ Ext.define('examPoolMain.mainWestView', {
                         if(!addPanel ) {
                             addPanel = tabs.add({
                                 id : id,
-                                title : notes,
+                                title : text,
                                 closable : true,
                                 glyph: Number(glyph),
                                 loader: {
-                                    url: basePath + url,
+                                    url: basePath + url + '?mainPanelId=' + id + 'mainPanel',
                                     autoLoad: true,
                                     scripts: true,
                                     loadMask: true
+                                },
+                                listeners:{
+                                    resize:function(me,width,height){
+                                        if (!Ext.isEmpty(Ext.getCmp(id + 'mainPanel'))) {
+                                            Ext.getCmp(id + 'mainPanel').setHeight(height - 5);
+                                            Ext.getCmp(id + 'mainPanel').setWidth(width - 5);
+                                        }
+                                    }
                                 }
-                                // html:'<iframe id=mainPage width="100%" height="100%" frameborder=0 src='+url+'></iframe>'
                             }).show();
                         }
                         tabs.setActiveTab(addPanel);

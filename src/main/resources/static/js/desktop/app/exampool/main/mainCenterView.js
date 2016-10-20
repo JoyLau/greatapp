@@ -23,6 +23,7 @@ Ext.define('examPoolMain.mainCenterView',{
     },
     minTabWidth: 150,
     items :[{
+        id : 'examPoolCenterTabPanel-MainPanel',
         title: '首页',
         glyph: 0xf015,
         loadMask: true,

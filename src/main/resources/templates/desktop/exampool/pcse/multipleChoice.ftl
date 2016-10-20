@@ -1,3 +1,4 @@
+<#assign path=request.contextPath />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -6,11 +7,11 @@
     <meta name="renderer" content="webkit">
     <title>multipleChoice</title>
       <script type="text/javascript">
-          alert('加载js');
+          var mainPanelId = '${mainPanelId}';
       </script>
+      <script type="text/javascript" src="${path}/static/js/desktop/app/exampool/pcse/multiplechoice/multipleChoice.js"></script>
   </head>
-
   <body>
-  <div id="singleChoice" style="width:100%;height:100%;background-color: #00acd8">ssss</div>
+  <div id="PCSEMultipleChoice"></div>
   </body>
 </html>

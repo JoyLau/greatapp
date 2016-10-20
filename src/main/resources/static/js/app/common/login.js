@@ -105,7 +105,7 @@ Ext.onReady(function () {
     //提交按钮处理方法
     var submitClick = function () {
         if (form.getForm().isValid()) {
-            win.animate({
+            /*win.animate({
                 duration: 1000,
                 easing: 'bounceIn',
                 from: {
@@ -116,7 +116,7 @@ Ext.onReady(function () {
                     height: 0,
                     width : 0
                 }
-            });
+            });*/
             var username = form.getForm().findField('username').getValue();
             var password = form.getForm().findField('password').getValue();
             var checkcode = form.getForm().findField('checkcode').getValue();

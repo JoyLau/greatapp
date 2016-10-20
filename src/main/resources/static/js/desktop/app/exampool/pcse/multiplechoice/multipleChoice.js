@@ -9,13 +9,32 @@
  */
 Ext.Loader.setConfig({enabled: true});
 Ext.application({
-    name:'examPoolChoice',
-    appFolder: basePath + '/static/js/desktop/app/exampool/pcse',
+    name:'PCSEMultiplechoice',
+    appFolder: basePath + '/static/js/desktop/app/exampool/pcse/multiplechoice',
     launch: function () {
-        alert('asd');
         Ext.create('Ext.panel.Panel',{
-            html: '1231231',
-            renderTo : 'singleChoice'
-        })
+            id : mainPanelId,
+            width : Ext.getCmp(mainPanelId.replace('mainPanel','')).getWidth(),
+            height : Ext.getCmp(mainPanelId.replace('mainPanel','')).getHeight(),
+            layout: "border",
+            renderTo : 'PCSEMultipleChoice',
+            items: [{
+                xtype : 'panel',
+                region: 'north',
+                split: true,
+                collapsible: true,
+                title : 'north'
+            },{
+                xtype : 'panel',
+                region: 'west',
+                collapsible: true,
+                split: true,
+                html : '小儿麻小二郎......'
+            },{
+                xtype : 'panel',
+                collapsible: true,
+                region: 'center'
+            }]
+        });
     }
 });
