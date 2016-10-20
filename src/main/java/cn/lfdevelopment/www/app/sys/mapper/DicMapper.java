@@ -4,7 +4,7 @@
 
 package cn.lfdevelopment.www.app.sys.mapper;
 
-import cn.lfdevelopment.www.app.sys.pojo.Sys_dic;
+import cn.lfdevelopment.www.app.sys.pojo.SysDic;
 import cn.lfdevelopment.www.sys.base.BaseMapper;
 
 /**
@@ -12,5 +12,5 @@ import cn.lfdevelopment.www.sys.base.BaseMapper;
  * cn.lfdevelopment.www.app.sys.mapper
  * DevelopmentApp
  */
-public interface DicMapper extends BaseMapper<Sys_dic> {
+public interface DicMapper extends BaseMapper<SysDic> {
 }

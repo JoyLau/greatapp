@@ -11,7 +11,7 @@ import cn.lfdevelopment.www.sys.base.BaseEntity;
  * cn.lfdevelopment.www.app.sys.pojo
  * DevelopmentApp
  */
-public class Sys_dic extends BaseEntity {
+public class SysDic extends BaseEntity {
     private int id;
     private String type;
     private String code;

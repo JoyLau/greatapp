@@ -85,6 +85,12 @@
                     text:'移除',
                     tooltip:'点击移除',
                     iconCls:'remove'
+                },'-',{
+                    text:'刷新',
+                    handler : function () {
+                        var me = this;
+                        me.getStore().reload();
+                    }
                 }]
             });
         }

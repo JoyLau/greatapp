@@ -5,7 +5,7 @@
 package cn.lfdevelopment.www.app.sys.service;
 
 import cn.lfdevelopment.www.app.sys.mapper.DicMapper;
-import cn.lfdevelopment.www.app.sys.pojo.Sys_dic;
+import cn.lfdevelopment.www.app.sys.pojo.SysDic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class DicService {
         this.dicMapper = dicMapper;
     }
 
-    public List<Sys_dic> getdicList(){
+    public List<SysDic> getdicList(){
         return dicMapper.selectAll();
     }
 }

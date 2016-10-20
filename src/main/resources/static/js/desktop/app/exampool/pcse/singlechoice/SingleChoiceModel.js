@@ -11,14 +11,14 @@ Ext.define('pcseSingleChoice.SingleChoiceModel', {
     extend: 'Ext.data.Model',
     fields: ['id',
         'title',
-        'answer_a',
-        'answer_b',
-        'answer_c',
-        'answer_d',
+        'answerA',
+        'answerB',
+        'answerC',
+        'answerD',
         'type',
-        'is_image',
-        'image_url',
+        'isImage',
+        'imageUrl',
         'explain',
-        'update_time',
-        'answer_right']
+        'updateTime',
+        'answerRight']
 });

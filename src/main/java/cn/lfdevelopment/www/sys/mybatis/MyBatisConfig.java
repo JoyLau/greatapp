@@ -41,6 +41,10 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setTypeAliasesPackage("cn.lfdevelopment.www.app.**.pojo");
+        //支持属性使用驼峰的命名,mapper配置不需要写字段与属性的配置，会自动映射。
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setMapUnderscoreToCamelCase(true);
+        bean.setConfiguration(configuration);
 
         //分页插件
         PageHelper pageHelper = new PageHelper();

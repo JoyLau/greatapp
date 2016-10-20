@@ -4,8 +4,8 @@
 
 package cn.lfdevelopment.www.sys.ApplicationInitialize;
 
+import cn.lfdevelopment.www.app.sys.pojo.SysDic;
 import cn.lfdevelopment.www.app.sys.pojo.SysRight;
-import cn.lfdevelopment.www.app.sys.pojo.Sys_dic;
 import cn.lfdevelopment.www.app.sys.service.DicService;
 import cn.lfdevelopment.www.app.sys.service.SysRightService;
 import cn.lfdevelopment.www.sys.redis.RedisUtils;
@@ -46,7 +46,7 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
 
 
     private void setDicData(){
-        List<Sys_dic> dicList = dicService.getdicList();
+        List<SysDic> dicList = dicService.getdicList();
         redisUtils.set("dicList",dicList);
     }
 

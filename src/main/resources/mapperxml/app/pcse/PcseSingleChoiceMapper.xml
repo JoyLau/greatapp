@@ -5,26 +5,9 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.lfdevelopment.www.app.pcse.mapper.PcseSingleChoiceMapper">
-  <resultMap id="BaseResultMap" type="cn.lfdevelopment.www.app.pcse.pojo.PcseSingleChoice">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="is_image" jdbcType="INTEGER" property="isImage" />
-    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
-    <result column="answer_A" jdbcType="VARCHAR" property="answerA" />
-    <result column="answer_B" jdbcType="VARCHAR" property="answerB" />
-    <result column="answer_C" jdbcType="VARCHAR" property="answerC" />
-    <result column="answer_D" jdbcType="VARCHAR" property="answerD" />
-    <result column="answer_right" jdbcType="INTEGER" property="answerRight" />
-    <result column="explain" jdbcType="VARCHAR" property="explain" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="title" jdbcType="LONGVARCHAR" property="title" />
-  </resultMap>
   <select id="getStoreData" resultType="cn.lfdevelopment.www.app.pcse.pojo.PcseSingleChoice">
     SELECT
-      title,answer_D,answer_A,answer_B,answer_C
+      *
     FROM pcse_single_choice
   </select>
 </mapper>
