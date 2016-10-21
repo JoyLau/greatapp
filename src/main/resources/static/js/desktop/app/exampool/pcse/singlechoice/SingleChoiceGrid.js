@@ -16,7 +16,7 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     region: 'center',
     plugins : Ext.create('Ext.ux.plugins.MaskBinder'),
     selModel: Ext.create('Ext.selection.CheckboxModel'),
-
+    emptyText : '哦哦,暂无数据',
     // store: Ext.data.StoreManager.lookup('ChoiceStore'), //绑定Store
     initComponent : function() {
         var store = Ext.create('pcseSingleChoice.SingleChoiceStore');

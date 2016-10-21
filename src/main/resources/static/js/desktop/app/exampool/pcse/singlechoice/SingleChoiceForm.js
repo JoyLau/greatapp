@@ -34,12 +34,12 @@ Ext.define('pcseSingleChoice.SingleChoiceForm', {
             items:[{
                 name: 'updateTimeStart',
                 xtype: 'datefield',
-                fieldLabel: '添加时间',
+                fieldLabel: '编辑时间',
                 format: 'Y-m-d',
                 showToday: true,
                 editable: false
             },{
-                name: 'updateTimeStart',
+                name: 'updateTimeEnd',
                 xtype: 'datefield',
                 fieldLabel: '至',
                 format: 'Y-m-d',
@@ -65,6 +65,7 @@ Ext.define('pcseSingleChoice.SingleChoiceForm', {
                     hiddenName: 'state',
                     displayField: 'text',
                     valueField: 'id',
+                    name : 'type',
                     store: new Ext.data.SimpleStore({
                         fields: ['id', 'text'],
                         data: [['0', '行测'],
@@ -81,6 +82,7 @@ Ext.define('pcseSingleChoice.SingleChoiceForm', {
                     hiddenName: 'state',
                     displayField: 'text',
                     valueField: 'id',
+                    name : 'isImage',
                     store: new Ext.data.SimpleStore({
                         fields: ['id', 'text'],
                         data: [['0', '不包含'],
@@ -98,7 +100,7 @@ Ext.define('pcseSingleChoice.SingleChoiceForm', {
                 items:[{
                     xtype: 'textfield',
                     emptyText : '输入题目关键字进行模糊查询',
-                    name: 'name',
+                    name: 'title',
                     fieldLabel: '题目名称'
                 },{
                     xtype: 'combo',
@@ -110,6 +112,7 @@ Ext.define('pcseSingleChoice.SingleChoiceForm', {
                     hiddenName: 'state',
                     displayField: 'text',
                     valueField: 'id',
+                    name : 'answerRight',
                     store: new Ext.data.SimpleStore({
                         fields: ['id', 'text'],
                         data: [['0', 'A'],

@@ -14,11 +14,18 @@ Ext.define('pcseSingleChoice.SingleChoiceStore', {
     pageSize: 10, //设置每页显示的数据数量
     proxy: {
         type: 'ajax',
+        getMethod: function(){ return 'POST'; },
         url: basePath + '/exampool/pcse/singleChoice/getStore',
         reader: {
             type: 'json',
             root: 'data',
             totalProperty: 'total'
+        }
+    },
+    listeners : {
+        beforeload : function(s, o) {
+            var data = Ext.getCmp('exampool-choice-form').form.getValues();
+            s.getProxy().extraParams = {data : Ext.encode(data)};
         }
     }
 });

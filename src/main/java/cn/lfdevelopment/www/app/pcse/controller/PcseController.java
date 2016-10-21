@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LiuFa on 2016/10/20.
@@ -62,8 +63,8 @@ public class PcseController {
      */
     @RequestMapping("/exampool/pcse/singleChoice/getStore")
     @ResponseBody
-    public String getData(Model model,int page,int limit){
-        List<PcseSingleChoice> list = pcseService.getStoreData(page,limit);
+    public String getData(Model model,int page,int limit,String data){
+        List<PcseSingleChoice> list = pcseService.getStoreData(page,limit,(Map) JSON.parse(data));
         PageInfo pageInfo = new PageInfo<>(list);
         model.addAttribute("success",true);
         model.addAttribute("total",pageInfo.getTotal());

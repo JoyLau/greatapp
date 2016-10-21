@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LiuFa on 2016/10/20.
@@ -23,8 +24,8 @@ public class PcseService {
     @Autowired
     private PcseSingleChoiceMapper pcseSingleChoiceMapper;
 
-    public List<PcseSingleChoice> getStoreData(int page, int limit) {
+    public List<PcseSingleChoice> getStoreData(int page, int limit, Map map) {
         PageHelper.startPage(page, limit);
-        return pcseSingleChoiceMapper.getStoreData();
+        return pcseSingleChoiceMapper.getStoreData(map);
     }
 }

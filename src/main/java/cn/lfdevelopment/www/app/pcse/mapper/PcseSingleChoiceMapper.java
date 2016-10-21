@@ -8,7 +8,8 @@ import cn.lfdevelopment.www.app.pcse.pojo.PcseSingleChoice;
 import cn.lfdevelopment.www.sys.base.BaseMapper;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PcseSingleChoiceMapper extends BaseMapper<PcseSingleChoice> {
-    List<PcseSingleChoice> getStoreData();
+    List<PcseSingleChoice> getStoreData(Map map);
 }
