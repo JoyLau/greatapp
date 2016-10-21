@@ -14,9 +14,10 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     border: false,
     frame: true,
     region: 'center',
+    bodyStyle: 'background-image: url(' + basePath + 'static/images/desktop/body-bkg.png);',
     plugins : Ext.create('Ext.ux.plugins.MaskBinder'),
     selModel: Ext.create('Ext.selection.CheckboxModel'),
-    emptyText : '哦哦,暂无数据',
+    emptyText : '<p style="text-align: center;"><img src=' +basePath + '"/static/images/desktop/gridnodata.png" draggable="false"/>哦哦,数据在火星</p>',
     // store: Ext.data.StoreManager.lookup('ChoiceStore'), //绑定Store
     initComponent : function() {
         var store = Ext.create('pcseSingleChoice.SingleChoiceStore');
@@ -59,6 +60,11 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         text: '来20题',
         tooltip : '输入题目数量，随机从题库中选出题目并导出',
         glyph: 0xf02c
+    }, '-', {
+        id: 'removeRepeat',
+        text: '去重',
+        tooltip : '筛选出题库中题目内容相同的选择题，您可以选择删除它们',
+        glyph: 0xf0c5
     }],
     columns: [{
         xtype: 'rownumberer'
@@ -98,7 +104,7 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     }, {
         text: '有无图片',
         hidden: true,
-        dataIndex: 'is_image',
+        dataIndex: 'isImage',
         renderer : function (val) {
             switch (val) {
                 case 0 : return "无"; break;

@@ -196,7 +196,7 @@ Ext.onReady(function () {
         height: 50,
         plain: false,
         border: false,
-        html: "<a onclick='refreshCode();'><img id='validateCodeImg' style='border-radius: 10px;cursor: hand' title='看不清楚' src='' /></a>",
+        html: '<a onclick="refreshCode();"><img draggable="false" id="validateCodeImg" style="border-radius: 10px;cursor: hand" title="看不清楚" src="" /></a>',
         margin: "15px 0px 0px 80px",
         hidden: true
     });
@@ -240,7 +240,7 @@ Ext.onReady(function () {
                     if (document.getElementById("validateCodeImg").src.toString().indexOf('getGifCode') == -1) {
                         refreshCode();
                     }
-                    captcha.setHidden(false)
+                    captcha.setHidden(false);
                     Ext.create('Ext.fx.Anim', {
                         target: win,
                         duration: 1000,

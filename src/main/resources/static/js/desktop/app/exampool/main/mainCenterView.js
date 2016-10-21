@@ -28,6 +28,7 @@ Ext.define('examPoolMain.mainCenterView',{
         glyph: 0xf015,
         loadMask: true,
         closable: false,
+        bodyStyle: 'background-image: url(' + basePath + 'static/images/desktop/body-bkg.png);',
         html: '首页写点什么比较好呢？先想想吧.............'
     }],
     initComponent: function () {

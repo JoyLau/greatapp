@@ -11,7 +11,7 @@
     FROM pcse_single_choice
     <where>
       <if test="title != ''">
-        title = #{title}
+        title LIKE '%${title}%'
       </if>
       <if test="updateTimeStart != ''">
         and update_time >= #{updateTimeStart}
@@ -20,7 +20,7 @@
         and update_time <![CDATA[<=]]> #{updateTimeEnd}
       </if>
       <if test="type != ''">
-        and update_time = ${updateTimeStart}
+        and type = ${type}
       </if>
       <if test="isImage != ''">
         and is_image = ${isImage}
