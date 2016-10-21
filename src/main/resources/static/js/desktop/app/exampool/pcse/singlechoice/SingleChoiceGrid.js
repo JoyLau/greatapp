@@ -11,22 +11,17 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.PCSESingleChoiceGrid',
     id: 'pcse-singleChoice-grid',
-    xtype : 'grid',
     border: false,
     frame: true,
     region: 'center',
-    viewConfig:{
-        loadMask:{
-            msg:'loading...'
-        }
-    },
+    plugins : Ext.create('Ext.ux.plugins.MaskBinder'),
     selModel: Ext.create('Ext.selection.CheckboxModel'),
 
     // store: Ext.data.StoreManager.lookup('ChoiceStore'), //绑定Store
     initComponent : function() {
-        var store = 'pcseSingleChoice.SingleChoiceStore';
+        var store = Ext.create('pcseSingleChoice.SingleChoiceStore');
         this.store = store;
-        // store.load({params : {start : 0,limit : 10}});
+        store.load({params : {start : 0,limit : 10}});
         this.dockedItems = [{
             xtype: 'pagingtoolbar',
             store: store,
@@ -73,7 +68,7 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         dataIndex: 'id'
     }, {
         text: '题目',
-        width: '50%',
+        flex : 1,
         sortable: false,
         hideable: false,
         dataIndex: 'title'
@@ -127,10 +122,7 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
                 '<p><strong>D.&nbsp;</strong>' + record.data.answerD + '</p>' +
                 '<p><span style="color: rgb(155, 187, 89);">正确答案 : </span>' + getright(record.data.answerRight) + '</p>';
             Ext.getCmp('pcse-singleChoice-detail').update({html: html})
-        },
-    afterrender : function (cmp, opts) {
-        cmp.store.load({params : {start : 0,limit : 10}});
-    }
+        }
     }
 });
 

@@ -58,6 +58,7 @@
 <#--插件-->
 <script type="text/javascript" src="${path}/static/js/app/plugins/TabCloseMenu.js"></script>
 <script type="text/javascript" src="${path}/static/js/app/plugins/ProgressBarPager.js"></script>
+<script type="text/javascript" src="${path}/static/js/app/plugins/MaskBinder.js"></script>
 <#--<script type="text/javascript" src="/static/js/desktop/js/options-toolbar.js"></script>-->
 
 <script type="text/javascript">
@@ -76,9 +77,8 @@
         Ext.get('loading').hide();
         Ext.get('loading-mask').fadeOut({ opacity: 0, duration: 2500});
         DesktopApp = Ext.create('Desktop.App');
-        var proto = Ext.picker.Date.prototype,
-                date = Ext.Date;
-
+        //解决4.2datefield星期显示y的问题
+        var proto = Ext.picker.Date.prototype,date = Ext.Date;
         proto.monthNames = date.monthNames;
         proto.dayNames = date.dayNames;
         proto.format = date.defaultFormat;

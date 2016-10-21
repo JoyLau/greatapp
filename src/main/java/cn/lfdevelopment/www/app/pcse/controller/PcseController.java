@@ -70,5 +70,4 @@ public class PcseController {
         model.addAttribute("data",list);
         return JSON.toJSONString(model);
     }
-
 }

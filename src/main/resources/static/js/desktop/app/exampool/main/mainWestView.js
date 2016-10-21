@@ -30,7 +30,6 @@ Ext.define('examPoolMain.mainWestView', {
                     type: 'refresh',
                     tooltip: '刷新',
                     handler: function (event, toolEl, panel) {
-                        // 实现逻辑
                     }
                 }],
             listeners: {
@@ -122,18 +121,29 @@ Ext.define('examPoolMain.mainWestView', {
                                 id : id,
                                 title : text,
                                 closable : true,
+                                xtype : 'container',
                                 glyph: Number(glyph),
-                                loader: {
+                                /*loader: {
                                     url: basePath + url + '?mainPanelId=' + id + 'mainPanel',
                                     autoLoad: true,
                                     scripts: true,
                                     loadMask: true
+                                },*/
+                                loader: {
+                                    renderer : function(loader, response, active) {
+                                        loader.getTarget().update(response.responseText, true);
+                                        return true;
+                                    },
+                                    url: basePath + url + '?mainPanelId=' + id + 'mainPanel',
+                                    autoLoad: true,
+                                    scripts: true,
+                                    loadMask : true
                                 },
                                 listeners:{
                                     resize:function(me,width,height){
                                         if (!Ext.isEmpty(Ext.getCmp(id + 'mainPanel'))) {
-                                            Ext.getCmp(id + 'mainPanel').setHeight(height - 5);
-                                            Ext.getCmp(id + 'mainPanel').setWidth(width - 5);
+                                            Ext.getCmp(id + 'mainPanel').setHeight(height);
+                                            Ext.getCmp(id + 'mainPanel').setWidth(width);
                                         }
                                     }
                                 }
