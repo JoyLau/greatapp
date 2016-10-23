@@ -121,7 +121,6 @@ Ext.define('examPoolMain.mainWestView', {
                                 id : id,
                                 title : text,
                                 closable : true,
-                                xtype : 'container',
                                 glyph: Number(glyph),
                                 /*loader: {
                                     url: basePath + url + '?mainPanelId=' + id + 'mainPanel',
@@ -145,6 +144,8 @@ Ext.define('examPoolMain.mainWestView', {
                                             Ext.getCmp(id + 'mainPanel').setHeight(height);
                                             Ext.getCmp(id + 'mainPanel').setWidth(width);
                                         }
+                                    },
+                                    beforeclose : function () {
                                     }
                                 }
                             }).show();

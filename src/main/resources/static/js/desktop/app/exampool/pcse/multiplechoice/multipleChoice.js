@@ -7,24 +7,22 @@
  * static.js.desktop.app.exampool.pcse.multiplechoice
  * DevelopmentApp
  */
+
 Ext.Loader.setConfig({enabled: true});
 Ext.application({
-    name:'PCSEMultiplechoice',
+    name:'pcseMultipleChoice',
     appFolder: basePath + '/static/js/desktop/app/exampool/pcse/multiplechoice',
+    controllers:[
+        'pcseMultipleChoice.MultipleChoiceController'
+    ],
     launch: function () {
         Ext.create('Ext.panel.Panel',{
-            id : mainPanelId,
-            width : Ext.getCmp(mainPanelId.replace('mainPanel','')).getWidth(),
-            height : Ext.getCmp(mainPanelId.replace('mainPanel','')).getHeight(),
+            id : moduleId,
+            width : Ext.getCmp(moduleId.replace('mainPanel','')).getWidth(),
+            height : Ext.getCmp(moduleId.replace('mainPanel','')).getHeight(),
             layout: "border",
             renderTo : 'PCSEMultipleChoice',
-            items: [{
-                xtype : 'panel',
-                region: 'north',
-                split: true,
-                collapsible: true,
-                title : 'north'
-            },{
+            items: [Ext.create('pcseMultipleChoice.MultipleChoicePanel'),{
                 xtype : 'panel',
                 region: 'west',
                 collapsible: true,

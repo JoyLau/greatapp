@@ -7,9 +7,5 @@ Ext.define('examPoolMain.mainController', {
     extend: 'Ext.app.Controller',
     views: ['examPoolMain.mainWestView','examPoolMain.mainCenterView'],
     init: function () {
-        this.control({
-            'examPoolWestView': {
-            }
-        });
     }
 });

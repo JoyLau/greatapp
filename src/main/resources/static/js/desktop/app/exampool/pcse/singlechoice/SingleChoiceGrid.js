@@ -14,6 +14,10 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     border: false,
     frame: true,
     region: 'center',
+    viewConfig: {
+        //启用数据复制
+        // enableTextSelection: true
+    },
     bodyStyle: 'background-image: url(' + basePath + 'static/images/desktop/body-bkg.png);',
     plugins : Ext.create('Ext.ux.plugins.MaskBinder'),
     selModel: Ext.create('Ext.selection.CheckboxModel'),
@@ -36,35 +40,35 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     },
 
     tbar: [{
-        id: 'addExamPool',
         text: '添加',
-        glyph: 0xf055
+        glyph: 0xf055,
+        handler : addChoice
     }, '-', {
-        id: 'updateExamPool',
         text: '修改',
-        glyph: 0xf14b
+        glyph: 0xf14b,
+        handler : updateChoice
     }, '-', {
-        id: 'deleteExamPool',
         text: '删除',
-        glyph: 0xf1f8
+        glyph: 0xf1f8,
+        handler : deleteChoice
     }, '-', {
-        id: 'importExamPool',
         text: '导入文件',
-        glyph: 0xf0ed
+        glyph: 0xf0ed,
+        handler : importChoice
     }, '-', {
-        id: 'exportExamPool',
         text: '导出题目',
-        glyph: 0xf0ee
+        glyph: 0xf0ee,
+        handler : exportChoice
     }, '-', {
-        id: 'randomExamPool',
         text: '来20题',
         tooltip : '输入题目数量，随机从题库中选出题目并导出',
-        glyph: 0xf02c
+        glyph: 0xf02c,
+        handler : randomChoice
     }, '-', {
-        id: 'removeRepeat',
         text: '去重',
         tooltip : '筛选出题库中题目内容相同的选择题，您可以选择删除它们',
-        glyph: 0xf0c5
+        glyph: 0xf0c5,
+        handler : removeRepeatChoice
     }],
     columns: [{
         xtype: 'rownumberer'
@@ -140,4 +144,26 @@ function getright(val) {
         case 3 : return "D"; break;
         default : return '<span style="color: red; ">没有填写答案</span>';
     }
+}
+
+
+
+function updateChoice() {
+    
+}
+
+function deleteChoice() {
+    
+}
+function exportChoice() {
+    
+}
+function importChoice() {
+    
+}
+function removeRepeatChoice() {
+    
+}
+function randomChoice() {
+
 }

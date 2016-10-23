@@ -130,8 +130,7 @@ Ext.define('pcseSingleChoice.SingleChoiceForm', {
         key: Ext.EventObject.ENTER,
         fn: function () {
             Ext.getCmp('pcse-singleChoice-grid').getStore().reload()
-        },
-        scope: this
+        }
     }],
     buttons: [{
         text: '查询',

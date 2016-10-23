@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
     <title>PCSESingleChoice</title>
       <script type="text/javascript">
-          var mainPanelId = '${mainPanelId}';
+          var moduleId = '${mainPanelId}';
       </script>
     <script type="text/javascript" src="${path}/static/js/desktop/app/exampool/pcse/singlechoice/singleChoice.js"></script>
   </head>

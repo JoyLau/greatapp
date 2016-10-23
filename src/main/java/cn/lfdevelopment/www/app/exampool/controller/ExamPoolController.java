@@ -100,8 +100,11 @@ public class ExamPoolController {
     @ResponseBody
     public String getMenu(Model model){
         //优先从缓存中获取数据
-        List<SysRight> rootList = (List<SysRight>) redisUtils.get("menuList");
-        if (rootList.size() <= 0){
+        List<SysRight> rootList;
+        try {
+            rootList = (List<SysRight>) redisUtils.get("menuList");
+        } catch (Exception e) {
+            _logger.error("redis读取菜单失败,正在从数据库读取....");
             rootList = sysRightService.getSysRightRoot();
             for (SysRight sysRight : rootList) {
                 int rootRightId = sysRight.getId();

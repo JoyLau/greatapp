@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
     <title>multipleChoice</title>
       <script type="text/javascript">
-          var mainPanelId = '${mainPanelId}';
+          var moduleId = '${mainPanelId}';
       </script>
       <script type="text/javascript" src="${path}/static/js/desktop/app/exampool/pcse/multiplechoice/multipleChoice.js"></script>
   </head>

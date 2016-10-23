@@ -16,9 +16,9 @@ Ext.application({
     ],
     launch: function () {
         Ext.create('Ext.panel.Panel',{
-            id : mainPanelId,
-            width : Ext.getCmp(mainPanelId.replace('mainPanel','')).getWidth(),
-            height : Ext.getCmp(mainPanelId.replace('mainPanel','')).getHeight(),
+            id : moduleId,
+            width : Ext.getCmp(moduleId.replace('mainPanel','')).getWidth(),
+            height : Ext.getCmp(moduleId.replace('mainPanel','')).getHeight(),
             layout: "border",
             renderTo : 'PCSESingleChoice',
             items: [{xtype : 'PCSESingleChoiceForm'},{xtype : 'PESCSingleChoiceDetail'},{xtype : 'PCSESingleChoiceGrid'}]

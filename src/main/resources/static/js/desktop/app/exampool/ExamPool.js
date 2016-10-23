@@ -537,6 +537,11 @@ Ext.define('Desktop.exampool.ExamPool', {
                             Ext.getCmp('examPoolMainPanel').setHeight(height - 40);
                             Ext.getCmp('examPoolMainPanel').setWidth(width - 3);
                         }
+                    },
+                    beforeclose : function () {
+                        if (!Ext.isEmpty(Ext.getCmp('examPoolMainPanel'))) {
+                            Ext.getCmp('examPoolMainPanel').destroy();
+                        }
                     }
                 }
             });

@@ -24,12 +24,12 @@ Ext.define('examPoolMain.mainCenterView',{
     minTabWidth: 150,
     items :[{
         id : 'examPoolCenterTabPanel-MainPanel',
-        title: '首页',
+        title: '工作台',
         glyph: 0xf015,
         loadMask: true,
         closable: false,
         bodyStyle: 'background-image: url(' + basePath + 'static/images/desktop/body-bkg.png);',
-        html: '首页写点什么比较好呢？先想想吧.............'
+        html: '工作台写点什么比较好呢？先想想吧.............'
     }],
     initComponent: function () {
         Ext.apply(this, {
