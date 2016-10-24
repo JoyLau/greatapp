@@ -5,7 +5,6 @@
  */
 Ext.define('pcseMultipleChoice.MultipleChoicePanel',{
     extend: 'Ext.panel.Panel',
-    id : moduleId+'PCSEMultipleChoicePanel',
     alias: 'widget.PCSEMultipleChoicePanel',
     region: 'north',
     split: true,

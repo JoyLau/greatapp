@@ -100,7 +100,7 @@ Ext.define('examPoolMain.mainWestView', {
                             iconCls  : el.icon,
                             icon : basePath + '/static/images/desktop/add.gif',
                             qtitle : el.url,
-                            // qtip : el.notes
+                            qtip : el.notes
                         });
                     })
                 },
@@ -122,13 +122,14 @@ Ext.define('examPoolMain.mainWestView', {
                                 title : text,
                                 closable : true,
                                 glyph: Number(glyph),
+                                layout: 'fit',
                                 /*loader: {
                                     url: basePath + url + '?mainPanelId=' + id + 'mainPanel',
                                     autoLoad: true,
                                     scripts: true,
                                     loadMask: true
                                 },*/
-                                loader: {
+                                /*loader: {
                                     renderer : function(loader, response, active) {
                                         loader.getTarget().update(response.responseText, true);
                                         return true;
@@ -147,7 +148,8 @@ Ext.define('examPoolMain.mainWestView', {
                                     },
                                     beforeclose : function () {
                                     }
-                                }
+                                }*/
+                                html : '<iframe id="iframe"'+id+' scrolling="no" frameborder="0" width=100% height=100% src="'+basePath+url+'"></iframe>'
                             }).show();
                         }
                         tabs.setActiveTab(addPanel);

@@ -6,12 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <title>PCSESingleChoice</title>
-      <script type="text/javascript">
-          var moduleId = '${mainPanelId}';
-      </script>
-    <script type="text/javascript" src="${path}/static/js/desktop/app/exampool/pcse/singlechoice/singleChoice.js"></script>
   </head>
-  <body>
-  <div id="PCSESingleChoice"></div>
-  </body>
+<body oncontextmenu="return false;" scroll="no">
+<div id="loading-mask"></div>
+<div id="loading">
+    <div class="loading-indicator">
+        <img src="${path}/static/images/desktop/desktoploading.gif">
+    </div>
+</div>
+</body>
 </html>
+<#include "../../common/common.ftl" />
+<script type="text/javascript" src="${path}/static/js/desktop/app/exampool/pcse/singlechoice/singleChoice.js"></script>

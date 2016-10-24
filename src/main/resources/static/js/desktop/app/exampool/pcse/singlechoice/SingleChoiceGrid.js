@@ -18,8 +18,8 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         //启用数据复制
         // enableTextSelection: true
     },
-    bodyStyle: 'background-image: url(' + basePath + 'static/images/desktop/body-bkg.png);',
-    plugins : Ext.create('Ext.ux.plugins.MaskBinder'),
+    bodyStyle: 'background-image: url(' + basePath + '/static/images/desktop/body-bkg.png);',
+    // plugins : Ext.create('Ext.ux.plugins.MaskBinder'),
     selModel: Ext.create('Ext.selection.CheckboxModel'),
     emptyText : '<p style="text-align: center;"><img src=' +basePath + '"/static/images/desktop/gridnodata.png" draggable="false"/>哦哦,数据在火星</p>',
     // store: Ext.data.StoreManager.lookup('ChoiceStore'), //绑定Store
@@ -42,6 +42,7 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     tbar: [{
         text: '添加',
         glyph: 0xf055,
+        id : 'addChoice',
         handler : addChoice
     }, '-', {
         text: '修改',

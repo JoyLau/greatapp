@@ -16,12 +16,8 @@ Ext.application({
         'pcseMultipleChoice.MultipleChoiceController'
     ],
     launch: function () {
-        Ext.create('Ext.panel.Panel',{
-            id : moduleId,
-            width : Ext.getCmp(moduleId.replace('mainPanel','')).getWidth(),
-            height : Ext.getCmp(moduleId.replace('mainPanel','')).getHeight(),
+        Ext.create('Ext.container.Viewport',{
             layout: "border",
-            renderTo : 'PCSEMultipleChoice',
             items: [Ext.create('pcseMultipleChoice.MultipleChoicePanel'),{
                 xtype : 'panel',
                 region: 'west',

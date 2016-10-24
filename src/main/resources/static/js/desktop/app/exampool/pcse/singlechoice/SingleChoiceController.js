@@ -45,14 +45,16 @@ function addChoice() {
         width : 600,
         height : 400,
         layout : 'anchor',
+        maximizable : true,
+        collapsible : true,
         draggable : true,
         modal : true,
-        animateTarget : Ext.getBody(),
+        animateTarget : 'addChoice',
         items : [Ext.create('Ext.form.FormPanel',{
             anchor : '100% 100%',
-            id : moduleId +'addChoiceForm',
+            id : 'addChoiceForm',
             autoScroll : true,
-            bodyStyle: 'background-image: url(' + basePath + 'static/images/desktop/body-bkg.png);padding:20px;',
+            bodyStyle: 'background-image: url(' + basePath + '/static/images/desktop/body-bkg.png);padding:20px;',
             url : basePath + '/exampool/saveChoice',
             frame : false,
             buttonAlign : 'center',
@@ -142,7 +144,7 @@ function addChoice() {
                 formBind : true,
                 text : '保存',
                 handler : function() {
-                    var form = Ext.getCmp(moduleId +'addChoiceForm');
+                    var form = Ext.getCmp('addChoiceForm');
                     if (!form.getForm().isValid()) {
                         return;
                     }
@@ -167,7 +169,7 @@ function addChoice() {
             }, {
                 text : '重置',
                 handler : function() {
-                    Ext.getCmp(moduleId +'addChoiceForm').getForm().reset();
+                    Ext.getCmp('addChoiceForm').getForm().reset();
                 }
             }]
         })]

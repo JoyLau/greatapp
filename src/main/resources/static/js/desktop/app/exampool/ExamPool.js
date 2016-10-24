@@ -516,12 +516,6 @@ Ext.define('Desktop.exampool.ExamPool', {
 
 
 
-                /*loader: {
-                    url: basePath + '/exampool/exampool',
-                    autoLoad: true,
-                    scripts: true,
-                    loadMask: true
-                },*/
                 loader: {
                     renderer : function(loader, response, active) {
                         loader.getTarget().update(response.responseText, true);

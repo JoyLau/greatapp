@@ -15,12 +15,14 @@ Ext.application({
         'pcseSingleChoice.SingleChoiceController'
     ],
     launch: function () {
-        Ext.create('Ext.panel.Panel',{
-            id : moduleId,
-            width : Ext.getCmp(moduleId.replace('mainPanel','')).getWidth(),
-            height : Ext.getCmp(moduleId.replace('mainPanel','')).getHeight(),
-            layout: "border",
-            renderTo : 'PCSESingleChoice',
+        Ext.create('Ext.container.Viewport',{
+            renderTo : Ext.getBody(),
+            layout : 'border',
+            frame : true,
+            border : false,
+            loadMask : {
+                msg : '正在加载...'
+            },
             items: [{xtype : 'PCSESingleChoiceForm'},{xtype : 'PESCSingleChoiceDetail'},{xtype : 'PCSESingleChoiceGrid'}]
         });
     }

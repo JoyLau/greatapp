@@ -14,7 +14,10 @@ Ext.define('pcseSingleChoice.SingleChoiceStore', {
     pageSize: 10, //设置每页显示的数据数量
     proxy: {
         type: 'ajax',
-        getMethod: function(){ return 'POST'; },
+        // getMethod: function(){ return 'POST'; },
+        actionMethods: {
+            read: 'POST'
+        },
         url: basePath + '/exampool/pcse/singleChoice/getStore',
         reader: {
             type: 'json',

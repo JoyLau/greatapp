@@ -18,7 +18,7 @@ Ext.define('pcseSingleChoice.SingleChoiceForm', {
     labelAlign: 'right',
     collapsible: true,
     height: 200,
-    bodyStyle: 'background-image: url(' + basePath + 'static/images/desktop/body-bkg.png);',
+    bodyStyle: 'background-image: url(' + basePath + '/static/images/desktop/body-bkg.png);',
     border: false,
     bodyPadding: 20,
     items:[{

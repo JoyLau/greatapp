@@ -19,7 +19,7 @@ Ext.define('examPoolMain.mainCenterView',{
     collapsible: false,
     plain: true,
     defaults: {
-        autoScroll: true
+        autoScroll: false
     },
     minTabWidth: 150,
     items :[{
