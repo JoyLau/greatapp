@@ -18,3 +18,23 @@ function fn(conn, response, options) {
         });
     }
 }
+
+
+
+function LoadJs(url) {
+    var ss = document.getElementsByTagName("script");
+    var head = document.getElementsByTagName('head').item(0);
+    for (var i = 0; i < ss.length; i++) {
+        if (ss[i].src && ss[i].src.indexOf(url) != -1) {
+            head.removeChild(ss[i])
+        }
+    }
+    var script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    head.appendChild(script)
+}
+
+function ExtLoadJS(url) {
+    Ext.Loader.loadScript({ url: url,scope:this});
+}

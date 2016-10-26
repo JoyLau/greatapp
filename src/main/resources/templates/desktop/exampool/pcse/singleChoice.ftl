@@ -18,3 +18,7 @@
 </html>
 <#include "../../common/common.ftl" />
 <script type="text/javascript" src="${path}/static/js/desktop/app/exampool/pcse/singlechoice/singleChoice.js"></script>
+<script type="text/javascript" src="${path}/static/js/app/plugins/UEditor.js"></script>
+<script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="${path}/static/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>

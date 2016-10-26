@@ -38,17 +38,19 @@ Ext.define('pcseSingleChoice.SingleChoiceController',{
 });
 
 function addChoice() {
-    var addWin = Ext.create('Ext.window.Window',{
+    var addWin = Ext.create('Ext.panel.Panel',{
         title : '新增选择题',
         glyph: 0xf055,
-        border : false,
-        width : 600,
+        border : true,
+        width : 900,
         height : 400,
         layout : 'anchor',
         maximizable : true,
+        closable : true,
         collapsible : true,
         draggable : true,
-        modal : true,
+        // modal : true,
+        renderTo : Ext.getBody(),
         animateTarget : 'addChoice',
         items : [Ext.create('Ext.form.FormPanel',{
             anchor : '100% 100%',
@@ -60,6 +62,15 @@ function addChoice() {
             buttonAlign : 'center',
             bodyPadding: 20,
             items :[{
+                fieldLabel: 'UEditor',
+                name: "email",
+                id: "testueditor",
+                xtype: 'ueditor',
+                anchor: '-20',
+                height: 150,
+                ueditorConfig: {
+                }
+            },{
                 xtype : 'textarea',
                 name : 'title',
                 anchor : '90%',
@@ -174,5 +185,5 @@ function addChoice() {
             }]
         })]
     });
-    addWin.show();
+    // addWin.show();
 }

@@ -33,6 +33,11 @@
 <#--插件-->
 <script type="text/javascript" src="${path}/static/js/app/plugins/TabCloseMenu.js"></script>
 <script type="text/javascript" src="${path}/static/js/app/plugins/ProgressBarPager.js"></script>
+
+<#--<script type="text/javascript" src="${path}/static/js/app/plugins/UEditor.js"></script>-->
+<#--<script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.config.js"></script>-->
+<#--<script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.all.min.js"></script>-->
+<#--<script type="text/javascript" src="${path}/static/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>-->
 <#--<script type="text/javascript" src="${path}/static/js/app/plugins/MaskBinder.js"></script>-->
 <#--<script type="text/javascript" src="/static/js/desktop/js/options-toolbar.js"></script>-->
 
