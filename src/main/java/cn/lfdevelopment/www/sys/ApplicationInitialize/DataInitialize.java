@@ -4,6 +4,7 @@
 
 package cn.lfdevelopment.www.sys.ApplicationInitialize;
 
+import cn.lfdevelopment.www.app.common.ueditor.service.UeditorConfigService;
 import cn.lfdevelopment.www.app.sys.pojo.SysDic;
 import cn.lfdevelopment.www.app.sys.pojo.SysRight;
 import cn.lfdevelopment.www.app.sys.service.DicService;
@@ -30,6 +31,8 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
     @Autowired
     private RedisUtils redisUtils;
 
+    @Autowired
+    private UeditorConfigService ueditorConfigService;
 
     @Autowired
     private DicService dicService;
@@ -41,6 +44,7 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
         //root application context
         if (contextRefreshedEvent.getApplicationContext().getParent() == null) {
             setMenuData();
+            setUEditorConfig();
         }
     }
 
@@ -58,5 +62,9 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
             sysRight.setChildren(childrenList);
         }
         redisUtils.set("menuList",rootList);
+    }
+
+    private void setUEditorConfig(){
+        redisUtils.set("UEditorConfig",ueditorConfigService.getGloableConfig());
     }
 }

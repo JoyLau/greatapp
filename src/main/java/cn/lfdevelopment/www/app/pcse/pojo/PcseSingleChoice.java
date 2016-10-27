@@ -58,7 +58,7 @@ public class PcseSingleChoice extends BaseEntity{
     /**
      * 题目解析
      */
-    private String explain;
+    private String meno;
 
     /**
      * 更新时间<在创建新记录和修改现有记录的时候都对这个数据列刷新>
@@ -215,22 +215,13 @@ public class PcseSingleChoice extends BaseEntity{
         this.answerRight = answerRight;
     }
 
-    /**
-     * 获取题目解析
-     *
-     * @return explain - 题目解析
-     */
-    public String getExplain() {
-        return explain;
+
+    public String getMeno() {
+        return meno;
     }
 
-    /**
-     * 设置题目解析
-     *
-     * @param explain 题目解析
-     */
-    public void setExplain(String explain) {
-        this.explain = explain;
+    public void setMeno(String meno) {
+        this.meno = meno;
     }
 
     /**

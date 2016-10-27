@@ -97,7 +97,6 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         dataIndex: 'answerD'
     }, {
         text: '题目类型',
-        hidden: true,
         dataIndex: 'type',
         renderer : function (val) {
             switch (val) {
@@ -123,6 +122,10 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         renderer : function (val) {
             return getright(val);
         }
+    }, {
+        text: '答案解析',
+        dataIndex: 'meno',
+        hidden: true
     }],
     listeners : {
         itemmouseenter: function (view, record) {
@@ -131,7 +134,8 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
                 '<p><strong>B.&nbsp;</strong>' + record.data.answerB + '</p>' +
                 '<p><strong>C.&nbsp;</strong>' + record.data.answerC + '</p>' +
                 '<p><strong>D.&nbsp;</strong>' + record.data.answerD + '</p>' +
-                '<p><span style="color: rgb(155, 187, 89);">正确答案 : </span>' + getright(record.data.answerRight) + '</p>';
+                '<p><span style="color: rgb(155, 187, 89);">正确答案 : </span>' + getright(record.data.answerRight) + '</p>' +
+                '<p><span style="color: rgb(35, 145, 187);">答案解析 : </span>' + record.data.meno + '</p>';
             Ext.getCmp('pcse-singleChoice-detail').update({html: html})
         }
     }

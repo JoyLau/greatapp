@@ -96,9 +96,12 @@ public class ReadModuleFile {
         File file = res.getFile();
         String fileTxt = FileUtil.readAsString(file);
         fileTxt = new String(fileTxt.getBytes("gbk"),"utf-8");
+        System.out.println(fileTxt);
         fileTxt = fileTxt.replace(field1_1.trim(),field1_2).replace(field2_1.trim(),field2_2).replace(field3_1.trim(),field3_2).replace(field4_1.trim(),field4_2);
-        FileUtil.writeAsString(file,fileTxt);
+        System.out.println(fileTxt);
+        FileUtil.writeAsString(file,new String(fileTxt.getBytes("utf-8"),"gbk"));
         model.addAttribute("success",true);
+        model.addAttribute("msg","成功保存");
         return JSON.toJSONString(model);
     }
 
@@ -109,6 +112,6 @@ public class ReadModuleFile {
 
     @RequestMapping("/test/view")
     public String view(){
-        return "";
+        return "/test";
     }
 }

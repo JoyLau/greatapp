@@ -201,6 +201,14 @@
             <version>3.15</version>
         </dependency>
 
+
+
+        <!--百度ueditor 已经添加相应的依赖包-->
+        <dependency>
+            <groupId>cn.songxinqiang</groupId>
+            <artifactId>com.baidu.ueditor</artifactId>
+            <version>1.1.2-offical</version>
+        </dependency>
         <!--开启此项配置则将是使用log4j作为日志-->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>

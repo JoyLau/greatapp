@@ -71,4 +71,20 @@ public class PcseController {
         model.addAttribute("data",list);
         return JSON.toJSONString(model);
     }
+
+
+    /**
+     * 保存新增的选择题
+     * @param model
+     * @param pcseSingleChoice
+     * @return
+     */
+    @RequestMapping("/exampool/pcse/saveAddSingleChoice")
+    @ResponseBody
+    public String saveAddSingleChoice(Model model,PcseSingleChoice pcseSingleChoice){
+        int count= pcseService.saveAddSingleChoice(pcseSingleChoice);
+        model.addAttribute("success",true);
+        model.addAttribute("msg","成功保存" + count + "条数据");
+        return JSON.toJSONString(model);
+    }
 }

@@ -140,7 +140,7 @@
                     waitMsg : '正在保存...',
                     success : function(form, action) {
                         Ext.Msg.alert('提示',action.result.msg,function () {
-
+                            top.location.reload()
                         });
                     },
                     failure : function(form, action) {
@@ -150,7 +150,7 @@
         }, {
             text : '重置',
             handler : function() {
-                Ext.getCmp('testform').getForm().reset();
+                top.location.reload()
             }
         }]
     });

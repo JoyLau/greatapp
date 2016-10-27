@@ -18,7 +18,7 @@ Ext.define('pcseSingleChoice.SingleChoiceModel', {
         'type',
         'isImage',
         'imageUrl',
-        'explain',
+        'meno',
         'updateTime',
         'answerRight']
 });

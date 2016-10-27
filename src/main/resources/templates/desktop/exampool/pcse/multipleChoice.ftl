@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
     <title>multipleChoice</title>
   </head>
-  <body oncontextmenu="return false;" scroll="no">
+  <body oncontextmenu="return false;">
   <div id="loading-mask"></div>
   <div id="loading">
       <div class="loading-indicator">

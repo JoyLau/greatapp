@@ -23,16 +23,16 @@
         </jdbcConnection>
 
         <!--生成实体类的配置，是一个必须配置的内容-->
-        <javaModelGenerator targetPackage="cn.lfdevelopment.www.app.pcse.pojo" targetProject="D:\DevelopmentApp\greatapp\src\main\java"/>
+        <javaModelGenerator targetPackage="cn.lfdevelopment.www.app.common.ueditor.pojo" targetProject="D:\DevelopmentApp\greatapp\src\main\java"/>
 
         <!--可选的配置，配置后可以生成XML文件-->
-        <sqlMapGenerator targetPackage="mapperxml.app.pcse" targetProject="D:\DevelopmentApp\greatapp\src\main\resources"/>
+        <sqlMapGenerator targetPackage="mapperxml.app.sys" targetProject="D:\DevelopmentApp\greatapp\src\main\resources"/>
 
         <!--生成对应的接口文件，该接口会自动继承前面配置的通用Mapper接口-->
-        <javaClientGenerator targetPackage="cn.lfdevelopment.www.app.pcse.mapper" targetProject="D:\DevelopmentApp\greatapp\src\main\java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="cn.lfdevelopment.www.app.common.ueditor.mapper" targetProject="D:\DevelopmentApp\greatapp\src\main\java" type="XMLMAPPER"/>
 
         <!--%通配符代表数据库里所有的表-->
-        <table tableName="pcse_single_choice">
+        <table tableName="ueditor_config">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>

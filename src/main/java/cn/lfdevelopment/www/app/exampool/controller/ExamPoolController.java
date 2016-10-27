@@ -50,6 +50,11 @@ public class ExamPoolController {
         return "desktop/exampool/pcse/multipleChoice";
     }
 
+    @RequestMapping("/exampool/pcse/toAddSingleChoice")
+    public String toAddSingleChoice(){
+        return "desktop/exampool/pcse/singleAdd";
+    }
+
     @RequestMapping("/exampool/fileuUpload")
     public String fileUpload(){
         return "desktop/common/fileupload";

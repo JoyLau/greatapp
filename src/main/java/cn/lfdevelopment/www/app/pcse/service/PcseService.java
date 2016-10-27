@@ -28,4 +28,8 @@ public class PcseService {
         PageHelper.startPage(page, limit);
         return pcseSingleChoiceMapper.getStoreData(map);
     }
+
+    public int saveAddSingleChoice(PcseSingleChoice pcseSingleChoice) {
+        return pcseSingleChoiceMapper.insert(pcseSingleChoice);
+    }
 }
