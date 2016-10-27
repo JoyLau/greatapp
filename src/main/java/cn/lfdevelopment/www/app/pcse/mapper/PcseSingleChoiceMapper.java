@@ -12,4 +12,6 @@ import java.util.Map;
 
 public interface PcseSingleChoiceMapper extends BaseMapper<PcseSingleChoice> {
     List<PcseSingleChoice> getStoreData(Map map);
+
+    List<PcseSingleChoice> removeRepeatChoice();
 }

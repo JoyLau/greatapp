@@ -56,7 +56,7 @@ public class PcseController {
 
 
     /**
-     *
+     * store刷新查询
      * @param model
      * @param page
      * @param limit
@@ -138,6 +138,25 @@ public class PcseController {
         int count= pcseService.saveUpdateSingleChoice(pcseSingleChoice);
         model.addAttribute("success",true);
         model.addAttribute("msg","成功更新" + count + "条数据");
+        return JSON.toJSONString(model);
+    }
+
+
+    /**
+     * 罗列出系统中题目重复的数据，可以选择性的进行删除
+     * @param model
+     * @param page
+     * @param limit
+     * @return
+     */
+    @RequestMapping("/exampool/pcse/singleChoice/removeRepeatChoice")
+    @ResponseBody
+    public String removeRepeatChoice(Model model,int page,int limit){
+        List<PcseSingleChoice> list = pcseService.removeRepeatChoice(page,limit);
+        PageInfo pageInfo = new PageInfo<>(list);
+        model.addAttribute("success",true);
+        model.addAttribute("total",pageInfo.getTotal());
+        model.addAttribute("data",list);
         return JSON.toJSONString(model);
     }
 }

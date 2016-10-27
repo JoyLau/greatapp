@@ -31,4 +31,27 @@
     </where>
     order by update_time desc
   </select>
+  <select id="removeRepeatChoice" resultType="cn.lfdevelopment.www.app.pcse.pojo.PcseSingleChoice">
+    SELECT
+      *
+    FROM
+      pcse_single_choice
+    WHERE
+      title IN (
+        SELECT
+          title
+        FROM
+          (
+            SELECT
+              title,
+              count(*) AS count
+            FROM
+              pcse_single_choice
+            GROUP BY
+              title
+            HAVING
+              count > 1
+          ) T
+      )
+  </select>
 </mapper>

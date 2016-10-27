@@ -129,7 +129,10 @@ function importChoice() {
 
 }
 function removeRepeatChoice() {
-
+    Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/removeRepeatChoice';
+    Ext.getCmp('pcse-singleChoice-grid').getStore().load({params : {start : 0,limit : 10}});
+    Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/getStore';
+    Ext.Msg.alert('提示', '已为您罗列出系统中题目重复的数据，您可以选择性的进行删除');
 }
 function randomChoice() {
 

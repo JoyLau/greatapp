@@ -44,4 +44,9 @@ public class PcseService {
     public int saveUpdateSingleChoice(PcseSingleChoice pcseSingleChoice) {
         return pcseSingleChoiceMapper.updateByPrimaryKey(pcseSingleChoice);
     }
+
+    public List<PcseSingleChoice> removeRepeatChoice(int page, int limit) {
+        PageHelper.startPage(page, limit);
+        return pcseSingleChoiceMapper.removeRepeatChoice();
+    }
 }
