@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -82,6 +83,11 @@ public class PcseController {
     @RequestMapping("/exampool/pcse/saveAddSingleChoice")
     @ResponseBody
     public String saveAddSingleChoice(Model model,PcseSingleChoice pcseSingleChoice){
+        //设置更新日期
+        pcseSingleChoice.setUpdateTime(new Date());
+        String title  = pcseSingleChoice.getTitle();
+        //去除uwditor的p标签
+        pcseSingleChoice.setTitle(title.substring(3,title.length()-4));
         int count= pcseService.saveAddSingleChoice(pcseSingleChoice);
         model.addAttribute("success",true);
         model.addAttribute("msg","成功保存" + count + "条数据");

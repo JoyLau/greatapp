@@ -19,7 +19,7 @@
 <#include "../../common/common.ftl" />
 <script type="text/javascript" src="${path}/static/js/app/plugins/UEditor.js"></script>
 <script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.all.min.js"></script>
 <script type="text/javascript" src="${path}/static/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
     Ext.onReady(function() {
@@ -127,6 +127,7 @@
                 buttons : [{
                     formBind : true,
                     text : '保存',
+                    tooltip : '表单必填项填完后即可点击保存',
                     handler : function() {
                         var form = Ext.getCmp('addChoiceForm');
                         if (!form.getForm().isValid()) {

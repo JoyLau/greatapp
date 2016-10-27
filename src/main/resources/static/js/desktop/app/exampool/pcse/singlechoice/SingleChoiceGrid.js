@@ -126,6 +126,13 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         text: '答案解析',
         dataIndex: 'meno',
         hidden: true
+    }, {
+        text: '更新时间',
+        dataIndex: 'updateTime',
+        hidden: true,
+        renderer : function (val) {
+            return Ext.Date.format(new Date(val), 'Y-m-d H:i:s');
+        }
     }],
     listeners : {
         itemmouseenter: function (view, record) {

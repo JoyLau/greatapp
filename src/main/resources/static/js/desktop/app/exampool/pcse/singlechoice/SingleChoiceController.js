@@ -50,7 +50,12 @@ function addChoice() {
         draggable : true,
         modal : true,
         animateTarget : 'addChoice',
-        html : '<iframe scrolling="auto" frameborder="0" width=100% height=100% src="'+basePath+'/exampool/pcse/toAddSingleChoice"></iframe>'
+        html : '<iframe scrolling="auto" frameborder="0" width=100% height=100% src="'+basePath+'/exampool/pcse/toAddSingleChoice"></iframe>',
+        listeners: {
+            beforeclose :function (panel, opts) {
+                Ext.getCmp('pcse-singleChoice-grid').getStore().reload();
+            }
+        }
     });
     addWin.show();
 }

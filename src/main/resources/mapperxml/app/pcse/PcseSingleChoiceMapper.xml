@@ -29,6 +29,6 @@
         and answer_right = ${answerRight}
       </if>
     </where>
-    order by id desc
+    order by update_time desc
   </select>
 </mapper>

@@ -46,6 +46,7 @@
     Ext.setGlyphFontFamily('FontAwesome');
 
     Ext.onReady(function () {
+        Ext.QuickTips.init();
         if(!Ext.isEmpty(Ext.get('loading-mask')) && !Ext.isEmpty(Ext.get('loading'))){
             Ext.get('loading').hide();
             Ext.get('loading-mask').fadeOut({ opacity: 0, duration: 1500});
