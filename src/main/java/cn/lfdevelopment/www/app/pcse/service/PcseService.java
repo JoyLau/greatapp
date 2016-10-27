@@ -32,4 +32,16 @@ public class PcseService {
     public int saveAddSingleChoice(PcseSingleChoice pcseSingleChoice) {
         return pcseSingleChoiceMapper.insert(pcseSingleChoice);
     }
+
+    public void deleteSingleChoice(String ids) {
+        pcseSingleChoiceMapper.deleteByIds(ids);
+    }
+
+    public PcseSingleChoice getSingleChoiceById(int id) {
+        return pcseSingleChoiceMapper.selectByPrimaryKey(id);
+    }
+
+    public int saveUpdateSingleChoice(PcseSingleChoice pcseSingleChoice) {
+        return pcseSingleChoiceMapper.updateByPrimaryKey(pcseSingleChoice);
+    }
 }

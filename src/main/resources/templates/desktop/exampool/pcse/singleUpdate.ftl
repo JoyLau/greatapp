@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <title>Add-PCSESingleChoice</title>
+    <title>Update-PCSESingleChoice</title>
 </head>
 <body oncontextmenu="return false;">
 <div id="loading-mask"></div>
@@ -31,37 +31,47 @@
                 region: 'center',
                 autoScroll : true,
                 bodyStyle: 'background-image: url(' + basePath + '/static/images/desktop/body-bkg.png);padding:20px;',
-                url : basePath + '/exampool/pcse/saveAddSingleChoice',
+                url : basePath + '/exampool/pcse/saveUpdateSingleChoice',
                 frame : false,
                 buttonAlign : 'center',
                 bodyPadding: 20,
                 items :[{
+                    xtype: 'textfield',
+                    name: 'id',
+                    value : '${singleChoice.id!}',
+                    hidden : true
+                },{
                     fieldLabel: '题目',
                     name: "title",
                     xtype: 'ueditor',
                     anchor: '-20',
                     height: 150,
+                    value : '${singleChoice.title!}',
                     ueditorConfig: {
                     }
                 },{
                     xtype: 'textfield',
                     name: 'answerA',
                     allowBlank: false,
+                    value : '${singleChoice.answerA!}',
                     fieldLabel: '选项A'
                 },{
                     xtype: 'textfield',
                     name: 'answerB',
                     allowBlank: false,
+                    value : '${singleChoice.answerB!}',
                     fieldLabel: '选项B'
                 },{
                     xtype: 'textfield',
                     name: 'answerC',
                     allowBlank: false,
+                    value : '${singleChoice.answerC!}',
                     fieldLabel: '选项C'
                 },{
                     xtype: 'textfield',
                     name: 'answerD',
                     allowBlank: false,
+                    value : '${singleChoice.answerD!}',
                     fieldLabel: '选项D'
                 },{
                     xtype: 'combo',
@@ -75,6 +85,7 @@
                     name: 'type',
                     displayField: 'text',
                     valueField: 'id',
+                    value : '${singleChoice.type!}',
                     store: new Ext.data.SimpleStore({
                         fields: ['id', 'text'],
                         data: [['0', '行测'],
@@ -92,6 +103,7 @@
                     name: 'isImage',
                     displayField: 'text',
                     valueField: 'id',
+                    value : '${singleChoice.isImage!}',
                     store: new Ext.data.SimpleStore({
                         fields: ['id', 'text'],
                         data: [['0', '无'],
@@ -109,6 +121,7 @@
                     name: 'answerRight',
                     displayField: 'text',
                     valueField: 'id',
+                    value : '${singleChoice.answerRight!}',
                     store: new Ext.data.SimpleStore({
                         fields: ['id', 'text'],
                         data: [['0', 'A'],
@@ -122,12 +135,13 @@
                     anchor : '90%',
                     height : 80,
                     allowBlank: true,
+                    value : '${singleChoice.meno!}',
                     fieldLabel : '答案解析'
                 }],
                 buttons : [{
                     formBind : true,
-                    text : '保存',
-                    tooltip : '表单必填项填完后即可点击保存',
+                    text : '更新',
+                    tooltip : '表单必填项填完后即可点击更新',
                     handler : function() {
                         var form = Ext.getCmp('addChoiceForm');
                         if (!form.getForm().isValid()) {
@@ -136,8 +150,8 @@
                         var data = form.form.getValues();
                         form.getForm().submit({
                             method : 'post',
-                            waitTitle : '保存',
-                            waitMsg : '正在保存...',
+                            waitTitle : '更新中',
+                            waitMsg : '正在更新...',
                             params : {
                                 data : Ext.encode(data)
                             },

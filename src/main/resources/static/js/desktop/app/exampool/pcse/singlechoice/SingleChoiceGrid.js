@@ -47,6 +47,7 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     }, '-', {
         text: '修改',
         glyph: 0xf14b,
+        id : 'updateChoice',
         handler : updateChoice
     }, '-', {
         text: '删除',
@@ -156,26 +157,4 @@ function getright(val) {
         case 3 : return "D"; break;
         default : return '<span style="color: red; ">没有填写答案</span>';
     }
-}
-
-
-
-function updateChoice() {
-    
-}
-
-function deleteChoice() {
-    
-}
-function exportChoice() {
-    
-}
-function importChoice() {
-    
-}
-function removeRepeatChoice() {
-    
-}
-function randomChoice() {
-
 }

@@ -20,7 +20,7 @@ Ext.define('pcseSingleChoice.SingleChoiceDetail',{
     autoScroll : true,
     minWidth: 150,
     width : 250,
-    maxWidth: 400,
+    maxWidth: 1920,
     bodyStyle: 'background-image: url(' + basePath + '/static/images/desktop/body-bkg.png);padding:30px;',
     html : '<p style="text-align: center;"><span style="color: rgb(75, 172, 198);">鼠标移至题目上查看详情</span></p>'
 });

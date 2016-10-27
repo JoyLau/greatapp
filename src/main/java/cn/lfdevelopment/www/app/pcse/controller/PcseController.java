@@ -93,4 +93,51 @@ public class PcseController {
         model.addAttribute("msg","成功保存" + count + "条数据");
         return JSON.toJSONString(model);
     }
+
+
+    /**
+     * 删除选择的单项选择题
+     * @param model
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/exampool/pcse/deleteSingleChoice")
+    @ResponseBody
+    public String deleteSingleChoice(Model model,String ids){
+        pcseService.deleteSingleChoice(ids);
+        model.addAttribute("success",true);
+        model.addAttribute("msg","删除成功!");
+        return JSON.toJSONString(model);
+    }
+
+    /**
+     * 跳转到修改地、单项选择题的页面
+     * @return
+     */
+    @RequestMapping("/exampool/pcse/toUpdateSingleChoice")
+    public String toUpdateSingleChoice(int id, Model model){
+        model.addAttribute("singleChoice",pcseService.getSingleChoiceById(id));
+        return "desktop/exampool/pcse/singleUpdate";
+    }
+
+
+    /**
+     * 保存修改的单项选择题
+     * @param model
+     * @param pcseSingleChoice
+     * @return
+     */
+    @RequestMapping("/exampool/pcse/saveUpdateSingleChoice")
+    @ResponseBody
+    public String saveUpdateSingleChoice(Model model,PcseSingleChoice pcseSingleChoice){
+        //设置更新日期
+        pcseSingleChoice.setUpdateTime(new Date());
+        String title  = pcseSingleChoice.getTitle();
+        //去除uwditor的p标签
+        pcseSingleChoice.setTitle(title.substring(3,title.length()-4));
+        int count= pcseService.saveUpdateSingleChoice(pcseSingleChoice);
+        model.addAttribute("success",true);
+        model.addAttribute("msg","成功更新" + count + "条数据");
+        return JSON.toJSONString(model);
+    }
 }
