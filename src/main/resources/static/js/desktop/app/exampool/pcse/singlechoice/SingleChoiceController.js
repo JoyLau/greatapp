@@ -141,12 +141,26 @@ function importChoice() {
                 file_upload_limit: 1,
                 file_queue_limit: 1,
                 callback: function (files, store) {
-                    console.info(files);
-                    alert(files[0].attachmentId);
-                    if (files != null) {
-                        store.add(files);
+                    if (files.length > 0) {
+                        Ext.MessageBox.show({
+                            title : '稍等',
+                            msg: '拼命解析中,请稍等..',
+                            progressText: 'Saving...',
+                            width:300,
+                            wait:true,
+                            waitConfig: {interval:200},
+                            icon:'ext-mb-download', //custom class in msg-box.html
+                            iconHeight: 50
+                        });
+                        setTimeout(function(){
+                            //This simulates a long-running operation like a database save or XHR call.
+                            //In real code, this would be in a callback function.
+                            Ext.MessageBox.hide();
+                        }, 8000);
+                        // console.info(files);
+                        // alert(files[0].attachmentId);
+                        // uploadWin.close();
                     }
-                    uploadWin.close();
                 },
                 scope: this
             });

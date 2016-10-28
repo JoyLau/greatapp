@@ -267,7 +267,7 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
             if (rec.get('status') == -4) {
                 files.push({
                     attachmentId: rec.get('attachmentId'),
-                    attachName: rec.get('attachmentName')
+                    attachmentName: rec.get('attachmentName')
                 });
             }
         }
