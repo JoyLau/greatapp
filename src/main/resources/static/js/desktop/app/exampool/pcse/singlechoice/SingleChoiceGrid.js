@@ -27,15 +27,15 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         var store = Ext.create('pcseSingleChoice.SingleChoiceStore');
         this.store = store;
         store.load({params : {start : 0,limit : 10}});
-        this.dockedItems = [{
-            xtype: 'pagingtoolbar',
-            store: store,
-            displayInfo: true,
-            dock: 'bottom',
-            plugins: Ext.create('widget.ProgressBarPager',{
-                width : '70%'
-            })
-        }];
+        this.dockedItems = [
+            Ext.create('Ext.ux.plugins.ComboPage',{
+                store: store,
+                displayInfo: true,
+                dock: 'bottom',
+                plugins: [Ext.create('widget.ProgressBarPager',{
+                    width : '70%'
+                })]
+        })];
         this.callParent(arguments);
     },
 

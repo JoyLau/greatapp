@@ -49,11 +49,17 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
     }
 
 
+    /**
+     * 缓存字典数据
+     */
     private void setDicData(){
         List<SysDic> dicList = dicService.getdicList();
         redisUtils.set("dicList",dicList);
     }
 
+    /**
+     * 缓存权限数据
+     */
     private void setMenuData(){
         List<SysRight> rootList = sysRightService.getSysRightRoot();
         for (SysRight sysRight : rootList) {
@@ -64,6 +70,9 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
         redisUtils.set("menuList",rootList);
     }
 
+    /**
+     * 缓存UEditor配置信息
+     */
     private void setUEditorConfig(){
         redisUtils.set("UEditorConfig",ueditorConfigService.getGloableConfig());
     }
