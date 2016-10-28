@@ -5,6 +5,7 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
     height: 350,
     prentWinId : 'none',
     upload_url: 'attachment/fileUpLoad',
+    success_text : '上传成功',
     columns: [
         {xtype: 'rownumberer'},
         {text: '文件名', width: 200, dataIndex: 'name'},
@@ -22,11 +23,11 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
             return stml;
         }
         }, {
-            text: '状态', width: 80, dataIndex: 'status', renderer: function (v) {
+            text: '状态', width: 120, dataIndex: 'status', renderer: function (v) {
                 if (v == -1) return '等待上传';
                 else if (v == -2) return '上传中...';
                 else if (v == -3) return '<div style="color:red;">上传失败</div>';
-                else if (v == -4) return '上传成功';
+                else if (v == -4) return this.success_text;
                 else if (v == -5) return '停止上传';
                 else return '';
             }
@@ -235,9 +236,8 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
         var rec = me.store.getById(file.id);
         var data = Ext.JSON.decode(serverData);
         if (data.success) {
-            var atFile = data.atFile;
-            rec.set('attachmentId', atFile.attachmentId);
-            rec.set('attachmentName', atFile.attachmentName);
+            rec.set('attachmentId', data.attachmentId);
+            rec.set('attachmentName', data.attachmentName);
             rec.set('percent', 100);
             rec.set('status', file.filestatus);
         } else {
@@ -254,8 +254,9 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
     onComplete: function () {
         var callback = this.callback;
         var files = this.getSuccessFiles();
+        var store = this.store;
         if (callback) {
-            callback.call(this, files);
+            callback.call(this, files,store);
         }
     },
     getSuccessFiles: function () {
@@ -266,7 +267,7 @@ Ext.define('Ext.ux.plugins.UploadPanel', {
             if (rec.get('status') == -4) {
                 files.push({
                     attachmentId: rec.get('attachmentId'),
-                    attachName: rec.get('name')
+                    attachName: rec.get('attachmentName')
                 });
             }
         }

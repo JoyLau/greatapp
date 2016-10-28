@@ -126,14 +126,81 @@ function exportChoice() {
 
 }
 function importChoice() {
-
+    Ext.Loader.setPath({
+        'Ext.ux.plugins': basePath + '/static/js/app/plugins'
+    });
+    Ext.require(['Ext.ux.plugins.UploadPanel', 'Ext.ux.plugins.UploadWin']);
+    Ext.onReady(function () {
+            var uploadWin = Ext.create('Ext.ux.plugins.UploadWin', {
+                title: '上传文件 (.docx)',
+                upload_url: basePath + '/exampool/pcse/singleChoice/uploadTemplateFile',
+                success_text : '成功,等待解析....',
+                completeBtnText: '<i class="fa fa-check" aria-hidden="true"></i> 开始解析',
+                file_types: '.docx',
+                file_types_description: '.docx',
+                file_upload_limit: 1,
+                file_queue_limit: 1,
+                callback: function (files, store) {
+                    console.info(files);
+                    alert(files[0].attachmentId);
+                    if (files != null) {
+                        store.add(files);
+                    }
+                    uploadWin.close();
+                },
+                scope: this
+            });
+            Ext.MessageBox.show({
+                title: '模板下载',
+                msg: '系统为您提供了批量上传的模板. <br/>是否下载查看?',
+                buttons: Ext.MessageBox.YESNOCANCEL,
+                animateTarget: 'importChoice',
+                icon: Ext.MessageBox.QUESTION,
+                fn: function (btn) {
+                    if (btn == 'yes') {
+                        window.location= basePath + '/exampool/pcse/singleChoice/templateDownload';
+                        uploadWin.show()
+                    } else if (btn == 'no') {
+                        uploadWin.show()
+                    } else if (btn == 'cancel') {
+                    }
+                }
+            });
+        }
+    )
 }
 function removeRepeatChoice() {
     Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/removeRepeatChoice';
     Ext.getCmp('pcse-singleChoice-grid').getStore().load({params : {start : 0,limit : 10}});
     Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/getStore';
-    Ext.Msg.alert('提示', '已为您罗列出系统中题目重复的数据，您可以选择性的进行删除');
+    Ext.create('notification', {
+        html : '已为您罗列出系统中题目重复的数据，您可以选择性的进行删除'
+    }).show();
+    Ext.create('notification', {
+        html : '您也可在下方选择每页展示多条数据，以此来看到所有的重复数据'
+    }).show();
 }
+
+
 function randomChoice() {
 
 }
+
+
+Ext.define('notification', {
+    extend : 'Ext.ux.plugins.Notification',
+    position: 'tr',
+    //使用x轴
+    // useXAxis: true,
+    closable: true,
+    title: '提示',
+    height : 100,
+    html: '',
+    slideInDuration: 800,
+    slideBackDuration: 1500,
+    autoCloseDelay: 4000,
+    slideInAnimation: 'elasticIn',
+    bodyStyle: 'background-image: url(' + basePath + '/static/images/desktop/body-bkg.png);padding:10px;',
+    slideBackAnimation: 'elasticIn'
+});
+

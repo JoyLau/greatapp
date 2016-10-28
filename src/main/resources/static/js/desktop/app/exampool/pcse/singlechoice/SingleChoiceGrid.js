@@ -54,12 +54,13 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
         glyph: 0xf1f8,
         handler : deleteChoice
     }, '-', {
-        text: '导入文件',
-        glyph: 0xf0ed,
+        text: '批量上传',
+        glyph: 0xf0ee,
+        id : 'importChoice',
         handler : importChoice
     }, '-', {
-        text: '导出题目',
-        glyph: 0xf0ee,
+        text: '批量下载',
+        glyph: 0xf0ed,
         handler : exportChoice
     }, '-', {
         text: '来20题',

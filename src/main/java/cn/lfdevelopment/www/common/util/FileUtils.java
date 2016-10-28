@@ -4,13 +4,20 @@
 
 package cn.lfdevelopment.www.common.util;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.text.DecimalFormat;
+import java.util.Iterator;
 import java.util.UUID;
 
 /**
@@ -187,4 +194,83 @@ public class FileUtils {
             }
         }
     }
+
+
+    /**
+     * spring文件下载
+     * @param fileName
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    public static ResponseEntity<byte[]> fileDownload(String fileName, File file) throws IOException {
+        String dfileName = new String(fileName.getBytes("gb2312"), "iso8859-1");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.setContentDispositionFormData("attachment", dfileName);
+        return new ResponseEntity<byte[]>(org.apache.commons.io.FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+    }
+
+
+    /**
+     * spring文件上传<多文件上传/>
+     * @param request
+     * @param uploadPath
+     * @param fileName 文件名，不带后缀名
+     * @return
+     */
+    public static boolean multipFileUpload(HttpServletRequest request, String uploadPath,String fileName){
+        // 设置上下方文
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession()
+                .getServletContext());
+        try {
+            // 检查form是否有enctype="multipart/form-data"
+            if (multipartResolver.isMultipart(request)) {
+                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+
+                Iterator<String> iter = multiRequest.getFileNames();
+                while (iter.hasNext()) {
+                    // 由CommonsMultipartFile继承而来,拥有上面的方法.
+                    MultipartFile file = multiRequest.getFile(iter.next());
+                    if (file != null) {
+                        File localFile = new File(uploadPath + fileName + "."
+                                + FileUtils.getExtensionName
+                                (file.getOriginalFilename()));
+                        file.transferTo(localFile);
+                    }
+
+                }
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    /**
+     * 单文件上传
+     * @param file
+     * @param uploadPath
+     */
+    public static void singleFileUpload(CommonsMultipartFile file, String uploadPath,String fileName) {
+        // 文件类型
+//        file.getContentType();
+        // 文件大小
+//        file.getSize();
+        // 文件名称
+//        file.getOriginalFilename();
+        if (!file.isEmpty()) {
+            String filename = fileName + "." + FileUtils.getExtensionName(file
+                    .getOriginalFilename());
+            File localFile = new File(uploadPath + filename);
+            try {
+                file.transferTo(localFile);
+            } catch (IllegalStateException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

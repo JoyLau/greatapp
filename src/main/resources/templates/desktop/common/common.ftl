@@ -20,20 +20,22 @@
     }
 </style>
 <link rel="stylesheet" type="text/css" href="${path}/static/js/desktop/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
-<link rel="stylesheet" type="text/css" href="${path}/static/css/desktop/desktop.css" />
+<#--<link rel="stylesheet" href="${path}/static/css/notification.css"/>-->
 <link rel="stylesheet" href="${path}/static/css/fontawesome/font-awesome.min.css"/>
 
+<#--Extjs-->
 <script type="text/javascript" src="${path}/static/js/desktop/js/ext-all.js"></script>
 <script type="text/javascript" src="${path}/static/js/desktop/js/ext-lang-zh_CN.js"></script>
 <script type="text/javascript" src="${path}/static/js/desktop/js/ext-theme-neptune.js"></script>
 
-<#--全局公共js-->
+<#--common js-->
 <script type="text/javascript" src="${path}/static/js/app/common/extcommon.js"></script>
 
-<#--插件-->
+<#--plugins-->
 <script type="text/javascript" src="${path}/static/js/app/plugins/TabCloseMenu.js"></script>
 <script type="text/javascript" src="${path}/static/js/app/plugins/ProgressBarPager.js"></script>
 <script type="text/javascript" src="${path}/static/js/app/plugins/ComboPage.js"></script>
+<script type="text/javascript" src="${path}/static/js/app/plugins/Notification.js"></script>
 
 <#--<script type="text/javascript" src="${path}/static/js/app/plugins/UEditor.js"></script>-->
 <#--<script type="text/javascript" src="${path}/static/plugins/ueditor/ueditor.config.js"></script>-->

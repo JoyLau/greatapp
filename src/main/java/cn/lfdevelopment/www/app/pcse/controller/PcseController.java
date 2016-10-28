@@ -6,16 +6,24 @@ package cn.lfdevelopment.www.app.pcse.controller;
 
 import cn.lfdevelopment.www.app.pcse.pojo.PcseSingleChoice;
 import cn.lfdevelopment.www.app.pcse.service.PcseService;
+import cn.lfdevelopment.www.common.util.FileUtils;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +35,8 @@ import java.util.Map;
  */
 @Controller
 public class PcseController {
+    @Value("${pcse.fileupload.template-path}")
+    private String templateFilePath;
     private final Logger _logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private PcseService pcseService;
@@ -157,6 +167,47 @@ public class PcseController {
         model.addAttribute("success",true);
         model.addAttribute("total",pageInfo.getTotal());
         model.addAttribute("data",list);
+        return JSON.toJSONString(model);
+    }
+
+
+    /**
+     * 批量上传文件模板下载
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping("/exampool/pcse/singleChoice/templateDownload")
+    public ResponseEntity<byte[]> templateDownload() throws IOException {
+        Resource res = new ClassPathResource("files/20151207160744_23817.docx");
+        return FileUtils.fileDownload("省级公务员试题单选题批量上传模板v1.0.docx",res.getFile());
+    }
+
+
+    /**
+     * 模板文件上传
+     * @param request
+     * @param model
+     * @return
+     * @throws IllegalStateException
+     * @throws IOException
+     */
+    @RequestMapping("/exampool/pcse/singleChoice/uploadTemplateFile")
+    @ResponseBody
+    public String uploadTemplateFile(HttpServletRequest request, Model model)throws IllegalStateException, IOException {
+        String fileName = String.valueOf(System.currentTimeMillis());
+        try {
+            File folder = new File(templateFilePath);
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+            FileUtils.multipFileUpload(request,templateFilePath,fileName);
+            model.addAttribute("success", true);
+        } catch (Exception e) {
+            model.addAttribute("success", false);
+            e.printStackTrace();
+        }
+        model.addAttribute("attachmentId", fileName);
+        model.addAttribute("attachmentName", fileName + ".docx");
         return JSON.toJSONString(model);
     }
 }
