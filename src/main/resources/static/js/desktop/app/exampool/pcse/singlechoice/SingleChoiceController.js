@@ -132,34 +132,41 @@ function importChoice() {
     Ext.require(['Ext.ux.plugins.UploadPanel', 'Ext.ux.plugins.UploadWin']);
     Ext.onReady(function () {
             var uploadWin = Ext.create('Ext.ux.plugins.UploadWin', {
-                title: '上传文件 (.docx)',
+                title: '上传文件 (.xlsx)',
                 upload_url: basePath + '/exampool/pcse/singleChoice/uploadTemplateFile',
                 success_text : '成功,等待解析....',
                 completeBtnText: '<i class="fa fa-check" aria-hidden="true"></i> 开始解析',
-                file_types: '.docx',
-                file_types_description: '.docx',
+                file_types: '.xlsx',
+                file_types_description: '.xlsx',
                 file_upload_limit: 1,
                 file_queue_limit: 1,
                 callback: function (files, store) {
                     if (files.length > 0) {
                         Ext.MessageBox.show({
-                            title : '稍等',
+                            title : '稍等...',
                             msg: '拼命解析中,请稍等..',
                             progressText: 'Saving...',
                             width:300,
                             wait:true,
                             waitConfig: {interval:200},
-                            icon:'ext-mb-download', //custom class in msg-box.html
+                            icon: basePath + '/static/images/desktop/j_0005.gif', //custom class in msg-box.html
                             iconHeight: 50
                         });
-                        setTimeout(function(){
-                            //This simulates a long-running operation like a database save or XHR call.
-                            //In real code, this would be in a callback function.
-                            Ext.MessageBox.hide();
-                        }, 8000);
-                        // console.info(files);
-                        // alert(files[0].attachmentId);
-                        // uploadWin.close();
+                        Ext.Ajax.request({
+                            method : 'post',
+                            url : basePath + '/exampool/pcse/singleChoice/parseTemplateFile',
+                            params : {
+                                fileName : files[0].attachmentName
+                            },
+                            success : function(response) {
+                                var json = Ext.JSON.decode(response.responseText);
+                                Ext.MessageBox.hide();
+                                Ext.Msg.alert('提示', json.message,function () {
+                                    uploadWin.close();
+                                    Ext.getCmp('pcse-singleChoice-grid').getStore().reload();
+                                });
+                            }
+                        });
                     }
                 },
                 scope: this
@@ -185,7 +192,7 @@ function importChoice() {
 }
 function removeRepeatChoice() {
     Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/removeRepeatChoice';
-    Ext.getCmp('pcse-singleChoice-grid').getStore().load({params : {start : 0,limit : 10}});
+    Ext.getCmp('pcse-singleChoice-grid').getStore().reload();
     Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/getStore';
     Ext.create('notification', {
         html : '已为您罗列出系统中题目重复的数据，您可以选择性的进行删除'

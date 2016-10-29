@@ -4,6 +4,9 @@
 
 package cn.lfdevelopment.www.common.util;
 
+import cn.lfdevelopment.www.GreatappApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,6 +29,8 @@ import java.util.UUID;
  * DevelopmentApp
  */
 public class FileUtils {
+
+    private static Logger _logger = LoggerFactory.getLogger(GreatappApplication.class);
     /**
      * 生成唯一的文件名，放在上传文件名相同发生覆盖情况
      *
@@ -152,7 +157,8 @@ public class FileUtils {
         try {
             File file = new File(filePath);
             if (!file.exists()) {
-                throw new Exception("文件" + filePath + "不存在");
+                _logger.error("文件" + filePath + "不存在");
+                return;
             }
 
             long fileLength = file.length();
@@ -169,7 +175,7 @@ public class FileUtils {
             } else if ("gif".equals(extName)) {
                 response.setContentType("image/gif");
             } else {
-                throw new Exception("文件类型不是图片");
+                _logger.error("文件类型不是图片");
             }
             response.setHeader("Content-Length", String.valueOf(fileLength));
             bis = new BufferedInputStream(new FileInputStream(filePath));

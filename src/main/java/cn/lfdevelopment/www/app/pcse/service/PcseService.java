@@ -49,4 +49,8 @@ public class PcseService {
         PageHelper.startPage(page, limit);
         return pcseSingleChoiceMapper.removeRepeatChoice();
     }
+
+    public int saveByBatch(List<PcseSingleChoice> list) {
+        return pcseSingleChoiceMapper.insertList(list);
+    }
 }

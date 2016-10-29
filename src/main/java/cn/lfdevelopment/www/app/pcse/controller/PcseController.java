@@ -6,9 +6,14 @@ package cn.lfdevelopment.www.app.pcse.controller;
 
 import cn.lfdevelopment.www.app.pcse.pojo.PcseSingleChoice;
 import cn.lfdevelopment.www.app.pcse.service.PcseService;
+import cn.lfdevelopment.www.common.util.ExcelUtils;
 import cn.lfdevelopment.www.common.util.FileUtils;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -178,8 +184,8 @@ public class PcseController {
      */
     @RequestMapping("/exampool/pcse/singleChoice/templateDownload")
     public ResponseEntity<byte[]> templateDownload() throws IOException {
-        Resource res = new ClassPathResource("files/20151207160744_23817.docx");
-        return FileUtils.fileDownload("省级公务员试题单选题批量上传模板v1.0.docx",res.getFile());
+        Resource res = new ClassPathResource("files/PCSESingleChoiceTemplateV1.0.xlsx");
+        return FileUtils.fileDownload("省级公务员试题单选题批量上传模板v1.0.xlsx",res.getFile());
     }
 
 
@@ -207,7 +213,85 @@ public class PcseController {
             e.printStackTrace();
         }
         model.addAttribute("attachmentId", fileName);
-        model.addAttribute("attachmentName", fileName + ".docx");
+        model.addAttribute("attachmentName", fileName + ".xlsx");
+        return JSON.toJSONString(model);
+    }
+
+
+    /**
+     *  解析上传的模板文件
+     * @param fileName
+     * @param model
+     * @return is too complex to analyze by data flow algorithm
+     */
+    @RequestMapping("/exampool/pcse/singleChoice/parseTemplateFile")
+    @ResponseBody
+    public String parseTemplateFile(String fileName, Model model){
+        try {
+            Workbook wb = ExcelUtils.getWorkbook(templateFilePath, fileName);
+
+            //得到第3个shell
+            Sheet sheet=wb.getSheetAt(2);
+
+            //得到Excel的行数
+            int totalRows=sheet.getPhysicalNumberOfRows();
+
+            //得到Excel的列数(前提是有行数)
+            int totalCells = 0;
+            if(totalRows>0 && sheet.getRow(0) != null){
+                totalCells = sheet.getRow(0).getPhysicalNumberOfCells();
+            }
+
+            //无数据
+            if(totalRows <= 0 || totalCells <= 0){
+                model.addAttribute("success",false);
+                model.addAttribute("message","没有读取到任何数据,请检查文档");
+                return JSON.toJSONString(model);
+            }
+            List<PcseSingleChoice> list=new ArrayList<>();
+            //循环读取
+            for (int r=1;r<totalRows;r++) {
+                PcseSingleChoice pcseSingleChoice = new PcseSingleChoice();
+                pcseSingleChoice.setIsImage(1);
+                pcseSingleChoice.setUpdateTime(new Date());
+
+                Row row = sheet.getRow(r);
+                if (row == null) continue;
+                //循环Excel的列
+                for(int c = 0; c <totalCells; c++){
+                    Cell cell = row.getCell(c);
+                    if (null != cell){
+                        if(c==0){
+                            pcseSingleChoice.setTitle(cell.getStringCellValue());//客户名称
+                        }else if(c==1){
+                            pcseSingleChoice.setAnswerA(cell.getStringCellValue());//客户简称
+                        }else if(c==2){
+                            pcseSingleChoice.setAnswerB(cell.getStringCellValue());//行业
+                        }else if(c==3){
+                            pcseSingleChoice.setAnswerC(cell.getStringCellValue());//客户来源
+                        }else if(c==4){
+                            pcseSingleChoice.setAnswerD(cell.getStringCellValue());//地址
+                        }else if(c==5){
+                            pcseSingleChoice.setType(cell.getStringCellValue().contains("行测")? 0 : 1);//备注信息
+                        }else if(c==6){
+                            String value = cell.getStringCellValue();
+                            pcseSingleChoice.setAnswerRight(value.contains("A")?0 :value.contains("B")?1:value.contains("C")?2:3);//备注信息
+                        }else if(c==7){
+                            pcseSingleChoice.setMeno(cell.getStringCellValue());//备注信息
+                        }
+                    }
+                }
+                list.add(pcseSingleChoice);
+            }
+            int count = pcseService.saveByBatch(list);
+            model.addAttribute("message","解析成功,成功插入"+count+"条数据!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("success",false);
+            model.addAttribute("message","解析出错,请检查文档");
+            return JSON.toJSONString(model);
+        }
+        model.addAttribute("success",true);
         return JSON.toJSONString(model);
     }
 }
