@@ -149,7 +149,7 @@ function importChoice() {
                             width:300,
                             wait:true,
                             waitConfig: {interval:200},
-                            icon: basePath + '/static/images/desktop/j_0005.gif', //custom class in msg-box.html
+                            icon: basePath + '/static/images/desktop/j_0005.gif',
                             iconHeight: 50
                         });
                         Ext.Ajax.request({
@@ -160,11 +160,13 @@ function importChoice() {
                             },
                             success : function(response) {
                                 var json = Ext.JSON.decode(response.responseText);
-                                Ext.MessageBox.hide();
-                                Ext.Msg.alert('提示', json.message,function () {
-                                    uploadWin.close();
-                                    Ext.getCmp('pcse-singleChoice-grid').getStore().reload();
-                                });
+                                setTimeout(function(){
+                                    Ext.MessageBox.hide();
+                                    Ext.Msg.alert('提示', json.message,function () {
+                                        uploadWin.close();
+                                        Ext.getCmp('pcse-singleChoice-grid').getStore().reload();
+                                    });
+                                }, 2000);
                             }
                         });
                     }
@@ -192,7 +194,7 @@ function importChoice() {
 }
 function removeRepeatChoice() {
     Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/removeRepeatChoice';
-    Ext.getCmp('pcse-singleChoice-grid').getStore().reload();
+    Ext.getCmp('pcse-singleChoice-grid').getStore().loadPage(1);
     Ext.getCmp('pcse-singleChoice-grid').getStore().getProxy().url = basePath + '/exampool/pcse/singleChoice/getStore';
     Ext.create('notification', {
         html : '已为您罗列出系统中题目重复的数据，您可以选择性的进行删除'

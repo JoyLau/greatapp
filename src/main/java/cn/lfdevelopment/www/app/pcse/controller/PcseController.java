@@ -243,7 +243,7 @@ public class PcseController {
             }
 
             //无数据
-            if(totalRows <= 0 || totalCells <= 0){
+            if(totalRows <= 1 || totalCells <= 0){
                 model.addAttribute("success",false);
                 model.addAttribute("message","没有读取到任何数据,请检查文档");
                 return JSON.toJSONString(model);
@@ -252,7 +252,7 @@ public class PcseController {
             //循环读取
             for (int r=1;r<totalRows;r++) {
                 PcseSingleChoice pcseSingleChoice = new PcseSingleChoice();
-                pcseSingleChoice.setIsImage(1);
+                pcseSingleChoice.setIsImage(0);
                 pcseSingleChoice.setUpdateTime(new Date());
 
                 Row row = sheet.getRow(r);
@@ -262,22 +262,22 @@ public class PcseController {
                     Cell cell = row.getCell(c);
                     if (null != cell){
                         if(c==0){
-                            pcseSingleChoice.setTitle(cell.getStringCellValue());//客户名称
+                            pcseSingleChoice.setTitle(cell.getStringCellValue());
                         }else if(c==1){
-                            pcseSingleChoice.setAnswerA(cell.getStringCellValue());//客户简称
+                            pcseSingleChoice.setAnswerA(cell.getStringCellValue());
                         }else if(c==2){
-                            pcseSingleChoice.setAnswerB(cell.getStringCellValue());//行业
+                            pcseSingleChoice.setAnswerB(cell.getStringCellValue());
                         }else if(c==3){
-                            pcseSingleChoice.setAnswerC(cell.getStringCellValue());//客户来源
+                            pcseSingleChoice.setAnswerC(cell.getStringCellValue());
                         }else if(c==4){
-                            pcseSingleChoice.setAnswerD(cell.getStringCellValue());//地址
+                            pcseSingleChoice.setAnswerD(cell.getStringCellValue());
                         }else if(c==5){
-                            pcseSingleChoice.setType(cell.getStringCellValue().contains("行测")? 0 : 1);//备注信息
+                            pcseSingleChoice.setType(cell.getStringCellValue().contains("行测")? 0 : 1);
                         }else if(c==6){
                             String value = cell.getStringCellValue();
-                            pcseSingleChoice.setAnswerRight(value.contains("A")?0 :value.contains("B")?1:value.contains("C")?2:3);//备注信息
+                            pcseSingleChoice.setAnswerRight(value.contains("A")?0 :value.contains("B")?1:value.contains("C")?2:3);
                         }else if(c==7){
-                            pcseSingleChoice.setMeno(cell.getStringCellValue());//备注信息
+                            pcseSingleChoice.setMeno(cell.getStringCellValue());
                         }
                     }
                 }
