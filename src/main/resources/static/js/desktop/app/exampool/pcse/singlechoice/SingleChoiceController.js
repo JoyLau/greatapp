@@ -123,7 +123,36 @@ function deleteChoice() {
 
 }
 function exportChoice() {
+    var record = Ext.getCmp('pcse-singleChoice-grid').getSelectionModel().getSelection();
+    var ids = '';
+    if (record.length >= 1) {
+        for (var i = 0; i < record.length; i++) {
+            ids = ids + record[i].get('id') + ',';
+        }
+    } else {
+        Ext.Msg.alert('提示', '请至少选择一条记录');
+        return;
+    }
 
+    Ext.MessageBox.buttonText.yes = '预览';
+    Ext.MessageBox.buttonText.no = '下载';
+    Ext.MessageBox.show({
+        title: '预览&下载',
+        msg: '您可以选择<span style="color: green; ">在线预览</span>或是<span style="color: green; ">下载生成的Word文档</span> <br/>请选择?',
+        buttons: Ext.MessageBox.YESNOCANCEL,
+        animateTarget: 'exportChoice',
+        icon: Ext.MessageBox.QUESTION,
+        scope : this,
+        fn: function (btn) {
+            if (btn == 'yes') {
+                window.open(basePath + '/exampool/pcse/singleChoice/htmlToWordPreview?ids='+ids.substring(0, ids.length - 1));
+            } else if (btn == 'no') {
+                window.location= basePath + '/exampool/pcse/singleChoice/htmlToWordDownload?ids='+ids.substring(0, ids.length - 1);
+            }
+            Ext.MessageBox.buttonText.yes = '是';
+            Ext.MessageBox.buttonText.no = '否';
+        }
+    });
 }
 function importChoice() {
     Ext.Loader.setPath({

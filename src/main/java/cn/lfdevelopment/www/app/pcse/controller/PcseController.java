@@ -8,17 +8,21 @@ import cn.lfdevelopment.www.app.pcse.pojo.PcseSingleChoice;
 import cn.lfdevelopment.www.app.pcse.service.PcseService;
 import cn.lfdevelopment.www.common.util.ExcelUtils;
 import cn.lfdevelopment.www.common.util.FileUtils;
+import cn.lfdevelopment.www.common.util.WordUtils;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.StringUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +48,8 @@ import java.util.Map;
 public class PcseController {
     @Value("${pcse.fileupload.template-path}")
     private String templateFilePath;
+    @Value("${pcse.filedownload.path}")
+    private String downLoadFilePath;
     private final Logger _logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private PcseService pcseService;
@@ -293,5 +300,99 @@ public class PcseController {
         }
         model.addAttribute("success",true);
         return JSON.toJSONString(model);
+    }
+
+
+
+    @RequestMapping("/exampool/pcse/singleChoice/htmlToWordDownload")
+    public ResponseEntity<byte[]> htmlToWordDownload(String ids) throws IOException {
+        String html = "<html><body><p style=\"text-align:center\">\n" +
+                "    <strong><span style=\"font-family: 宋体;font-size: 14px;position: relative;top: -4px\"></span></strong>\n" +
+                "</p>\n" +
+                "<p style=\"text-align:center\">\n" +
+                "    <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><strong><span style=\"font-size: 19px; position: relative; top: -4px;\">一战成公</span></strong><strong><span style=\"font-size: 19px; position: relative; top: -4px;\"></span></strong></span>\n" +
+                "</p>\n" +
+                "<p style=\"text-align:center\">\n" +
+                "    <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><strong><span style=\"font-size: 19px; position: relative; top: -4px;\">省级公务员试题单选题在线预览v1.0</span></strong><strong><span style=\"font-size: 19px; position: relative; top: -4px;\"></span></strong><strong><span style=\"font-size: 19px; position: relative; top: -4px;\"></span></strong></span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "    <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><strong><span style=\"font-family: 宋体; font-size: 19px; position: relative; top: -4px;\"><br/></span></strong><strong><span style=\"font-family: 宋体; font-size: 19px; position: relative; top: -4px;\"></span></strong></span>\n" +
+                "</p>\n" +
+                "<p style=\"text-align:center;line-height:24px\">\n" +
+                "    <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><strong><span style=\"font-size: 14px; font-family: 宋体;\">by "+SecurityUtils.getSubject().getPrincipal()+" on "+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"</span></strong></span>\n" +
+                "</p>\n" +
+                "<p style=\"line-height: 24px;\">\n" +
+                "    <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><strong><span style=\"font-size: 14px; font-family: 宋体;\"><br/></span></strong><strong><span style=\"font-size: 14px; font-family: 宋体;\"></span></strong></span>\n" +
+                "</p>";
+        List<PcseSingleChoice> list  = pcseService.getSingleChoiceByIds(ids);
+        for (int i = 0; i < list.size(); i++) {
+            //题目类型
+            String type  = list.get(i).getType() == 0 ? "行测" : "申论";
+            int answer = list.get(i).getAnswerRight();
+            String answerRight = answer == 0 ? "A" : answer == 1 ? "B" : answer == 2 ? "C" : "D";
+            //标题
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\">"+(i+1)+"."+list.get(i).getTitle()+"</span>\n" +
+                    "</p>";
+            //A选项
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\">A．"+list.get(i).getAnswerA()+"</span>\n" +
+                    "</p>";
+            //B选项
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\">A．"+list.get(i).getAnswerB()+"</span>\n" +
+                    "</p>";
+            //C选项
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\">A．"+list.get(i).getAnswerC()+"</span>\n" +
+                    "</p>";
+            //D选项
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\">A．"+list.get(i).getAnswerD()+"</span>\n" +
+                    "</p>";
+            //题目类型
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\"><strong>【题目类型】</strong>"+type+"</span>\n" +
+                    "</p>";
+            //正确答案
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\"><strong>【正确答案】</strong>"+answerRight+"</span>\n" +
+                    "</p>";
+            //答案解析
+            html = html + "<p style=\"margin-top:0;margin-bottom:0;text-indent:28px;line-height:24px\">\n" +
+                    "    <span style=\"font-size: 14px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;" +
+                    "\"><strong>【解析】</strong>"+list.get(i).getMeno()+"</span>\n" +
+                    "</p><br/><br/>";
+        }
+
+        String fileName = System.currentTimeMillis()+".docx";
+        WordUtils.htmlToWord(html,downLoadFilePath,fileName);
+        Resource res = new FileSystemResource(downLoadFilePath+fileName);
+        return FileUtils.fileDownload(fileName,res.getFile());
+    }
+
+
+    /**
+     * 在线预览选中的题目
+     * @param ids
+     * @param model
+     * @return
+     */
+    @RequestMapping("/exampool/pcse/singleChoice/htmlToWordPreview")
+    public String htmlToWordPreview(String ids,Model model){
+        if(StringUtil.isNotEmpty(ids)){
+            List<PcseSingleChoice> list  = pcseService.getSingleChoiceByIds(ids);
+            model.addAttribute("list",list);
+        }
+        model.addAttribute("user", SecurityUtils.getSubject().getPrincipal());
+        return "desktop/exampool/pcse/htmlPreview";
+
     }
 }

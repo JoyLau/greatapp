@@ -61,13 +61,14 @@ Ext.define('pcseSingleChoice.SingleChoiceGrid', {
     }, '-', {
         text: '批量下载',
         glyph: 0xf0ed,
-        handler : exportChoice
-    }, '-', {
+        handler : exportChoice,
+        id : 'exportChoice'
+    }, /*'-', {
         text: '来20题',
         tooltip : '输入题目数量，随机从题库中选出题目并导出',
         glyph: 0xf02c,
         handler : randomChoice
-    }, '-', {
+    },*/ '-', {
         text: '去重',
         tooltip : '筛选出题库中题目内容相同的选择题，您可以选择删除它们',
         glyph: 0xf0c5,

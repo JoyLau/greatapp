@@ -53,4 +53,8 @@ public class PcseService {
     public int saveByBatch(List<PcseSingleChoice> list) {
         return pcseSingleChoiceMapper.insertList(list);
     }
+
+    public List<PcseSingleChoice> getSingleChoiceByIds(String ids) {
+        return pcseSingleChoiceMapper.selectByIds(ids);
+    }
 }
