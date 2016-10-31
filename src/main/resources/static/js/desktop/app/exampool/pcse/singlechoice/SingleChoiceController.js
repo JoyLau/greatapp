@@ -161,12 +161,12 @@ function importChoice() {
     Ext.require(['Ext.ux.plugins.UploadPanel', 'Ext.ux.plugins.UploadWin']);
     Ext.onReady(function () {
             var uploadWin = Ext.create('Ext.ux.plugins.UploadWin', {
-                title: '上传文件 (.xlsx)',
+                title: '上传文件 (Excel)',
                 upload_url: basePath + '/exampool/pcse/singleChoice/uploadTemplateFile',
                 success_text : '成功,等待解析....',
                 completeBtnText: '<i class="fa fa-check" aria-hidden="true"></i> 开始解析',
-                file_types: '.xlsx',
-                file_types_description: '.xlsx',
+                file_types: '.xlsx;.xls',
+                file_types_description: 'Excel',
                 file_upload_limit: 1,
                 file_queue_limit: 1,
                 callback: function (files, store) {

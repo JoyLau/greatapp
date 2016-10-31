@@ -28,7 +28,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -206,8 +208,10 @@ public class PcseController {
      */
     @RequestMapping("/exampool/pcse/singleChoice/uploadTemplateFile")
     @ResponseBody
-    public String uploadTemplateFile(HttpServletRequest request, Model model)throws IllegalStateException, IOException {
+    public String uploadTemplateFile(HttpServletRequest request, Model model,@RequestParam("file") MultipartFile file)throws IllegalStateException, IOException {
         String fileName = String.valueOf(System.currentTimeMillis());
+        //扩展名
+        String extensionName = FileUtils.getExtensionName(file.getOriginalFilename());
         try {
             File folder = new File(templateFilePath);
             if (!folder.exists()) {
@@ -220,7 +224,7 @@ public class PcseController {
             e.printStackTrace();
         }
         model.addAttribute("attachmentId", fileName);
-        model.addAttribute("attachmentName", fileName + ".xlsx");
+        model.addAttribute("attachmentName", fileName + "." + extensionName);
         return JSON.toJSONString(model);
     }
 
