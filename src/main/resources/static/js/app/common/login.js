@@ -231,9 +231,10 @@ Ext.onReady(function () {
             allowBlank: false,
             anchor: '70%',
             blankText: '请输入验证码！',
-            maxLength: 6,
-            minLength: 6,
-            maxLengthText: '验证码不能超过6个字符!',
+            maxLength: 4,
+            minLength: 4,
+            maxLengthText: '验证码不能超过4个字符!',
+            minLengthText: '验证码不能少于4个字符',
             listeners: {
                 focus : function () {
                     //如果验证码已经存在，则不刷新

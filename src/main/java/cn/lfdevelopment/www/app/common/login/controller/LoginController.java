@@ -88,7 +88,7 @@ public class LoginController {
             response.setHeader("Cache-Control", "no-cache");
             response.setDateHeader("Expires", 0);
             response.setContentType("image/gif");
-            Captcha captcha = new GifCaptcha(150,45,6);//宽，高，位数
+            Captcha captcha = new GifCaptcha(150,45,4);//宽，高，位数
             //输出
             ServletOutputStream out = response.getOutputStream();
             captcha.out(out);

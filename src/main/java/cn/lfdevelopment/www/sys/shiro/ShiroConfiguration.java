@@ -54,13 +54,6 @@ public class ShiroConfiguration {
         return filterRegistration;
     }
 
-    /*@Bean
-    public LogoutFilter logout(){
-        LogoutFilter logoutFilter = new LogoutFilter();
-        logoutFilter.setRedirectUrl("/ss");
-        return logoutFilter;
-    }*/
-
     /**
      * @see org.apache.shiro.spring.web.ShiroFilterFactoryBean
      * @return
