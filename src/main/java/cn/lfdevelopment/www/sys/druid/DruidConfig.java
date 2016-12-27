@@ -24,7 +24,7 @@ public class DruidConfig{
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "close")
     @ConfigurationProperties(prefix="spring.datasource")
     public DataSource druidDataSource(){
         return new DruidDataSource() {
