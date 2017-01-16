@@ -4,7 +4,6 @@
 
 package cn.lfdevelopment.www.sys.shiro;
 
-import org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.subject.Subject;
@@ -113,12 +112,8 @@ public class ShiroConfiguration {
         sessionManager.setGlobalSessionTimeout(1800000);
         sessionManager.setDeleteInvalidSessions(true);
         sessionManager.setSessionValidationSchedulerEnabled(true);
-        sessionManager.setSessionValidationScheduler(new QuartzSessionValidationScheduler(){
-            @Override
-            public void setSessionValidationInterval(long sessionValidationInterval) {
-                super.setSessionValidationInterval(600000);
-            }
-        });
+        sessionManager.setSessionValidationInterval(600000);
+        sessionManager.setSessionIdUrlRewritingEnabled(false);
         return sessionManager;
     }
 

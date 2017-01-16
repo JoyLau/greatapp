@@ -265,6 +265,7 @@
             <version>${activiti.version}</version>
         </dependency>-->
 
+        <!--websocket配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
