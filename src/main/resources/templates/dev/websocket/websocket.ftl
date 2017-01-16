@@ -7,9 +7,9 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <script type="application/javascript" src="${path}/static/js/test/websocket/sockjs.min.js"></script>
-    <script type="application/javascript" src="${path}/static/js/test/websocket/stomp.min.js"></script>
-    <script type="application/javascript" src="${path}/static/js/test/websocket/jquery.js"></script>
+    <script type="application/javascript" src="${path}/static/js/dev/websocket/sockjs.min.js"></script>
+    <script type="application/javascript" src="${path}/static/js/dev/websocket/stomp.min.js"></script>
+    <script type="application/javascript" src="${path}/static/js/dev/websocket/jquery.js"></script>
     <title>Spring Boot+WebSocket+广播式</title>
   </head>
 
