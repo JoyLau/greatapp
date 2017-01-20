@@ -18,13 +18,13 @@
         }
     </script>
 
-    <link href="/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet"/>
-    <link href="/static/css/notification.css" rel="stylesheet"/>
-    <link href="/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${path}/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet"/>
+    <link href="${path}/static/css/notification.css" rel="stylesheet"/>
+    <link href="${path}/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
 
-    <script src="/static/ext-5.0.0/build/bootstrap.js" type="text/javascript"></script>
-    <script src="/static/ext-5.0.0/build/notification.js" type="text/javascript"></script>
-    <script src="/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js" type="text/javascript"></script>
+    <script src="${path}/static/ext-5.0.0/build/bootstrap.js" type="text/javascript"></script>
+    <script src="${path}/static/ext-5.0.0/build/notification.js" type="text/javascript"></script>
+    <script src="${path}/static/ext-5.0.0/build/packages/ext-locale/build/ext-locale-zh_CN.js" type="text/javascript"></script>
 
 
 
@@ -58,7 +58,7 @@
             }
         })
     </script>
-    <script src="/static/js/app/common/login.js" type="text/javascript"></script>
+    <script src="${path}/static/js/app/common/login.js" type="text/javascript"></script>
     <title>Login</title>
     <style type="text/css">
         body {
@@ -93,7 +93,7 @@
         <p>Copyright (c) 2016 by LiuFa. All rights reserved</p>
     </div>
 </div>
-<audio id="tipsMusic" src="/static/music/tip.ogg"></audio>
+<audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>
 </body>
 </html>
 

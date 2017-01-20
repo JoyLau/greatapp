@@ -243,15 +243,21 @@
             <scope>provided</scope>
         </dependency>-->
 
+        <!--整合Activiti-->
+        <!--由Spring专家Josh Long主导开发的spring-boot-starters为我们在Spring Boot下使用Activiti做了自动配置。
+         其中主要自动配置包括：
+         * 自动创建Activiti ProcessEngine的Bean；
+         * 所有的Activiti Service都自动注册为Spring的Bean；
+         * 创建一个Spring Job Executor；
+         * 自动扫描并部署位于src/main/resources/processes目录下的流程处理文件。-->
         <!--<dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter-basic</artifactId>
             <version>${activiti.version}</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+        <!--<dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter-rest-api</artifactId>
-            &lt;!&ndash;<artifactId>spring-boot-starter-rest-api</artifactId> &ndash;&gt;
             <version>${activiti.version}</version>
         </dependency>
         <dependency>
