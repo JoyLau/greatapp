@@ -40,8 +40,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry viewControllerRegistry){
-        viewControllerRegistry.addViewController("/").setViewName("redirect:/main");
-        viewControllerRegistry.addViewController("/index").setViewName("redirect:/main");
+        /*开发考题系统的配置*/
+//        viewControllerRegistry.addViewController("/").setViewName("redirect:/main");
+//        viewControllerRegistry.addViewController("/index").setViewName("redirect:/main");
+
+        /*开发个人页面的配置*/
+        viewControllerRegistry.addViewController("/").setViewName("redirect:/index");
+
+
         viewControllerRegistry.addViewController("/404").setViewName("404");
         viewControllerRegistry.addViewController("/500").setViewName("500");
 

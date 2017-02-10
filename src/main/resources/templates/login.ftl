@@ -9,11 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <script type="text/javascript">
+        var path = '${path}';
         //防止其他页面在iframe或frameset中打开
         if (self != top) {
             top.location = self.location;
         }
-        if(top.location.pathname.indexOf('/login')){
+        if(top.location.pathname.indexOf(path + '/login')){
             top.location = "${path}/login";
         }
     </script>

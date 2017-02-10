@@ -73,8 +73,10 @@ public class ShiroConfiguration {
         bean.setFilters(filters);
 
         Map<String, String> chains = new LinkedHashMap<>();
-        chains.put("/static/**", "anon");
         chains.put("/favicon.ico","anon");
+        chains.put("/","anon");
+        chains.put("/index","anon");
+        chains.put("/static/**", "anon");
         chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
         chains.put("/druid/**","anon");

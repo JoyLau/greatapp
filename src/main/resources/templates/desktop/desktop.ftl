@@ -37,20 +37,20 @@
     </div>
 </div>
 <div id="flashClock">
-    <embed src="/static/flash/20078858402648.swf" quality="high" wmode="transparent" width="160" height="150" align="middle"  type="application/x-shockwave-flash" />
+    <embed src="${path}/static/flash/20078858402648.swf" quality="high" wmode="transparent" width="160" height="150" align="middle"  type="application/x-shockwave-flash" />
 </div>
 <a target="_blank" alt="Powered by LiuFa"
    id="poweredby"><div></div></a>
 
 </body>
 </html>
-<link rel="stylesheet" type="text/css" href="/static/js/desktop/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/desktop/desktop.css" />
-<link href="/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="${path}/static/js/desktop/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+<link rel="stylesheet" type="text/css" href="${path}/static/css/desktop/desktop.css" />
+<link href="${path}/static/css/fontawesome/font-awesome.min.css" rel="stylesheet"/>
 
-<script type="text/javascript" src="/static/js/desktop/js/ext-all.js"></script>
-<script type="text/javascript" src="/static/js/desktop/js/ext-lang-zh_CN.js"></script>
-<script type="text/javascript" src="/static/js/desktop/js/ext-theme-neptune.js"></script>
+<script type="text/javascript" src="${path}/static/js/desktop/js/ext-all.js"></script>
+<script type="text/javascript" src="${path}/static/js/desktop/js/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="${path}/static/js/desktop/js/ext-theme-neptune.js"></script>
 
 <#--全局公共js-->
 <script type="text/javascript" src="${path}/static/js/app/common/extcommon.js"></script>

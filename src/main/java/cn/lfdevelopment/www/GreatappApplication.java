@@ -4,6 +4,7 @@
 
 package cn.lfdevelopment.www;
 
+import de.codecentric.boot.admin.config.EnableAdminServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +18,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * GreatappApplication
  */
 @SpringBootApplication// same as @Configuration @EnableAutoConfiguration @ComponentScan
+@EnableAdminServer
 public class GreatappApplication extends SpringBootServletInitializer {
 
     private static Logger _logger = LoggerFactory.getLogger(GreatappApplication.class);

@@ -94,7 +94,7 @@ function load() {
 }
 //刷新验证码
 function refreshCode() {
-    document.getElementById("validateCodeImg").src = "getGifCode?" + Math.random();
+    document.getElementById("validateCodeImg").src = path + "/getGifCode?" + Math.random();
 }
 
 
