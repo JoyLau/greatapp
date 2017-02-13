@@ -41,7 +41,7 @@
             </ul>
             <div class="feeds">
                 <a class="feed feed-xlweibo" href="" target="_blank"><i></i>新浪微博</a> <a class="feed feed-txweibo" href="" target="_blank"><i></i>腾讯微博</a>
-                <a class="feed feed-rss" href="" target="_blank"><i></i>订阅本站</a> <a class="feed feed-weixin" data-toggle="popover" data-trigger="hover" title="微信扫一扫" data-html="true" data-content="<img src='${path}/static/dev/blog/images/weixin.jpg' alt='扫一扫二维码,加我为好友'>" href="javascript:;" target="_blank"><i></i>关注微信</a>
+                <a class="feed feed-rss" href="" target="_blank"><i></i>订阅本站</a> <a class="feed feed-weixin" data-toggle="popover" data-trigger="hover" title="扫一扫二维码,加博主好友" data-html="true" data-content="<img src='${path}/static/dev/blog/images/weixin.jpg' alt='扫一扫二维码,加我为好友'>" href="javascript:;" target="_blank"><i></i>关注微信</a>
             </div>
             <div class="wall"><a href="readerWall.html" target="_blank">读者墙</a> | <a href="tags.html" target="_blank">标签云</a></div>
         </div>
