@@ -123,7 +123,7 @@
                             <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="900ms"><a href="" target="_blank"><div class="item"><div class="item-title"><h2>IIS7 IIS7.5 ASP.NET 配置web.Config 在出错时跳转到相应页面</h2><div class="border-bottom"></div><span>2016-09-25</span></div><p>每当用户访问错误页面时，会出现不友好的404错误，所以为了防止这种不友好，我们在web.config中的节点下配，在出现比如403 404这样的错误时，跳转到我们自定义的页面。</p></div></a></li>
                             <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="1000ms"><a href="" target="_blank"><div class="item"><div class="item-title"><h2>mysql utf8mb4与emoji表情</h2><div class="border-bottom"></div><span>2016-07-11</span></div><p>mysql 5.5 之前， utf8 编码只支持1-3个字节，只支持bmp这部分的unicode编码区， bmp是从哪到哪，到http://en.wikipedia.org/wiki/mapping_of_unicode_characters这里看，基本就是0000～ffff这一区。 从mysql5.5开始，可支持4个字节utf编码utf8mb4，一个字符最多能有4字节，所…</p></div></a></li>
                             <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="1100ms"><a href="" target="_blank"><div class="item"><div class="item-title"><h2>提高mysql千万级大数据SQL查询优化30条经验</h2><div class="border-bottom"></div><span>2016-07-04</span></div><p>对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。</p></div></a></li>
-                            <a class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="" role="button">更多文章</a>
+                            <a class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="${path}/blog" role="button" target="_blank">更多文章</a>
                     </div>
                 </div>
             </div>

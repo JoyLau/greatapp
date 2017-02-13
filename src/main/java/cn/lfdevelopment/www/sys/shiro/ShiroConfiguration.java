@@ -76,6 +76,8 @@ public class ShiroConfiguration {
         chains.put("/favicon.ico","anon");
         chains.put("/","anon");
         chains.put("/index","anon");
+        chains.put("/blog","anon");
+        chains.put("/blog/**","anon");
         chains.put("/static/**", "anon");
         chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
