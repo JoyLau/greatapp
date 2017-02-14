@@ -19,7 +19,7 @@
 </head>
 
 <body oncontextmenu="return false;">
-<audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>
+<#--<audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>-->
 </body>
 </html>
 

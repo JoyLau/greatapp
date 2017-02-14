@@ -384,11 +384,6 @@ div.ux-taskbar div.x-toolbar {
     width: 46px;
     height: 46px;
 }
-.tv48-shortcut {
-    background-image: url(../../images/desktop/tv48.png);
-    width: 46px;
-    height: 46px;
-}
 .yytai-shortcut {
     background-image: url(../../images/desktop/yytai.png);
     width: 46px;
@@ -398,5 +393,13 @@ div.ux-taskbar div.x-toolbar {
     background-image: url(../../images/desktop/excel.png);
     width: 46px;
     height: 46px;
+}
+.blog-shortcut {
+    background-image: url(../../images/blog/bloglogo.png);
+    width: 46px;
+    height: 46px;
+}
+.blog-shortcut-short {
+    background-image:url(../../images/blog/blogshort.png) !important;
 }
 .no-icon {display:none;}

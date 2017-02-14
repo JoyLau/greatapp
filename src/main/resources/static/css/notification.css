@@ -11,11 +11,11 @@
 
 /* Icons */
 .ux-notification-icon-information {
-    background-image: url('/static/ext-5.0.0/build/packages/ext-theme-crisp/build/resources/images/form/exclamation.png');
+    background-image: url('../ext-5.0.0/build/packages/ext-theme-crisp/build/resources/images/form/exclamation.png');
 }
 
 .ux-notification-icon-error {
-    background-image: url('/static/images/notification/warning.png');
+    background-image: url('../images/notification/warning.png');
 }
 
 /* Using standard theme */
@@ -30,7 +30,7 @@
 }
 
 body .ux-notification-light {
-    background-image: url('/static/images/notification/fader.png');
+    background-image: url('../images/notification/fader.png');
 }
 
 .ux-notification-light .x-window-body {

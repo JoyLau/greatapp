@@ -1125,8 +1125,6 @@ textarea::-webkit-scrollbar-thumb {
 	clear: both;
 	color: #AAA;
 	position: relative;
-	margin-left: 215px;
-	margin-right: 20px;
 	padding: 20px 0 30px 20px;
 	border-top: 2px solid #eee;
 	font-size: 12px;
@@ -1162,3 +1160,6 @@ textarea::-webkit-scrollbar-thumb {
 .gotop:hover {
 	background: url(../images/backtop.png) no-repeat 0 -52px;
 }
+#footer-bottom{background:#f6f6f6;padding:20px 0}
+#footer-bottom p{text-align:center;padding-top:12px;}
+#footer-bottom p a{color: rgba(255, 87, 2, 0.53);font-size:13px;}

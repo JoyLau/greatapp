@@ -1,0 +1,17 @@
+[
+  {
+    "text": "题目管理",
+    "mid": "1",
+    "leaf": false,
+    "expanded": true,
+    "children": [
+      {
+        "text": "题目列表",
+        "mid": "2",
+        "url": "subjectlist",
+        "leaf": true,
+        "children": []
+      }
+    ]
+  }
+]

@@ -85,9 +85,9 @@ Ext.define('Ext.ux.window.Notification', {
         var me = this;
 
         //播放提示音
-        if(Ext.get('tipsMusic')){
+        /*if(Ext.get('tipsMusic')){
             Ext.get('tipsMusic').dom.play();
-        }
+        }*/
         // Backwards compatibility
         if (Ext.isDefined(me.corner)) {
             me.position = me.corner;

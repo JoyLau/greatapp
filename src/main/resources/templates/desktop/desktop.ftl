@@ -6,7 +6,7 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <title>Desktop</title>
+    <title>JoyLau - 系统管理主面板</title>
         <style type="text/css">
             #loading-mask {
                 position: absolute;
@@ -36,9 +36,9 @@
         <img src="${path}/static/images/desktop/desktoploading.gif">
     </div>
 </div>
-<div id="flashClock">
+<#--<div id="flashClock">
     <embed src="${path}/static/flash/20078858402648.swf" quality="high" wmode="transparent" width="160" height="150" align="middle"  type="application/x-shockwave-flash" />
-</div>
+</div>-->
 <a target="_blank" alt="Powered by LiuFa"
    id="poweredby"><div></div></a>
 

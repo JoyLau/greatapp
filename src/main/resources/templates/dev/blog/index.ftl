@@ -1,6 +1,6 @@
 <#assign path=request.contextPath />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -204,18 +204,18 @@
                         </div>
                     </div>
                 </div>
-                <!--<div class="news-more" id="pagination">
+                <div class="news-more" id="pagination">
                     <a href="">查看更多</a>
-                </div>-->
-                <div class="quotes" style="margin-top:15px"><span class="disabled">首页</span><span class="disabled">上一页</span><span class="current">1</span><a href="">2</a><a href="">下一页</a><a href="">尾页</a></div>
+                </div>
+                <#--<div class="quotes" style="margin-top:15px"><span class="disabled">首页</span><span class="disabled">上一页</span><span class="current">1</span><a href="">2</a><a href="">下一页</a><a href="">尾页</a></div>-->
             </div>
         </div>
     </div>
     <!--/内容-->
     <aside class="sidebar visible-lg"><!--右侧>992px显示-->
         <div class="sentence"> <strong>每日一句</strong>
-            <h2>2015年11月1日 星期日</h2>
-            <p>你是我人生中唯一的主角，我却只能是你故事中的一晃而过得路人甲。</p>
+            <h2 id="h2date">${.now?string("yyyy年MM月dd日")}&nbsp;&nbsp;&nbsp;星期</h2>
+            <p>诸葛亮是一个优秀的程序猿，每一个锦囊都是应对不同的case而编写的！</br>但是优秀的程序猿也敌不过更优秀的bug！六出祈山，七进中原，鞠躬尽瘁，死而后已的诸葛亮只因为有一个错误的case-马谡，整个结构就被break了！</p>
         </div>
         <div id="search" class="sidebar-block search" role="search">
             <h2 class="title"><strong>搜索</strong></h2>
@@ -254,7 +254,13 @@
         </div>
     </aside>
     <!--/右侧>992px显示-->
-    <footer class="footer">POWERED BY &copy;<a href="http://www.ylsat.com">异清轩 YLSAT.COM</a> ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;<span><a href="http://www.miitbeian.gov.cn/" target="_blank">豫ICP备15026801号-1</a></span> <span style="display:none"><a href="">网站统计</a></span> </footer>
+    <footer class="footer" id="footer-bottom">
+        <p>
+        <a href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备16025014号-1</a><br />
+        Designed and developed by JoyLau.<br>
+        Copyright © 2016-2017 lfdevelopment.cn. All Rights Reserved.
+        </p>
+    </footer>
 </section>
 <div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
 <!--/返回顶部-->
@@ -263,7 +269,7 @@
     $('body').show();
     $('.version').text(NProgress.version);
     NProgress.start();
-    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 2000);
     //返回顶部按钮
     $(function(){
         $(window).scroll(function(){
@@ -299,6 +305,9 @@
         },function(){
             $(this).find("h3").hide();
         });
+    });
+    $(function(){
+        $('#h2date').append("日一二三四五六".charAt(new Date().getDay()))
     });
     //页面元素智能定位
     $.fn.smartFloat = function() {
