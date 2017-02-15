@@ -10,18 +10,7 @@ Ext.define('Desktop.App', {
 
     requires: [
         'Ext.window.MessageBox',
-        'Ext.ux.desktop.ShortcutModel',
-        'Desktop.SystemStatus',
-        'Desktop.AccordionWindow',
-        'Desktop.Notepad',
-        // 'Desktop.FishGame',
-        // 'Desktop.AboutLinb',
-        // 'Desktop.YYTai',
-        'Desktop.Settings',
-        'Desktop.DevTask',
-        // 'Desktop.Tank',
-        'Desktop.exampool.ExamPool',
-        'Desktop.blog.blog'
+        'Ext.ux.desktop.ShortcutModel'
     ],
 
     init: function() {
@@ -32,18 +21,9 @@ Ext.define('Desktop.App', {
         // now ready...
     },
 
-    getModules : function(){
+    getModules : function(name){
         return [
-            Ext.create('Desktop.AboutLinb'),
-            Ext.create('Desktop.SystemStatus'),
-            // Ext.create('Desktop.FishGame'),
-            Ext.create('Desktop.AccordionWindow'),
-            Ext.create('Desktop.Notepad'),
-            // Ext.create('Desktop.YYTai'),
-            Ext.create('Desktop.DevTask') ,
-            // Ext.create('Desktop.Tank'),
-            Ext.create('Desktop.exampool.ExamPool'),
-            Ext.create('Desktop.blog.blog')
+            Ext.create(name)
         ];
     },
 
@@ -60,15 +40,15 @@ Ext.define('Desktop.App', {
             shortcuts: Ext.create('Ext.data.Store', {
                 model: 'Ext.ux.desktop.ShortcutModel',
                 data: [
-                    { name: '即时通讯', iconCls: 'accordion-shortcut', module: 'acc-win' },
-                    { name: '记事本', iconCls: 'notepad-shortcut', module: 'notepad' },
+                    { name: '即时通讯', iconCls: 'accordion-shortcut', module: 'Desktop.AccordionWindow' },
+                    { name: '记事本', iconCls: 'notepad-shortcut', module: 'Desktop.Notepad' },
                     // { name: '捕鱼达人', iconCls: 'fish-shortcut', module: 'fishgame' },
                     // { name: '90坦克', iconCls: 'tank-shortcut', module: '90tank' },
                     // { name: '音悦台', iconCls: 'yytai-shortcut', module: 'yytai' },
-                    { name: '系统状态', iconCls: 'cpu-shortcut', module: 'systemstatus'},
-                    { name: '开发任务', iconCls: 'grid-shortcut', module: 'dev-task' },
-                    { name: '题库', iconCls: 'exam-pool-shortcut', module: 'exam-pool' },
-                    { name: '网站博客', iconCls: 'blog-shortcut', module: 'desk-blog' }
+                    { name: '系统状态', iconCls: 'cpu-shortcut', module: 'Desktop.SystemStatus'},
+                    { name: '开发任务', iconCls: 'grid-shortcut', module: 'Desktop.DevTask' },
+                    { name: '题库', iconCls: 'exam-pool-shortcut', module: 'Desktop.exampool.ExamPool' },
+                    { name: '网站博客', iconCls: 'blog-shortcut', module: 'Desktop.blog.blog' }
                 ]
             }),
 

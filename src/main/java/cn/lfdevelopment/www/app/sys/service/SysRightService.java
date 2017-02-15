@@ -28,7 +28,7 @@ public class SysRightService {
 
     public List<SysRight> getSysRightRoot() {
         Example example = new Example(SysRight.class);
-        example.createCriteria().andCondition("parentid=0");
+        example.createCriteria().andCondition("parentid=0 and type = 0 and state = 1");
         return sysRightMapper.selectByExample(example);
     }
 

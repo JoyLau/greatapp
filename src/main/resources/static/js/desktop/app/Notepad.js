@@ -6,7 +6,7 @@
         //'Ext.form.field.TextArea'
     ],
 
-    id:'notepad',
+    id:'Desktop.Notepad',
 
     createWindow : function(){
         var desktop = this.app.getDesktop();

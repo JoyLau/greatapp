@@ -8,13 +8,13 @@
         'Ext.grid.RowNumberer'
     ],
 
-    id:'dev-task',
+    id:'Desktop.DevTask',
     createWindow : function(){
         var desktop = this.app.getDesktop();
-        var win = desktop.getWindow('dev-task');
+        var win = desktop.getWindow('Desktop.DevTask');
         if(!win){
             win = desktop.createWindow({
-                id: 'dev-task',
+                id: 'Desktop.DevTask',
                 title:'开发任务',
                 width:740,
                 height:480,

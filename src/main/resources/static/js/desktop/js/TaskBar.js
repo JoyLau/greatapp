@@ -69,7 +69,7 @@ Ext.define('Ext.ux.desktop.TaskBar', {
                 icon: "static/images/desktop/im16.png",
                 handler: function () {
 
-                    var module = DesktopApp.getModule('acc-win'),
+                    var module = DesktopApp.getModule('Desktop.AccordionWindow'),
                         window;
                     if (module) {
                         window = module.createWindow();

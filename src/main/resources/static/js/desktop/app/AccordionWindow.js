@@ -15,7 +15,7 @@ Ext.define('Desktop.AccordionWindow', {
         'Ext.tree.Panel'
     ],
 
-    id:'acc-win',
+    id:'Desktop.AccordionWindow',
     createTree : function(){
         var tree = Ext.create('Ext.tree.Panel', {
             id:'im-tree',

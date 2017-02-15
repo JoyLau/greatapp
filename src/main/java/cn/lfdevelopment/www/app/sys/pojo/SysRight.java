@@ -56,6 +56,18 @@ public class SysRight {
      */
     private String notes;
 
+    /**
+     * 权限菜单的分类（0：题库类，1：个人网站及博客类）
+     */
+    private Integer type;
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
     @Transient
     private List children;

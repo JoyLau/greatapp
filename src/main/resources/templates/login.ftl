@@ -94,7 +94,7 @@
         <p>Copyright (c) 2016 by LiuFa. All rights reserved</p>
     </div>
 </div>
-<audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>
+<#--<audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>-->
 </body>
 </html>
 

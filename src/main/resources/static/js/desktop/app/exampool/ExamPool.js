@@ -2,13 +2,13 @@
  * Created by LiuFa on 2016/10/3.
  */
 Ext.define('Desktop.exampool.ExamPool', {
-    id:'exam-pool',
+    id:'Desktop.exampool.ExamPool',
     createWindow : function(){
         var desktop = this.app.getDesktop();
-        var win = desktop.getWindow('exam-pool');
+        var win = desktop.getWindow('Desktop.exampool.ExamPool');
         if(!win){
             win = desktop.createWindow({
-                id: 'exam-pool',
+                id: 'Desktop.exampool.ExamPool',
                 title:'题库',
                 width:'50%',
                 height:'70%',

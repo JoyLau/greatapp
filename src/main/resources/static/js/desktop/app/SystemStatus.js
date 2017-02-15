@@ -6,7 +6,7 @@
         'Ext.data.JsonStore'
     ],
 
-    id: 'systemstatus',
+    id: 'Desktop.SystemStatus',
 
     refreshRate: 500,
 
@@ -54,7 +54,7 @@
         me.generateCpuLoad();
 
         return desktop.createWindow({
-            id: 'systemstatus',
+            id: 'Desktop.SystemStatus',
             title: 'System Status',
             width: 800,
             height: 600,

@@ -8,67 +8,75 @@
  * DevelopmentApp
  */
 Ext.define('Desktop.blog.blog', {
-    id:'desk-blog',
+    id:'Desktop.blog.blog',
     createWindow : function(){
         var desktop = this.app.getDesktop();
-        var win = desktop.getWindow('desk-blog');
+        var win = desktop.getWindow('Desktop.blog.blog');
         if(!win){
             win = desktop.createWindow({
-                id: 'desk-blog',
+                id: 'Desktop.blog.blog',
                 title:'网站及博客管理主界面',
                 width:'70%',
                 height:'50%',
                 iconCls: 'blog-shortcut-short',
                 animCollapse:true,
-                //窗口拖动不会透明化
-                // ghost:false,
                 constrainHeader:true,
                 layout: "border",
-                items: [xltree, xlview]
+                items: [westTree(),centerPanel()]
             });
         }
         return win;
     }
 });
 
-var xltree = Ext.create("Ext.tree.Panel",{
-    title: '系统菜单',
-    margins : '0 0 -1 1',
-    region:'west',
-    border : false,
-    enableDD : false,
-    split: true,
-    width : 212,
-    minWidth : 200,
-    maxWidth : 300,
-    rootVisible: false,
-    containerScroll : true,
-    collapsible : true,
-    autoScroll: false,
-    animCollapse : true,
-    useArrows: true,
-    store:Ext.create('Ext.data.TreeStore',{
-        autoLoad: false,
-        proxy: {
-            type: 'ajax',
-            url: basePath +'/static/data/blog/menu.json',
-            reader: {
-                type: 'json',
-                successProperty: 'success'
+function westTree() {
+    return Ext.create("Ext.tree.Panel",{
+        title: '菜单',
+        region:'west',
+        border : false,
+        enableDD : false,
+        split: true,
+        width : 212,
+        minWidth : 200,
+        maxWidth : 300,
+        rootVisible: false,
+        containerScroll : true,
+        collapsible : true,
+        autoScroll: false,
+        animCollapse : true,
+        useArrows: true,
+        store:Ext.create('Ext.data.TreeStore',{
+            model:  Ext.define('model', {
+                extend: 'Ext.data.Model',
+                fields: [ 'id', 'parentid','text','url' ]
+            }),
+            proxy: {
+                type: 'ajax',
+                url: basePath +'/blog/getMenuTree',
+                reader: {
+                    type: 'json',
+                    successProperty: 'success'
+                }
+            }
+        }),
+        listeners: {
+            itemclick: function (view, record, item, index, e) {
+                alert(record.get('url'))
             }
         }
-    })
-})
+    });
+}
 
-
-var xlview = Ext.create("Ext.panel.Panel", {
-    region: "center",
-    tbar: [{
-        text: "新建校历",
-        iconCls: "add",
-    }, {
-        text: "删除校历",
-        iconCls: "remove",
-    }],
-    html: ''
-});
+function centerPanel() {
+    return Ext.create("Ext.panel.Panel", {
+        region: "center",
+        tbar: [{
+            text: "新建校历",
+            iconCls: "add",
+        }, {
+            text: "删除校历",
+            iconCls: "remove",
+        }],
+        html: ''
+    });
+}

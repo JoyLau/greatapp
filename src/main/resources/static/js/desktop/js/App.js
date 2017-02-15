@@ -43,10 +43,10 @@ Ext.define('Ext.ux.desktop.App', {
             Ext.QuickTips.init();
         }
 
-        me.modules = me.getModules();
-        if (me.modules) {
-            me.initModules(me.modules);
-        }
+        // me.modules = me.getModules();
+        // if (me.modules) {
+        //     me.initModules(me.modules);
+        // }
 
         desktopCfg = me.getDesktopConfig();
         me.desktop = new Ext.ux.desktop.Desktop(desktopCfg);
@@ -133,6 +133,12 @@ Ext.define('Ext.ux.desktop.App', {
     },
 
     getModule : function(name) {
+        var me = this;
+        me.modules = me.getModules(name);
+        if (me.modules) {
+            me.initModules(me.modules);
+        }
+
     	var ms = this.modules;
         for (var i = 0, len = ms.length; i < len; i++) {
             var m = ms[i];

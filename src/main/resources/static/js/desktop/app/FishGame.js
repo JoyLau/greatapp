@@ -1,9 +1,6 @@
 ﻿Ext.define('Desktop.FishGame', {
     extend: 'Ext.ux.desktop.Module',
-
-    requires: [ ],
-
-    id:'fishgame',
+    id:'Desktop.FishGame',
 
     createWindow : function(){
         var desktop = this.app.getDesktop();
