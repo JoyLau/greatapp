@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Joy Lau - 刘法</title>
+    <title>JoyLau - 刘法</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="keywords" content="刘法,JoyLau,个人主页,Java,JavaWeb Web程序员,,Web开发,JavaWeb开发,个人博客,刘法的博客" />
     <meta name="description" content="刘法的个人简介，刘法的个人博客，一个Java Web程序员的个人主页。" />
@@ -183,7 +183,7 @@
             <div class="col-md-12 col-sm-12">
                 <div class="block">
                     <p>
-                        <a href="http://www.miitbeian.gov.cn/" class="icp" target="_blank" rel="external nofollow">皖ICP备16025014号-1</a><br />Designed and developed by JoyLau.<br>Copyright © 2016-2017 lfdevelopment.cn. All Rights Reserved.
+                        <a href="http://www.miitbeian.gov.cn/" class="icp" target="_blank" rel="external nofollow">皖ICP备16025014号-1</a><br />Designed and developed by <a href="http://www.lfdevelopment.cn/" target="_blank">JoyLau</a>.<br>Copyright © 2016-${.now?string("yyyy")} lfdevelopment.cn. All Rights Reserved.
                     </p>
                 </div>
             </div>

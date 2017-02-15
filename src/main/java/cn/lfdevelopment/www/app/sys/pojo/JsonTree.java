@@ -2,7 +2,7 @@
  * Copyright (c) 2017 by LiuFa. All rights reserved
  ******************************************************************************/
 
-package cn.lfdevelopment.www.app.dev.blog.pojo;
+package cn.lfdevelopment.www.app.sys.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,5 +84,26 @@ public class JsonTree {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    /**
+     * 将数据库的树形式转化为JSON的数据的树
+     * @param list
+     * @return
+     */
+    public static List<JsonTree> sysRightToJsonTree(List<SysRight> list){
+        List<JsonTree> jsonTrees = new ArrayList<>();
+        for (SysRight sysRight : list) {
+            JsonTree jsonTree = new JsonTree();
+            jsonTree.setId(sysRight.getId());
+            jsonTree.setParentid(sysRight.getParentid());
+            jsonTree.setText(sysRight.getName());
+            jsonTree.setMid(sysRight.getLeaf() == 0 ? 1 : 2);
+            jsonTree.setLeaf(sysRight.getLeaf() != 0);
+            jsonTree.setExpanded(true);
+            jsonTree.setUrl(sysRight.getUrl());
+            jsonTrees.add(jsonTree);
+        }
+        return jsonTrees;
     }
 }

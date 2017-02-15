@@ -5,6 +5,7 @@
 package cn.lfdevelopment.www.app.sys.pojo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "sys_right")
@@ -70,7 +71,7 @@ public class SysRight {
     }
 
     @Transient
-    private List children;
+    private List<SysRight> children = new ArrayList<>();
     /**
      * 获取id
      *
@@ -227,11 +228,11 @@ public class SysRight {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-    public List getChildren() {
+    public List<SysRight> getChildren() {
         return children;
     }
 
-    public void setChildren(List children) {
+    public void setChildren(List<SysRight> children) {
         this.children = children;
     }
 }

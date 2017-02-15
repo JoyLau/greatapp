@@ -257,8 +257,8 @@
     <footer class="footer" id="footer-bottom">
         <p>
         <a href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备16025014号-1</a><br />
-        Designed and developed by JoyLau.<br>
-        Copyright © 2016-2017 lfdevelopment.cn. All Rights Reserved.
+        Designed and developed by <a href="http://www.lfdevelopment.cn/" target="_blank">JoyLau</a>.<br>
+        Copyright © 2016-${.now?string("yyyy")} lfdevelopment.cn. All Rights Reserved.
         </p>
     </footer>
 </section>

@@ -1,6 +1,6 @@
 <#assign path=request.contextPath />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh-cn">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
 <head>
     <#--<meta http-equiv="pragma" content="no-cache">-->
     <#--<meta http-equiv="cache-control" content="no-cache">-->
@@ -60,7 +60,7 @@
         })
     </script>
     <script src="${path}/static/js/app/common/login.js" type="text/javascript"></script>
-    <title>Login</title>
+    <title>JoyLau - 管理系统登录</title>
     <style type="text/css">
         body {
             text-align: center;
@@ -77,13 +77,18 @@
         }
 
         .footer p {
-            font-size: 14px;
+            font-size: 6px;
             color: #3892d3;
         }
 
         .footer .center {
-            padding-top: 30px;
+            padding-top: 5px;
             width: 100%
+        }
+        .footer .center a {
+            font-size: 12px;
+            text-decoration: none;
+            color: #3892d3;
         }
     </style>
 </head>
@@ -91,7 +96,7 @@
 <canvas id="canvas"></canvas>
 <div class="footer">
     <div class="center">
-        <p>Copyright (c) 2016 by LiuFa. All rights reserved</p>
+        <p><a href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备16025014号-1</a><br />Designed and developed by <a href="http://www.lfdevelopment.cn/" target="_blank">JoyLau</a>.</br>Copyright © 2016-2017 lfdevelopment.cn. All Rights Reserved.</p>
     </div>
 </div>
 <#--<audio id="tipsMusic" src="${path}/static/music/tip.ogg"></audio>-->

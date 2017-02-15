@@ -5,7 +5,7 @@
 package cn.lfdevelopment.www.app.dev.blog.service;
 
 import cn.lfdevelopment.www.app.dev.blog.mapper.BlogMapper;
-import cn.lfdevelopment.www.app.dev.blog.pojo.JsonTree;
+import cn.lfdevelopment.www.app.sys.pojo.JsonTree;
 import cn.lfdevelopment.www.app.sys.mapper.SysRightMapper;
 import cn.lfdevelopment.www.app.sys.pojo.SysRight;
 import com.alibaba.fastjson.JSON;
@@ -39,7 +39,7 @@ public class BlogService {
         example.createCriteria().andCondition("type = 1 and state = 1");
         List<SysRight> list = sysRightMapper.selectByExample(example);
 
-        List<JsonTree> jsonTrees = SysRightToJsonTree(list);
+        List<JsonTree> jsonTrees = JsonTree.sysRightToJsonTree(list);
 
         List<JsonTree> trees = new ArrayList<>();
         for (JsonTree jsonTree : jsonTrees) {
@@ -52,24 +52,6 @@ public class BlogService {
             }
             trees.add(jsonTree);
         }
-        System.out.println(JSON.toJSONString(trees));
         return JSON.toJSONString(trees);
-    }
-
-
-    public List<JsonTree> SysRightToJsonTree(List<SysRight> list){
-        List<JsonTree> jsonTrees = new ArrayList<>();
-        for (SysRight sysRight : list) {
-            JsonTree jsonTree = new JsonTree();
-            jsonTree.setId(sysRight.getId());
-            jsonTree.setParentid(sysRight.getParentid());
-            jsonTree.setText(sysRight.getName());
-            jsonTree.setMid(sysRight.getLeaf() == 0 ? 1 : 2);
-            jsonTree.setLeaf(sysRight.getLeaf() != 0);
-            jsonTree.setExpanded(true);
-            jsonTree.setUrl(sysRight.getUrl());
-            jsonTrees.add(jsonTree);
-        }
-        return jsonTrees;
     }
 }

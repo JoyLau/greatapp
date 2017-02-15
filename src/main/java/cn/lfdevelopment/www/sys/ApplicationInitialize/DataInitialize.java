@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,12 +63,18 @@ public class DataInitialize implements ApplicationListener<ContextRefreshedEvent
      */
     private void setMenuData(){
         List<SysRight> rootList = sysRightService.getSysRightRoot();
+        List<SysRight> trees = new ArrayList<>();
         for (SysRight sysRight : rootList) {
-            int rootRightId = sysRight.getId();
-            List<SysRight> childrenList = sysRightService.getSysRightChildren(rootRightId);
-            sysRight.setChildren(childrenList);
+            if (sysRight.getLeaf()==1)
+                continue;
+            for (SysRight right : rootList) {
+                if (right.getParentid().compareTo(sysRight.getId()) == 0) {
+                    sysRight.getChildren().add(right);
+                }
+            }
+            trees.add(sysRight);
         }
-        redisUtils.set("menuList",rootList);
+        redisUtils.set("menuList", trees);
     }
 
     /**
