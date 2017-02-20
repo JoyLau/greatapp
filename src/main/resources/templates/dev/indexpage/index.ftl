@@ -1,4 +1,5 @@
 <#assign path=request.contextPath />
+<#assign qiniucdn='//oli7hstel.bkt.clouddn.com' />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,29 +12,29 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <!-- Owl Carousel -->
-    <link href="//cdn.bootcss.com/owl-carousel/1.3.3/owl.carousel.min.css" rel="stylesheet">
+    <link href="//oli7hstel.bkt.clouddn.com/dev/indexpage/css/owl.carousel.css" rel="stylesheet">
     <!-- bootstrap.min css -->
-    <link href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//oli7hstel.bkt.clouddn.com/dev/indexpage/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font-awesome.min css -->
-    <link href="//cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//oli7hstel.bkt.clouddn.com/dev/indexpage/css/font-awesome.min.css" rel="stylesheet">
     <!-- Main Stylesheet -->
-    <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="${path}/static/dev/indexpage/css/main.css">
+    <link href="//oli7hstel.bkt.clouddn.com/dev/indexpage/css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//oli7hstel.bkt.clouddn.com/dev/indexpage/css/main.css">
     <!-- Responsive Stylesheet -->
-    <link rel="stylesheet" href="${path}/static/dev/indexpage/css/responsive.css">
+    <link rel="stylesheet" href="//oli7hstel.bkt.clouddn.com/dev/indexpage/css/responsive.css">
     <!-- Js -->
-    <script src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/modernizr/2.6.2/modernizr.min.js"></script>
-    <script src="//cdn.bootcss.com/jquery-one-page-nav/3.0.0/jquery.nav.min.js"></script>
-    <script src="//cdn.bootcss.com/jquery.sticky/1.0/jquery.sticky.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="${path}/static/dev/indexpage/js/plugins.js" type="text/javascript"></script>
-    <script src="//cdn.bootcss.com/wow/0.1.9/wow.min.js"></script>
-    <script src="${path}/static/dev/indexpage/js/main.js" type="text/javascript"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/jquery-1.11.2.min.js"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/modernizr-2.6.2.min.js"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/jquery.nav.js"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/jquery.sticky.js"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/bootstrap.min.js"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/plugins.js" type="text/javascript"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/wow.min.js"></script>
+    <script src="//oli7hstel.bkt.clouddn.com/dev/indexpage/js/main.js" type="text/javascript"></script>
 </head>
 <body>
 <section id="hero-area">
-    <img class="img-responsive" src="${path}/static/dev/indexpage/images/header-blog.jpg" alt="刘法,JoyLau,个人主页,Java,JavaWeb Web程序员,,Web开发,JavaWeb开发,个人博客,刘法的博客">
+    <img class="img-responsive" src="${qiniucdn}/dev/indexpage/images/header-blog.jpg" alt="刘法,JoyLau,个人主页,Java,JavaWeb Web程序员,,Web开发,JavaWeb开发,个人博客,刘法的博客">
 </section>
 <nav id="navigation">
     <div class="container">
@@ -73,7 +74,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <img class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms" src="${path}/static/dev/indexpage/images/my.png" alt="cooker-img" alt="JoyLau">
+                    <img class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms" src="${qiniucdn}/dev/indexpage/images/my.png" alt="cooker-img" alt="JoyLau">
                     <h1 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms"><span>刘法</span> </br> Java & Web 程序员
                     </h1>
                     <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="600ms">刘法，一个2014年入行90后草根,Java程序员。富有技术创造力，尝试用技术的手段解决各种问题。对一切新鲜事物感兴趣，时刻跟踪业界的动态。有良好的审美认知，愿意为作品而付出时间和行动，并享受其中过程带来的乐趣。有自信去学习和了解未知的领域，能快速进入的工作状态，同时懂得尊重和敬仰技术与科学。</p>
@@ -89,12 +90,12 @@
                 <div class="block">
                     <h1 class="heading">最新 <span>开发</span> 的 <span>项目</span></h1>
                     <ul id="list_project">
-                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="400ms"><a href="http://m.yybeibei.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${path}/static/dev/indexpage/images/201607161019334299.png" alt="1元贝贝微信公众号"></div><div class="content-right"><h3>1元贝贝微信公众号</h3><p>1元贝贝是一种创新的夺宝购物模式，通过多人夺宝，1人中奖的方…</p></div></a></li>
-                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="500ms"><a href="http://www.yybeibei.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${path}/static/dev/indexpage/images/201607161016542424.png" alt="1元贝贝"></div><div class="content-right"><h3>1元贝贝</h3><p>1元贝贝是成都一元贝贝网络科技有限公司创新的一种夺宝购物模…</p></div></a></li>
-                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="600ms"><a href="http://xinan.yqggo.cc/" target="_blank" rel="external nofollow"><div class="content-left"><h3>一起购</h3><p>一起购，水果团购微信公众号</p></div><div class="blog-img-2"><img src="${path}/static/dev/indexpage/images/201607161013586174.png" alt="一起购"></div></a></li>
-                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="700ms"><a href="http://www.zizaifan.com/" target="_blank" rel="external nofollow"><div class="content-left"><h3>自在饭</h3><p>自在饭收集互联网好玩有趣的视频资源、电影影评、电影资讯、网…</p></div><div class="blog-img-2"><img src="${path}/static/dev/indexpage/images/201607161008010549.png" alt="自在饭"></div></a></li>
-                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="800ms"><a href="http://www.360vsimu.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${path}/static/dev/indexpage/images/201607161005500080.png" alt="360微私募"></div><div class="content-right"><h3>360微私募</h3><p>360微私募制定了严格的纪律规则规范来监督操盘手的交易行为，…</p></div></a></li>
-                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="900ms"><a href="http://www.juejinj.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${path}/static/dev/indexpage/images/201607161005422268.png" alt="掘金街"></div><div class="content-right"><h3>掘金街</h3><p>掘金街是杭州拓元网络科技有限公司旗下的互联网金融平台,掘金…</p></div></a></li>
+                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="400ms"><a href="http://m.yybeibei.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${qiniucdn}/dev/indexpage/images/201607161019334299.png" alt="1元贝贝微信公众号"></div><div class="content-right"><h3>1元贝贝微信公众号</h3><p>1元贝贝是一种创新的夺宝购物模式，通过多人夺宝，1人中奖的方…</p></div></a></li>
+                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="500ms"><a href="http://www.yybeibei.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${qiniucdn}/dev/indexpage/images/201607161016542424.png" alt="1元贝贝"></div><div class="content-right"><h3>1元贝贝</h3><p>1元贝贝是成都一元贝贝网络科技有限公司创新的一种夺宝购物模…</p></div></a></li>
+                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="600ms"><a href="http://xinan.yqggo.cc/" target="_blank" rel="external nofollow"><div class="content-left"><h3>一起购</h3><p>一起购，水果团购微信公众号</p></div><div class="blog-img-2"><img src="${qiniucdn}/dev/indexpage/images/201607161013586174.png" alt="一起购"></div></a></li>
+                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="700ms"><a href="http://www.zizaifan.com/" target="_blank" rel="external nofollow"><div class="content-left"><h3>自在饭</h3><p>自在饭收集互联网好玩有趣的视频资源、电影影评、电影资讯、网…</p></div><div class="blog-img-2"><img src="${qiniucdn}/dev/indexpage/images/201607161008010549.png" alt="自在饭"></div></a></li>
+                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="800ms"><a href="http://www.360vsimu.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${qiniucdn}/dev/indexpage/images/201607161005500080.png" alt="360微私募"></div><div class="content-right"><h3>360微私募</h3><p>360微私募制定了严格的纪律规则规范来监督操盘手的交易行为，…</p></div></a></li>
+                        <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="900ms"><a href="http://www.juejinj.com/" target="_blank" rel="external nofollow"><div class="blog-img"><img src="${qiniucdn}/dev/indexpage/images/201607161005422268.png" alt="掘金街"></div><div class="content-right"><h3>掘金街</h3><p>掘金街是杭州拓元网络科技有限公司旗下的互联网金融平台,掘金…</p></div></a></li>
                     </ul>
                     <input type="hidden" value="2" id="pageIndex" />
                     <a class="btn btn-default btn-more-info wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="javascript:" id="list_project_more" role="button" onclick="list_project();">更多信息</a>

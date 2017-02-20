@@ -78,6 +78,8 @@ public class ShiroConfiguration {
         chains.put("/index","anon");
         chains.put("/blog","anon");
         chains.put("/blog/**","anon");
+        chains.put("/weixin","anon");
+        chains.put("/weixin/**","anon");
         chains.put("/static/**", "anon");
         chains.put("/getGifCode","anon");
         chains.put("/404", "anon");
