@@ -38,7 +38,7 @@ function ValidateEmail(email) {
 }
 //======================更多项目================
 var list_project = function () {
-    var pageIndex= parseInt($("#pageIndex").val());
+    /*var pageIndex= parseInt($("#pageIndex").val());
     $.get("/tools/list_ajax.ashx", { act: "list_project",pageSize:6,pageIndex:pageIndex,t: new Date() }, function (data) {   
         var obj = eval('(' + data + ')');
         if (obj.status > 1) {
@@ -48,7 +48,9 @@ var list_project = function () {
             $("#list_project_more").html("没有更多啦");
             setTimeout(function () { $("#list_project_more").hide(); }, 3000);
         }
-    });
+    });*/
+    $("#list_project_more").html("没有更多啦");
+    setTimeout(function () { $("#list_project_more").hide(); }, 3000);
 }
 //======================注册================
 var send_mail=function() {
@@ -70,7 +72,10 @@ var send_mail=function() {
         return;
     }
     $("#send_mail").html("信息提交中...");
-    $.ajax({
+    $("#send_mail").html("发送您的信息");
+    alert('我会尽快回复您的，您也可以关注我的博客');
+    return;
+    /*$.ajax({
         url: "/tools/list_ajax.ashx?act=send_mail",
         dataType: "text",
         type: "post",
@@ -88,5 +93,5 @@ var send_mail=function() {
                 return;
             }
         }
-    });
+    });*/
 }
