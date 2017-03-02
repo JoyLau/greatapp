@@ -56,7 +56,7 @@ nav .block .navbar-default .navbar-nav>.active>a:before,nav .block .navbar-defau
 #project .block ul li h3{color:#323232;padding:0 40px 20px;line-height:26px;position:relative}
 #project .block ul li h3:before{content:"";position:absolute;left:50%;bottom:0;width:90px;height:1px;background:#CBC4B5;margin-left:-45px}
 #project .block ul li p{padding-top:25px;color:#959595}
-#project .block ul li .blog-img{float:left;width:50%;height:100%;background:red;overflow:hidden}
+#project .block ul li .blog-img{float:left;width:50%;height:50%;background:red;overflow:hidden}
 #project .block ul li .blog-img img{-webkit-transition:all .8s ease-out;-o-transition:all .8s ease-out;transition:all .8s ease-out}
 #project .block ul li .blog-img-2{width:50%;float:right;overflow:hidden}
 #project .block ul li .blog-img-2 img{-webkit-transition:all .8s ease-out;-o-transition:all .8s ease-out;transition:all .8s ease-out;width:100%}
@@ -85,7 +85,7 @@ nav .block .navbar-default .navbar-nav>.active>a:before,nav .block .navbar-defau
 #about .block .form-control{width:450px;background:#fff;opacity:.9;border:none;height:65px;border-radius:0;font-size:15px}
 #about .block .form-inline{margin-bottom:20px}
 #about .block .input-group-addon{padding:0;border:none;background:0 0}
-#about .block .input-group-addon a{width:212px;height:65px;line-height:52px;border:none;border-radius:0;background:#7EC3BB;color:#fff;font-weight:600;font-size:16px;letter-spacing:2px;text-transform:uppercase;-webkit-transition:.3s all;-o-transition:.3s all;transition:.3s all}
+#about .block .input-group-addon a{width:200px;height:65px;line-height:52px;border:none;border-radius:0;background:#7EC3BB;color:#FF4F02;font-weight:600;font-size:16px;letter-spacing:2px;text-transform:uppercase;-webkit-transition:.3s all;-o-transition:.3s all;transition:.3s all}
 #about .block .input-group-addon a:hover{background:#69a8a1}
 #contact-me{padding:70px 0}
 #contact-me .block .title{padding:20px 0}
