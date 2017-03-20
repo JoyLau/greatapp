@@ -37,7 +37,7 @@ public class WebSocketController {
     private SimpMessagingTemplate messagingTemplate;//1
 
     @MessageMapping("/chat")
-    public void handleChat(Principal principal, String msg) { //2
+    public void handleChat(Principal principal, String msg) {
         if (principal.getName().equals("wyf")) {//3
             messagingTemplate.convertAndSendToUser("wisely",
                     "/queue/notifications", principal.getName() + "-send:"
