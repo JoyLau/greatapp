@@ -11,10 +11,9 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 import java.util.Properties;
 
 /**
- * MyBatis扫描接口，使用的tk.mybatis.spring.mapper.MapperScannerConfigurer，如果你不使用通用Mapper，可以改为org.xxx...
+ * MyBatis扫描接口，使用的MapperScannerConfigurer，如果你不使用通用Mapper，可以改为org.xxx...
  */
 @Configuration
-//由于MapperScannerConfigurer执行的比较早
 public class MyBatisMapperScannerConfig {
 
     @Bean
