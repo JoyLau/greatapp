@@ -14,12 +14,9 @@ import com.alibaba.druid.filter.config.ConfigTools;
 public class Decrypt {
     public static void main(String[] args){
         try {
-            System.out.println(ConfigTools.decrypt("NOlmU6cyDMrUiN5SpsZM4uZoufcv/AZCdFyn4oCIrVwf+J73hEFlnos1/IotY86SX0nQtTuc0yvo+fVVxjScGA=="));
-            System.out.println(ConfigTools.encrypt("jdbc:mysql://www.lfdevelopment.cn:3333/greateapp"));
-            System.out.println("URL<prod>:" + ConfigTools.encrypt("jdbc:mysql://localhost:3333/greateapp"));
-            System.out.println("username and password<prod>:" + ConfigTools.encrypt("root"));
-            System.out.println(ConfigTools.encrypt("1001520.@WSX"));
-
+            System.out.println("url : "+ConfigTools.decrypt("G11Jor+OrLz9MFztdkOfqRnrJKVrFCDdBbYJFmB0qGjUARxPr2tiyRzUn4xbnk/XqPgM8PMjdIJ/pO8UF4aeVg=="));
+            System.out.println("username : "+ConfigTools.decrypt("bNVOqb7WKLX5Bjnw+LMv92taj25KOxDimXxILPQjw42wgv+1lHzOH8kr97xDwWdhpY67QuYCS7sWN4W46YbkFA=="));
+            System.out.println("password : "+ConfigTools.decrypt("l65GeQaXVXxx2ogcQeZLAFM7VcPwgzc9202vxql4hjCbjM8dVm/sD4osdvaBdVkC+BiYdnYL2EzpaCysXAZ5Gw=="));
         } catch (Exception e) {
             e.printStackTrace();
         }
