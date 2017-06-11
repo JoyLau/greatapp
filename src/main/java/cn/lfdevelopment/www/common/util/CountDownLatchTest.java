@@ -66,20 +66,16 @@ public class CountDownLatchTest {
 
 
     public static void test() throws IOException, URISyntaxException {
-//        URI uri = new URI("http://dphd.gtafe.com/dphd_web/login?username=admin&password=000000&identity=admin");
-        URI uri2 = new URI("http://dphd.gtafe.com/dphd_web/admin/main");
+        URI uri = new URI("https://api.baidu.com/json/tongji/v1/ReportService/getData?site_id=691c26474b1733df80dca4dfa7ba5536&method=overview/getTimeTrendRpt&start_date=20170501&end_date=20170701&metrics=pv_count,visitor_count,new_visitor_count");
 
-//        SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
-//        ClientHttpRequest clientHttpRequest = simpleClientHttpRequestFactory.createRequest(uri, HttpMethod.POST);
-//        ClientHttpResponse response = clientHttpRequest.execute();
-
-        SimpleClientHttpRequestFactory simpleClientHttpRequestFactory2 = new SimpleClientHttpRequestFactory();
-        ClientHttpRequest clientHttpRequest2 = simpleClientHttpRequestFactory2.createRequest(uri2, HttpMethod.POST);
-        ClientHttpResponse response2 = clientHttpRequest2.execute();
+        SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
+        ClientHttpRequest clientHttpRequest = simpleClientHttpRequestFactory.createRequest(uri, HttpMethod.POST);
+        ClientHttpResponse response = clientHttpRequest.execute();
 
 
-        System.out.println(response2.getStatusCode().toString());
-        InputStream is = response2.getBody();
+
+        System.out.println(response.getStatusCode().toString());
+        InputStream is = response.getBody();
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
         String str;
